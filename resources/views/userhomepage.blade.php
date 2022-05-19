@@ -1,53 +1,10 @@
-@extends('layouts.public')
+@extends('layouts.user')
 
 @section('title', 'Homepage')
 
 <!-- inizio sezione homepage -->
 @section('content')
 <link rel="stylesheet" type="text/css" href="{{ asset('css/publicstyle.css') }}" >
-        <!-- The Modal -->
-        <div id="modal-log" class="modal">
-
-            <!-- Modal content -->
-            <div class="modal-content">
-
-
-            <span class="close"> &times; </span>
-            <p class="login-paragraph"> Accedi al tuo account </p>
-
-              <form action="{{ route('login') }}" class="form login" method="get">
-
-                <div title= "username" class="form-field">
-                  <label for="login__username">
-
-                    <i class="fa-solid fa-user"></i>
-                    <span class="hidden">Nome utente</span>
-                  </label>
-                  <input autocomplete="username" id="login__username" type="text" name="username" class="form-input" placeholder="Username" required>
-                </div>
-
-                <div title = "password" class="form-field">
-                  <label for="login__password">
-                    <i class="fa-solid fa-lock"></i>
-                    <span class="hidden">Password</span>
-                  </label>
-                  <input id="login__password" type="password" name="password" class="form-input" placeholder="Password" required>
-                </div>
-
-                <div class="form-field">
-                  <input type="submit" value="Accedi">
-                </div>
-
-              </form>
-
-              <p class="text-center"> Non sei ancora registrato? <a href="#"> Registrati ora.</a> 
-
-
-            </div>
-
-        </div>
-
-
         
         <!-- Chi siamo e Mission -->
         <div class="row">
@@ -117,6 +74,5 @@
             </div>
         </div>
         </address>
-       
+             
 @endsection
-

@@ -10,6 +10,19 @@
         <style>
             body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
         </style>
+        
+        <script type="text/javascript">
+            function displayFAQ(id) {
+                var x = document.getElementById(id);
+                if (x.className.indexOf("show-FAQ") == -1) {
+                  x.className += " show-FAQ";
+                }
+                else { 
+                  x.className = x.className.replace(" show-FAQ", "");
+                }
+            }
+        </script>
+        
     </head>
              
     <body>
@@ -44,4 +57,37 @@
         
         
     </body>
+    
+    <script type="text/javascript">           
+            // Prendo il riferimento al modal
+            var modal = document.getElementById("modal-log");
+
+            // Prendo l'elemento span (x) che chiude il modal
+            var span = document.getElementsByClassName("close")[0];
+
+
+            
+            span.onclick = function() {
+              modal.style.display = "none";
+            }
+            
+            function openModal() {
+                modal.style.display = "block";
+                
+                //Quando l'utente clicca sulla x, il modal viene chiuso
+                span.onclick = function() {
+                    modal.style.display = "none";
+                }
+                // Quando l'utente clicca fuori dal modal, questo si chiude
+                window.onclick = function(event) {
+                  if (event.target == modal) {
+                    modal.style.display = "none";
+                  }
+                }
+                
+            } 
+
+          
+        </script> 
+    
 </html>

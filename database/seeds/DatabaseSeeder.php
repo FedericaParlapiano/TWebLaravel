@@ -223,8 +223,25 @@ class DatabaseSeeder extends Seeder {
             ['immagine' => 'porticona.jpeg', 'annuncio'=> 8],
             ['immagine' => 'statua.jpeg', 'annuncio'=> 9],
             ['immagine' => 'statua.jpeg', 'annuncio'=> 10],
-            ['immagine' => 'vista.jpeg', 'annuncio'=> 11]
-            
+            ['immagine' => 'home.jpg', 'annuncio'=> 11],
+            ['immagine' => 'lago.jpg', 'annuncio'=> 11],
+            ['immagine' => 'mura.jpeg', 'annuncio'=> 11],
+            ['immagine' => 'paesaggio.jpeg', 'annuncio'=> 11],
+            ['immagine' => 'room.jpg', 'annuncio'=> 13],
+            ['immagine' => 'room2.jpg', 'annuncio'=> 13],
+            ['immagine' => 'room3.jpg', 'annuncio'=> 13],
+            ['immagine' => 'room5.jpg', 'annuncio'=> 13],
+            ['immagine' => 'room6.jpg', 'annuncio'=> 13],
+            ['immagine' => 'room7.jpg', 'annuncio'=> 14],
+            ['immagine' => 'room8.jpg', 'annuncio'=> 14],
+            ['immagine' => 'statua.jpeg', 'annuncio'=> 14],
+            ['immagine' => 'room.jpg', 'annuncio'=> 1],
+            ['immagine' => 'room2.jpg', 'annuncio'=> 1],
+            ['immagine' => 'room8.png', 'annuncio'=> 1],
+            ['immagine' => 'room8.png', 'annuncio'=> 2],
+            ['immagine' => 'room7.jpg', 'annuncio'=> 2],
+            ['immagine' => 'room2.jpg', 'annuncio'=> 2],
+            ['immagine' => 'room4.jpg', 'annuncio'=> 3]
             
         ]);
         
@@ -296,6 +313,133 @@ class DatabaseSeeder extends Seeder {
            
             //['vincoli'=>'','alloggi'=>]
         ]);
+        
+        
+        /* affitto(locatario, annuncio, dataStipulaContratto, dataFineContratto, canoneConcordato)*/
+        DB::table('affitti') -> insert ([
+            ['locatario' => 'enzo_ferante', 'annuncio'=> '1', 'dataStipulaContratto'=> '2022-05-01','dataFineContratto'=> '2022-08-01', 'canoneConcordato'=> 500.00 ],
+            ['locatario' => 'flora_rossini', 'annuncio'=> '2', 'dataStipulaContratto'=> '2022-04-15','dataFineContratto'=> '2022-09-15', 'canoneConcordato'=> 470.00 ],
+            ['locatario' => 'allegra_medici', 'annuncio'=> '3', 'dataStipulaContratto'=> '2022-07-10','dataFineContratto'=> '2023-07-10', 'canoneConcordato'=> 200.00 ],
+            ['locatario' => 'patrizio_bianchi', 'annuncio'=> '4', 'dataStipulaContratto'=> '2022-06-01','dataFineContratto'=> '2022-12-31', 'canoneConcordato'=> 225.00 ],
+            ['locatario' => 'arturo_casagrande', 'annuncio'=> '5', 'dataStipulaContratto'=> '2022-09-01','dataFineContratto'=> '2023-07-01', 'canoneConcordato'=> 250.00 ],
+            ['locatario' => 'tecla_mondo', 'annuncio'=> '6', 'dataStipulaContratto'=> '2022-01-20','dataFineContratto'=> '2022-06-20', 'canoneConcordato'=> 400.00 ],
+            ['locatario' => 'paolo_chioggia', 'annuncio'=> '7', 'dataStipulaContratto'=> '2022-09-10','dataFineContratto'=> '2023-06-10', 'canoneConcordato'=> 300.00],
+            ['locatario' => 'regina_falangi', 'annuncio'=> '8', 'dataStipulaContratto'=> '2022-01-01','dataFineContratto'=> '2022-09-01', 'canoneConcordato'=> 280.00],
+            ['locatario' => 'viola_rossi', 'annuncio'=> '9', 'dataStipulaContratto'=> '2022-03-10','dataFineContratto'=> '2022-07-10', 'canoneConcordato'=> 200.00],
+            ['locatario' => 'claudio_gori', 'annuncio'=> '10', 'dataStipulaContratto'=> '2022-09-20','dataFineContratto'=> '2023-06-20', 'canoneConcordato'=> 300.00],
+        ]);
+
+        /* messaggio(destinatario, mittente, testo, dataOraInvio)*/
+        DB::table('messaggi')->insert([
+            ['destinatario' => 'mario_rossi', 'mittente' => 'enzo_ferrante', 'testo' =>
+            'Buongiorno, ho visto il tuo annuncio, volevo chiderti alcune informazioni.', 'dataOraInvio' => date("Y-m-d H:i:s")],
+            ['destinatario' => 'enzo_ferrante', 'mittente' => 'mario_rossi', 'testo' =>
+            'Certo Enzo chiedimi pure.', 'dataOraInvio' => date("Y-m-d H:i:s")],
+            ['destinatario' => 'mario_rossi', 'mittente' => 'enzo_ferrante', 'testo' =>
+            'Volevo sapere quanto fosse distante il posto letto che ha pubblicato dalla biblioteca, poichè lavoro lì tutti i giorni quindi ho bisogno di trovare una sistwmazione nelle vicinanze.',
+            'dataOraInvio' => date("Y-m-d H:i:s")],
+            ['destinatario' => 'simone_parini', 'mittente' => 'flora_rossini', 'testo' =>
+            'Salve, è ancora disponibile il suo appartamento?', 'dataOraInvio' => date("Y-m-d H:i:s")],
+            ['destinatario' => 'flora_rossini', 'mittente' => 'simone_parini', 'testo' =>
+            'Si è ancora disponibile, tuttavia altri studenti mi hanno già contattato per cui non so dirle con certezza se potrò affittarlo a lei.',
+            'dataOraInvio' => date("Y-m-d H:i:s")],
+            ['destinatario' => 'aurora_nicolini', 'mittente' => 'allegra_medici', 'testo' =>
+            'Salve, sono ammessi gatti nell\'annuncio?', 'dataOraInvio' => date("Y-m-d H:i:s")],
+            ['destinatario' => 'allegra_medici', 'mittente' => 'aurora_nicolini', 'testo' =>
+            'Si certamente.', 'dataOraInvio' => date("Y-m-d H:i:s")],
+            ['destinatario' => 'ennio_tosi', 'mittente' => 'partizio_bianchi', 'testo' =>
+            'Buonasera, sarei interessato al suo ultimo annuncio, potrei venire a vedere l\'appartamento in settimana?', 'dataOraInvio' => date("Y-m-d H:i:s")],
+            ['destinatario' => 'partizio_bianchi', 'mittente' => 'ennio_tosi', 'testo' =>
+            'Si Patrizio, io sono disponibile a mostrarle l\'apparamento giovedì pomeriggio o venerdì mattina, mi dica lei quando prefrisce',
+            'dataOraInvio' => date("Y-m-d H:i:s")],
+            ['destinatario' => 'ennio_tosi', 'mittente' => 'partizio_bianchi', 'testo' =>
+            'Venerdì mattina è perfetto, a che ora?', 'dataOraInvio' => date("Y-m-d H:i:s")],
+            ['destinatario' => 'partizio_bianchi', 'mittente' => 'ennio_tosi', 'testo' =>
+            '10:30 davanti all\'annuncio', 'dataOraInvio' => date("Y-m-d H:i:s")],
+            ['destinatario' => 'camilla_piacentini', 'mittente' => 'arturo_casagrande', 'testo' =>
+            'Buongiorno, ho visto il tuo annuncio, volevo chiderle alcune informazioni.',
+            'dataOraInvio' => date("Y-m-d H:i:s")],
+            ['destinatario' => 'arturo_casagrande', 'mittente' => 'camilla_piacentini', 'testo' =>
+            'Mi dispiace ma è appena stato affittato.', 'dataOraInvio' => date("Y-m-d H:i:s")],
+            ['destinatario' => 'eleonora_gritti', 'mittente' => 'claudio_gori', 'testo' =>
+            'Ciao, posso venire a visitare il suo annuncio.', 'dataOraInvio' => date("Y-m-d H:i:s")],
+            ['destinatario' => 'claudio_gori', 'mittente' => 'eleonora_gritti', 'testo' =>
+            'Salve, certamente, che giorno vorrebbe venire?', 'dataOraInvio' => date("Y-m-d H:i:s")],
+            ['destinatario' => 'eleonora_gritti', 'mittente' => 'claudio_gori', 'testo' =>
+            'Se per lei va bene anche domani pomeriggio.', 'dataOraInvio' => date("Y-m-d H:i:s")],
+            ['destinatario' => 'claudio_gori', 'mittente' => 'eleonora_gritti', 'testo' =>
+            'Okay', 'dataOraInvio' => date("Y-m-d H:i:s")],
+            ['destinatario' => 'lara_battaglia', 'mittente' => 'silvia_sauro', 'testo' =>
+            'Salve, sono ammessi cani nell\'allogio?', 'dataOraInvio' => date("Y-m-d H:i:s")],
+            ['destinatario' => 'silvia_sauro', 'mittente' => 'lara_battaglia', 'testo' =>
+            'No.', 'dataOraInvio' => date("Y-m-d H:i:s")],
+            ['destinatario' => 'lara_battaglia', 'mittente' => 'silvia_sauro', 'testo' =>
+            'Okay grazie lo stesso.', 'dataOraInvio' => date("Y-m-d H:i:s")],
+            ['destinatario' => 'vanessa_marrone', 'mittente' => 'enzo_ferrante', 'testo' =>
+            'Buongiorno, ho visto il tuo annuncio, volevo chiderti alcune informazioni.', 'dataOraInvio' => date("Y-m-d H:i:s")],
+        ]);
+
+         /* preferenza(locatario, annuncio)*/
+        DB::table('preferenze')->insert([
+            ['locatario' => 'enzo_ferrante', 'annuncio' => 1],
+            ['locatario' => 'flora_rossini', 'annuncio' => 2],
+            ['locatario' => 'allegra_medici', 'annuncio' => 3],
+            ['locatario' => 'partizio_bianchi', 'annuncio' => 4],
+            ['locatario' => 'partizio_bianchi', 'annuncio' => 5],
+            ['locatario' => 'arturo_casagrande', 'annuncio' => 5],
+            ['locatario' => 'tecla_mondo', 'annuncio' => 6],
+            ['locatario' => 'paolo_chioggia', 'annuncio' => 7],
+            ['locatario' => 'regina_falangi', 'annuncio' => 4],
+            ['locatario' => 'regina_falangi', 'annuncio' => 8],
+            ['locatario' => 'viaola_rossi', 'annuncio' => 2],
+            ['locatario' => 'viaola_rossi', 'annuncio' => 9],
+            ['locatario' => 'silvia_sauro', 'annuncio' => 10],
+            ['locatario' => 'claudio_gori', 'annuncio' => 7],
+
+         ]);
+        /* richiesta(locatore, locatario, annuncio, canoneProposto*, messaggio*, stato, inizioAffitto, fineAffitto) */
+        DB::table('richieste')->insert([
+            ['locatore' => 'mario_rossi', 'locatario' => 'enzo_ferrante', 'annuncio' => 1, 'canoneProposto' => 500.00,'messaggio' => '',
+            'stato' => 'accettato', 'inizioAffitto' => '2022-05-01' , 'fineAffitto' => '2022-08-01'],
+            ['locatore' => 'simone_parini', 'locatario' => 'flora_rossini', 'annuncio' => 2, 'canoneProposto' => 470.00,'messaggio' => '',
+            'stato' => 'accettato', 'inizioAffitto' => '2022-04-15' , 'fineAffitto' => '2022-09-15'],
+            ['locatore' => 'aurora_nicolini', 'locatario' => 'allegra_medici', 'annuncio' => 3, 'canoneProposto' => 200.00,'messaggio' => 'E\' disponibile ad affittare il posto letto',
+            'stato' => 'accettato', 'inizioAffitto' => '2022-07-10' , 'fineAffitto' => '2023-07-10'],
+            ['locatore' => 'ennio_tosi', 'locatario' => 'partizio_bianchi', 'annuncio' => 4, 'canoneProposto' => 225.00,'messaggio' => 'Vorrei affitare il posto letto.',
+            'stato' => 'accettato', 'inizioAffitto' => '2022-06-01' , 'fineAffitto' => '2022-12-31'],
+            ['locatore' => 'ennio_tosi', 'locatario' => 'arturo_casagrande', 'annuncio' => 5, 'canoneProposto' => 250.00,'messaggio' => '',
+            'stato' => 'accettato', 'inizioAffitto' => '2022-09-01' , 'fineAffitto' => '2023-07-01'],
+            ['locatore' => 'eleonora_gritti', 'locatario' => 'tecla_mondo', 'annuncio' => 6, 'canoneProposto' => 400.00,'messaggio' => '',
+            'stato' => 'accettato', 'inizioAffitto' => '2022-01-20' , 'fineAffitto' => '2022-06-20'],
+            ['locatore' => 'camilla_piacentini', 'locatario' => 'paolo_chioggia', 'annuncio' => 7, 'canoneProposto' => 300.00,'messaggio' => '',
+            'stato' => 'accettato', 'inizioAffitto' => '2022-09-10' , 'fineAffitto' => '2023-06-10'],
+            ['locatore' => 'lara_battaglia', 'locatario' => 'regina_falangi', 'annuncio' => 8, 'canoneProposto' => 280.00,'messaggio' => '',
+            'stato' => 'accettato', 'inizioAffitto' => '2022-01-01' , 'fineAffitto' => '2022-09-01'],
+            ['locatore' => 'vanessa_marrone', 'locatario' => 'viaola_rossi', 'annuncio' => 9, 'canoneProposto' => 200.00,'messaggio' => '',
+            'stato' => 'accettato', 'inizioAffitto' => '2022-03-10' , 'fineAffitto' => '2022-07-10'],
+            ['locatore' => 'arianna_ronci', 'locatario' => 'claudio_gori', 'annuncio' => 10, 'canoneProposto' => 300.00,'messaggio' => '',
+            'stato' => 'accettato', 'inizioAffitto' => '2022/09/20' , 'fineAffitto' => '2023/06/20'],
+            ['locatore' => 'arianna_ronci', 'locatario' => 'nicola_zannini', 'annuncio' => 11, 'canoneProposto' => 500.00,'messaggio' => 'Posso proporre il canone ', 'stato' => 'da valutare', 'inizioAffitto' => '2022-02-10' , 'fineAffitto' => '2022-09-15'],
+            ['locatore' => 'arianna_ronci', 'locatario' => 'ugo_zannini', 'annuncio' => 12, 'canoneProposto' => 520.00,'messaggio' => '',
+            'stato' => 'rifiutato', 'inizioAffitto' => '2022-10-15' , 'fineAffitto' => '2022-12-15'],
+            ['locatore' => 'federica_parlapiano', 'locatario' => 'dennis_serra', 'annuncio' => 13, 'canoneProposto' => 200.00,'messaggio' => '',
+            'stato' => 'rifiutato', 'inizioAffitto' => '2023-09-10' , 'fineAffitto' => '2024-02-15'],
+            ['locatore' => 'federica_parlapiano', 'locatario' => 'cisse_cecca', 'annuncio' => 14, 'canoneProposto' => 200.00,'messaggio' => 'Posso',
+            'stato' => 'rifiutato', 'inizioAffitto' => '2023-10-01' , 'fineAffitto' => '2024-03-15'],
+            ['locatore' => 'federica_parlapiano', 'locatario' => 'salvatore_parenti', 'annuncio' => 15, 'canoneProposto' => 250.00,'messaggio' => '',
+            'stato' => 'da valutare', 'inizioAffitto' => '2024-01-01' , 'fineAffitto' => '2024-09-10'],
+            ['locatore' => 'francesca_palazzetti', 'locatario' => 'ugo_zannini', 'annuncio' => 16, 'canoneProposto' => 600.00,'messaggio' => 'Posso',
+            'stato' => 'da valutare', 'inizioAffitto' => '2023-09-01' , 'fineAffitto' => '2024-03-01'],
+            ['locatore' => 'francesca_palazzetti', 'locatario' => 'dennis_serra', 'annuncio' => 17, 'canoneProposto' => 250.00,'messaggio' => '',
+            'stato' => 'rifiutato', 'inizioAffitto' => '2023-09-10' , 'fineAffitto' => '2024-01-15'],
+            ['locatore' => 'francesca_palazzetti', 'locatario' => 'cisse_cecca', 'annuncio' => 18, 'canoneProposto' => 700.00,'messaggio' => 'Mi propongo per affittare il suo annuncio.',
+            'stato' => 'rifiutato', 'inizioAffitto' => '2023-09-10' , 'fineAffitto' => '2024-01-15'],
+            ['locatore' => 'alice_moretti', 'locatario' => 'mia_palazzetti', 'annuncio' => 19, 'canoneProposto' => 600.00,'messaggio' => 'Non posso pagare un canone mensile più alto di quello indicato.',
+            'stato' => 'da valutare', 'inizioAffitto' => '2023-09-10' , 'fineAffitto' => '2024-02-01'],
+            ['locatore' => 'alice_moretti', 'locatario' => 'giovanni_delfino', 'annuncio' => 20, 'canoneProposto' => 500.00,'messaggio' => 'Vorrei affittare il suo appartamento.',
+            'stato' => 'da valutare', 'inizioAffitto' => '2023-09-10' , 'fineAffitto' => '2024-02-15'],
+        ]);
+        
         
     }
 

@@ -10,6 +10,19 @@
         <style>
             body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
         </style>
+        
+        <script type="text/javascript">
+                function displayFAQ(id) {
+                    var x = document.getElementById(id);
+                    if (x.className.indexOf("show-FAQ") == -1) {
+                      x.className += " show-FAQ";
+                    }
+                    else { 
+                      x.className = x.className.replace(" show-FAQ", "");
+                    }
+                }
+        </script>    
+        
     </head>
              
     <body>
@@ -26,7 +39,9 @@
         </div>
         <!-- end navbar --> 
         
-        
+        <div>
+        @yield('content')
+        </div>
      
         
         <!-- Footer -->

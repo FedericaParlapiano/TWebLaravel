@@ -20,7 +20,7 @@
         $assente=false;
       @endphp
       <div class="mySlides">
-        <img src="{{ asset('images/annunci/' . $singolafoto->immagine) }}" class="resize-image-annuncio">
+        <img src="{{ asset('images/annunci/' . $singolafoto->immagine) }}" alt="Immagine non disponibile" class="resize-image-annuncio">
       </div>
       @endisset
       @endforeach
@@ -43,7 +43,7 @@
         @foreach($foto as $singolafoto)
         @isset($singolafoto)
         <div class="column-annuncio">
-          <img class="demo cursor resize-thumbnail" src="{{ asset('images/annunci/' . $singolafoto->immagine) }}" onclick="currentSlide({{$contatore}})" alt="The Woods">
+          <img class="demo cursor resize-thumbnail" src="{{ asset('images/annunci/' . $singolafoto->immagine) }}" onclick="currentSlide({{$contatore}})" alt="Not found">
         @php
             $contatore++;
         @endphp

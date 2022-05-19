@@ -49,7 +49,10 @@ class PublicController extends Controller {
     }
     
     public function showHomepageLogin() {
-        return view('user');
+        $faqs = $this->_catalogoModel->getFaqs();
+        
+        return view('userhomepage')
+                    ->with('faqs', $faqs);
     }
  
     

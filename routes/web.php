@@ -27,6 +27,9 @@ Route::get('/catalog/annuncio/{idAnnuncio}', 'PublicController@showAnnuncio')
 Route::get('/login', 'PublicController@showHomepageLogin')
         ->name('login');
 
+Route::get('/account', 'UserController@showAccount')
+        ->name('account');
+
 /*
 Route::post('login', 'Auth\LoginController@login');
 

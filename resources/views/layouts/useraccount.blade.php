@@ -10,9 +10,13 @@
         <style>
             body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
         </style>
+        
     </head>
              
+    @include('layouts/_sidebaraccount')
+    
     <body>
+        <div class="main" style="margin-left:300px">
         <!-- Header -->
         <div class="header">
           <h1>Home for Students</h1>
@@ -26,7 +30,9 @@
         </div>
         <!-- end navbar --> 
         
-        
+        <div>
+        @yield('content')
+        </div>
      
         
         <!-- Footer -->
@@ -40,6 +46,6 @@
             </div>
         </footer>
         
-        
+        </div>
     </body>
 </html>
