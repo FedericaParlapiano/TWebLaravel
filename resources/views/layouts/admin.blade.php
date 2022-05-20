@@ -8,7 +8,7 @@
     <body id="bodyadmin">
         <div id="wrapper">
             <div id="menu">
-                @include('layouts/_navadmin')
+                @include('layouts/_navuser')
             </div>
 
             <!-- end #menu -->

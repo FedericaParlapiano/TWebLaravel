@@ -30,6 +30,9 @@ Route::get('/login', 'PublicController@showHomepageLogin')
 Route::get('/account', 'UserController@showAccount')
         ->name('account');
 
+Route::get('/locatario/nuovoannuncio', 'UserController@addAnnuncio')
+        ->name('nuovoannuncio');
+
 /*
 Route::post('login', 'Auth\LoginController@login');
 

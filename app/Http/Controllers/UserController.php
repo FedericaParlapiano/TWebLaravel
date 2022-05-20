@@ -16,7 +16,10 @@ class UserController extends Controller {
     public function showAccount() {
         return view('account');
     }
-            
+     
+    public function addAnnuncio() {
+        return view('annunci.insert');
+    }
     
    
 }

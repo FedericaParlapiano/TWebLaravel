@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/publicstyle.css') }}" >
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/formannunciostyle.css') }}" >
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
         <title>HomeforStudents | @yield('title', 'Homepage')</title>
         <script src="https://kit.fontawesome.com/ea82011960.js" crossorigin="anonymous"></script>
@@ -21,6 +22,21 @@
                       x.className = x.className.replace(" show-FAQ", "");
                     }
                 }
+                
+                
+                function check(){
+                    var checkBox = document.getElementById("bagno");
+                    var text = document.getElementById("quantitabagni");
+
+                      if (checkBox.checked) {
+                         alert("checked");
+                         text.style.display = "block";
+
+                  } else {
+                      alert("unchecked");
+                      text.style.display = "none";
+                  }
+              }
         </script>    
         
     </head>
