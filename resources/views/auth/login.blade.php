@@ -3,48 +3,47 @@
 @section('title', 'Registrazione')
 
 @section('content')
-<div class="static">
-    <h3>Login</h3>
-    <p>Utilizza questa form per autenticarti al sito</p>
+    
+    <h3 class="text-center">Login</h3>
+    <p class="login-paragraph"> Accedi al tuo account </p>
 
-    <div class="container-contact">
-        <div class="wrap-contact1">
-            {{ Form::open(array('route' => 'login', 'class' => 'contact-form')) }}
+            {{ Form::open(array('route' => 'login', 'class' => 'form login')) }}
+          
+             <div title= "username" class="form-field">
+                {!! Form::label('username', '<i class="fa-solid fa-user"></i>', [], false) !!}
+                {{ Form::text('username', '', ['class' => 'form-input','id' => 'login__username', 'placeholder' => 'username' ]) }} 
+            </div>
             
-             <div  class="wrap-input">
-                 <p> Se non hai già un account <a  href="{{ route('register') }}">registrati</a></p>
-             </div>            
-             <div  class="wrap-input">
-                {{ Form::label('username', 'Nome Utente', ['class' => 'label-input']) }}
-                {{ Form::text('username', '', ['class' => 'input','id' => 'username']) }}
-                @if ($errors->first('username'))
-                <ul class="errors">
+            
+            
+            <div title = "password" class="form-field">
+                {!! Form::label('password', '<i class="fa-solid fa-lock"></i>', [], false) !!}
+                {{ Form::password('password',['class' => 'form-input','id' => 'login__password', 'placeholder' => 'password' ]) }}     
+            </div>
+            
+            @if ($errors->first('username'))
+                <div class="errors" style=" color: #EB2F42; margin-left: auto; margin-right: auto; ">
                     @foreach ($errors->get('username') as $message)
-                    <li>{{ $message }}</li>
+                    <div>{{ $message }}</div>
                     @endforeach
-                </ul>
+                </div>
                 @endif
-            </div>
-            
-             <div  class="wrap-input">
-                {{ Form::label('password', 'Password', ['class' => 'label-input']) }}
-                {{ Form::password('password', ['class' => 'input', 'id' => 'password']) }}
-                @if ($errors->first('password'))
-                <ul class="errors">
+                
+            @if ($errors->first('password'))
+                <div class="errors" style=" color: #EB2F42; margin-left: auto; margin-right: auto; ">
                     @foreach ($errors->get('password') as $message)
-                    <li>{{ $message }}</li>
+                    <div>{{ $message }}</div>
                     @endforeach
-                </ul>
-                @endif
-            </div>
+                </div>
+            @endif
             
-            <div class="container-form-btn">                
-                {{ Form::submit('Login', ['class' => 'form-btn1']) }}
+            <div class="form-field">
+                {{ Form::submit('Login') }}
             </div>
+                        
+            <p class="text-center" style="color: black;"> Non sei ancora registrato? <a  href="{{ route('register') }}"> Registrati ora.</a></p>
             
             {{ Form::close() }}
-        </div>
-    </div>
 
-</div>
+
 @endsection

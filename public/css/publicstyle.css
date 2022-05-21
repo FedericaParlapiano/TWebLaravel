@@ -303,20 +303,6 @@ footer {
   text-align: center;
 }
 
-
-/* helpers/hidden.css */
-
-.hidden {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-}
-
 /* helpers/icon.css */
 
 :root {
@@ -400,6 +386,9 @@ footer {
     }
 
     .form-field {
+      width: 450px;
+      margin-left: auto;
+      margin-right: auto;
       display: flex;
     }
 
@@ -433,14 +422,14 @@ footer {
     .login input[type="password"],
     .login input[type="submit"] {
       border-radius: var(--loginBorderRadus);
-      padding: 1rem;
+      padding: 1em;
     }
 
     .login label {
       background-color: var(--loginLabelBackgroundColor);
       border-bottom-right-radius: 0;
       border-top-right-radius: 0;
-      padding-inline: 1.25rem;
+      padding-inline: 1.25 em;
     }
 
     .login input[type="password"],
