@@ -23,17 +23,25 @@ Route::get('/catalog', 'PublicController@showCatalog')
 Route::get('/catalog/annuncio/{idAnnuncio}', 'PublicController@showAnnuncio')
         ->name('annuncio');
 
-//Rotte per l'autenticazione
-Route::get('/login', 'PublicController@showHomepageLogin')
-        ->name('login');
-
 Route::get('/account', 'UserController@showAccount')
         ->name('account');
 
 Route::get('/locatario/nuovoannuncio', 'UserController@addAnnuncio')
-        ->name('nuovoannuncio');
+        ->name('nuovoAnnuncio');
 
-/*
+Route::get('/admin', 'AdminController@index')
+        ->name('admin')->middleware('can:isAdmin');
+
+Route::get('/locatario', 'LocatarioController@index')
+        ->name('user')->middleware('can:isLocatario');
+
+Route::get('/locatore', 'LocatoreController@index')
+        ->name('user')->middleware('can:isLocatore');
+
+//Rotte per l'autenticazione
+Route::get('login', 'Auth\LoginController@showLoginForm')
+        ->name('login');
+
 Route::post('login', 'Auth\LoginController@login');
 
 //Rotta per il logout
@@ -47,17 +55,8 @@ Route::get('register', 'Auth\RegisterController@showRegistrationForm')
 Route::post('register', 'Auth\RegisterController@register');
 
 
-// Rotte per la registrazione
-Route::get('register', 'Auth\RegisterController@showRegistrationForm')
-        ->name('register');
-
-Route::post('register', 'Auth\RegisterController@register');
-
-
-Route::view('/where', 'where')
-        ->name('where');
-*/
 
 // Rotte inserite dal comando artisan "ui vue --auth" 
 // Auth::routes();
 // Route::get('/home', 'HomeController@index')->name('home');
+

@@ -74,19 +74,20 @@
         <!-- FAQ -->
         <div class="container-FAQ">
         
+       
+        @isset($faqs)
         <h2>FAQ</h2>
         <p>Sebbene siamo sempre veloci e disponibili a rispondere, vi consigliamo di consultare questa sezione prima di contattarci. </p>
 
-        @isset($faqs)
             @foreach($faqs as $faq)
             <button onclick="displayFAQ({{ $faq->id }})" class="section-FAQ"> {{ $faq->domanda }} </button>
             <div id="{{ $faq->id }}" class="container-FAQ hide-FAQ">
               <p>{{ $faq->risposta }}</p>
             </div>
             @endforeach
-            
+        @endisset()    
         </div>
-        @endisset()
+        
         
         
         <!-- Regulation -->
