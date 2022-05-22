@@ -3,17 +3,16 @@
 @section('title', 'Registrazione')
 
 @section('content')
-<div class="static">
-    <h3>Registrazione</h3>
-    <p>Utilizza questa form per registrarti al sito</p>
 
-    <div class="container-contact">
-        <div class="wrap-contact1">
-            {{ Form::open(array('route' => 'register', 'class' => 'contact-form')) }}
+<h3 class="text-center">Registrazione</h3>
+    <p class="login-paragraph"> Inserisci i tuoi dati per registrarti al nostro sito</p>
 
-            <div  class="wrap-input">
-                {{ Form::label('nome', 'Nome', ['class' => 'label-input']) }}
-                {{ Form::text('nome', '', ['class' => 'input', 'id' => 'nome']) }}
+
+            {{ Form::open(array('route' => 'register', 'class' => 'form login')) }}
+            
+            <div  class="form-field">
+                {{ Form::label('nome', 'Nome', ['class' => 'register-label']) }}
+                {{ Form::text('nome', '', ['class' => 'form-input', 'id' => 'nome']) }}
                 @if ($errors->first('nome'))
                 <ul class="errors">
                     @foreach ($errors->get('nome') as $message)
@@ -23,9 +22,9 @@
                 @endif
             </div>
 
-            <div  class="wrap-input">
-                {{ Form::label('cognome', 'Cognome', ['class' => 'label-input']) }}
-                {{ Form::text('cognome', '', ['class' => 'input', 'id' => 'cognome']) }}
+            <div  class="form-field">
+                {{ Form::label('cognome', 'Cognome', ['class' => 'register-label']) }}
+                {{ Form::text('cognome', '', ['class' => 'form-input', 'id' => 'cognome']) }}
                 @if ($errors->first('cognome'))
                 <ul class="errors">
                     @foreach ($errors->get('cognome') as $message)
@@ -35,38 +34,9 @@
                 @endif
             </div>
             
-            <div  class="wrap-input  rs1-wrap-input">
-                {{ Form::label('sesso', 'Sesso', ['class' => 'label-input']) }}
-                {{ Form::select('sesso', ['F' => 'F', 'M' => 'M'],  ['class' => 'input','id' => 'sesso']) }}
-            </div>
-            
-            <div>
-            {{ Form::label('dataNascita', 'Data di nascita', ['class' => 'label, tab', 'style' =>'margin-top: 0;']) }}
-            {{ Form::date('dataNascita', '', ['class' => 'input', 'style' =>'width: 200px;', 'id' => 'dataNascita'])}}
-            @if ($errors->first('dataNascita'))
-                <ul class="errors">
-                    @foreach ($errors->get('dataNascita') as $message)
-                    <li>{{ $message }}</li>
-                    @endforeach
-                </ul>
-                @endif
-            </div>
-            
-            <div  class="wrap-input">
-                {{ Form::label('citta', 'citta', ['class' => 'label-input']) }}
-                {{ Form::text('citta', '', ['class' => 'input','id' => 'citta']) }}
-                @if ($errors->first('citta'))
-                <ul class="errors">
-                    @foreach ($errors->get('citta') as $message)
-                    <li>{{ $message }}</li>
-                    @endforeach
-                </ul>
-                @endif
-            </div>
-            
-             <div  class="wrap-input">
-                {{ Form::label('email', 'Email', ['class' => 'label-input']) }}
-                {{ Form::text('email', '', ['class' => 'input','id' => 'email']) }}
+             <div  class="form-field">
+                {{ Form::label('email', 'Email', ['class' => 'register-label']) }}
+                {{ Form::text('email', '', ['class' => 'form-input','id' => 'email']) }}
                 @if ($errors->first('email'))
                 <ul class="errors">
                     @foreach ($errors->get('email') as $message)
@@ -76,9 +46,9 @@
                 @endif
             </div>
             
-            <div  class="wrap-input">
-                {{ Form::label('numTelefono', 'numTelefono', ['class' => 'label-input']) }}
-                {{ Form::text('numTelefono', '', ['class' => 'input','id' => 'numTelefono']) }}
+            <div  class="form-field">
+                {{ Form::label('numTelefono', 'Telefono', ['class' => 'register-label']) }}
+                {{ Form::text('numTelefono', '', ['class' => 'form-input','id' => 'numTelefono']) }}
                 @if ($errors->first('numTelefono'))
                 <ul class="errors">
                     @foreach ($errors->get('numTelefono') as $message)
@@ -88,9 +58,39 @@
                 @endif
             </div>
             
-            <div  class="wrap-input  rs1-wrap-input">
-                {{ Form::label('fotoProfilo', 'Immagine', ['class' => 'label-input']) }}
-                {{ Form::file('fotoProfilo', ['class' => 'input', 'id' => 'fotoProfilo']) }}
+            <div class="form-field">
+                {{ Form::label('sesso', 'Sesso', ['class' => 'register-label']) }}
+                {{ Form::select('sesso', ['F' => 'Donna', 'M' => 'Uomo'],  ['class' => 'form-input', 'id' => 'sesso']) }}
+            </div>
+            
+            <div class="form-field">
+            {{ Form::label('dataNascita', 'Data di nascita', ['class' => 'register-label']) }}
+            {{ Form::date('dataNascita', '', ['class' => 'form-input', 'id' => 'dataNascita'])}}
+            @if ($errors->first('dataNascita'))
+                <ul class="errors">
+                    @foreach ($errors->get('dataNascita') as $message)
+                    <li>{{ $message }}</li>
+                    @endforeach
+                </ul>
+                @endif
+            </div>
+            
+            <div  class="form-field">
+                {{ Form::label('citta', 'Citta', ['class' => 'register-label']) }}
+                {{ Form::text('citta', '', ['class' => 'form-input','id' => 'citta']) }}
+                @if ($errors->first('citta'))
+                <ul class="errors">
+                    @foreach ($errors->get('citta') as $message)
+                    <li>{{ $message }}</li>
+                    @endforeach
+                </ul>
+                @endif
+            </div>
+            
+            
+            <div  class="form-field">
+                {{ Form::label('fotoProfilo', 'Immagine', ['class' => 'register-label']) }}
+                {{ Form::file('fotoProfilo', ['class' => 'form-input', 'id' => 'fotoProfilo']) }}
                 @if ($errors->first('fotoProfilo'))
                 <ul class="errors">
                     @foreach ($errors->get('fotoProfilo') as $message)
@@ -99,15 +99,16 @@
                 </ul>
                 @endif
             </div>
+           
             
-            
-            <div > Ruolo </div>
-
-                {{ Form::label('role', 'Locatore', ['class' => 'label-input']) }}
-                {{ Form::radio('role', 'locatore', false, ['class' => 'input', 'id' => 'locatore']) }}
-                <br>
-                {{ Form::label('role', 'Locatario', ['class' => 'label-input']) }}
-                {{ Form::radio('role', 'locatario', false, ['class' => 'input', 'id' => 'locatario']) }}
+            <div  class="form-field">
+                {{ Form::label('role', 'Ruolo', ['class' => 'register-label']) }}
+                <div style="margin-top: 18px; margin-left: 10px;">
+                {{ Form::radio('role', 'locatore', false, ['id' => 'locatore', 'onclick' => 'check()']) }} <span style="color: black;"> Locatore </span> 
+                </div>
+                <div style="margin-top: 18px; margin-left: 18px;">
+                {{ Form::radio('role', 'locatario', false, ['id' => 'locatario', 'onclick' => 'check()']) }} <span style="color: black;"> Locatario </span>  
+                </div>
                 @if ($errors->first('role'))
                 <ul class="errors">
                     @foreach ($errors->get('role') as $message)
@@ -118,9 +119,9 @@
                
             </div>
             
-            <div  class="wrap-input">
-                {{ Form::label('universita', 'universita', ['class' => 'label-input']) }}
-                {{ Form::text('universita', '', ['class' => 'input','id' => 'universita']) }}
+            <div  id="divuniversita" class="form-field" style="display: none; width: 380px;">
+                {{ Form::label('universita', 'Universita', ['class' => 'register-label']) }}
+                {{ Form::text('universita', '', ['class' => 'form-input','id' => 'universita']) }}
                 @if ($errors->first('universita'))
                 <ul class="errors">
                     @foreach ($errors->get('universita') as $message)
@@ -130,9 +131,9 @@
                 @endif
             </div>
             
-            <div  class="wrap-input">
-                {{ Form::label('facolta', 'facolta', ['class' => 'label-input']) }}
-                {{ Form::text('facolta', '', ['class' => 'input','id' => 'facolta']) }}
+            <div  id="divfacolta" class="form-field" style="display: none; width: 380px;">
+                {{ Form::label('facolta', 'Facolta', ['class' => 'register-label']) }}
+                {{ Form::text('facolta', '', ['class' => 'form-input','id' => 'facolta']) }}
                 @if ($errors->first('facolta'))
                 <ul class="errors">
                     @foreach ($errors->get('facolta') as $message)
@@ -142,9 +143,9 @@
                 @endif
             </div>
             
-            <div  class="wrap-input">
-                {{ Form::label('annoImmatricolazione', 'annoImmatricolazione', ['class' => 'label-input']) }}
-                {{ Form::text('annoImmatricolazione', '', ['class' => 'input','id' => 'annoImmatricolazione']) }}
+            <div  id="divimmatricolazione" class="form-field" style="display: none; width: 380px;">
+                {{ Form::label('annoImmatricolazione', 'Iscrizione', ['class' => 'register-label']) }}
+                {{ Form::text('annoImmatricolazione', '', ['class' => 'form-input','id' => 'annoImmatricolazione']) }}
                 @if ($errors->first('annoImmatricolazione'))
                 <ul class="errors">
                     @foreach ($errors->get('annoImmatricolazione') as $message)
@@ -154,9 +155,9 @@
                 @endif
             </div>
             
-             <div  class="wrap-input">
-                {{ Form::label('username', 'Nome Utente', ['class' => 'label-input']) }}
-                {{ Form::text('username', '', ['class' => 'input','id' => 'username']) }}
+             <div  class="form-field">
+                {{ Form::label('username', 'Username', ['class' => 'register-label']) }}
+                {{ Form::text('username', '', ['class' => 'form-input','id' => 'username']) }}
                 @if ($errors->first('username'))
                 <ul class="errors">
                     @foreach ($errors->get('username') as $message)
@@ -166,9 +167,9 @@
                 @endif
             </div>
             
-             <div  class="wrap-input">
-                {{ Form::label('password', 'Password', ['class' => 'label-input']) }}
-                {{ Form::password('password', ['class' => 'input', 'id' => 'password']) }}
+             <div  class="form-field">
+                {{ Form::label('password', 'Password', ['class' => 'register-label']) }}
+                {{ Form::password('password', ['class' => 'form-input', 'id' => 'password']) }}
                 @if ($errors->first('password'))
                 <ul class="errors">
                     @foreach ($errors->get('password') as $message)
@@ -178,18 +179,38 @@
                 @endif
             </div>
 
-            <div  class="wrap-input">
-                {{ Form::label('password-confirm', 'Conferma password', ['class' => 'label-input']) }}
-                {{ Form::password('password_confirmation', ['class' => 'input', 'id' => 'password-confirm']) }}
+            <div  class="form-field">
+                {{ Form::label('password-confirm', 'Conferma password', ['class' => 'register-label']) }}
+                {{ Form::password('password_confirmation', ['class' => 'form-input', 'id' => 'password-confirm']) }}
             </div>
             
-            <div class="container-form-btn">                
-                {{ Form::submit('Registra', ['class' => 'form-btn1']) }}
+            <div class="form-field">                
+                {{ Form::submit('Registra') }}
             </div>
             
             {{ Form::close() }}
-        </div>
-    </div>
 
-</div>
+
+            <script>
+                function check(){
+                    var locatore = document.getElementById("locatore");
+                    var locatario = document.getElementById("locatario");
+                    var universita = document.getElementById("divuniversita");
+                    var facolta = document.getElementById("divfacolta");
+                    var anno = document.getElementById("divimmatricolazione");
+
+                    if (locatore.checked) {
+                         universita.style.display = "flex";
+                         facolta.style.display = "flex";
+                         anno.style.display = "flex";
+                    }
+                    
+                    if (locatario.checked){
+                      universita.style.display = "none";
+                      facolta.style.display = "none";
+                      anno.style.display = "none";
+
+                    }
+              }
+              </script>
 @endsection

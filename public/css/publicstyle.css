@@ -381,7 +381,10 @@ footer {
 
     .form input[type="password"],
     .form input[type="text"],
-    .form input[type="submit"] {
+    .form input[type="submit"],
+    .login input[type="select"],
+    .login input[type="file"],
+    .login input[type="date"]{
       inline-size: 100%;
     }
 
@@ -420,7 +423,10 @@ footer {
     .login label,
     .login input[type="text"],
     .login input[type="password"],
-    .login input[type="submit"] {
+    .login input[type="submit"],
+    .login input[type="select"],
+    .login input[type="file"],
+    .login input[type="date"]{
       border-radius: var(--loginBorderRadus);
       padding: 1em;
     }
@@ -431,9 +437,16 @@ footer {
       border-top-right-radius: 0;
       padding-inline: 1.25 em;
     }
+    
+    .register-label{
+        width:100px;
+    }
 
     .login input[type="password"],
-    .login input[type="text"] {
+    .login input[type="text"],
+    .login input[type="select"]
+    .login input[type="file"],
+    .login input[type="date"]{
       background-color: var(--loginInputBackgroundColor);
       border-bottom-left-radius: 0;
       border-top-left-radius: 0;
@@ -442,7 +455,13 @@ footer {
     .login input[type="password"]:focus,
     .login input[type="password"]:hover,
     .login input[type="text"]:focus,
-    .login input[type="text"]:hover {
+    .login input[type="text"]:hover,
+    .login input[type="select"]:focus,
+    .login input[type="select"]:hover,
+    .login input[type="file"]:focus,
+    .login input[type="file"]:hover, 
+    .login input[type="date"]:focus,
+    .login input[type="date"]:hover {
       background-color: var(--loginInputHoverBackgroundColor);
     }
 
@@ -467,7 +486,6 @@ footer {
     .text-center {
       text-align: center;
     }
-    
     
 
 .button{
@@ -497,19 +515,3 @@ footer {
 
 .black,.hover-black:hover{color:#fff!important;background-color:#000!important}
 
-    
-
-/* The Close Button */
-.close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
