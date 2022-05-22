@@ -56,15 +56,15 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'username' => ['required', 'string', 'min:8', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'categoria' => ['required'],
-            'fotoProfilo' => ['nullable', 'image', 'max:1024'],
-            'sesso' => ['required'],
-            'dataNascita' => ['nullable', 'date'],
+            'role' => ['required', 'string'],
+            'fotoProfilo' => ['nullable', 'string'],
+            'sesso' => ['required', 'string'],
+            'dataNascita' => ['nullable', 'date', 'before:today'],
             'citta' => ['nullable', 'string', 'max:255'],
-            'numTelefono' => ['nullable', 'digits_between:5,15'],
+            'numTelefono' => ['nullable', 'numeric', 'digits_between:8,15'],
             'universita' => ['nullable', 'string', 'max:255'],
             'facolta' => ['nullable', 'string', 'max:255'],
-            'annoImmatricolazione' => ['nullable', 'numeric', 'min:1980', 'max:2023']
+            'annoImmatricolazione' => ['nullable', 'string', 'max:4', 'before:'.now()->format('Y')]
         ]);
     }
 
@@ -82,7 +82,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'username' => $data['username'],
             'password' => Hash::make($data['password']),
-            'categoria' => $data['categoria'],
+            'role' => $data['role'],
             'fotoProfilo' => $data['fotoProfilo'],
             'sesso' => $data['sesso'],
             'dataNascita' => $data['dataNascita'],
@@ -90,8 +90,7 @@ class RegisterController extends Controller
             'numTelefono' => $data['numTelefono'],
             'universita' => $data['universita'],
             'facolta' => $data['facolta'],
-            'annoImmatricolazione' => $data['annoimmatricolazione']
-            
+            'annoImmatricolazione' => $data['annoImmatricolazione'],
         ]);
     }
 }

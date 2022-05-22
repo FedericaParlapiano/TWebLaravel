@@ -27,7 +27,7 @@ Route::get('/account', 'UserController@showAccount')
         ->name('account');
 
 Route::get('/locatario/nuovoannuncio', 'UserController@addAnnuncio')
-        ->name('nuovoAnnuncio');
+        ->name('nuovoannuncio');
 
 Route::get('/admin', 'AdminController@index')
         ->name('admin')->middleware('can:isAdmin');
@@ -60,3 +60,7 @@ Route::post('register', 'Auth\RegisterController@register');
 // Auth::routes();
 // Route::get('/home', 'HomeController@index')->name('home');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
