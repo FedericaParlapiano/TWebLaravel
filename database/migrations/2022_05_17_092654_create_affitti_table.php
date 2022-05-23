@@ -14,6 +14,7 @@ class CreateAffittiTable extends Migration
     public function up()
     {
         Schema::create('affitti', function (Blueprint $table) {
+            $table->increments('id');
             $table->string('locatario', 20);
             $table->string('annuncio');
             $table->date('dataStipulaContratto');

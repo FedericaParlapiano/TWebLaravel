@@ -16,7 +16,10 @@ class AdminController extends Controller {
     }
 
     public function index() {
-        return view('homepage');
+        $user = auth()->user();
+        
+        return view('accountadmin')
+                    ->with('user', $user);
     }
 
 

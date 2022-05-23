@@ -7,7 +7,7 @@ use App\Models\Resources\Annuncio;
 use App\Models\Resources\Foto;
 use App\Models\Resources\ServizioIncluso;
 use App\Models\Resources\Vincolo;
-use App\Models\Resources\User;
+use App\User;
 
 class Catalogo {
     

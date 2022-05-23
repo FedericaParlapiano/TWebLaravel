@@ -13,40 +13,42 @@ class DatabaseSeeder extends Seeder {
     public function run() {
 
         DB::table('faq')->insert([
-            ['id' => 1, 'domanda' => 'Come posso fare una ricerca sul sito?', 'risposta' => 'Attenzione: per poter filtrare i risultati è necessario essere registrati come locatori. Se sei un locatore e sei registrato, per poter fare una ricerca, basta cliccare sulla sezione ricerca. Comparirà una form in cui inserire i criteri di ricerca.
+            ['domanda' => 'Come posso fare una ricerca sul sito?', 'risposta' => 'Attenzione: per poter filtrare i risultati è necessario essere registrati come locatori. Se sei un locatore e sei registrato, per poter fare una ricerca, basta cliccare sulla sezione ricerca. Comparirà una form in cui inserire i criteri di ricerca.
                 Ti consigliamo di indicare almeno la città di interesse. Inoltre puoi indicare il tipo di camera che cerchi o se cerchi un intero appartamento.
                 Puoi anche indicare molti altri filtri.'],
-            ['id' => 2, 'domanda' => 'Come posso contattare un host?', 'risposta' => 'Puoi contattare l\'host direttamente all\'interno del sito tramite la chat interna, a cui puoi accedere solo dopo aver effettuato il login.
+            ['domanda' => 'Come posso contattare un host?', 'risposta' => 'Puoi contattare l\'host direttamente all\'interno del sito tramite la chat interna, a cui puoi accedere solo dopo aver effettuato il login.
                 Altrimenti, sul profilo dell\'host puoi trovare informazioni su come contattarlo.'],
-            ['id' => 3, 'domanda' => 'Posso contattare un locatore senza essere registrato?', 'risposta' => 'Non puoi contattare altri utenti usando la chat interna al sito se non sei registrato.'
+            ['domanda' => 'Posso contattare un locatore senza essere registrato?', 'risposta' => 'Non puoi contattare altri utenti usando la chat interna al sito se non sei registrato.'
                 . 'Tuttavia, puoi contattarli esternamente tramite la loro email o il loro numero di telefono, se li hanno forniti in fase di registrazione.'],
-            ['id' => 4, 'domanda' => 'I miei dati sono tutelati?', 'risposta' => 'Teniamo alla privacy dei nostri utenti. Tutto ciò che fornisci in fase di iscrizione sarà usato solo ai fini del corretto funzionamento del sito.'],
-            ['id' => 5, 'domanda' => 'Dopo quanto tempo mi risponde l\'assistenza?', 'risposta' => 'Cerchiamo di essere più veloci possibile nelle risposte. Generalmente, consultiamo quotidianamente le richieste di supporto. Ti ricordiamo che puoi contattarci per email o per telefono.'],
-            ['id' => 6, 'domanda' => 'Dopo quanto tempo viene stipulato il contratto?', 'risposta' => 'Questo fattore non dipende da noi, ma dal singolo locatore, che, a seconda delle sue esigenze, provvede più o meno velocemente a stipulare il contratto.'],
-            ['id' => 7, 'domanda' => 'Come posso filtrare gli annunci?', 'risposta' => 'Per poter filtrare gli annunci e personalizzare la ricerca, è necessario iscriversi al sito. Il catalogo può essere visualizzato anche da non registrati, ma in questo caso non è possibile accedere alle funzionalità di filtro'],
-            ['id' => 8, 'domanda' => 'Posso inserire un annuncio se sono uno stutente?', 'risposta' => 'No: solo un utente con profilo locatore può inserire l\'annuncio di un alloggio. Se sei uno locatario, ma vuoi anche essere locatore, devi necessariamente creare un altro profilo.']
+            ['domanda' => 'I miei dati sono tutelati?', 'risposta' => 'Teniamo alla privacy dei nostri utenti. Tutto ciò che fornisci in fase di iscrizione sarà usato solo ai fini del corretto funzionamento del sito.'],
+            ['domanda' => 'Dopo quanto tempo mi risponde l\'assistenza?', 'risposta' => 'Cerchiamo di essere più veloci possibile nelle risposte. Generalmente, consultiamo quotidianamente le richieste di supporto. Ti ricordiamo che puoi contattarci per email o per telefono.'],
+            ['domanda' => 'Dopo quanto tempo viene stipulato il contratto?', 'risposta' => 'Questo fattore non dipende da noi, ma dal singolo locatore, che, a seconda delle sue esigenze, provvede più o meno velocemente a stipulare il contratto.'],
+            ['domanda' => 'Come posso filtrare gli annunci?', 'risposta' => 'Per poter filtrare gli annunci e personalizzare la ricerca, è necessario iscriversi al sito. Il catalogo può essere visualizzato anche da non registrati, ma in questo caso non è possibile accedere alle funzionalità di filtro'],
+            ['domanda' => 'Posso inserire un annuncio se sono uno stutente?', 'risposta' => 'No: solo un utente con profilo locatore può inserire l\'annuncio di un alloggio. Se sei uno locatario, ma vuoi anche essere locatore, devi necessariamente creare un altro profilo.']
             
             ]);
 
         
         DB::table('users')->insert([
-            /*
-            ['name' => 'Alex', 'surname' => 'Verdi', 'email' => 'alex@verdi.it', 'username' => 'alexalex',
-                'password' => Hash::make('alexalex'), 'role' => 'locatore','created_at' => date("Y-m-d H:i:s"),
-                'updated_at' => date("Y-m-d H:i:s")],
-            ['name' => 'Marco', 'surname' => 'Bianchi', 'email' => 'marco@bianchi.it', 'username' => 'useruser',
-                'password' => Hash::make('useruser'), 'role' => 'locatario', 'created_at' => date("Y-m-d H:i:s"),
-                'updated_at' => date("Y-m-d H:i:s")],
-            ['name' => 'Mario', 'surname' => 'Rossi', 'email' => 'mario@rossi.it', 'username' => 'adminadmin',
-                'password' => Hash::make('adminadmin'), 'role' => 'admin', 'created_at' => date("Y-m-d H:i:s"),
-                'updated_at' => date("Y-m-d H:i:s")]
             
-            */
             ['username' => 'lorelore', 'password'=> Hash::make('SgHah8hh'),'role' => 'locatore','fotoProfilo'=>'lore.gif','nome'=>'Lore','cognome'=>'Lore','sesso'=>'M','dataNascita'=>'1950-12-12','citta'=>'Ancona','numTelefono'=>'08712345','email'=>'lorelore@gmail.com','universita'=>null,'facolta'=>null,'annoImmatricolazione'=>null],
+            //['username' => 'lorelore', 'password'=> Hash::make('SgHah8hh'),'role' => 'locatore','fotoProfilo'=>'lore.gif','nome'=>'Lore','cognome'=>'Lore','sesso'=>'M','dataNascita'=>'1950-12-12','citta'=>'Ancona','numTelefono'=>'08712345','email'=>'lorelore@gmail.com','universita'=>null,'facolta'=>null,'annoImmatricolazione'=>null],
             ['username'=>'lariolario','password'=>Hash::make('SgHah8hh'),'role' => 'locatario','fotoProfilo'=>'lario.gif','nome'=>'Lario','cognome'=>'Lario','sesso'=>'F','dataNascita'=>'2000-12-12','citta'=>'Ancona','numTelefono'=>'3218934634','email'=>'lariolario@gmail.com','universita'=>'Univpm','facolta'=>'Ingegneria Informatica e dell\'Automazione','annoImmatricolazione'=>'2019'],
             ['username' => 'adminadmin', 'password'=> Hash::make('SgHah8hh'),'role' => 'admin','fotoProfilo'=>'admin.gif','nome'=>'Admin','cognome'=>'Admin','sesso'=>'F', 'dataNascita'=>null,'citta'=>null,'numTelefono'=>null,'email'=>'adminadmin@gmail.com','universita'=>null,'facolta'=>null,'annoImmatricolazione'=>null],
+            ['username' => 'mario_rossi', 'password'=> Hash::make('Mariorossi00'),'role' => 'locatore','fotoProfilo'=>'mario.gif','nome'=>'Mario','cognome'=>'Rossi','sesso'=>'M', 'dataNascita'=>null,'citta'=>null,'numTelefono'=>null,'email'=>'mariorossi00@gmail.com','universita'=>null,'facolta'=>null,'annoImmatricolazione'=>null],
+            ['username' => 'simone_parini', 'password'=> Hash::make('simone00'),'role' => 'locatore','fotoProfilo'=>'simone.gif','nome'=>'Simone','cognome'=>'Parini','sesso'=>'M', 'dataNascita'=>null,'citta'=>null,'numTelefono'=>'34565456','email'=>'simone0@gmail.com','universita'=>null,'facolta'=>null,'annoImmatricolazione'=>null],
+            ['username' => 'aurora_nicolini', 'password'=> Hash::make('aurora00'),'role' => 'locatore','fotoProfilo'=>'aurora.gif','nome'=>'Aurora','cognome'=>'Nicolini','sesso'=>'F', 'dataNascita'=>null,'citta'=>null,'numTelefono'=>'34505456','email'=>'aurora0@gmail.com','universita'=>null,'facolta'=>null,'annoImmatricolazione'=>null],
+            ['username' => 'ennio_tosi', 'password'=> Hash::make('ennio3049'),'role' => 'locatore','fotoProfilo'=>'ennio.gif','nome'=>'Ennio','cognome'=>'Tosi','sesso'=>'M', 'dataNascita'=>null,'citta'=>null,'numTelefono'=>'345050456','email'=>'enniooo0@gmail.com','universita'=>null,'facolta'=>null,'annoImmatricolazione'=>null],
+            ['username' => 'eleonora_gritti', 'password'=> Hash::make('eleonora00'),'role' => 'locatore','fotoProfilo'=>'eleonora.gif','nome'=>'Eleonora','cognome'=>'Gritti','sesso'=>'F', 'dataNascita'=>null,'citta'=>null,'numTelefono'=>'2313423453','email'=>'eleele@gmail.com','universita'=>null,'facolta'=>null,'annoImmatricolazione'=>null],
+            ['username' => 'lara_battaglia', 'password'=> Hash::make('lara00345'),'role' => 'locatore','fotoProfilo'=>'lara.gif','nome'=>'Lara','cognome'=>'Battaglia','sesso'=>'F', 'dataNascita'=>null,'citta'=>null,'numTelefono'=>'345053456','email'=>'laraol0@gmail.com','universita'=>null,'facolta'=>null,'annoImmatricolazione'=>null],
+            ['username' => 'vanessa_marrone', 'password'=> Hash::make('vanni09a00'),'role' => 'locatore','fotoProfilo'=>'vanessa.gif','nome'=>'Vanessa','cognome'=>'Marrone','sesso'=>'F', 'dataNascita'=>null,'citta'=>null,'numTelefono'=>'3345407656','email'=>'vanessaa0@gmail.com','universita'=>null,'facolta'=>null,'annoImmatricolazione'=>null],
+            ['username' => 'alice_moretti', 'password'=> Hash::make('alicealice'),'role' => 'locatore','fotoProfilo'=>'alice.gif','nome'=>'Alice','cognome'=>'Alice','sesso'=>'F', 'dataNascita'=>null,'citta'=>null,'numTelefono'=>'34505456','email'=>'alice@gmail.com','universita'=>null,'facolta'=>null,'annoImmatricolazione'=>null],
+            ['username' => 'francesca_palazzetti', 'password'=> Hash::make('francesca'),'role' => 'locatore','fotoProfilo'=>'francesca.gif','nome'=>'Francesca','cognome'=>'Palazzetti','sesso'=>'F', 'dataNascita'=>null,'citta'=>null,'numTelefono'=>'3452305456','email'=>'francesca@gmail.com','universita'=>null,'facolta'=>null,'annoImmatricolazione'=>null],
+            ['username' => 'federica_parlapiano', 'password'=> Hash::make('federica'),'role' => 'locatore','fotoProfilo'=>'federica.gif','nome'=>'Federica','cognome'=>'Parlapiano','sesso'=>'F', 'dataNascita'=>null,'citta'=>null,'numTelefono'=>'34503425456','email'=>'federica@gmail.com','universita'=>null,'facolta'=>null,'annoImmatricolazione'=>null],
+            ['username' => 'arianna_ronci', 'password'=> Hash::make('ariannaa'),'role' => 'locatore','fotoProfilo'=>'arianna.gif','nome'=>'Arianna','cognome'=>'Ronci','sesso'=>'F', 'dataNascita'=>null,'citta'=>null,'numTelefono'=>'3450543456','email'=>'arianna@gmail.com','universita'=>null,'facolta'=>null,'annoImmatricolazione'=>null],
             
             
+            /*
             ['username'=>'enzo_ferrante','password'=>Hash::make('Enzoferrante00'),'role' => 'locatario','fotoProfilo'=>'enzo.gif','nome'=>'Enzo','cognome'=>'Ferrante','sesso'=>'M','dataNascita'=>'2000-12-12','citta'=>'Viterbo','numTelefono'=>'3218934634','email'=>'enzoferrante00@gmail.com','universita'=>'Univpm','facolta'=>'Ingegneria Informatica e dell\'Automazione','annoImmatricolazione'=>'2019'],
             ['username'=>'flora_rossini','password'=>Hash::make('Florarossini98'),'role' => 'locatario','fotoProfilo'=>'flora.gif','nome'=>'Flora','cognome'=>'Rossini','sesso'=>'F','dataNascita'=>'1998-08-08','citta'=>'Genova','numTelefono'=>'3453435345','email'=>'florarossini@libero.it','universita'=>'Unichi','facolta'=>'Lettere','annoImmatricolazione'=>'2017'],
             ['username'=>'allegra_medici','password'=>Hash::make('Allegramedici01'),'role' => 'locatario','fotoProfilo'=>'allegra.gif','nome'=>'Allegra','cognome'=>'Medici','sesso'=>'F','dataNascita'=>'2001-04-13','citta'=>'Livorno','numTelefono'=>'3404945890','email'=>'allegra01@univpm.it','universita'=>'Univpm','facolta'=>'Ingegneria Meccanica','annoImmatricolazione'=>'2020'],
@@ -87,10 +89,12 @@ class DatabaseSeeder extends Seeder {
             ['username'=>'debora_bianchi','password'=>Hash::make('Debby1919'),'role' => 'locatore','fotoProfilo'=>null,'nome'=>'Debora','cognome'=>'Bianchi','sesso'=>'F','dataNascita'=>'2000-04-20','citta'=>'Livorno','numTelefono'=>'087345245','email'=>'debby@gmail.com','universita'=>null,'facolta'=>null,'annoImmatricolazione'=>null],
             ['username'=>'lara_renna','password'=>Hash::make('laraLara12'),'role' => 'locatore','fotoProfilo'=>null,'nome'=>'Lara','cognome'=>'Renna','sesso'=>'F','dataNascita'=>'1978-10-13','citta'=>'Senigallia','numTelefono'=>'09835482','email'=>'lara@gmail.com','universita'=>null,'facolta'=>null,'annoImmatricolazione'=>null],
             ['username'=>'valerio_monti','password'=>Hash::make('Valerio12'),'role' => 'locatore','fotoProfilo'=>null,'nome'=>'Valerio','cognome'=>'Monti','sesso'=>'M','dataNascita'=>'1970-12-12','citta'=>'Milano','numTelefono'=>'3456342332','email'=>'valeriomonti@gmail.com','universita'=>null,'facolta'=>null,'annoImmatricolazione'=>null],
-            ['username'=>'antonella_rapa','password'=>Hash::make('Anton1992'),'role' => 'locatore','fotoProfilo'=>null,'nome'=>'Antonella','cognome'=>'Rapa','sesso'=>'F','dataNascita'=>'1992-10-11','citta'=>'Torino','numTelefono'=>'324453234','email'=>'antorapa@libero.it','universita'=>null,'facolta'=>null,'annoImmatricolazione'=>null],
+            ['username'=>'antonella_rapa','password'=>Hash::make('Anton1992'),'role' => 'locatore','fotoProfilo'=>null,'nome'=>'Antonella','cognome'=>'Rapa','sesso'=>'F','dataNascita'=>'1992-10-11','citta'=>'Torino','numTelefono'=>'324453234','email'=>'antorapa@libero.it','universita'=>null,'facolta'=>null,'annoImmatricolazione'=>null]
             
-            
+            */
             //['username'=>null,'password'=>null,'fotoProfilo'=>null,'nome'=>null,'cognome'=>null,'sesso'=>null,'dataNascita'=>null,'indirizzo'=>null,'numTelefono'=>null,'email'=>null,'universita'=>null,'facolta'=>null,'annoImmatricolazione'=>null]
+            
+            
             ]);
         
         

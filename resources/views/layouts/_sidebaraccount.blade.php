@@ -10,9 +10,13 @@
     <a href="#" onclick="w3_close()" class="hide-large right padding hover-grey" title="close menu">
       <i class="fa fa-remove"></i>
     </a>
+    @isset($user->fotoProfilo)  
+    <img src="{{ asset('images/users/' . $user->fotoProfilo) }}" alt="immagine di profilo" style="width:45%; margin: 10px;" class="round"><br><br>
+    @else
     <img src="images/users/profiloLocatario.jpg" style="width:45%; margin: 10px;" class="round"><br><br>
-    <h4><b>Lucia Bianchi</b></h4>
-    <p class="text-grey">Locatore</p>
+    @endisset
+    <h4><b>{{$user->nome}} {{$user->cognome}}</b></h4>
+    <p class="text-grey">{{$user->role}}</p>
   </div>
   <div class="bar-block">
     <a href="#info" onclick="w3_close()" class="bar-item button padding"> <i class="fa-solid fa-user margine-right"></i> PROFILO</a> 

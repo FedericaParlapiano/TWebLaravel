@@ -13,7 +13,7 @@
         
     </head>
              
-    @include('layouts/_sidebaraccount')
+    @include('layouts/_sidebaraccount', ['user'=>$user])
     
     <body>
         <div class="main" style="margin-left:300px">

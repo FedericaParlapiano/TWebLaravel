@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('username',20);
             $table->string('password');
-            $table->enum('role',['locatore', 'locatario']);
+            $table->enum('role',['locatore', 'locatario','admin']);
             $table->string('fotoProfilo')->nullable();
             $table->enum('sesso', ['F', 'M']);
             $table->date('dataNascita')->nullable();

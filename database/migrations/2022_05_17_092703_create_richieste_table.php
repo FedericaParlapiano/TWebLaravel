@@ -14,6 +14,7 @@ class CreateRichiesteTable extends Migration
     public function up()
     {
         Schema::create('richieste', function (Blueprint $table) {
+            $table->increments('id');
             $table->string('locatore', 20);
             $table->string('locatario', 20);
             $table->string('annuncio');

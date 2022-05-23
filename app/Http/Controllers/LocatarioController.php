@@ -16,7 +16,9 @@ class LocatarioController extends Controller {
     }
 
     public function index() {
-        return view('account');
+        $user = auth()->user();
+        return view('accountlocatario')
+                   ->with('user', $user);
     }
 
 

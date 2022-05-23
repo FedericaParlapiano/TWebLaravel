@@ -14,6 +14,7 @@ class CreateServiziinclusiTable extends Migration
     public function up()
     {
         Schema::create('serviziinclusi', function (Blueprint $table) {
+            $table->increments('id');
             $table->enum('servizi', ['bagni', 'cucina', 'sala studio', 'lavatrice', 'parcheggio', 'garage', 'giardino', 'locale ricreativo', 'forno', 'frigo', 'lavastoviglie', 'condizionatore']);
             $table->integer('annuncio');
             $table->integer('quantita');

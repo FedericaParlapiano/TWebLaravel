@@ -14,6 +14,7 @@ class CreateVincoliTable extends Migration
     public function up()
     {
         Schema::create('vincoli', function (Blueprint $table) {
+            $table->increments('id');
             $table->enum('vincolo', ['animali', 'fumatori', 'feste', 'matricole']);
             $table->integer('annuncio');
         });

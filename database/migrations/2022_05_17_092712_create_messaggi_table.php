@@ -14,6 +14,7 @@ class CreateMessaggiTable extends Migration
     public function up()
     {
         Schema::create('messaggi', function (Blueprint $table) {
+            $table->increments('id');
             $table->string('destinatario', 20);
             $table->string('mittente', 20);
             $table->string('testo');

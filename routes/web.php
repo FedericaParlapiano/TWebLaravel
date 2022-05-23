@@ -59,8 +59,3 @@ Route::post('register', 'Auth\RegisterController@register');
 // Rotte inserite dal comando artisan "ui vue --auth" 
 // Auth::routes();
 // Route::get('/home', 'HomeController@index')->name('home');
-
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
