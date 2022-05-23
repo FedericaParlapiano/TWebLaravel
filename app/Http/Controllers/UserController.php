@@ -26,5 +26,8 @@ class UserController extends Controller {
         return view('annunci.insert');
     }
     
+    public function showRicerca(){
+        return view('catalog');
+    }  
    
 }

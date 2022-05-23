@@ -29,6 +29,9 @@ Route::get('/account', 'UserController@showAccount')
 Route::get('/locatario/nuovoannuncio', 'UserController@addAnnuncio')
         ->name('nuovoannuncio');
 
+Route::post('/locatario/ricerca', 'UserController@showRicerca')
+        ->name('ricerca');
+
 Route::get('/admin', 'AdminController@index')
         ->name('admin')->middleware('can:isAdmin');
 

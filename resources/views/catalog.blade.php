@@ -1,23 +1,63 @@
 @extends('layouts.public')
 <link rel="stylesheet" type="text/css" href="{{ asset('css/catalogostyle.css') }}">
 @section('title', 'Catalogo Annunci')
-
  
 
 @section('content')
+@can('isLocatario')
 <!-- inizio sezione prodotti -->
+<div class="contenitore-form"> 
+    {{ Form::open(array('route' => 'ricerca', 'id' => 'search', 'files' => false, 'class' => '')) }}
+    <div class = "row">    
+        <div class="left">
+        {{ Form::label('where', 'Zona di locazione', ['class' => 'label']) }} 
+                {{ Form::text('where', '', ['class' => 'input', 'id' => 'where']) }}
+                @if ($errors->first('where'))
+                <ul class="errors">
+                    @foreach ($errors->get('where') as $message)
+                    <li>{{ $message }}</li>
+                    @endforeach
+                </ul>
+                @endif  
+         </div>
+                    
+        <div style="margin-left:2.5em;">  
+            {{ Form::label('from', 'Da', ['class' => 'label']) }}
+                {{ Form::date('from', '', ['class' => 'input', 'id' => 'from']) }}
+                @if ($errors->first('from'))
+                <ul class="errors">
+                    @foreach ($errors->get('from') as $message)
+                    <li>{{ $message }}</li>
+                    @endforeach
+                </ul>
+                @endif 
+        </div>  
+                    
+        <div style="margin-left:2.5em;">
+            {{ Form::label('to', 'A', ['class' => 'label']) }}
+                {{ Form::date('to', '', ['class' => 'input', 'id' => 'to']) }}
+                @if ($errors->first('to'))
+                <ul class="errors">
+                    @foreach ($errors->get('to') as $message)
+                    <li>{{ $message }}</li>
+                    @endforeach
+                </ul>
+                @endif  
+        </div> 
+        
+        <div style="margin-left:2.5em; margin-top:1.5em;">                
+        {{ Form::submit('Cerca', ['class' => 'button-form ourblue']) }}
+        </div>
+    </div>  
+</div>
+@endcan
+
 @isset($annunci)
 <div class="contenitore-annunci">
 <div class="catalogo-annunci">
     @foreach ($annunci as $annuncio)
     <div class="annuncio white">
-        
-        <div class="button-div-class">
-            <button id="proposte-button" onclick="" class="button ourblue button-class">Proposta</button>
-            <button id="save-button" onclick="" class="button ourblue button-class"><i class="fa-solid fa-heart"></i></button>
-        </div>
-        
-        
+
         @php
         $assente=true;
         @endphp
