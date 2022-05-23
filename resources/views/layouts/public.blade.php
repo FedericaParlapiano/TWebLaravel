@@ -12,6 +12,7 @@
         </style>
         
         <script type="text/javascript">
+            
             function displayFAQ(id) {
                 var x = document.getElementById(id);
                 if (x.className.indexOf("show-FAQ") == -1) {
@@ -21,6 +22,29 @@
                   x.className = x.className.replace(" show-FAQ", "");
                 }
             }
+            
+            
+            function checkRole(){
+                    var locatore = document.getElementById("locatore");
+                    var locatario = document.getElementById("locatario");
+                    var universita = document.getElementById("divuniversita");
+                    var facolta = document.getElementById("divfacolta");
+                    var anno = document.getElementById("divimmatricolazione");
+
+                    if (locatario.checked) {
+                         universita.style.display = "flex";
+                         facolta.style.display = "flex";
+                         anno.style.display = "flex";
+                    }
+                    
+                    if (locatore.checked){
+                      universita.style.display = "none";
+                      facolta.style.display = "none";
+                      anno.style.display = "none";
+
+                    }
+              }
+              
         </script>
         
     </head>

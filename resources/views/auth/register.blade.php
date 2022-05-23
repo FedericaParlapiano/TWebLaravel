@@ -104,10 +104,10 @@
             <div  class="form-field">
                 {{ Form::label('role', 'Ruolo', ['class' => 'register-label']) }}
                 <div style="margin-top: 18px; margin-left: 10px;">
-                {{ Form::radio('role', 'locatore', false, ['id' => 'locatore', 'onclick' => 'check()']) }} <span style="color: black;"> Locatore </span> 
+                {{ Form::radio('role', 'locatore', false, ['id' => 'locatore', 'onclick' => 'checkRole()']) }} <span style="color: black;"> Locatore </span> 
                 </div>
                 <div style="margin-top: 18px; margin-left: 18px;">
-                {{ Form::radio('role', 'locatario', false, ['id' => 'locatario', 'onclick' => 'check()']) }} <span style="color: black;"> Locatario </span>  
+                {{ Form::radio('role', 'locatario', false, ['id' => 'locatario', 'onclick' => 'checkRole()']) }} <span style="color: black;"> Locatario </span>  
                 </div>
                 @if ($errors->first('role'))
                 <ul class="errors">
@@ -190,27 +190,4 @@
             
             {{ Form::close() }}
 
-
-            <script>
-                function check(){
-                    var locatore = document.getElementById("locatore");
-                    var locatario = document.getElementById("locatario");
-                    var universita = document.getElementById("divuniversita");
-                    var facolta = document.getElementById("divfacolta");
-                    var anno = document.getElementById("divimmatricolazione");
-
-                    if (locatore.checked) {
-                         universita.style.display = "flex";
-                         facolta.style.display = "flex";
-                         anno.style.display = "flex";
-                    }
-                    
-                    if (locatario.checked){
-                      universita.style.display = "none";
-                      facolta.style.display = "none";
-                      anno.style.display = "none";
-
-                    }
-              }
-              </script>
 @endsection
