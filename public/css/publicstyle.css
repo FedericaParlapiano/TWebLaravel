@@ -40,6 +40,7 @@ body {
   font-size: 18px;
 }
 
+
 /* Change color on hover */
 .navbar a:hover {
   background-color: #B5CAF5;
@@ -515,3 +516,17 @@ footer {
 
 .black,.hover-black:hover{color:#fff!important;background-color:#000!important}
 
+.a-modifica {
+  color: white;
+  background-color: black;
+  padding: 14px 20px;
+  text-decoration: none;
+  text-align: center;
+}
+
+
+/* Change color on hover */
+.a-modifica:hover {
+  background-color: #B5CAF5;
+  color: black;
+}

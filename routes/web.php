@@ -62,6 +62,13 @@ Route::get('register', 'Auth\RegisterController@showRegistrationForm')
 Route::post('register', 'Auth\RegisterController@register');
 
 
+Route::get('/modificaaccount', 'UserController@showModificaAccount')
+        ->name('modificaaccount')->middleware('can:isUser');
+
+Route::post('/modificaaccount', 'UserController@modificaAccount')
+        ->name('modificaaccount');
+
+
 
 // Rotte inserite dal comando artisan "ui vue --auth" 
 // Auth::routes();

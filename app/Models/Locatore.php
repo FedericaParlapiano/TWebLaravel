@@ -20,5 +20,4 @@ class Locatore {
         return Foto::all();
     }
     
-    
 }

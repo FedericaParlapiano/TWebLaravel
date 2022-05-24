@@ -36,7 +36,8 @@
     
     </div>
     <br> 
-   <button class="button black padding-12"><i class="fa-solid fa-pencil"></i> Modifica </button>
+    <a href="{{ route('modificaaccount') }}" title="Modifica i tuoi dati" class="a-modifica"><i class="fa-solid fa-pencil margine-right"></i>Modifica</a>
+    
     </div>
     
     <!-- Contact Section -->
@@ -52,7 +53,7 @@
         @isset($user->citta)
         <p>{{$user->citta}}</p>
         @else
-        <p>Non è stata inserito la città</p>
+        <p>Non è stata inserita la città</p>
         @endisset
       </div>
       <div class="third cadetblue">
@@ -97,8 +98,8 @@
     <div class="annuncio white">
         
         <div class="button-div-class">
-            <button id="proposte-button" onclick="" class="button ourblue button-class">Proposta</button>
-            <button id="save-button" onclick="" class="button ourblue button-class"><i class="fa-solid fa-heart"></i></button>
+            <button id="proposte-button" onclick="" class="button ourblue button-class" title="modifica l'annuncio"><i class="fa-solid fa-pencil"></i></button>
+            <button id="save-button" onclick="" class="button ourblue button-class" title="elimina l'annuncio"><i class="fa-solid fa-trash-can"></i></button>
         </div>
         
         

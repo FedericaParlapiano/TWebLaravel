@@ -54,7 +54,7 @@
     
     </div>
     <br> 
-   <button class="button black padding-12"><i class="fa-solid fa-pencil"></i> Modifica </button>
+   <a href="{{ route('modificaaccount') }}" title="Modifica i tuoi dati" class="a-modifica"><i class="fa-solid fa-pencil margine-right"></i>Modifica</a>
     </div>
     
     <!-- Contact Section -->
