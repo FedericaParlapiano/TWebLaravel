@@ -49,7 +49,7 @@
         @isset($user->citta)
         <p>{{$user->citta}}</p>
         @else
-        <p>Non è stata inserito la città</p>
+        <p>Non è stata inserita la città</p>
         @endisset
       </div>
       <div class="third cadetblue">

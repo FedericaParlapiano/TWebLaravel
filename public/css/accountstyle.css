@@ -32,7 +32,7 @@ body{
 .sidebar{
     height:100%;
     width:200px;
-    background-color:#fff;
+    background-color:#E8F1FD;
     position:fixed!important;
     z-index:1;
     overflow:auto;
@@ -267,6 +267,10 @@ da decommentrare per ordinare i contiatti in orizzontale*/
 }
 .xxlarge{
     font-size:36px!important;
+}
+
+#FAQ{
+    margin-left:25px;
 }
 
 

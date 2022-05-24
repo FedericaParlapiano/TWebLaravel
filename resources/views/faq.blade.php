@@ -13,7 +13,7 @@
             {{ Form::open(array('route' => 'nuovafaq', 'id' => 'inseriscifaq', 'files' => false, 'class' => 'form')) }}
             <div  class="wrap-input  rs1-wrap-input">
                 {{ Form::label('domanda', 'Domanda', ['class' => 'label']) }}
-                {{ Form::text('domanda', '', ['class' => 'input', 'id' => 'domanda']) }}
+                {{ Form::textarea('domanda', '', ['class' => 'input', 'id' => 'domanda', 'rows' => 2]) }}
                 @if ($errors->first('domanda'))
                 <div class="errors">
                     @foreach ($errors->get('domanda') as $message)

@@ -4,7 +4,7 @@
 
 
 <!-- Sidebar/menu -->
-<nav class="sidebar collapse white animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+<nav class="sidebar collapse animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
 
   <div class="container">
     <a href="#" onclick="w3_close()" class="hide-large right padding hover-grey" title="close menu">
