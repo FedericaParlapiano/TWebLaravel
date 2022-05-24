@@ -2,10 +2,9 @@
   box-sizing: border-box;
 }
 
-
 .wrapper {
   margin-top: 3em;
-  background-color: lightsteelblue;
+  background-color: #94C7EE;
 }
 .wrapper > * {
   padding: 2em;
@@ -13,7 +12,7 @@
 
 .contain {
   max-width: 600px;
-  background-color: lightsteelblue;
+  background-color: #94C7EE;
   margin-left: auto;
   margin-right: auto;
   padding: 1em;
@@ -54,27 +53,20 @@ justify-content: center;
   text-align: start;
 }
 
-button,
 .input,
 textarea {
   padding: 1em;
 }
 
+.button{
+    background-color: #94C7EE;
+}
 
 
 @media (min-width: 600px) {
   .contain {
     padding: 0;
   }
-}
-
-h3,
-ul {
-  margin: 0;
-}
-
-h3 {
-  margin-bottom: 1rem;
 }
 
 .input:focus,
@@ -90,26 +82,6 @@ textarea,
   border: 1px solid #000;
 }
 
-.step {
-  height: 1em;
-  width: 1em;
-  margin: 1em 0.4em 1em 0.4em;
-  background-color: white;
-  border: none;  
-  border-radius: 50%;
-  display: inline-block;
-  opacity: 0.8;
-}
-
-
-div.split2 div{
-    float: left;
-    width: 40%;
-}
-
-.split2{
-    margin-top: 2em;
-}
 
 .servizio{
     display: inline-block;
@@ -119,4 +91,22 @@ div.split2 div{
 .quantita{
     margin-left: 2em;
     border: 1px solid #000;
+}
+
+
+.quantity_container {
+    display: flex;
+}
+
+
+.servizi{
+    margin-right: 15px;
+}
+
+.errors {
+	color: #f93d00;
+        font-size: 12px;
+        margin-top: 5px;
+        margin-left: auto;
+        margin-right: auto;
 }

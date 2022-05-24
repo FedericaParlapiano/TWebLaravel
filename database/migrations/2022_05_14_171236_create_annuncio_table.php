@@ -14,8 +14,9 @@ class CreateAnnuncioTable extends Migration
     public function up()
     {
         Schema::create('annuncio', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('tipologia');
+            $table->bigIncrements('id');
+            $table->string('titolo');
+            $table->enum('tipologia', ['Appartamento', 'PostoLettoSingolo', 'PostoLettoDoppia']);
             $table->string('locatore', 20);
             $table->text('descrizione');
             $table->string('zonaLocazione');
@@ -28,7 +29,7 @@ class CreateAnnuncioTable extends Migration
             $table->integer('numCamere')->nullable();
             $table->integer('postiLettoTotali')->nullable();
             $table->integer('postiNellaStanza')->nullable();
-            
+            $table->timestamps();
         });
     }
 

@@ -26,7 +26,7 @@
         
         <!-- Navbar -->
         <div class="navbar">
-            @include('layouts/_navuser')
+            @include('layouts/_navpublic')
         </div>
         <!-- end navbar --> 
         

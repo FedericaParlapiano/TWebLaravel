@@ -99,7 +99,7 @@ class DatabaseSeeder extends Seeder {
         
         
         DB::table('annuncio')->insert([
-            ['id' => 1, 'tipologia' => 'Appartamento', 'locatore'=> 'mario_rossi', 'descrizione' => 'Appartamento al secondo piano situato nei pressi del centro storico',
+            /*['id' => 1, 'tipologia' => 'Appartamento', 'locatore'=> 'mario_rossi', 'descrizione' => 'Appartamento al secondo piano situato nei pressi del centro storico',
                 'zonaLocazione' => 'Ancona','indirizzo' => 'Via Brecce Bianche', 'canoneAffitto' => 500.00, 'superficie' => 60, 'inizioPeriodoDisponibilita' => '2022-05-01', 'finePeriodoDisponibilita' => '2023-05-31',
                 'disponibilita' => false, 'numCamere' => 2, 'postiLettoTotali' => 5,'postiNellaStanza' => null],
             ['id' => 2, 'tipologia' => 'Appartamento', 'locatore'=> 'simone_parini', 'descrizione' => 'Affitto appartamento solo per studenti universitari',
@@ -222,7 +222,7 @@ class DatabaseSeeder extends Seeder {
             ['id' => 41, 'tipologia' => 'Appartamento', 'locatore'=> 'federica_parlapiano', 'descrizione' => 'Appartamento situato in una zona tranquilla di Ancona. L\'appartamento è stato ristrutturato nel 2019. A dieci minuti a piedi c\'è la facoltà di ingegneria; a tre minuti è situata la fermata del 46. Inoltre, la vista sul porto è mozzafiato. Tutti i ragazzi che hanno precedentemente abitato la casa sono rimasti molto contenti. Il terrazzo è molto accogliente, ci si possono organizzare feste.' ,
                 'zonaLocazione' => 'Ancona',  'indirizzo' => 'Via Brecce Bianche 25', 'canoneAffitto' => 250.00, 'superficie' => 80, 'inizioPeriodoDisponibilita' => '2022-09-10', 'finePeriodoDisponibilita' => '2023-02-10',
                 'disponibilita' => true, 'numCamere' => 3, 'postiLettoTotali' => null,'postiNellaStanza' => null]
-           
+           */
         ]);
         
         

@@ -26,11 +26,14 @@ Route::get('/catalog/annuncio/{idAnnuncio}', 'PublicController@showAnnuncio')
 Route::get('/account', 'UserController@showAccount')
         ->name('account');
 
-Route::get('/locatario/nuovoannuncio', 'UserController@addAnnuncio')
-        ->name('nuovoannuncio');
+Route::get('/locatore', 'LocatoreController@index')
+        ->name('user')->middleware('can:isLocatore');
 
-Route::post('/locatario/ricerca', 'UserController@showRicerca')
-        ->name('ricerca');
+Route::get('/locatore/nuovoannuncio', 'LocatoreController@addAnnuncio')
+        ->name('nuovoannuncio')->middleware('can:isLocatore');
+
+Route::post('/locatore/nuovoannuncio', 'LocatoreController@submitAnnuncio');
+
 
 Route::get('/admin', 'AdminController@index')
         ->name('admin')->middleware('can:isAdmin');
@@ -38,8 +41,9 @@ Route::get('/admin', 'AdminController@index')
 Route::get('/locatario', 'LocatarioController@index')
         ->name('user')->middleware('can:isLocatario');
 
-Route::get('/locatore', 'LocatoreController@index')
-        ->name('user')->middleware('can:isLocatore');
+
+Route::post('/locatario/ricerca', 'LocatarioController@showRicerca')
+        ->name('ricerca')->middleware('can:isLocatario');
 
 //Rotte per l'autenticazione
 Route::get('login', 'Auth\LoginController@showLoginForm')

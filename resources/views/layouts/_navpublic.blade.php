@@ -9,7 +9,7 @@
     @endcan
     
     @can('isLocatore')
-        <a href="" title="Aggiungi un annuncio">Inserisci Annuncio</a>
+        <a href="{{ route('nuovoannuncio') }}" title="Aggiungi un annuncio">Inserisci Annuncio</a>
         <a href="" title="Visualizza il tuo profilo">Account</a>
     @endcan
     
