@@ -4,7 +4,7 @@
     <a href="{{ route('catalog') }}" title="Consulta il catalogo">Catalogo</a>
     
     @can('isAdmin')
-        <a href="" title="Inserisci una FAQ">Inserisci FAQ</a>
+        <a href="{{ route('nuovafaq') }}" title="Inserisci una FAQ">Inserisci FAQ</a>
         <a href="" title="Visualizza il tuo profilo">Account</a>
     @endcan
     

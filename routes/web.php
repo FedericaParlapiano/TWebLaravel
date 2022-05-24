@@ -38,9 +38,14 @@ Route::post('/locatore/nuovoannuncio', 'LocatoreController@submitAnnuncio');
 Route::get('/admin', 'AdminController@index')
         ->name('admin')->middleware('can:isAdmin');
 
+Route::get('/admin/nuovafaq', 'AdminController@addFaq')
+        ->name('nuovafaq')->middleware('can:isAdmin');
+
+Route::post('/admin/nuovafaq', 'AdminController@submitFaq');
+
+
 Route::get('/locatario', 'LocatarioController@index')
         ->name('user')->middleware('can:isLocatario');
-
 
 Route::post('/locatario/ricerca', 'LocatarioController@showRicerca')
         ->name('ricerca')->middleware('can:isLocatario');

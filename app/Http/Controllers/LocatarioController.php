@@ -20,6 +20,9 @@ class LocatarioController extends Controller {
         return view('accountlocatario')
                    ->with('user', $user);
     }
-
-
+    
+    public function showRicerca(){
+        return view('catalog');
+    }
+   
 }

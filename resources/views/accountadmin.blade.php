@@ -66,10 +66,26 @@
     </div>
       
    </div> 
-  
 
   </div>
-  
+    
+    <div id="FAQ">
+            <div class="xlarge"><b>FAQ</b> <button class="button"><i class="fa-solid fa-circle-plus xlarge"></i></button></div>
+
+            <hr>
+            @isset($faqs)
+            <div class="FAQ">
+                @foreach($faqs as $faq)
+                <h2>{{ $faq->domanda }}
+                    <button id="modifica-button" onclick="" class="button ourblue"><i class="fa-regular fa-pen-to-square"></i></button>
+                    <button id="elimina-button" onclick="" class="button ourblue"><i class="fa-solid fa-trash-can"></i></button>
+                </h2>            
+                
+                <p>{{ $faq->risposta }}</p>                
+            @endforeach 
+            </div>               
+    @endisset
+    </div>    
 
 <script>
 // Script to open and close sidebar

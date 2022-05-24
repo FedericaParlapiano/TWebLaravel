@@ -91,9 +91,5 @@ class UserController extends Controller {
     public function addAnnuncio() {
         return view('annunci.insert');
     }
-    
-    public function showRicerca(){
-        return view('catalog');
-    }  
    
 }
