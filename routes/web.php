@@ -23,11 +23,11 @@ Route::get('/catalog', 'PublicController@showCatalog')
 Route::get('/catalog/annuncio/{idAnnuncio}', 'PublicController@showAnnuncio')
         ->name('annuncio');
 
-Route::get('/account', 'UserController@showAccount')
+Route::get('/account', 'UserController@index')
         ->name('account');
 
 Route::get('/locatore', 'LocatoreController@index')
-        ->name('user')->middleware('can:isLocatore');
+        ->name('locatore')->middleware('can:isLocatore');
 
 Route::get('/locatore/nuovoannuncio', 'LocatoreController@addAnnuncio')
         ->name('nuovoannuncio')->middleware('can:isLocatore');
@@ -43,9 +43,16 @@ Route::get('/admin/nuovafaq', 'AdminController@addFaq')
 
 Route::post('/admin/nuovafaq', 'AdminController@submitFaq');
 
+Route::get('/admin/modificafaq/{faqId}', 'AdminController@showModificaFaq')
+        ->name('modificafaq')->middleware('can:isAdmin');
+
+Route::post('/admin/modificafaq/{faqId}', 'AdminController@modificaFaq');
+
+Route::post('/admin/eliminafaq/{faqId}', 'AdminController@eliminaFaq')
+        ->name('eliminafaq');
 
 Route::get('/locatario', 'LocatarioController@index')
-        ->name('user')->middleware('can:isLocatario');
+        ->name('locatario')->middleware('can:isLocatario');
 
 Route::post('/locatario/ricerca', 'LocatarioController@showRicerca')
         ->name('ricerca')->middleware('can:isLocatario');

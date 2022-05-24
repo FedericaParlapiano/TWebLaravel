@@ -33,7 +33,7 @@
             <div  id="appartamento" class="row">
                 <div class="left">
                 {{ Form::label('numCamere', 'Camere totali', ['style' =>'margin-top: 0;']) }}
-                {{ Form::text('numCamere', '', ['class' => 'input', 'style' =>'width: 100px;','id' => 'numCamere'])}}
+                {{ Form::text('numCamere', '', ['class' => 'input', 'style' =>'width: 80px;','id' => 'numCamere'])}}
                  @if ($errors->first('numCamere'))
                 <div class="errors" >
                     @foreach ($errors->get('numCamere') as $message)
@@ -42,9 +42,9 @@
                 </div>
                 @endif
                 </div>
-                <div style="margin-left:2.5em;">
-                {{ Form::label('postiLettoTotali', 'Posti letto totali', ['style' =>'margin-top: 0;']) }}
-                {{ Form::text('postiLettoTotali', '', ['class' => 'input', 'style' =>'width: 100px;' ,'id' => 'postiLettoTotali'])}}
+                <div style="margin-left:2em;">
+                {{ Form::label('postiLettoTotali', 'Letti totali', ['style' =>'margin-top: 0;']) }}
+                {{ Form::text('postiLettoTotali', '', ['class' => 'input', 'style' =>'width: 80px;' ,'id' => 'postiLettoTotali'])}}
                @if ($errors->first('postiLettoTotali'))
                 <div class="errors" >
                     @foreach ($errors->get('postiLettoTotali') as $message)
@@ -55,9 +55,10 @@
                 </div> 
             </div>
             
-            <div id="postoletto" style="display: none">
-                {{ Form::label('postiNellaStanza', 'Posti letto nella stanza', ['style' =>'margin-top: 0;']) }}
-                {{ Form::text('postiNellaStanza', '', ['class' => 'input', 'style' =>'width: 100px;','id' => 'postiNellaStanza'])}}
+            <div id="postoletto" class="row" style="display: none">
+                <div class="left">
+                {{ Form::label('postiNellaStanza', 'Letti nella stanza', ['style' =>'margin-top: 0;']) }}
+                {{ Form::text('postiNellaStanza', '', ['class' => 'input', 'style' =>'width: 80px;','id' => 'postiNellaStanza'])}}
                 @if ($errors->first('postiNellaStanza'))
                 <div class="errors" >
                     @foreach ($errors->get('postiNellaStanza') as $message)
@@ -65,6 +66,19 @@
                     @endforeach
                 </div>
                 @endif
+                </div>
+               
+                <div style="margin-left:2em;">
+                {{ Form::label('postiLettoTotali', 'Letti totali', ['style' =>'margin-top: 0;']) }}
+                {{ Form::text('postiLettoTotali', '', ['class' => 'input', 'style' =>'width: 80px;' ,'id' => 'postiLettoTotali'])}}
+               @if ($errors->first('postiLettoTotali'))
+                <div class="errors" >
+                    @foreach ($errors->get('postiLettoTotali') as $message)
+                    <p>{{ $message }}</p>
+                    @endforeach
+                </div>
+                @endif
+                </div> 
             </div>
 
             <div>
@@ -297,20 +311,16 @@
 
           if (selectedValue == "Appartamento")
           {
-               appartamento.style.display = "block";
+               appartamento.style.display = "flex";
                postoletto.style.display = "none";
 
           }
-          if (selectedValue == "Posto letto (camera singola)")
+          if (selectedValue == "PostoLettoSingolo" || selectedValue == "PostoLettoDoppia")
           {
-               postoletto.style.display = "block";
+               postoletto.style.display = "flex";
                appartamento.style.display = "none";
           }
-          if (selectedValue == "Posto letto (camera doppia)")
-          {
-               postoletto.style.display = "block";
-               appartamento.style.display = "none";
-          }
+          
        }
 
 

@@ -17,25 +17,23 @@
     
    <div class="row-info">
    <div id="info" class="container about-class" >
-    <h2>{{$user->nome}} {{$user->cognome}}</h2>
-    <div>
-    <p>{{$user->role}}</p>
-    
-    @isset($user->dataNascita)
-    <p><i class="fa-solid fa-cake-candles margine-right"></i>{{$user->dataNascita}}</p>
-    @else
-    <p><i class="fa-solid fa-cake-candles margine-right"></i>Non è stata indicata la data di nascita</p>
-    @endisset
-    @isset($user->sesso)
-    <p><i class="fa-solid fa-venus-mars margine-right"></i>{{$user->sesso}}</p>
-    @endisset
-    
-    
-    <p><i class="fa-solid fa-address-card margine-right"></i>{{$user->username}}</p>
-    
-    </div>
-    <br> 
-   <button class="button black padding-12"><i class="fa-solid fa-pencil"></i> Modifica </button>
+        <h2>{{$user->nome}} {{$user->cognome}}</h2>
+        <div>
+        <p>{{$user->role}}</p>
+
+        @isset($user->dataNascita)
+        <p><i class="fa-solid fa-cake-candles margine-right"></i>{{$user->dataNascita}}</p>
+        @else
+        <p><i class="fa-solid fa-cake-candles margine-right"></i>Non è stata indicata la data di nascita</p>
+        @endisset
+        @isset($user->sesso)
+        <p><i class="fa-solid fa-venus-mars margine-right"></i>{{$user->sesso}}</p>
+        @endisset
+
+
+        <p><i class="fa-solid fa-address-card margine-right"></i>{{$user->username}}</p>
+
+        </div>
     </div>
     
     <!-- Contact Section -->
@@ -70,16 +68,28 @@
   </div>
     
     <div id="FAQ">
-            <div class="xlarge"><b>FAQ</b> <button class="button"><i class="fa-solid fa-circle-plus xlarge"></i></button></div>
+            <div class="xlarge"><b>FAQ</b> 
+                <a href="{{ route('nuovafaq') }}" title="Inserisci una FAQ" class="button"><i class="fa-solid fa-circle-plus xlarge"></i></a>
+            </div>
 
             <hr>
             @isset($faqs)
             <div class="FAQ">
                 @foreach($faqs as $faq)
-                <h2>{{ $faq->domanda }}
-                    <button id="modifica-button" onclick="" class="button ourblue"><i class="fa-regular fa-pen-to-square"></i></button>
-                    <button id="elimina-button" onclick="" class="button ourblue"><i class="fa-solid fa-trash-can"></i></button>
-                </h2>            
+                <div style="display: flex;">
+                <h2>{{ $faq->domanda }} </h2> 
+                <div style="float:left; margin-left:20px; margin-top:15px; ">
+                    <a href="{{ route('modificafaq', ['faqId'=> $faq->id]) }}" title="Modifica la FAQ" class="button ourblue" style="height: 40px;"><i class="fa-regular fa-pen-to-square"></i></a>
+                </div>
+                <div style="float:left; margin-left:20px; margin-top:15px; ">
+                    <a> 
+                        <form method="POST" action="{{ route('eliminafaq', ['faqId'=> $faq->id]) }}">
+                        @csrf
+                        <button type='submit' name='elimina' class='button ourblue' style="height: 40px;" ><i class="fa-solid fa-trash-can"></i> </button>
+                        </form> 
+                    </a>
+                </div> 
+                </div>
                 
                 <p>{{ $faq->risposta }}</p>                
             @endforeach 

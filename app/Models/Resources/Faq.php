@@ -8,6 +8,7 @@ class Faq extends Model {
 
     protected $table = 'faq';
     protected $primaryKey = 'id';
+    protected $fillable = ['domanda', 'risposta'];
     public $timestamps = false;
     
 }

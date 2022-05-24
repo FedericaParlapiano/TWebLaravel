@@ -22,8 +22,11 @@
     <p><i class="fa-solid fa-venus-mars margine-right"></i>F</p>
     <p><i class="fa-solid fa-briefcase margine-right"></i>Musicista</p>
    </div>
+    
+    @can('isUser')
     <br> 
-   <button class="button black padding-12"><i class="fa-solid fa-pencil"></i> Modifica </button>
+    <button class="button black padding-12"><i class="fa-solid fa-pencil"></i> Modifica </button>
+    @endcan
     </div>
     
     <!-- Contact Section -->

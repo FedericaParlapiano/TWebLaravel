@@ -5,16 +5,16 @@
     
     @can('isAdmin')
         <a href="{{ route('nuovafaq') }}" title="Inserisci una FAQ">Inserisci FAQ</a>
-        <a href="" title="Visualizza il tuo profilo">Account</a>
+        <a href="{{ route('admin') }}" title="Visualizza il tuo profilo">Account</a>
     @endcan
     
     @can('isLocatore')
         <a href="{{ route('nuovoannuncio') }}" title="Aggiungi un annuncio">Inserisci Annuncio</a>
-        <a href="" title="Visualizza il tuo profilo">Account</a>
+        <a href="{{ route('locatore') }}" title="Visualizza il tuo profilo">Account</a>
     @endcan
     
     @can('isLocatario')
-        <a href="" title="Visualizza il tuo profilo">Account</a>
+        <a href="{{ route('locatario') }}" title="Visualizza il tuo profilo">Account</a>
     @endcan
     
     @auth
