@@ -10,8 +10,7 @@
         <p>Utilizza questa form per inserire un nuovo annuncio che sarà reso immediatamente visibile sul sito.</p>
 
         @csrf
-            {{ Form::open(array('route' => 'nuovoannuncio', 'id' => 'inserisciannuncio', 'files' => true, 'class' => 'form')) }}
-            
+        {{ Form::open(array('route' => 'nuovoannuncio', 'id' => 'inserisciannuncio', 'files' => true, 'class' => 'form')) }}            
             
             <div>
                 {{ Form::label('titolo', 'Titolo', ['class' => 'label']) }}
@@ -191,84 +190,84 @@
                 <div class="quantity_container">
                 <span class="servizi">Bagno <i class="fa-solid fa-toilet" style="margin-right: 5px;" ></i></span>
                   <i type="button" class="fa-solid fa-circle-plus" onclick="increment('counting-bagno')" > </i>
-                  {{ Form::text('counting-bagno', '', ['id' => 'counting-bagno', 'style' => 'width: 30px; margin-left: 5px; margin-right: 5px; text-align: center;']) }}
+                  {{ Form::text('counting-bagno', '0', ['id' => 'counting-bagno', 'style' => 'width: 30px; margin-left: 5px; margin-right: 5px; text-align: center;']) }}
                   <i type="button" class="fa-solid fa-circle-minus" onclick="decrement('counting-bagno')" ></i>       
                 </div>
                 <br>
                 <div class="quantity_container">
                 <span class="servizi">Cucina <i class="fa-solid fa-kitchen-set" style="margin-right: 5px;" ></i></span>
                   <i type="button" class="fa-solid fa-circle-plus" onclick="increment('counting-cucina')" > </i>
-                  {{ Form::text('counting-cucina', '', ['id' => 'counting-cucina', 'style' => 'width: 30px; margin-left: 5px; margin-right: 5px; text-align: center;']) }}
+                  {{ Form::text('counting-cucina', '0', ['id' => 'counting-cucina', 'style' => 'width: 30px; margin-left: 5px; margin-right: 5px; text-align: center;']) }}
                   <i type="button" class="fa-solid fa-circle-minus" onclick="decrement('counting-cucina')" ></i>       
                 </div>
                 <br>
                 <div class="quantity_container">
                 <span class="servizi">Sala studio <i class="fa-solid fa-book" style="margin-right: 5px;" ></i></span>
                   <i type="button" class="fa-solid fa-circle-plus" onclick="increment('counting-studio')" > </i>
-                  {{ Form::text('counting-studio', '', ['id' => 'counting-studio', 'style' => 'width: 30px; margin-left: 5px; margin-right: 5px; text-align: center;']) }}
+                  {{ Form::text('counting-studio', '0', ['id' => 'counting-studio', 'style' => 'width: 30px; margin-left: 5px; margin-right: 5px; text-align: center;']) }}
                   <i type="button" class="fa-solid fa-circle-minus" onclick="decrement('counting-studio')" ></i>       
                 </div>
                 <br>
                 <div class="quantity_container">
                 <span class="servizi">Lavanderia <i class="fa-solid fa-faucet" style="margin-right: 5px;" ></i></span>
                   <i type="button" class="fa-solid fa-circle-plus" onclick="increment('counting-lavanderia')" > </i>
-                  {{ Form::text('counting-lavanderia', '', ['id' => 'counting-lavanderia', 'style' => 'width: 30px; margin-left: 5px; margin-right: 5px; text-align: center;']) }}
+                  {{ Form::text('counting-lavanderia', '0', ['id' => 'counting-lavanderia', 'style' => 'width: 30px; margin-left: 5px; margin-right: 5px; text-align: center;']) }}
                   <i type="button" class="fa-solid fa-circle-minus" onclick="decrement('counting-lavanderia')" ></i>       
                 </div>
                 <br>
                 <div class="quantity_container">
                 <span class="servizi">Giardino <i class="fa-solid fa-tree" style="margin-right: 5px;" ></i></span>
                   <i type="button" class="fa-solid fa-circle-plus" onclick="increment('counting-giardino')" > </i>
-                  {{ Form::text('counting-giardino', '', ['id' => 'counting-giardino', 'style' => 'width: 30px; margin-left: 5px; margin-right: 5px; text-align: center;']) }}
+                  {{ Form::text('counting-giardino', '0', ['id' => 'counting-giardino', 'style' => 'width: 30px; margin-left: 5px; margin-right: 5px; text-align: center;']) }}
                   <i type="button" class="fa-solid fa-circle-minus" onclick="decrement('counting-giardino')" ></i>       
                 </div>
                 <br>
                 <div class="quantity_container">
                 <span class="servizi">Parcheggio <i class="fa-solid fa-square-parking" style="margin-right: 5px;" ></i></span>
                   <i type="button" class="fa-solid fa-circle-plus" onclick="increment('counting-parcheggio')" > </i>
-                  {{ Form::text('counting-parcheggio', '', ['id' => 'counting-parcheggio', 'style' => 'width: 30px; margin-left: 5px; margin-right: 5px; text-align: center;']) }}
+                  {{ Form::text('counting-parcheggio', '0', ['id' => 'counting-parcheggio', 'style' => 'width: 30px; margin-left: 5px; margin-right: 5px; text-align: center;']) }}
                   <i type="button" class="fa-solid fa-circle-minus" onclick="decrement('counting-parcheggio')" ></i>       
                 </div>
                 <br>
                 <div class="quantity_container">
                 <span class="servizi">Garage <i class="fa-solid fa-car-side" style="margin-right: 5px;" ></i></span>
                   <i type="button" class="fa-solid fa-circle-plus" onclick="increment('counting-garage')" > </i>
-                  {{ Form::text('counting-garage', '', ['id' => 'counting-garage', 'style' => 'width: 30px; margin-left: 5px; margin-right: 5px; text-align: center;']) }}
+                  {{ Form::text('counting-garage', '0', ['id' => 'counting-garage', 'style' => 'width: 30px; margin-left: 5px; margin-right: 5px; text-align: center;']) }}
                   <i type="button" class="fa-solid fa-circle-minus" onclick="decrement('counting-garage')" ></i>       
                 </div>
                 <br>
                 <div class="quantity_container">
                 <span class="servizi">Locale ricreativo <i class="fa-solid fa-chess" style="margin-right: 5px;" ></i></span>
                   <i type="button" class="fa-solid fa-circle-plus" onclick="increment('counting-localericreativo')" > </i>
-                  {{ Form::text('counting-localericreativo', '', ['id' => 'counting-localericreativo', 'style' => 'width: 30px; margin-left: 5px; margin-right: 5px; text-align: center;']) }}
+                  {{ Form::text('counting-localericreativo', '0', ['id' => 'counting-localericreativo', 'style' => 'width: 30px; margin-left: 5px; margin-right: 5px; text-align: center;']) }}
                   <i type="button" class="fa-solid fa-circle-minus" onclick="decrement('counting-localericreativo')" ></i>       
                 </div>
                 <br>
                 <div class="quantity_container">
                 <span class="servizi">Frigo <i class="fa-solid fa-snowflake" style="margin-right: 5px;" ></i></span>
                   <i type="button" class="fa-solid fa-circle-plus" onclick="increment('counting-frigo')" > </i>
-                  {{ Form::text('counting-frigo', '', ['id' => 'counting-frigo', 'style' => 'width: 30px; margin-left: 5px; margin-right: 5px; text-align: center;']) }}
+                  {{ Form::text('counting-frigo', '0', ['id' => 'counting-frigo', 'style' => 'width: 30px; margin-left: 5px; margin-right: 5px; text-align: center;']) }}
                   <i type="button" class="fa-solid fa-circle-minus" onclick="decrement('counting-frigo')" ></i>       
                 </div>
                 <br>
                 <div class="quantity_container">
                 <span class="servizi">Forno <i class="fa-solid fa-toilet-portable" style="margin-right: 5px;" ></i></span>
                   <i type="button" class="fa-solid fa-circle-plus" onclick="increment('counting-forno')" > </i>
-                  {{ Form::text('counting-forno', '', ['id' => 'counting-forno', 'style' => 'width: 30px; margin-left: 5px; margin-right: 5px; text-align: center;']) }}
+                  {{ Form::text('counting-forno', '0', ['id' => 'counting-forno', 'style' => 'width: 30px; margin-left: 5px; margin-right: 5px; text-align: center;']) }}
                   <i type="button" class="fa-solid fa-circle-minus" onclick="decrement('counting-forno')" ></i>       
                 </div>
                 <br>
                 <div class="quantity_container">
                 <span class="servizi">Lavastoviglie <i class="fa-solid fa-soap" style="margin-right: 5px;" ></i></span>
                   <i type="button" class="fa-solid fa-circle-plus" onclick="increment('counting-lavastoviglie')" > </i>
-                  {{ Form::text('counting-lavastoviglie', '', ['id' => 'counting-lavastoviglie', 'style' => 'width: 30px; margin-left: 5px; margin-right: 5px; text-align: center;']) }}
+                  {{ Form::text('counting-lavastoviglie', '0', ['id' => 'counting-lavastoviglie', 'style' => 'width: 30px; margin-left: 5px; margin-right: 5px; text-align: center;']) }}
                   <i type="button" class="fa-solid fa-circle-minus" onclick="decrement('counting-lavastoviglie')" ></i>       
                 </div>
                 <br>
                 <div class="quantity_container">
                 <span class="servizi">Aria condizionata <i class="fa-solid fa-fan" style="margin-right: 5px;" ></i></span>
                   <i type="button" class="fa-solid fa-circle-plus" onclick="increment('counting-aria')" > </i>
-                  {{ Form::text('counting-aria', '', ['id' => 'counting-aria', 'style' => 'width: 30px; margin-left: 5px; margin-right: 5px; text-align: center;']) }}
+                  {{ Form::text('counting-aria', '0', ['id' => 'counting-aria', 'style' => 'width: 30px; margin-left: 5px; margin-right: 5px; text-align: center;']) }}
                   <i type="button" class="fa-solid fa-circle-minus" onclick="decrement('counting-aria')" ></i>       
                 </div>
 
@@ -323,20 +322,6 @@
           
        }
 
-
-        var init = 0;
-        document.getElementById("counting-bagno").value = init;
-        document.getElementById("counting-cucina").value = init;
-        document.getElementById("counting-studio").value = init;
-        document.getElementById("counting-lavanderia").value = init;
-        document.getElementById("counting-lavastoviglie").value = init;
-        document.getElementById("counting-frigo").value = init;
-        document.getElementById("counting-forno").value = init;
-        document.getElementById("counting-aria").value = init;
-        document.getElementById("counting-localericreativo").value = init;
-        document.getElementById("counting-parcheggio").value = init;
-        document.getElementById("counting-garage").value = init;
-        document.getElementById("counting-giardino").value = init;
  
         // increment function
         function increment(id) {
