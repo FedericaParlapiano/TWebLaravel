@@ -9,9 +9,9 @@
       <h3>Aggiungi il tuo nuovo annuncio</h3>
         <p>Utilizza questa form per inserire un nuovo annuncio che sarà reso immediatamente visibile sul sito.</p>
 
-        @csrf
+        
         {{ Form::open(array('route' => 'nuovoannuncio', 'id' => 'inserisciannuncio', 'files' => true, 'class' => 'form')) }}            
-            
+        @csrf    
             <div>
                 {{ Form::label('titolo', 'Titolo', ['class' => 'label']) }}
                 {{ Form::text('titolo', '', ['class' => 'input', 'id' => 'titolo']) }}

@@ -3,6 +3,8 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/publicstyle.css') }}" >
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/catalogostyle.css') }}">
+
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
         <title>HomeforStudents | @yield('title', 'Homepage')</title>
         <script src="https://kit.fontawesome.com/ea82011960.js" crossorigin="anonymous"></script>

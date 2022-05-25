@@ -1,6 +1,7 @@
 @extends('layouts.useraccount', ['user'=>$user])
 
 <link rel="stylesheet" type="text/css" href="{{ asset('css/accountstyle.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/catalogostyle.css') }}">
 
 @section('title', 'Area riservata')
 
@@ -66,6 +67,54 @@
    </div> 
 
   </div>
+    
+    
+    <div>
+        <div class="contenitore-form"> 
+    {{ Form::open(array('route' => 'ricerca', 'id' => 'search', 'files' => false, 'class' => '')) }}
+    <div class = "row">    
+        <div class="left">
+        {{ Form::label('where', 'Zona di locazione', ['class' => 'label']) }} 
+                {{ Form::text('where', '', ['class' => 'input', 'id' => 'where']) }}
+                @if ($errors->first('where'))
+                <ul class="errors">
+                    @foreach ($errors->get('where') as $message)
+                    <li>{{ $message }}</li>
+                    @endforeach
+                </ul>
+                @endif  
+         </div>
+                    
+        <div style="margin-left:2.5em;">  
+            {{ Form::label('from', 'Da', ['class' => 'label']) }}
+                {{ Form::date('from', '', ['class' => 'input', 'id' => 'from']) }}
+                @if ($errors->first('from'))
+                <ul class="errors">
+                    @foreach ($errors->get('from') as $message)
+                    <li>{{ $message }}</li>
+                    @endforeach
+                </ul>
+                @endif 
+        </div>  
+                    
+        <div style="margin-left:2.5em;">
+            {{ Form::label('to', 'A', ['class' => 'label']) }}
+                {{ Form::date('to', '', ['class' => 'input', 'id' => 'to']) }}
+                @if ($errors->first('to'))
+                <ul class="errors">
+                    @foreach ($errors->get('to') as $message)
+                    <li>{{ $message }}</li>
+                    @endforeach
+                </ul>
+                @endif  
+        </div> 
+        
+        <div style="margin-left:2.5em; margin-top:1.5em;">                
+        {{ Form::submit('Cerca', ['class' => 'button-form ourblue']) }}
+        </div>
+    </div>  
+</div>
+    </div>
     
     <div id="FAQ">
             <div class="xlarge"><b>FAQ</b> 

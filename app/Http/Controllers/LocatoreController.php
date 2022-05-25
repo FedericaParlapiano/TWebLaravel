@@ -221,8 +221,6 @@ class LocatoreController extends Controller {
             $matricole->save();
         }
         
-        
-        
         return redirect()->action('LocatoreController@index');
     }
 

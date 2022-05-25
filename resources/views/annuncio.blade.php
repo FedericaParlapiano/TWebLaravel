@@ -1,5 +1,5 @@
 @extends('layouts.public')
-<link rel="stylesheet" type="text/css" href="{{ asset('css/catalogostyle.css') }}">
+
 @section('title', 'Annuncio')
 
 
@@ -353,17 +353,124 @@
         <br>
         <i class="fa-solid fa-phone" style="margin-right:16px"></i> {{ $locatore->first()->numTelefono }}
         </div>
+        @can("isLocatario")
         <div>
-        <button type="button" class="button ourblue">Vai alla chat</button>
+        <button type="button" class="button ourblue" onclick="messaggio()">Messaggia</button>
         <br>
         <br>
-        <button type="button" class="button ourblue">Proponiti!</button> 
+        <button type="button" class="button ourblue" onclick="proposta()">Proponiti !</button> 
         </div>
+        @endcan
         </div>
     </div>
     </div>
 </div>
 @endforeach
+
+        @can("isLocatario")
+        <div class="chat-popup" id="form-messaggio">
+            <div id="close-div"><i id="close-messaggio" class="fa-solid fa-xmark" onclick="closeMessaggio()"></i></div>
+
+                {{ Form::open(array('route' => 'messaggio', 'id' => 'messaggio', 'class' => 'form-container')) }}            
+                @csrf 
+
+                {{ Form::label('testo', 'Invia il tuo messaggio', ['class' => 'label']) }}
+                {{ Form::textarea('testo', '', ['class' => 'input', 'id' => 'testo', 'placeholder' => 'Scrivi il tuo messaggio..']) }}
+                @if ($errors->first('testo'))
+                    <script> document.getElementById("form-messaggio").style.display = "block"; </script>
+                    <div class="errors" >
+                        @foreach ($errors->get('testo') as $message)
+                        <p>{{ $message }}</p>
+                        @endforeach
+                    </div>
+                @endif
+            
+                {{ Form::hidden('destinatario', $locatore->first()->username, ['id' => 'destinatario']) }}
+
+                {{ Form::submit('Invia', ['class' => 'button ourblue', 'id' => 'invia-messaggio']) }}
+                {{ Form::close() }}
+                
+        </div>
+
+       
+        <div class="chat-popup" id="form-proposta">
+            <div id="close-div"><i id="close-proposta" class="fa-solid fa-xmark" onclick="closeProposta()"></i></div>
+
+            {{ Form::open(array('route' => 'proposta', 'id' => 'proposta','class' => 'form-container')) }}            
+            @csrf 
+            
+            {{ Form::label('messaggio', 'Invia la tua proposta.', ['class' => 'label']) }}
+            {{ Form::textarea('messaggio', '', ['class' => 'input', 'id' => 'messaggio', 'placeholder' => 'Proponiti..']) }}
+            
+            @if ($errors->first('messaggio'))
+                <script> document.getElementById("form-proposta").style.display = "block"; </script>
+                <div class="errors" >
+                    @foreach ($errors->get('messaggio') as $message)
+                    <p>{{ $message }}</p>
+                    @endforeach
+                </div>
+            @endif
+            
+            <div style="text-align:center; margin-top: 0.5em;"> Periodo di affitto </div>
+            <div style="display:flex;">
+                <div>
+                {{ Form::label('inizioAffitto', 'Inizio', ['style' =>'margin-left: 0.5em;']) }}
+                </div>
+                <div style="margin-left:8.5em; float: left;">
+                {{ Form::label('fineAffitto', 'Fine') }}
+                </div> 
+            </div>
+            <div style="display:flex;">
+                <div>
+                {{ Form::date('inizioAffitto', '', ['id' => 'fineAffitto', 'class' => 'input', 'style' =>'margin-left: 0.5em;'])}}
+                
+                @if ($errors->first('inizioAffitto'))
+                    <script> document.getElementById("form-proposta").style.display = "block"; </script>
+                    <div class="errors" >
+                        @foreach ($errors->get('inizioAffitto') as $message)
+                        <p>{{ $message }}</p>
+                        @endforeach
+                    </div>
+                @endif
+                
+                </div>
+                <div style="margin-left:1.5em; float: left;">
+                {{ Form::date('fineAffitto', '', ['id' => 'fineAffitto', 'class' => 'input', 'style' =>'margin-left: 0.5em; '])}}
+                
+                @if ($errors->first('fineAffitto'))
+                    <script> document.getElementById("form-proposta").style.display = "block"; </script>
+                    <div class="errors" >
+                        @foreach ($errors->get('fineAffitto') as $message)
+                        <p>{{ $message }}</p>
+                        @endforeach
+                    </div>
+                @endif
+                
+                </div> 
+            </div>
+                        
+            <div style="display: flex; margin-top: 0.5em;">
+            {{ Form::label('canoneProposto', 'Fai un offerta:', ['class' => 'label']) }}
+            {{ Form::text('canoneProposto', '', ['class' => 'input', 'id' => 'canoneProposto', 'placeholder' => '€']) }}           
+            </div>
+            @if ($errors->first('canoneProposto'))
+                <script> document.getElementById("form-proposta").style.display = "block"; </script>
+                <div class="errors" >
+                    @foreach ($errors->get('canoneProposto') as $message)
+                    <p>{{ $message }}</p>
+                    @endforeach
+                </div>
+            @endif
+            
+            {{ Form::hidden('locatore', $locatore->first()->username, ['id' => 'locatore']) }}
+            {{ Form::hidden('annuncio', $singoloannuncio->id, ['id' => 'annuncio']) }}
+            
+            {{ Form::submit('Invia', ['class' => 'button ourblue', 'id' => 'invia-proposta']) }}
+            {{ Form::close() }}
+            
+        </div>
+        @endcan
+
 
 <script>
     var slideIndex = 1;
@@ -410,6 +517,27 @@
         setTimeout(carousel, 3500); // Change image every 5 seconds
     }
 </script>
+
+<script>
+        function messaggio() {
+          document.getElementById("form-messaggio").style.display = "block";
+          document.getElementById("form-proposta").style.display = "none";          
+        }
+
+        function closeMessaggio() {
+          document.getElementById("form-messaggio").style.display = "none";
+        }
+        
+        function proposta() {
+          document.getElementById("form-proposta").style.display = "block";
+          document.getElementById("form-messaggio").style.display = "none";
+
+        }
+
+        function closeProposta() {
+          document.getElementById("form-proposta").style.display = "none";
+        }
+    </script>
 
 @endisset
 @endsection

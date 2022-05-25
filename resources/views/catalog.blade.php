@@ -82,7 +82,7 @@
         
         
         <b>
-            <h3><a href="{{ route('annuncio', [$annuncio->id]) }}" target="_blank">{{ $annuncio->tipologia }}, {{ $annuncio->zonaLocazione }} </a></h3>
+            <h3><a href="{{ route('annuncio', [$annuncio->id]) }}" target="_blank">{{ $annuncio->titolo }} ({{ $annuncio->tipologia }}) </a></h3>
         </b>
         <p>Canone: {{ $annuncio->canoneAffitto }}€</p>
         <p class="descrizione2">{{ $annuncio->descrizione }}</p>
