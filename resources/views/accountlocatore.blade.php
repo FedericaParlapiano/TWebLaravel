@@ -98,10 +98,9 @@
     <div class="annuncio white">
         
         <div class="button-div-class">
-            <button id="proposte-button" onclick="" class="button ourblue button-class" title="modifica l'annuncio"><i class="fa-solid fa-pencil"></i></button>
-            <button id="save-button" onclick="" class="button ourblue button-class" title="elimina l'annuncio"><i class="fa-solid fa-trash-can"></i></button>
+            <a id="modifica-annuncio-button" href = "{{ route('modificaannuncio', [$annuncio->id]) }}" onclick="" class="button ourblue button-class" title="modifica l'annuncio"><i class="fa-solid fa-pencil"></i></a>
+            <a id="elimina-annuncio-button" href = "{{ route('eliminaannuncio', [$annuncio->id]) }}" onclick="" class="button ourblue button-class" title="modifica l'annuncio"><i class="fa-solid fa-trash-can"></i></a>
         </div>
-        
         
         @php
         $assente=true;

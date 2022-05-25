@@ -223,5 +223,232 @@ class LocatoreController extends Controller {
         
         return redirect()->action('LocatoreController@index');
     }
+    
+    
+    
+    public function showUpdateAnnuncio($idAnnuncio) {
+        $annuncio = $this->_locatoreModel->getAnnuncio($idAnnuncio);
+        $servizi = $this->_locatoreModel->getServiziAnnuncio($idAnnuncio);
+        $vincoli = $this->_locatoreModel->getVincoliAnnuncio($idAnnuncio);
+        
+        return view('parteprivata.modificaannuncio')
+                    ->with('annuncio', $annuncio)
+                    ->with('servizi', $servizi)
+                    ->with('vincoli', $vincoli);
+        
+    }
+    
+    public function updateAnnuncio(NuovoAnnuncioRequest $request) {
+        
+        $request->validated();
+        
+        $disponibilita = false;
+        if($request->get('finePeriodoDisponibilita') > date("Y-m-d") && $request->get('inizioPeriodoDisponibilita') < date("Y-m-d")) {
+                $disponibilita = true;
+        }
+        
+        $annuncio = $this->_locatoreModel->getAnnuncioById($request->get('idAnnuncio'))->update([
+            'titolo' => $request->get('titolo'),
+            'tipologia' => $request->get('tipologia'),
+            'descrizione' => $request->get('descrizione'),
+            'zonaLocazione' => $request->get('zonaLocazione'),
+            'indirizzo' => $request->get('indirizzo'),
+            'canoneAffitto' => $request->get('canoneAffitto'),
+            'inizioPeriodoDisponibilita' => $request->get('inizioPeriodoDisponibilita'),
+            'finePeriodoDisponibilita' => $request->get('finePeriodoDisponibilita'),
+            'disponibilita' => $disponibilita,
+            'numCamere' => $request->get('numCamere'),
+            'postiLettoTotali' => $request->get('postiLettoTotali'),
+            'postiNellaStanza' => $request->get('postiNellaStanza'),
+            
+        ]);
+        
+        
+        $annuncio = $this->_locatoreModel->getAnnuncioById($request->get('idAnnuncio'))->update([
+            'titolo' => $request->get('titolo'),
+            'tipologia' => $request->get('tipologia'),
+            'descrizione' => $request->get('descrizione'),
+            'zonaLocazione' => $request->get('zonaLocazione'),
+            'indirizzo' => $request->get('indirizzo'),
+            'canoneAffitto' => $request->get('canoneAffitto'),
+            'inizioPeriodoDisponibilita' => $request->get('inizioPeriodoDisponibilita'),
+            'finePeriodoDisponibilita' => $request->get('finePeriodoDisponibilita'),
+            'disponibilita' => $disponibilita,
+            'numCamere' => $request->get('numCamere'),
+            'postiLettoTotali' => $request->get('postiLettoTotali'),
+            'postiNellaStanza' => $request->get('postiNellaStanza'),
+            
+        ]);
+        
+        foreach($this->_locatoreModel->getServiziAnnuncio($request->get('idAnnuncio')) as $servizio) {
+           $servizio->delete();
+        }
+       
+       
+        if($request->get('counting-bagno'))
+        {
+            $bagno = new ServizioIncluso;
+            $bagno->servizi = 'bagni';
+            $bagno->quantita = (int) $request->get('counting-bagno');
+            $bagno->annuncio = (int) $request->get('idAnnuncio');
+            $bagno->save();
+        }
+        
+        if($request->get('counting-cucina'))
+        {
+            $cucina = new ServizioIncluso;
+            $cucina->servizi = 'cucina';
+            $cucina->quantita = (int) $request->get('counting-cucina');
+            $cucina->annuncio = (int) $request->get('idAnnuncio');
+            $cucina->save();
+        }
+        
+        if($request->get('counting-localericreativo'))
+        {
+            $localericreativo = new ServizioIncluso;
+            $localericreativo->servizi = 'locale ricreativo';
+            $localericreativo->quantita = (int) $request->get('counting-localericreativo');
+            $localericreativo->annuncio = (int) $request->get('idAnnuncio');
+            $localericreativo->save();
+        }
+        
+        if($request->get('counting-studio'))
+        {
+            $salastudio = new ServizioIncluso;
+            $salastudio->servizi = 'sala studio';
+            $salastudio->quantita = (int) $request->get('counting-studio');
+            $salastudio->annuncio = (int) $request->get('idAnnuncio');
+            $salastudio->save();
+        }
+        
+        if($request->get('counting-giardino'))
+        {
+            $giardino = new ServizioIncluso;
+            $giardino->servizi = 'giardino';
+            $giardino->quantita = (int) $request->get('counting-giardino');
+            $giardino->annuncio = (int) $request->get('idAnnuncio');
+            $giardino->save();
+        }
+        
+        if($request->get('counting-garage'))
+        {
+            $garage = new ServizioIncluso;
+            $garage->servizi = 'garage';
+            $garage->quantita = (int) $request->get('counting-garage');
+            $garage->annuncio = (int) $request->get('idAnnuncio');
+            $garage->save();
+        }
+        
+        if($request->get('counting-parcheggio'))
+        {
+            $parcheggio = new ServizioIncluso;
+            $parcheggio->servizi = 'parcheggio';
+            $parcheggio->quantita = (int) $request->get('counting-parcheggio');
+            $parcheggio->annuncio = (int) $request->get('idAnnuncio');
+            $parcheggio->save();
+        }
+        
+        if($request->get('counting-lavanderia'))
+        {
+            $lavanderia = new ServizioIncluso;
+            $lavanderia->servizi = 'lavatrice';
+            $lavanderia->quantita = (int) $request->get('counting-lavanderia');
+            $lavanderia->annuncio = (int) $request->get('idAnnuncio');
+            $lavanderia->save();
+        }
+        
+        if($request->get('counting-lavastoviglie'))
+        {
+            $lavastoviglie = new ServizioIncluso;
+            $lavastoviglie->servizi = 'lavastoviglie';
+            $lavastoviglie->quantita = (int) $request->get('counting-lavastoviglie');
+            $lavastoviglie->annuncio = (int) $request->get('idAnnuncio');
+            $lavastoviglie->save();
+        }
+        
+        if($request->get('counting-frigo'))
+        {
+            $frigo = new ServizioIncluso;
+            $frigo->servizi = 'frigo';
+            $frigo->quantita = (int) $request->get('counting-frigo');
+            $frigo->annuncio = (int) $request->get('idAnnuncio');
+            $frigo->save();
+        }
+        
+        if($request->get('counting-forno'))
+        {
+            $forno = new ServizioIncluso;
+            $forno->servizi = 'forno';
+            $forno->quantita = (int) $request->get('counting-forno');
+            $forno->annuncio = (int) $request->get('idAnnuncio');
+            $forno->save();
+        }
+        
+        if($request->get('counting-aria'))
+        {
+            $aria = new ServizioIncluso;
+            $aria->servizi = 'condizionatore';
+            $aria->quantita = (int) $request->get('counting-aria');
+            $aria->annuncio = (int) $request->get('idAnnuncio');
+            $aria->save();
+        }       
+        
+        foreach($this->_locatoreModel->getVincoliAnnuncio($request->get('idAnnuncio')) as $vincoli) {
+           $vincoli->delete();
+        }
+         
+        //vincoli annuncio
+        if($request->get('animali'))
+        {
+            $animali = new Vincolo;
+            $animali->vincolo = 'animali';
+            $animali->annuncio = (int) $request->get('idAnnuncio');
+            $animali->save();
+        }
+        
+        if($request->get('fumatori'))
+        {
+            $fumatori = new Vincolo;
+            $fumatori->vincolo = 'fumatori';
+            $fumatori->annuncio = (int) $request->get('idAnnuncio');
+            $fumatori->save();
+        }
+        
+        if($request->get('feste'))
+        {
+            $feste = new Vincolo;
+            $feste->vincolo = 'feste';
+            $feste->annuncio = (int) $request->get('idAnnuncio');
+            $feste->save();
+        }
+        
+        if($request->get('matricole'))
+        {
+            $matricole = new Vincolo;
+            $matricole->vincolo = 'matricole';
+            $matricole->annuncio = (int) $request->get('idAnnuncio');
+            $matricole->save();
+        }
+        
+        
+        return redirect()->action('LocatoreController@index');
+        
+        
+    }
+    
+    public function deleteAnnuncio($idAnnuncio) {
+        
+        $this->_locatoreModel->getAnnuncio($idAnnuncio)->first()->delete();
+        
+        foreach($this->_locatoreModel->getServiziAnnuncio($idAnnuncio) as $servizio) {
+           $servizio->delete();
+        }
+        
+        foreach($this->_locatoreModel->getVincoliAnnuncio($idAnnuncio) as $vincoli) {
+           $vincoli->delete();
+        }
+        
+        return redirect()->action('LocatoreController@index');
+    }
 
 }
