@@ -82,9 +82,10 @@
                     <a href="{{ route('modificafaq', ['faqId'=> $faq->id]) }}" title="Modifica la FAQ" class="button ourblue" style="height: 40px;"><i class="fa-regular fa-pen-to-square"></i></a>
                 </div>
                 <div style="float:left; margin-left:20px; margin-top:15px; ">
-                    <a> 
+                    <a onclick="return confirm('Sei sicuro di voler eliminare questa FAQ?')"> 
                         <form method="POST" action="{{ route('eliminafaq', ['faqId'=> $faq->id]) }}">
                         @csrf
+                        
                         <button type='submit' name='elimina' class='button ourblue' style="height: 40px;" ><i class="fa-solid fa-trash-can"></i> </button>
                         </form> 
                     </a>
@@ -111,5 +112,3 @@ function w3_close() {
 </script>
 @endisset
 @endsection
-
-
