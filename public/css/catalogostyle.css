@@ -6,11 +6,13 @@ body{
     overflow: hidden;
     border-radius: 30px;
     background-color: #f2f2f2;
-    width: 50%;
-    margin-left: 25%;
-    margin-right: 25%;
+    width: 760px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
     margin-top:2%;
-    padding: 10px;    
+    padding: 10px; 
+    display: flex;
 }
 
 .row {
@@ -27,6 +29,12 @@ body{
   display: block;
   margin-bottom: 0.5em;
   margin-top: 1em;
+  text-align: start;
+}
+
+.label-cerca {
+  display: block;
+  margin-bottom: 0.5em;
   text-align: start;
 }
 
@@ -408,17 +416,107 @@ div.split2 div{
     margin-bottom: 10px;
 }
 
-#close-div{
+#close-div, 
+#close{
     text-align: end;
 }
 
 #close-messaggio:hover,
-#close-proposta:hover{
+#close-proposta:hover,
+#close:hover{
     color: red;
     cursor: pointer;
+}
+
+#close{
+    width: 10px;
+    height: auto;
 }
 
 #invia-messaggio,
 #invia-proposta {
     width: 100%;
+}
+
+
+h1-filtri{
+    color:#000;
+    font-weight: bold;
+    text-align: center;
+}
+
+#h2-filtri{
+    color:#000;
+    font-weight: bold;
+}
+
+
+
+/* Float four columns side by side */
+.column-card-filtri {
+  float: left;
+  width: 33%;
+  padding: 0 10px;
+  
+}
+
+/* Remove extra left and right margins, due to padding in columns */
+.row-card-filtri{margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row-card-filtri:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the counter cards */
+.card-filtri {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #B5CAF5;
+  height: 125px;
+}
+
+.card-filtri:hover{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+}
+
+.card-modificata-filtri {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+  padding: 16px;
+  text-align: center;
+  background-color: #94C7EE;
+  height: 125px;
+}
+
+/* Responsive columns - one column layout (vertical) on small screens */
+@media screen and (max-width: 600px) {
+  .column-card-filtri {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+
+#button-cerca{
+    height: 30px;
+    margin-top: 15px;
+}
+
+#filtri-button{
+     margin-top: 10px;
+     text-align: right;
+     margin-right: 10px;
+}
+
+#filtri-button:hover{
+    
+    cursor: pointer;
+}
+
+#slider-range{
+    color:yellow;
 }

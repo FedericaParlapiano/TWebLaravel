@@ -3,18 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\NuovoMessaggioRequest;
+use App\Http\Requests\FiltriCatalogoRequest;
 use App\Models\Resources\Messaggio;
 use App\Http\Requests\NuovaPropostaRequest;
 use App\Models\Resources\Richiesta;
+use App\models\Catalogo;
 
 
 class LocatarioController extends Controller {
 
-    
+    protected $_catalogoModel;
 
     public function __construct() {
         $this->middleware('can:isLocatario');
-        
+        $this->_catalogoModel = new Catalogo();
     }
 
     public function index() {
@@ -23,8 +25,24 @@ class LocatarioController extends Controller {
                    ->with('user', $user);
     }
     
-    public function showRicerca(){
-        return view('catalog');
+    public function showFilterCatalogo(FiltriCatalogoRequest $request)
+    {
+        
+        return $this->showCatalogo($this->_catalogoModel->getAnnunciFiltrati($request));
+    }
+    
+    public function showCatalogo($annunci)
+    {
+        
+        $foto = $this->_catalogoModel->getFoto();
+        $annunciconfoto = $this->_catalogoModel->getAnnunciConFoto();
+       
+       
+                
+        return view('catalog')
+                    ->with('annunci', $annunci)
+                    ->with('foto', $foto)
+                    ->with('annunciconfoto', $annunciconfoto);
     }
     
     public function sendMessaggio(NuovoMessaggioRequest $request){

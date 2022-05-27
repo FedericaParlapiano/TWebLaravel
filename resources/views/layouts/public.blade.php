@@ -47,6 +47,10 @@
                     }
               }
               
+            
+            
+            
+              
         </script>
         
     </head>
@@ -86,33 +90,21 @@
     
     <script type="text/javascript">           
             // Prendo il riferimento al modal
-            var modal = document.getElementById("modal-log");
-
-            // Prendo l'elemento span (x) che chiude il modal
-            var span = document.getElementsByClassName("close")[0];
-
-
-            
-            span.onclick = function() {
-              modal.style.display = "none";
-            }
-            
-            function openModal() {
+            var modal = document.getElementById("modal-filter");
+     
+            function openForm() {
                 modal.style.display = "block";
-                
-                //Quando l'utente clicca sulla x, il modal viene chiuso
-                span.onclick = function() {
-                    modal.style.display = "none";
-                }
-                // Quando l'utente clicca fuori dal modal, questo si chiude
                 window.onclick = function(event) {
                   if (event.target == modal) {
                     modal.style.display = "none";
                   }
-                }
                 
-            } 
+                };
+            }
 
+            function closeForm() {
+                modal.style.display = "none";
+            }
           
         </script> 
     

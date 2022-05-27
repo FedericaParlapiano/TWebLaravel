@@ -20,6 +20,9 @@ Route::get('/', 'PublicController@homepage')
 Route::get('/catalog', 'PublicController@showCatalog')
         ->name('catalog');
 
+Route::post('/catalog', 'LocatarioController@showFilterCatalogo')
+        ->middleware('can:isLocatario');
+
 Route::get('/catalog/annuncio/{idAnnuncio}', 'PublicController@showAnnuncio')
         ->name('annuncio');
 
@@ -33,7 +36,7 @@ Route::get('/locatore/nuovoannuncio', 'LocatoreController@addAnnuncio')
         ->name('nuovoannuncio')->middleware('can:isLocatore');
 
 Route::post('/locatore/nuovoannuncio', 'LocatoreController@submitAnnuncio');
-
+        
 
 Route::get('/locatore/modificaannuncio/{idAnnuncio}', 'LocatoreController@showUpdateAnnuncio')
         ->name('modificaannuncio')->middleware('can:isLocatore');
@@ -64,8 +67,6 @@ Route::post('/admin/eliminafaq/{faqId}', 'AdminController@eliminaFaq')
 Route::get('/locatario', 'LocatarioController@index')
         ->name('locatario')->middleware('can:isLocatario');
 
-Route::post('/locatario/ricerca', 'LocatarioController@showRicerca')
-        ->name('ricerca')->middleware('can:isLocatario');
 
 Route::post('/locatario/messaggio', 'LocatarioController@sendMessaggio')
         ->name('messaggio')->middleware('can:isLocatario');

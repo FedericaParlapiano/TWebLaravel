@@ -2,6 +2,7 @@
 
 namespace App\models;
 
+use App\Http\Requests\FiltriCatalogoRequest;
 use App\Models\Resources\Faq;
 use App\Models\Resources\Annuncio;
 use App\Models\Resources\Foto;
@@ -46,5 +47,83 @@ class Catalogo {
     public function getLocatoreAnnuncio($idAnnuncio) {
         $usernamelocatore = $this->getAnnuncio($idAnnuncio)->first()->locatore;
         return User::where('username', $usernamelocatore)->get();  
+    }
+    
+    public function getAnnunciFiltrati(FiltriCatalogoRequest $request)
+    {
+        $annunci = new Annuncio;
+        $annunciFiltrati = new Annuncio;
+        $annunciFiltrati->fill($request->validated());
+
+        if($request->citta){
+            $annunci = $annunci->whereIn('id', $annunciFiltrati->filtra_citta($request->citta));
+        }
+        
+        if($request->da){
+            $annunci = $annunci->whereIn('id', $annunciFiltrati->filtra_data_da($request->da));
+        }
+        
+        if($request->a){
+            $annunci = $annunci->whereIn('id', $annunciFiltrati->filtra_data_a($request->a));
+        }
+        
+        if ($request->superficieT) {
+            $annunci = $annunci->whereIn('id', $annunciFiltrati->filtra_superficie($request->superficieT));
+        }
+        
+        if ($request->superficieA) {
+            $annunci = $annunci->whereIn('id', $annunciFiltrati->filtra_superficie($request->superficieA));
+        }
+        
+        if ($request->superficieP) {
+            $annunci = $annunci->whereIn('id', $annunciFiltrati->filtra_superficie($request->superficieP));
+        }
+        
+        if ($request->postiLettoTotaliT) {
+            $annunci = $annunci->whereIn('id', $annunciFiltrati->filtra_postiLettoTot($request->postiLettoTotaliT));
+        }
+        
+        if ($request->postiLettoTotaliA) {
+            $annunci = $annunci->whereIn('id', $annunciFiltrati->filtra_postiLettoTot($request->postiLettoTotaliA));
+        }
+        
+        if ($request->postiLettoTotaliP) {
+            $annunci = $annunci->whereIn('id', $annunciFiltrati->filtra_postiLettoTot($request->postiLettoTotaliP));
+        }
+        
+        if ($request->numCamereT) {
+            $annunci = $annunci->whereIn('id', $annunciFiltrati->filtra_numCamere($request->numCamereT));
+        }
+        
+        
+        if ($request->postiNellaStanzaT) {
+            $annunci = $annunci->whereIn('id', $annunciFiltrati->filtra_postiNellaStanza($request->postiNellaStanzaT));
+        }
+        
+        if ($request->numCamere) {
+            $annunci = $annunci->whereIn('id', $annunciFiltrati->filtra_numCamere($request->numCamere));
+        }
+        
+        
+        if ($request->postiNellaStanza) {
+            $annunci = $annunci->whereIn('id', $annunciFiltrati->filtra_postiNellaStanza($request->postiNellaStanza));
+        }
+        
+        if ($request->amount) {
+            $annunci = $annunci->whereIn('id', $annunciFiltrati->filtra_prezzo($request->amount));
+        }
+        
+        if ($request->tipologia && $request->tipologia != "tutti") {
+            if($request->tipologia == "PostoLetto"){
+                $annunci = $annunci->whereIn('id',$annunciFiltrati->filtra_tipologia_postoLetto());
+            }
+            else{
+                 $annunci = $annunci->whereIn('id', $annunciFiltrati->filtra_tipologia($request->tipologia));
+               
+            }
+        }
+        
+        
+        return Annuncio::whereIn('id', $annunci->pluck('id'))->paginate(9);
     }
 }
