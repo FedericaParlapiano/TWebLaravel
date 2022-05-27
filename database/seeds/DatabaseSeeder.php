@@ -32,23 +32,9 @@ class DatabaseSeeder extends Seeder {
         DB::table('users')->insert([
             
             ['username' => 'lorelore', 'password'=> Hash::make('SgHah8hh'),'role' => 'locatore','fotoProfilo'=>'lore.gif','nome'=>'Lore','cognome'=>'Lore','sesso'=>'M','dataNascita'=>'1950-12-12','citta'=>'Ancona','numTelefono'=>'08712345','email'=>'lorelore@gmail.com','universita'=>null,'facolta'=>null,'annoImmatricolazione'=>null],
-            //['username' => 'lorelore', 'password'=> Hash::make('SgHah8hh'),'role' => 'locatore','fotoProfilo'=>'lore.gif','nome'=>'Lore','cognome'=>'Lore','sesso'=>'M','dataNascita'=>'1950-12-12','citta'=>'Ancona','numTelefono'=>'08712345','email'=>'lorelore@gmail.com','universita'=>null,'facolta'=>null,'annoImmatricolazione'=>null],
             ['username'=>'lariolario','password'=>Hash::make('SgHah8hh'),'role' => 'locatario','fotoProfilo'=>'lario.gif','nome'=>'Lario','cognome'=>'Lario','sesso'=>'F','dataNascita'=>'2000-12-12','citta'=>'Ancona','numTelefono'=>'3218934634','email'=>'lariolario@gmail.com','universita'=>'Univpm','facolta'=>'Ingegneria Informatica e dell\'Automazione','annoImmatricolazione'=>'2019'],
             ['username' => 'adminadmin', 'password'=> Hash::make('SgHah8hh'),'role' => 'admin','fotoProfilo'=>'admin.gif','nome'=>'Admin','cognome'=>'Admin','sesso'=>'F', 'dataNascita'=>null,'citta'=>null,'numTelefono'=>null,'email'=>'adminadmin@gmail.com','universita'=>null,'facolta'=>null,'annoImmatricolazione'=>null],
-            ['username' => 'mario_rossi', 'password'=> Hash::make('Mariorossi00'),'role' => 'locatore','fotoProfilo'=>'mario.gif','nome'=>'Mario','cognome'=>'Rossi','sesso'=>'M', 'dataNascita'=>null,'citta'=>null,'numTelefono'=>null,'email'=>'mariorossi00@gmail.com','universita'=>null,'facolta'=>null,'annoImmatricolazione'=>null],
-            ['username' => 'simone_parini', 'password'=> Hash::make('simone00'),'role' => 'locatore','fotoProfilo'=>'simone.gif','nome'=>'Simone','cognome'=>'Parini','sesso'=>'M', 'dataNascita'=>null,'citta'=>null,'numTelefono'=>'34565456','email'=>'simone0@gmail.com','universita'=>null,'facolta'=>null,'annoImmatricolazione'=>null],
-            ['username' => 'aurora_nicolini', 'password'=> Hash::make('aurora00'),'role' => 'locatore','fotoProfilo'=>'aurora.gif','nome'=>'Aurora','cognome'=>'Nicolini','sesso'=>'F', 'dataNascita'=>null,'citta'=>null,'numTelefono'=>'34505456','email'=>'aurora0@gmail.com','universita'=>null,'facolta'=>null,'annoImmatricolazione'=>null],
-            ['username' => 'ennio_tosi', 'password'=> Hash::make('ennio3049'),'role' => 'locatore','fotoProfilo'=>'ennio.gif','nome'=>'Ennio','cognome'=>'Tosi','sesso'=>'M', 'dataNascita'=>null,'citta'=>null,'numTelefono'=>'345050456','email'=>'enniooo0@gmail.com','universita'=>null,'facolta'=>null,'annoImmatricolazione'=>null],
-            ['username' => 'eleonora_gritti', 'password'=> Hash::make('eleonora00'),'role' => 'locatore','fotoProfilo'=>'eleonora.gif','nome'=>'Eleonora','cognome'=>'Gritti','sesso'=>'F', 'dataNascita'=>null,'citta'=>null,'numTelefono'=>'2313423453','email'=>'eleele@gmail.com','universita'=>null,'facolta'=>null,'annoImmatricolazione'=>null],
-            ['username' => 'lara_battaglia', 'password'=> Hash::make('lara00345'),'role' => 'locatore','fotoProfilo'=>'lara.gif','nome'=>'Lara','cognome'=>'Battaglia','sesso'=>'F', 'dataNascita'=>null,'citta'=>null,'numTelefono'=>'345053456','email'=>'laraol0@gmail.com','universita'=>null,'facolta'=>null,'annoImmatricolazione'=>null],
-            ['username' => 'vanessa_marrone', 'password'=> Hash::make('vanni09a00'),'role' => 'locatore','fotoProfilo'=>'vanessa.gif','nome'=>'Vanessa','cognome'=>'Marrone','sesso'=>'F', 'dataNascita'=>null,'citta'=>null,'numTelefono'=>'3345407656','email'=>'vanessaa0@gmail.com','universita'=>null,'facolta'=>null,'annoImmatricolazione'=>null],
-            ['username' => 'alice_moretti', 'password'=> Hash::make('alicealice'),'role' => 'locatore','fotoProfilo'=>'alice.gif','nome'=>'Alice','cognome'=>'Alice','sesso'=>'F', 'dataNascita'=>null,'citta'=>null,'numTelefono'=>'34505456','email'=>'alice@gmail.com','universita'=>null,'facolta'=>null,'annoImmatricolazione'=>null],
-            ['username' => 'francesca_palazzetti', 'password'=> Hash::make('francesca'),'role' => 'locatore','fotoProfilo'=>'francesca.gif','nome'=>'Francesca','cognome'=>'Palazzetti','sesso'=>'F', 'dataNascita'=>null,'citta'=>null,'numTelefono'=>'3452305456','email'=>'francesca@gmail.com','universita'=>null,'facolta'=>null,'annoImmatricolazione'=>null],
-            ['username' => 'federica_parlapiano', 'password'=> Hash::make('federica'),'role' => 'locatore','fotoProfilo'=>'federica.gif','nome'=>'Federica','cognome'=>'Parlapiano','sesso'=>'F', 'dataNascita'=>null,'citta'=>null,'numTelefono'=>'34503425456','email'=>'federica@gmail.com','universita'=>null,'facolta'=>null,'annoImmatricolazione'=>null],
-            ['username' => 'arianna_ronci', 'password'=> Hash::make('ariannaa'),'role' => 'locatore','fotoProfilo'=>'arianna.gif','nome'=>'Arianna','cognome'=>'Ronci','sesso'=>'F', 'dataNascita'=>null,'citta'=>null,'numTelefono'=>'3450543456','email'=>'arianna@gmail.com','universita'=>null,'facolta'=>null,'annoImmatricolazione'=>null],
             
-            
-            /*
             ['username'=>'enzo_ferrante','password'=>Hash::make('Enzoferrante00'),'role' => 'locatario','fotoProfilo'=>'enzo.gif','nome'=>'Enzo','cognome'=>'Ferrante','sesso'=>'M','dataNascita'=>'2000-12-12','citta'=>'Viterbo','numTelefono'=>'3218934634','email'=>'enzoferrante00@gmail.com','universita'=>'Univpm','facolta'=>'Ingegneria Informatica e dell\'Automazione','annoImmatricolazione'=>'2019'],
             ['username'=>'flora_rossini','password'=>Hash::make('Florarossini98'),'role' => 'locatario','fotoProfilo'=>'flora.gif','nome'=>'Flora','cognome'=>'Rossini','sesso'=>'F','dataNascita'=>'1998-08-08','citta'=>'Genova','numTelefono'=>'3453435345','email'=>'florarossini@libero.it','universita'=>'Unichi','facolta'=>'Lettere','annoImmatricolazione'=>'2017'],
             ['username'=>'allegra_medici','password'=>Hash::make('Allegramedici01'),'role' => 'locatario','fotoProfilo'=>'allegra.gif','nome'=>'Allegra','cognome'=>'Medici','sesso'=>'F','dataNascita'=>'2001-04-13','citta'=>'Livorno','numTelefono'=>'3404945890','email'=>'allegra01@univpm.it','universita'=>'Univpm','facolta'=>'Ingegneria Meccanica','annoImmatricolazione'=>'2020'],
@@ -91,7 +77,7 @@ class DatabaseSeeder extends Seeder {
             ['username'=>'valerio_monti','password'=>Hash::make('Valerio12'),'role' => 'locatore','fotoProfilo'=>null,'nome'=>'Valerio','cognome'=>'Monti','sesso'=>'M','dataNascita'=>'1970-12-12','citta'=>'Milano','numTelefono'=>'3456342332','email'=>'valeriomonti@gmail.com','universita'=>null,'facolta'=>null,'annoImmatricolazione'=>null],
             ['username'=>'antonella_rapa','password'=>Hash::make('Anton1992'),'role' => 'locatore','fotoProfilo'=>null,'nome'=>'Antonella','cognome'=>'Rapa','sesso'=>'F','dataNascita'=>'1992-10-11','citta'=>'Torino','numTelefono'=>'324453234','email'=>'antorapa@libero.it','universita'=>null,'facolta'=>null,'annoImmatricolazione'=>null]
             
-            */
+            
             //['username'=>null,'password'=>null,'fotoProfilo'=>null,'nome'=>null,'cognome'=>null,'sesso'=>null,'dataNascita'=>null,'indirizzo'=>null,'numTelefono'=>null,'email'=>null,'universita'=>null,'facolta'=>null,'annoImmatricolazione'=>null]
             
             
@@ -99,130 +85,170 @@ class DatabaseSeeder extends Seeder {
         
         
         DB::table('annuncio')->insert([
-            /*['id' => 1, 'tipologia' => 'Appartamento', 'locatore'=> 'mario_rossi', 'descrizione' => 'Appartamento al secondo piano situato nei pressi del centro storico',
+            ['id' => 1, 'titolo'=>'Appartamento ristrutturato da poco', 'tipologia' => 'Appartamento', 'locatore'=> 'lorelore', 'descrizione' => 'Appartamento al secondo piano situato nei pressi del centro storico',
                 'zonaLocazione' => 'Ancona','indirizzo' => 'Via Brecce Bianche', 'canoneAffitto' => 500.00, 'superficie' => 60, 'inizioPeriodoDisponibilita' => '2022-05-01', 'finePeriodoDisponibilita' => '2023-05-31',
                 'disponibilita' => false, 'numCamere' => 2, 'postiLettoTotali' => 5,'postiNellaStanza' => null],
-            ['id' => 2, 'tipologia' => 'Appartamento', 'locatore'=> 'simone_parini', 'descrizione' => 'Affitto appartamento solo per studenti universitari',
+            
+            ['id' => 2, 'titolo'=>'Appartamento luminoso','tipologia' => 'Appartamento', 'locatore'=> 'lorelore', 'descrizione' => 'Affitto appartamento solo per studenti universitari',
                 'zonaLocazione' => 'Ancona','indirizzo' => 'Via Brecce Bianche', 'canoneAffitto' => 520.00, 'superficie' => 75, 'inizioPeriodoDisponibilita' => '2021-09-01', 'finePeriodoDisponibilita' => '2022-09-30',
                 'disponibilita' => false, 'numCamere' => 2, 'postiLettoTotali' => 4,'postiNellaStanza' => null],
-            ['id' => 3, 'tipologia' => 'Posto letto', 'locatore'=> 'aurora_nicolini', 'descrizione' => 'Posto letto in un appartamento in centro',
+            
+            ['id' => 3, 'titolo'=>'Posto letto per studenti', 'tipologia' => 'PostoLettoSingolo', 'locatore'=> 'lorelore', 'descrizione' => 'Posto letto in un appartamento in centro',
                 'zonaLocazione' => 'Milano', 'indirizzo' => 'Via Francesco Sforza', 'canoneAffitto' => 200.00, 'superficie' => null, 'inizioPeriodoDisponibilita' => '2022-07-10', 'finePeriodoDisponibilita' => '2024-01-28',
-                'disponibilita' => false, 'numCamere' => null, 'postiLettoTotali' => null,'postiNellaStanza' => 1],
-            ['id' => 4, 'tipologia' => 'Posto letto', 'locatore'=> 'ennio_tosi', 'descrizione' => 'Posto letto in un appartamento situato in una zona tranquilla di Torino',
+                'disponibilita' => false, 'numCamere' => null, 'postiLettoTotali' => 2,'postiNellaStanza' => 1],
+            
+            ['id' => 4, 'titolo'=>'Posto letto a Torino', 'tipologia' => 'PostoLettoSingolo', 'locatore'=> 'lorelore', 'descrizione' => 'Posto letto in un appartamento situato in una zona tranquilla di Torino',
                 'zonaLocazione' => 'Torino', 'indirizzo' => 'Corso Torino','canoneAffitto' => 250.00, 'superficie' => 40, 'inizioPeriodoDisponibilita' => '2022-01-10', 'finePeriodoDisponibilita' => '2023-03-01',
-                'disponibilita' => false, 'numCamere' => null, 'postiLettoTotali' => null,'postiNellaStanza' => 1],
-            ['id' => 5, 'tipologia' => 'Posto letto', 'locatore'=> 'ennio_tosi', 'descrizione' => 'Posto letto in camera doppia situato in una zona tranquilla di Torino',
+                'disponibilita' => false, 'numCamere' => null, 'postiLettoTotali' => 2,'postiNellaStanza' => 1],
+            
+            ['id' => 5, 'titolo'=>'Posto letto in stanza condivisa', 'tipologia' => 'PostoLettoDoppia', 'locatore'=> 'lorelore', 'descrizione' => 'Posto letto in camera doppia situato in una zona tranquilla di Torino',
                 'zonaLocazione' => 'Torino', 'indirizzo' => 'Corso Torino','canoneAffitto' => 250.00, 'superficie' => 40, 'inizioPeriodoDisponibilita' => '2022-09-01', 'finePeriodoDisponibilita' => '2023-09-01',
                 'disponibilita' => false, 'numCamere' => null, 'postiLettoTotali' => 2,'postiNellaStanza' => 2],
-            ['id' => 6, 'tipologia' => 'Appartamento', 'locatore'=> 'eleonora_gritti', 'descrizione' => 'Appartamento ',
+            
+            ['id' => 6, 'titolo'=>'Appartamento a Torino, zona strategica', 'tipologia' => 'Appartamento', 'locatore'=> 'lorelore', 'descrizione' => 'Appartamento ',
                 'zonaLocazione' => 'Torino', 'indirizzo' => 'Viale Antonio Gramsci','canoneAffitto' => 450.00, 'superficie' => 100, 'inizioPeriodoDisponibilita' => '2022-01-01', 'finePeriodoDisponibilita' => '2023-01-01',
                 'disponibilita' => false, 'numCamere' => 1, 'postiLettoTotali' => 2,'postiNellaStanza' => null],
-            ['id' => 7, 'tipologia' => 'Posto letto', 'locatore'=> 'camilla_piacentini', 'descrizione' => 'Posto letto in camera doppia situato in una zona tranquilla di Roma',
+            
+            ['id' => 7, 'titolo'=>'Posto letto in un appartamento nuovissimo', 'tipologia' => 'PostoLettoDoppia', 'locatore'=> 'camilla_piacentini', 'descrizione' => 'Posto letto in camera doppia situato in una zona tranquilla di Roma',
                 'zonaLocazione' => 'Roma', 'indirizzo' => 'Via Como','canoneAffitto' => 300.00, 'superficie' => 40, 'inizioPeriodoDisponibilita' => '2021-09-10', 'finePeriodoDisponibilita' => '2022-12-01',
-                'disponibilita' => false, 'numCamere' => null, 'postiLettoTotali' => null,'postiNellaStanza' => 2],
-            ['id' => 8, 'tipologia' => 'Posto letto', 'locatore'=> 'lara_battaglia', 'descrizione' => 'Posto letto in camera singola situato in una zona tranquilla di Roma',
+                'disponibilita' => false, 'numCamere' => null, 'postiLettoTotali' => 2,'postiNellaStanza' => 2],
+            
+            ['id' => 8, 'titolo'=>'Posto letto in camera doppia a Roma', 'tipologia' => 'PostoLettoDoppia', 'locatore'=> 'lara_battaglia', 'descrizione' => 'Posto letto in camera singola situato in una zona tranquilla di Roma',
                 'zonaLocazione' => 'Roma', 'indirizzo' => 'Via Gaeta', 'canoneAffitto' => 300.00, 'superficie' => 40, 'inizioPeriodoDisponibilita' => '2022-09-10', 'finePeriodoDisponibilita' => '2025-06-10',
-                'disponibilita' => false, 'numCamere' => null, 'postiLettoTotali' => null,'postiNellaStanza' => 1],
-            ['id' => 9, 'tipologia' => 'Posto letto', 'locatore'=> 'vanessa_marrone', 'descrizione' => 'Posto letto in camera doppia situato in una zona tranquilla di Firenze',
+                'disponibilita' => false, 'numCamere' => null, 'postiLettoTotali' => 2,'postiNellaStanza' => 1],
+            
+            ['id' => 9, 'titolo'=>'Posto letto in riva al mare', 'tipologia' => 'PostoLettoSingolo', 'locatore'=> 'vanessa_marrone', 'descrizione' => 'Posto letto in camera doppia situato in una zona tranquilla di Firenze',
                 'zonaLocazione' => 'Firenze', 'indirizzo' => 'Viale Corsica', 'canoneAffitto' => 200.00, 'superficie' => 40, 'inizioPeriodoDisponibilita' => '2021-09-10', 'finePeriodoDisponibilita' => '2023-03-01',
-                'disponibilita' => false, 'numCamere' => null, 'postiLettoTotali' => null,'postiNellaStanza' => 2],
-            ['id' => 10, 'tipologia' => 'Posto letto', 'locatore'=> 'arianna_ronci', 'descrizione' => 'Posto letto in camera doppia situato in una zona tranquilla di Firenze',
+                'disponibilita' => false, 'numCamere' => null, 'postiLettoTotali' => 3,'postiNellaStanza' => 1],
+            
+            ['id' => 10, 'titolo'=>'Posto letto bellissimo', 'tipologia' => 'PostoLettoSingolo', 'locatore'=> 'arianna_ronci', 'descrizione' => 'Posto letto in camera doppia situato in una zona tranquilla di Firenze',
                 'zonaLocazione' => 'Firenze', 'indirizzo' => 'Via del Romito', 'canoneAffitto' => 300.00, 'superficie' => 40, 'inizioPeriodoDisponibilita' => '2022-01-01', 'finePeriodoDisponibilita' => '2022-12-31',
-                'disponibilita' => false, 'numCamere' => null, 'postiLettoTotali' => null,'postiNellaStanza' => 2],
-            ['id' => 11, 'tipologia' => 'Appartamento', 'locatore'=> 'arianna_ronci', 'descrizione' => 'Appartamento al secondo piano situato nei pressi del centro storico',
+                'disponibilita' => false, 'numCamere' => null, 'postiLettoTotali' => 3,'postiNellaStanza' => 1],
+            
+            ['id' => 11, 'titolo'=>'Appartamento bello', 'tipologia' => 'Appartamento', 'locatore'=> 'arianna_ronci', 'descrizione' => 'Appartamento al secondo piano situato nei pressi del centro storico',
                 'zonaLocazione' => 'Ancona','indirizzo' => 'Via Maestri del Lavoro', 'canoneAffitto' => 600.00, 'superficie' => 60, 'inizioPeriodoDisponibilita' => '2022-02-10', 'finePeriodoDisponibilita' => '2023-07-31',
                 'disponibilita' => true, 'numCamere' => 2, 'postiLettoTotali' => 5,'postiNellaStanza' => null],
-            ['id' => 12, 'tipologia' => 'Appartamento', 'locatore'=> 'arianna_ronci', 'descrizione' => 'Affitto appartamento solo per studenti universitari',
+            
+            ['id' => 12, 'titolo'=>'Appartamento in riva al mare', 'tipologia' => 'Appartamento', 'locatore'=> 'arianna_ronci', 'descrizione' => 'Affitto appartamento solo per studenti universitari',
                 'zonaLocazione' => 'Ancona', 'indirizzo' => 'Via delle Tavernelle', 'canoneAffitto' => 520.00, 'superficie' => 75, 'inizioPeriodoDisponibilita' => '2022-09-01', 'finePeriodoDisponibilita' => '2023-06-20',
                 'disponibilita' => true, 'numCamere' => 2, 'postiLettoTotali' => 4,'postiNellaStanza' => null],
-            ['id' => 13, 'tipologia' => 'Posto letto', 'locatore'=> 'federica_parlapiano', 'descrizione' => 'Posto letto in un appartamento in centro',
+            
+            ['id' => 13, 'titolo'=>'Posto letto stupendo', 'tipologia' => 'PostoLettoSingolo', 'locatore'=> 'federica_parlapiano', 'descrizione' => 'Posto letto in un appartamento in centro',
                 'zonaLocazione' => 'Ancona', 'indirizzo' => 'Via delle Tavernelle', 'canoneAffitto' => 200.00, 'superficie' => null, 'inizioPeriodoDisponibilita' => '2023-09-10', 'finePeriodoDisponibilita' => '2024-02-28',
-                'disponibilita' => true, 'numCamere' => null, 'postiLettoTotali' => null,'postiNellaStanza' => 1],
-            ['id' => 14, 'tipologia' => 'Posto letto', 'locatore'=> 'federica_parlapiano', 'descrizione' => 'Posto letto in un appartamento situato in una zona tranquilla di Catania',
+                'disponibilita' => true, 'numCamere' => null, 'postiLettoTotali' => 2,'postiNellaStanza' => 1],
+            
+            ['id' => 14, 'titolo'=>'Posto letto meraviglioso', 'tipologia' => 'PostoLettoDoppia', 'locatore'=> 'federica_parlapiano', 'descrizione' => 'Posto letto in un appartamento situato in una zona tranquilla di Catania',
                 'zonaLocazione' => 'Milano','indirizzo' => 'Via Lanzone', 'canoneAffitto' => 250.00, 'superficie' => 40, 'inizioPeriodoDisponibilita' => '2023-09-10', 'finePeriodoDisponibilita' => '2024-03-01',
-                'disponibilita' => true, 'numCamere' => null, 'postiLettoTotali' => null,'postiNellaStanza' => 1],
-            ['id' => 15, 'tipologia' => 'Posto letto', 'locatore'=> 'federica_parlapiano', 'descrizione' => 'Posto letto in camera doppia situato in una zona tranquilla di Padova',
+                'disponibilita' => true, 'numCamere' => null, 'postiLettoTotali' => 3,'postiNellaStanza' => 2],
+            
+            ['id' => 15, 'titolo'=>'Posto letto economico', 'tipologia' => 'PostoLettoSingolo', 'locatore'=> 'federica_parlapiano', 'descrizione' => 'Posto letto in camera doppia situato in una zona tranquilla di Padova',
                 'zonaLocazione' => 'Padova', 'indirizzo' => 'Via Dante', 'canoneAffitto' => 250.00, 'superficie' => 40, 'inizioPeriodoDisponibilita' => '2023-09-10', 'finePeriodoDisponibilita' => '2024-03-01',
-                'disponibilita' => true, 'numCamere' => null, 'postiLettoTotali' => 2,'postiNellaStanza' => 2],
-            ['id' => 16, 'tipologia' => 'Appartamento', 'locatore'=> 'francesca_palazzetti', 'descrizione' => 'Appartamento',
+                'disponibilita' => true, 'numCamere' => null, 'postiLettoTotali' => 2,'postiNellaStanza' => 1],
+            
+            ['id' => 16, 'titolo'=>'Appartamento fantastico', 'tipologia' => 'Appartamento', 'locatore'=> 'francesca_palazzetti', 'descrizione' => 'Appartamento',
                 'zonaLocazione' => 'Padova',  'indirizzo' => 'Via del Santo', 'canoneAffitto' => 700.00, 'superficie' => 100, 'inizioPeriodoDisponibilita' => '2023-09-10', 'finePeriodoDisponibilita' => '2024-03-01',
                 'disponibilita' => true, 'numCamere' => 1, 'postiLettoTotali' => 2,'postiNellaStanza' => null],
-            ['id' => 17, 'tipologia' => 'Posto letto', 'locatore'=> 'francesca_palazzetti', 'descrizione' => 'Posto letto in camera doppia situato in una zona tranquilla di Vanezia',
+            
+            ['id' => 17, 'titolo'=>'Posto letto invidiabile', 'tipologia' => 'PostoLettoSingolo', 'locatore'=> 'francesca_palazzetti', 'descrizione' => 'Posto letto in camera doppia situato in una zona tranquilla di Vanezia',
                 'zonaLocazione' => 'Padova',  'indirizzo' => 'Via Ognissanti', 'canoneAffitto' => 250.00, 'superficie' => 40, 'inizioPeriodoDisponibilita' => '2023-09-10', 'finePeriodoDisponibilita' => '2024-03-01',
-                'disponibilita' => true, 'numCamere' => null, 'postiLettoTotali' => null,'postiNellaStanza' => 2],
-            ['id' => 18, 'tipologia' => 'Posto letto', 'locatore'=> 'francesca_palazzetti', 'descrizione' => 'Appartamento situato in una zona tranquilla di Roma',
+                'disponibilita' => true, 'numCamere' => null, 'postiLettoTotali' => 3,'postiNellaStanza' => 1],
+            
+            ['id' => 18, 'titolo'=>'Posto letto simpatico', 'tipologia' => 'PostoLettoDoppia', 'locatore'=> 'francesca_palazzetti', 'descrizione' => 'Appartamento situato in una zona tranquilla di Roma',
                 'zonaLocazione' => 'Roma', 'indirizzo' => 'Via Ippocrate', 'canoneAffitto' => 700.00, 'superficie' => 40, 'inizioPeriodoDisponibilita' => '2023-09-10', 'finePeriodoDisponibilita' => '2024-03-01',
-                'disponibilita' => true, 'numCamere' => 2, 'postiLettoTotali' => null,'postiNellaStanza' => null],
-            ['id' => 19, 'tipologia' => 'Posto letto', 'locatore'=> 'alice_moretti', 'descrizione' => 'Appartamento situato in una zona tranquilla di Pesaro Urbino',
+                'disponibilita' => true, 'numCamere' => null, 'postiLettoTotali' => 3,'postiNellaStanza' => 2],
+            
+            ['id' => 19, 'titolo'=>'Posto letto invidiabile', 'tipologia' => 'PostoLettoSingolo', 'locatore'=> 'alice_moretti', 'descrizione' => 'Appartamento situato in una zona tranquilla di Pesaro Urbino',
                 'zonaLocazione' => 'Urbino',  'indirizzo' => 'Via delle Mura', 'canoneAffitto' => 800.00, 'superficie' => 40, 'inizioPeriodoDisponibilita' => '2023-09-10', 'finePeriodoDisponibilita' => '2024-03-01',
-                'disponibilita' => true, 'numCamere' => 3, 'postiLettoTotali' => null,'postiNellaStanza' => null],
-            ['id' => 20, 'tipologia' => 'Appartamento', 'locatore'=> 'alice_moretti', 'descrizione' => 'Appartamento situato in una zona tranquilla di Macerata',
+                'disponibilita' => true, 'numCamere' => null, 'postiLettoTotali' => 2,'postiNellaStanza' => 1],
+            
+            ['id' => 20, 'titolo'=>'Appartamento a basso costo', 'tipologia' => 'Appartamento', 'locatore'=> 'alice_moretti', 'descrizione' => 'Appartamento situato in una zona tranquilla di Macerata',
                 'zonaLocazione' => 'Macerata',  'indirizzo' => 'Via Domenico Costantini', 'canoneAffitto' => 500.00, 'superficie' => 40, 'inizioPeriodoDisponibilita' => '2023-09-10', 'finePeriodoDisponibilita' => '2024-03-01',
-                'disponibilita' => true, 'numCamere' => 3, 'postiLettoTotali' => null,'postiNellaStanza' => null],
-            ['id' => 21, 'tipologia' => 'Appartamento', 'locatore'=> 'arianna_ronci', 'descrizione' => 'Appartamento al secondo piano situato nei pressi del centro storico',
+                'disponibilita' => true, 'numCamere' => 3, 'postiLettoTotali' => 3,'postiNellaStanza' => null],
+            
+            ['id' => 21, 'titolo'=>'Appartamento super fornito', 'tipologia' => 'Appartamento', 'locatore'=> 'arianna_ronci', 'descrizione' => 'Appartamento al secondo piano situato nei pressi del centro storico',
                 'zonaLocazione' => 'Ancona', 'indirizzo' => 'Via delle Tavernelle','canoneAffitto' => 500.00, 'superficie' => 60, 'inizioPeriodoDisponibilita' => '2023-02-10', 'finePeriodoDisponibilita' => '2025-07-31',
                 'disponibilita' => true, 'numCamere' => 2, 'postiLettoTotali' => 5,'postiNellaStanza' => null],
-            ['id' => 22, 'tipologia' => 'Appartamento', 'locatore'=> 'arianna_ronci', 'descrizione' => 'Affitto appartamento solo per studenti universitari',
+            
+            ['id' => 22, 'titolo'=>'Appartamento romantico ed elegante', 'tipologia' => 'Appartamento', 'locatore'=> 'arianna_ronci', 'descrizione' => 'Affitto appartamento solo per studenti universitari',
                 'zonaLocazione' => 'Ancona', 'indirizzo' => 'Via Eugenio Montale', 'canoneAffitto' => 650.00, 'superficie' => 75, 'inizioPeriodoDisponibilita' => '2022-01-01', 'finePeriodoDisponibilita' => '2022-12-31',
                 'disponibilita' => true, 'numCamere' => 2, 'postiLettoTotali' => 4,'postiNellaStanza' => null],
-            ['id' => 23, 'tipologia' => 'Posto letto', 'locatore'=> 'federica_parlapiano', 'descrizione' => 'Posto letto in un appartamento in centro',
+            
+            ['id' => 23, 'titolo'=>'Stanza per studenti studiosi', 'tipologia' => 'PostoLettoSingolo', 'locatore'=> 'federica_parlapiano', 'descrizione' => 'Posto letto in un appartamento in centro',
                 'zonaLocazione' => 'Milano', 'indirizzo' => 'Corso Italia', 'canoneAffitto' => 300.00, 'superficie' => null, 'inizioPeriodoDisponibilita' => '2023-09-10', 'finePeriodoDisponibilita' => '2024-02-28',
-                'disponibilita' => true, 'numCamere' => null, 'postiLettoTotali' => null,'postiNellaStanza' => 1],
-            ['id' => 24, 'tipologia' => 'Posto letto', 'locatore'=> 'federica_parlapiano', 'descrizione' => 'Posto letto in un appartamento situato in una zona tranquilla di Catania',
+                'disponibilita' => true, 'numCamere' => null, 'postiLettoTotali' => 2,'postiNellaStanza' => 1],
+            
+            ['id' => 24, 'titolo'=>'Camera spaziosa e luminosa', 'tipologia' => 'PostoLettoSingolo', 'locatore'=> 'federica_parlapiano', 'descrizione' => 'Posto letto in un appartamento situato in una zona tranquilla di Catania',
                 'zonaLocazione' => 'Milano', 'indirizzo' => 'Corso Italia','canoneAffitto' => 350.00, 'superficie' => 40, 'inizioPeriodoDisponibilita' => '2022-09-10', 'finePeriodoDisponibilita' => '2023-03-01',
-                'disponibilita' => true, 'numCamere' => null, 'postiLettoTotali' => null,'postiNellaStanza' => 1],
-            ['id' => 25, 'tipologia' => 'Posto letto', 'locatore'=> 'federica_parlapiano', 'descrizione' => 'Posto letto in camera doppia situato in una zona tranquilla di Padova',
+                'disponibilita' => true, 'numCamere' => null, 'postiLettoTotali' => 2,'postiNellaStanza' => 1],
+            
+            ['id' => 25, 'titolo'=>'Camera doppia per studenti di ingegneria', 'tipologia' => 'PostoLettoDoppia', 'locatore'=> 'federica_parlapiano', 'descrizione' => 'Posto letto in camera doppia situato in una zona tranquilla di Padova',
                 'zonaLocazione' => 'Padova',  'indirizzo' => 'Via Ugo Bassi', 'canoneAffitto' => 200.00, 'superficie' => 40, 'inizioPeriodoDisponibilita' => '2022-09-10', 'finePeriodoDisponibilita' => '2023-06-30',
                 'disponibilita' => true, 'numCamere' => null, 'postiLettoTotali' => 2,'postiNellaStanza' => 2],
-            ['id' => 26, 'tipologia' => 'Appartamento', 'locatore'=> 'francesca_palazzetti', 'descrizione' => 'Appartamento',
+            
+            ['id' => 26, 'titolo'=>'Abitazione in centro', 'tipologia' => 'Appartamento', 'locatore'=> 'francesca_palazzetti', 'descrizione' => 'Appartamento',
                 'zonaLocazione' => 'Padova',  'indirizzo' => 'Via San Mattia', 'canoneAffitto' => 900.00, 'superficie' => 100, 'inizioPeriodoDisponibilita' => '2023-01-10', 'finePeriodoDisponibilita' => '2023-12-31',
                 'disponibilita' => true, 'numCamere' => 1, 'postiLettoTotali' => 2,'postiNellaStanza' => null],
-            ['id' => 27, 'tipologia' => 'Posto letto', 'locatore'=> 'francesca_palazzetti', 'descrizione' => 'Posto letto in camera doppia situato in una zona tranquilla di Vanezia',
+            
+            ['id' => 27, 'titolo'=>'Stanza perfetta per studenti', 'tipologia' => 'PostoLettoDoppia', 'locatore'=> 'francesca_palazzetti', 'descrizione' => 'Posto letto in camera doppia situato in una zona tranquilla di Vanezia',
                 'zonaLocazione' => 'Padova',  'indirizzo' => 'Via San Massimiliano', 'canoneAffitto' => 300.00, 'superficie' => 40, 'inizioPeriodoDisponibilita' => '2023-09-10', 'finePeriodoDisponibilita' => '2023-12-31',
-                'disponibilita' => true, 'numCamere' => null, 'postiLettoTotali' => null,'postiNellaStanza' => 2],
-            ['id' => 28, 'tipologia' => 'Posto letto', 'locatore'=> 'francesca_palazzetti', 'descrizione' => 'Appartamento situato in una zona vicina al centro della città',
+                'disponibilita' => true, 'numCamere' => null, 'postiLettoTotali' => 2,'postiNellaStanza' => 2],
+            
+            ['id' => 28, 'titolo'=>'Camera vicino all\'università', 'tipologia' => 'PostoLettoDoppia', 'locatore'=> 'francesca_palazzetti', 'descrizione' => 'Appartamento situato in una zona vicina al centro della città',
                 'zonaLocazione' => 'Urbino', 'indirizzo' => 'Via del Soccorso', 'canoneAffitto' => 500.00, 'superficie' => 40, 'inizioPeriodoDisponibilita' => '2023-09-10', 'finePeriodoDisponibilita' => '2024-03-01',
-                'disponibilita' => true, 'numCamere' => 2, 'postiLettoTotali' => null,'postiNellaStanza' => null],
-            ['id' => 29, 'tipologia' => 'Posto letto', 'locatore'=> 'alice_moretti', 'descrizione' => 'Appartamento situato in una zona tranquilla di Pesaro Urbino',
+                'disponibilita' => true, 'numCamere' => null, 'postiLettoTotali' => 3,'postiNellaStanza' => 2],
+            
+            ['id' => 29, 'titolo'=>'Camera per studenti e lavoratori', 'tipologia' => 'PostoLettoDoppia', 'locatore'=> 'alice_moretti', 'descrizione' => 'Appartamento situato in una zona tranquilla di Pesaro Urbino',
                 'zonaLocazione' => 'Urbino', 'indirizzo' => 'Via del Soccorso', 'canoneAffitto' => 550.00, 'superficie' => 40, 'inizioPeriodoDisponibilita' => '2022-09-10', 'finePeriodoDisponibilita' => '2023-09-10',
-                'disponibilita' => true, 'numCamere' => 3, 'postiLettoTotali' => null,'postiNellaStanza' => null],
-            ['id' => 30, 'tipologia' => 'Appartamento', 'locatore'=> 'alice_moretti', 'descrizione' => 'Appartamento situato in una zona tranquilla di Macerata',
+                'disponibilita' => true, 'numCamere' => null, 'postiLettoTotali' => 4,'postiNellaStanza' => 2],
+            
+            ['id' => 30, 'titolo'=>'Appartamento nel centro storico', 'tipologia' => 'Appartamento', 'locatore'=> 'alice_moretti', 'descrizione' => 'Appartamento situato in una zona tranquilla di Macerata',
                 'zonaLocazione' => 'Macerata', 'indirizzo' => 'Via Luigi Bertelli', 'canoneAffitto' => 600.00, 'superficie' => 40, 'inizioPeriodoDisponibilita' => '2022-09-10', 'finePeriodoDisponibilita' => '2023-03-10',
-                'disponibilita' => true, 'numCamere' => 3, 'postiLettoTotali' => null,'postiNellaStanza' => null],
-            ['id' => 31, 'tipologia' => 'Appartamento', 'locatore'=> 'arianna_ronci', 'descrizione' => 'Appartamento al secondo piano situato nei pressi del centro storico',
+                'disponibilita' => true, 'numCamere' => 3, 'postiLettoTotali' => 4,'postiNellaStanza' => null],
+            
+            ['id' => 31, 'titolo'=>'Appartamento di lusso', 'tipologia' => 'Appartamento', 'locatore'=> 'arianna_ronci', 'descrizione' => 'Appartamento al secondo piano situato nei pressi del centro storico',
                 'zonaLocazione' => 'Ancona', 'indirizzo' => 'Via del Commercio', 'canoneAffitto' => 400.00, 'superficie' => 60, 'inizioPeriodoDisponibilita' => '2022-02-10', 'finePeriodoDisponibilita' => '2023-07-31',
                 'disponibilita' => true, 'numCamere' => 2, 'postiLettoTotali' => 5,'postiNellaStanza' => null],
-            ['id' => 32, 'tipologia' => 'Appartamento', 'locatore'=> 'arianna_ronci', 'descrizione' => 'Affitto appartamento solo per studenti universitari',
+            
+            ['id' => 32, 'titolo'=>'Appartamento appena ristrutturato', 'tipologia' => 'Appartamento', 'locatore'=> 'arianna_ronci', 'descrizione' => 'Affitto appartamento solo per studenti universitari',
                 'zonaLocazione' => 'Ancona', 'indirizzo' => 'Via Monte D\'Ago', 'canoneAffitto' => 620.00, 'superficie' => 75, 'inizioPeriodoDisponibilita' => '2022-09-01', 'finePeriodoDisponibilita' => '2023-06-20',
                 'disponibilita' => true, 'numCamere' => 2, 'postiLettoTotali' => 4,'postiNellaStanza' => null],
-            ['id' => 33, 'tipologia' => 'Posto letto', 'locatore'=> 'federica_parlapiano', 'descrizione' => 'Posto letto in un appartamento in centro',
+            
+            ['id' => 33, 'titolo'=>'Stanza vicino al Colosseo', 'tipologia' => 'PostoLettoSingolo', 'locatore'=> 'federica_parlapiano', 'descrizione' => 'Posto letto in un appartamento in centro',
                 'zonaLocazione' => 'Roma', 'indirizzo' => 'Viale delle Scienze', 'canoneAffitto' => 350.00, 'superficie' => null, 'inizioPeriodoDisponibilita' => '2023-09-10', 'finePeriodoDisponibilita' => '2024-02-28',
-                'disponibilita' => true, 'numCamere' => null, 'postiLettoTotali' => null,'postiNellaStanza' => 1],
-            ['id' => 34, 'tipologia' => 'Posto letto', 'locatore'=> 'federica_parlapiano', 'descrizione' => 'Posto letto in un appartamento situato in una zona tranquilla di Catania',
+                'disponibilita' => true, 'numCamere' => null, 'postiLettoTotali' => 3,'postiNellaStanza' => 1],
+            
+            ['id' => 34, 'titolo'=>'Camera perfetta per gli studenti', 'tipologia' => 'PostoLettoSingolo', 'locatore'=> 'federica_parlapiano', 'descrizione' => 'Posto letto in un appartamento situato in una zona tranquilla di Catania',
                 'zonaLocazione' => 'Roma', 'indirizzo' => 'Viale delle Scienze ', 'canoneAffitto' => 200.00, 'superficie' => 40, 'inizioPeriodoDisponibilita' => '2023-01-01', 'finePeriodoDisponibilita' => '2024-01-01',
-                'disponibilita' => true, 'numCamere' => null, 'postiLettoTotali' => null,'postiNellaStanza' => 1],
-            ['id' => 35, 'tipologia' => 'Posto letto', 'locatore'=> 'federica_parlapiano', 'descrizione' => 'Posto letto in camera doppia situato in una zona tranquilla di Padova',
+                'disponibilita' => true, 'numCamere' => null, 'postiLettoTotali' => 1,'postiNellaStanza' => 1],
+            
+            ['id' => 35, 'titolo'=>'La camera dei tuoi sogni', 'tipologia' => 'PostoLettoSingolo', 'locatore'=> 'federica_parlapiano', 'descrizione' => 'Posto letto in camera doppia situato in una zona tranquilla di Padova',
                 'zonaLocazione' => 'Padova',  'indirizzo' => 'Via Trieste', 'canoneAffitto' => 250.00, 'superficie' => 40, 'inizioPeriodoDisponibilita' => '2023-09-10', 'finePeriodoDisponibilita' => '2024-03-01',
-                'disponibilita' => true, 'numCamere' => null, 'postiLettoTotali' => 2,'postiNellaStanza' => 2],
-            ['id' => 36, 'tipologia' => 'Appartamento', 'locatore'=> 'francesca_palazzetti', 'descrizione' => 'Appartamento',
+                'disponibilita' => true, 'numCamere' => null, 'postiLettoTotali' => 2,'postiNellaStanza' => 1],
+            
+            ['id' => 36, 'titolo'=>'Appartamento da sogno', 'tipologia' => 'Appartamento', 'locatore'=> 'francesca_palazzetti', 'descrizione' => 'Appartamento',
                 'zonaLocazione' => 'Padova',  'indirizzo' => 'Via Gattamelata', 'canoneAffitto' => 750.00, 'superficie' => 100, 'inizioPeriodoDisponibilita' => '2022-03-10', 'finePeriodoDisponibilita' => '2023-03-10',
                 'disponibilita' => true, 'numCamere' => 1, 'postiLettoTotali' => 2,'postiNellaStanza' => null],
-            ['id' => 37, 'tipologia' => 'Posto letto', 'locatore'=> 'francesca_palazzetti', 'descrizione' => 'Posto letto in camera doppia situato in una zona tranquilla di Vanezia',
+            
+            ['id' => 37, 'titolo'=>'Posto letto vicino al supermercato', 'tipologia' => 'PostoLettoDoppia', 'locatore'=> 'francesca_palazzetti', 'descrizione' => 'Posto letto in camera doppia situato in una zona tranquilla di Vanezia',
                 'zonaLocazione' => 'Padova',  'indirizzo' => 'Via Nazareth', 'canoneAffitto' => 350.00, 'superficie' => 40, 'inizioPeriodoDisponibilita' => '2022-06-10', 'finePeriodoDisponibilita' => '2023-06-10',
-                'disponibilita' => true, 'numCamere' => null, 'postiLettoTotali' => null,'postiNellaStanza' => 2],
-            ['id' => 38, 'tipologia' => 'Posto letto', 'locatore'=> 'francesca_palazzetti', 'descrizione' => 'Appartamento situato in una zona tranquilla di Roma',
+                'disponibilita' => true, 'numCamere' => null, 'postiLettoTotali' => 4,'postiNellaStanza' => 2],
+            
+            ['id' => 38, 'titolo'=>'Posto letto con vista bellissima', 'tipologia' => 'PostoLettoSingolo', 'locatore'=> 'francesca_palazzetti', 'descrizione' => 'Appartamento situato in una zona tranquilla di Roma',
                 'zonaLocazione' => 'Roma', 'indirizzo' => 'Viale delle Scienze', 'canoneAffitto' => 400.00, 'superficie' => 40, 'inizioPeriodoDisponibilita' => '2023-09-10', 'finePeriodoDisponibilita' => '2024-03-01',
-                'disponibilita' => true, 'numCamere' => 2, 'postiLettoTotali' => null,'postiNellaStanza' => null],
-            ['id' => 39, 'tipologia' => 'Posto letto', 'locatore'=> 'alice_moretti', 'descrizione' => 'Appartamento situato in una zona tranquilla di Pesaro Urbino',
+                'disponibilita' => true, 'numCamere' => null, 'postiLettoTotali' => 3,'postiNellaStanza' => 1],
+            
+            ['id' => 39, 'titolo'=>'Posto letto in riva al mare', 'tipologia' => 'PostoLettoDoppia', 'locatore'=> 'alice_moretti', 'descrizione' => 'Appartamento situato in una zona tranquilla di Pesaro Urbino',
                 'zonaLocazione' => 'Urbino', 'indirizzo' => 'Via Giacomo Matteotti', 'canoneAffitto' => 450.00, 'superficie' => 40, 'inizioPeriodoDisponibilita' => '2023-09-10', 'finePeriodoDisponibilita' => '2025-09-10',
-                'disponibilita' => true, 'numCamere' => 3, 'postiLettoTotali' => null,'postiNellaStanza' => null],
-            ['id' => 40, 'tipologia' => 'Appartamento', 'locatore'=> 'alice_moretti', 'descrizione' => 'Appartamento situato in una zona tranquilla di Macerata',
+                'disponibilita' => true, 'numCamere' => null, 'postiLettoTotali' => 5,'postiNellaStanza' => 2],
+            
+            ['id' => 40, 'titolo'=>'Appartamento in un borgo', 'tipologia' => 'Appartamento', 'locatore'=> 'alice_moretti', 'descrizione' => 'Appartamento situato in una zona tranquilla di Macerata',
                 'zonaLocazione' => 'Macerata',  'indirizzo' => 'Via Giovanni Falcone', 'canoneAffitto' => 450.00, 'superficie' => 40, 'inizioPeriodoDisponibilita' => '2022-09-10', 'finePeriodoDisponibilita' => '2023-02-10',
-                'disponibilita' => true, 'numCamere' => 3, 'postiLettoTotali' => null,'postiNellaStanza' => null],
-            ['id' => 41, 'tipologia' => 'Appartamento', 'locatore'=> 'federica_parlapiano', 'descrizione' => 'Appartamento situato in una zona tranquilla di Ancona. L\'appartamento è stato ristrutturato nel 2019. A dieci minuti a piedi c\'è la facoltà di ingegneria; a tre minuti è situata la fermata del 46. Inoltre, la vista sul porto è mozzafiato. Tutti i ragazzi che hanno precedentemente abitato la casa sono rimasti molto contenti. Il terrazzo è molto accogliente, ci si possono organizzare feste.' ,
+                'disponibilita' => true, 'numCamere' => 3, 'postiLettoTotali' => 4,'postiNellaStanza' => null],
+            
+            ['id' => 41, 'titolo'=>'Appartamento in riva al mare', 'tipologia' => 'Appartamento', 'locatore'=> 'federica_parlapiano', 'descrizione' => 'Appartamento situato in una zona tranquilla di Ancona. L\'appartamento è stato ristrutturato nel 2019. A dieci minuti a piedi c\'è la facoltà di ingegneria; a tre minuti è situata la fermata del 46. Inoltre, la vista sul porto è mozzafiato. Tutti i ragazzi che hanno precedentemente abitato la casa sono rimasti molto contenti. Il terrazzo è molto accogliente, ci si possono organizzare feste.' ,
                 'zonaLocazione' => 'Ancona',  'indirizzo' => 'Via Brecce Bianche 25', 'canoneAffitto' => 250.00, 'superficie' => 80, 'inizioPeriodoDisponibilita' => '2022-09-10', 'finePeriodoDisponibilita' => '2023-02-10',
-                'disponibilita' => true, 'numCamere' => 3, 'postiLettoTotali' => null,'postiNellaStanza' => null]
-           */
+                'disponibilita' => true, 'numCamere' => 3, 'postiLettoTotali' => 5,'postiNellaStanza' => null]
+           
         ]);
         
         
