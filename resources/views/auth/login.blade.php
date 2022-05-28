@@ -8,12 +8,12 @@
     <p class="login-paragraph"> Accedi al tuo account </p>
 
             {{ Form::open(array('route' => 'login', 'class' => 'form login')) }}
+            {{ Form::token() }}
           
              <div title= "username" class="form-field">
                 {!! Form::label('username', '<i class="fa-solid fa-user"></i>', [], false) !!}
                 {{ Form::text('username', '', ['class' => 'form-input','id' => 'login__username', 'placeholder' => 'username' ]) }} 
             </div>
-            
             
             
             <div title = "password" class="form-field">

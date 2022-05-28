@@ -9,54 +9,56 @@
 
 
             {{ Form::open(array('route' => 'register', 'class' => 'form login')) }}
+            {{ Form::token() }}
             
             <div  class="form-field">
                 {{ Form::label('nome', 'Nome', ['class' => 'register-label']) }}
-                {{ Form::text('nome', '', ['class' => 'form-input', 'id' => 'nome']) }}
-                @if ($errors->first('nome'))
-                <ul class="errors">
-                    @foreach ($errors->get('nome') as $message)
-                    <li>{{ $message }}</li>
-                    @endforeach
-                </ul>
-                @endif
+                {{ Form::text('nome', '', ['class' => 'form-input', 'id' => 'nome']) }}                
             </div>
+            @if ($errors->first('nome'))
+                <div class="errors">
+                    @foreach ($errors->get('nome') as $message)
+                    <p>{{ $message }}</p>
+                    @endforeach
+                </div>
+                @endif
 
             <div  class="form-field">
                 {{ Form::label('cognome', 'Cognome', ['class' => 'register-label']) }}
                 {{ Form::text('cognome', '', ['class' => 'form-input', 'id' => 'cognome']) }}
+                </div>
                 @if ($errors->first('cognome'))
-                <ul class="errors">
+                <div class="errors">
                     @foreach ($errors->get('cognome') as $message)
-                    <li>{{ $message }}</li>
+                    <p>{{ $message }}</p>
                     @endforeach
-                </ul>
+                </div>
                 @endif
-            </div>
+            
             
              <div  class="form-field">
                 {{ Form::label('email', 'Email', ['class' => 'register-label']) }}
                 {{ Form::text('email', '', ['class' => 'form-input','id' => 'email']) }}
+             </div>
                 @if ($errors->first('email'))
-                <ul class="errors">
+                <div class="errors">
                     @foreach ($errors->get('email') as $message)
-                    <li>{{ $message }}</li>
+                    <p>{{ $message }}</p>
                     @endforeach
-                </ul>
+                </div>
                 @endif
-            </div>
             
             <div  class="form-field">
                 {{ Form::label('numTelefono', 'Telefono', ['class' => 'register-label']) }}
                 {{ Form::text('numTelefono', '', ['class' => 'form-input','id' => 'numTelefono']) }}
+                </div>
                 @if ($errors->first('numTelefono'))
-                <ul class="errors">
+                <div class="errors">
                     @foreach ($errors->get('numTelefono') as $message)
-                    <li>{{ $message }}</li>
+                    <p>{{ $message }}</p>
                     @endforeach
-                </ul>
+                </div>
                 @endif
-            </div>
             
             <div class="form-field">
                 {{ Form::label('sesso', 'Sesso', ['class' => 'register-label']) }}
@@ -66,39 +68,39 @@
             <div class="form-field">
             {{ Form::label('dataNascita', 'Data di nascita', ['class' => 'register-label']) }}
             {{ Form::date('dataNascita', '', ['class' => 'form-input', 'id' => 'dataNascita'])}}
-            @if ($errors->first('dataNascita'))
-                <ul class="errors">
-                    @foreach ($errors->get('dataNascita') as $message)
-                    <li>{{ $message }}</li>
-                    @endforeach
-                </ul>
-                @endif
             </div>
+            @if ($errors->first('dataNascita'))
+                <div class="errors">
+                    @foreach ($errors->get('dataNascita') as $message)
+                    <p>{{ $message }}</p>
+                    @endforeach
+                </div>
+                @endif
             
             <div  class="form-field">
                 {{ Form::label('citta', 'Citta', ['class' => 'register-label']) }}
                 {{ Form::text('citta', '', ['class' => 'form-input','id' => 'citta']) }}
+                </div>
                 @if ($errors->first('citta'))
-                <ul class="errors">
+                <div class="errors">
                     @foreach ($errors->get('citta') as $message)
-                    <li>{{ $message }}</li>
+                    <p>{{ $message }}</p>
                     @endforeach
-                </ul>
+                </div>
                 @endif
-            </div>
             
             
             <div  class="form-field">
                 {{ Form::label('fotoProfilo', 'Immagine', ['class' => 'register-label']) }}
                 {{ Form::file('fotoProfilo', ['class' => 'form-input', 'id' => 'fotoProfilo']) }}
+                </div>
                 @if ($errors->first('fotoProfilo'))
-                <ul class="errors">
+                <div class="errors">
                     @foreach ($errors->get('fotoProfilo') as $message)
-                    <li>{{ $message }}</li>
+                    <p>{{ $message }}</p>
                     @endforeach
-                </ul>
+                </div>
                 @endif
-            </div>
            
             
             <div  class="form-field">
@@ -109,75 +111,75 @@
                 <div style="margin-top: 18px; margin-left: 18px;">
                 {{ Form::radio('role', 'locatario', false, ['id' => 'locatario', 'onclick' => 'checkRole()']) }} <span style="color: black;"> Locatario </span>  
                 </div>
+            </div>
                 @if ($errors->first('role'))
-                <ul class="errors">
+                <div class="errors">
                     @foreach ($errors->get('role') as $message)
-                    <li>{{ $message }}</li>
+                    <p>{{ $message }}</p>
                     @endforeach
-                </ul>
+                </div>
                 @endif
                
-            </div>
             
             <div  id="divuniversita" class="form-field" style="display: none; width: 380px;">
                 {{ Form::label('universita', 'Universita', ['class' => 'register-label']) }}
                 {{ Form::text('universita', '', ['class' => 'form-input','id' => 'universita']) }}
-                @if ($errors->first('universita'))
-                <ul class="errors">
-                    @foreach ($errors->get('universita') as $message)
-                    <li>{{ $message }}</li>
-                    @endforeach
-                </ul>
-                @endif
             </div>
+                @if ($errors->first('universita'))
+                <div class="errors">
+                    @foreach ($errors->get('universita') as $message)
+                    <p>{{ $message }}</p>
+                    @endforeach
+                </div>
+                @endif
             
             <div  id="divfacolta" class="form-field" style="display: none; width: 380px;">
                 {{ Form::label('facolta', 'Facolta', ['class' => 'register-label']) }}
                 {{ Form::text('facolta', '', ['class' => 'form-input','id' => 'facolta']) }}
+                </div>
                 @if ($errors->first('facolta'))
-                <ul class="errors">
+                <div class="errors">
                     @foreach ($errors->get('facolta') as $message)
-                    <li>{{ $message }}</li>
+                    <p>{{ $message }}</p>
                     @endforeach
-                </ul>
+                </div>
                 @endif
-            </div>
             
             <div  id="divimmatricolazione" class="form-field" style="display: none; width: 380px;">
                 {{ Form::label('annoImmatricolazione', 'Iscrizione', ['class' => 'register-label']) }}
                 {{ Form::text('annoImmatricolazione', '', ['class' => 'form-input','id' => 'annoImmatricolazione']) }}
+                </div>
                 @if ($errors->first('annoImmatricolazione'))
-                <ul class="errors">
+                <div class="errors">
                     @foreach ($errors->get('annoImmatricolazione') as $message)
-                    <li>{{ $message }}</li>
+                    <p>{{ $message }}</p>
                     @endforeach
-                </ul>
+                </div>
                 @endif
-            </div>
             
              <div  class="form-field">
                 {{ Form::label('username', 'Username', ['class' => 'register-label']) }}
                 {{ Form::text('username', '', ['class' => 'form-input','id' => 'username']) }}
+                </div>
                 @if ($errors->first('username'))
-                <ul class="errors">
+                <div class="errors">
                     @foreach ($errors->get('username') as $message)
-                    <li>{{ $message }}</li>
+                    <p>{{ $message }}</p>
                     @endforeach
-                </ul>
+                </div>
                 @endif
-            </div>
             
              <div  class="form-field">
                 {{ Form::label('password', 'Password', ['class' => 'register-label']) }}
                 {{ Form::password('password', ['class' => 'form-input', 'id' => 'password']) }}
+                </div>
                 @if ($errors->first('password'))
-                <ul class="errors">
+                <div class="errors">
                     @foreach ($errors->get('password') as $message)
-                    <li>{{ $message }}</li>
+                    <p>{{ $message }}</p>
                     @endforeach
-                </ul>
+                </div>
                 @endif
-            </div>
 
             <div  class="form-field">
                 {{ Form::label('password-confirm', 'Conferma password', ['class' => 'register-label']) }}
