@@ -280,6 +280,41 @@ da decommentrare per ordinare i contiatti in orizzontale*/
     margin: 50px auto 20px auto;
 }
 
+#elenco-proposte{
+        margin: auto;
+    }
+    
+    .card-tutte-proposte {
+      float: left;
+      width: 47.5%;
+      background-color: #C5DCFA;
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+      transition: 0.3s;
+      margin: 1em;
+    }
+
+    .card-tutte-proposte:hover {
+      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4);
+    }
+
+    .container-proposta-inviata {
+      padding: 2px 16px;
+    }
+    
+    .card-proposta-inviata {
+      float: left;
+      width: 47%;
+      background-color: #C5DCFA;
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+      transition: 0.3s;
+      margin: 1em;
+    }
+
+    .card-proposta-inviata:hover {
+      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4);
+    }
+
+
 /* Colori */
 .teal{color:#fff!important;background-color:#009688!important}
 .cadetblue{color:#fff!important;background-color:#5f9ea0}

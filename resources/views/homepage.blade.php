@@ -50,8 +50,8 @@
         <!-- Regulation -->
         <div class="container-regolamento"> 
         <span>Regolamento</span> 
-            <a href="Regolamento.pdf"> <button id="visualizza" onclick="" class="button ourblue"> <i class="fa-solid fa-file-pdf"></i> Visualizza</button></a>
-            <a href="Regolamento.pdf" download> <button id="download" onclick="" class="button ourblue"> <i class="fa-solid fa-download"></i> Download</button></a>
+            <a href="Regolamento.pdf"> <button id="visualizza" class="button ourblue"> <i class="fa-solid fa-file-pdf"></i> Visualizza</button></a>
+            <a href="Regolamento.pdf" download> <button id="download" class="button ourblue"> <i class="fa-solid fa-download"></i> Download</button></a>
         </div>
         
         

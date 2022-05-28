@@ -4,6 +4,8 @@
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/publicstyle.css') }}" >
         <link rel="stylesheet" type="text/css" href="{{ asset('css/catalogostyle.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/accountstyle.css') }}">
+
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
         <title>HomeforStudents | @yield('title', 'Homepage')</title>
@@ -75,7 +77,7 @@
      
         
         <!-- Footer -->
-        <footer>
+        <footer style="clear: both;">
             <div class="social">
             <a href="https://www.facebook.com/"><i class="fa-brands fa-facebook"></i></a>
             <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>

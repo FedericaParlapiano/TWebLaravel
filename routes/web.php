@@ -78,6 +78,8 @@ Route::post('/locatario/messaggio', 'LocatarioController@sendMessaggio')
 Route::post('/locatario/proposta', 'LocatarioController@sendProposta')
         ->name('proposta')->middleware('can:isLocatario');
 
+Route::get('/locatario/proposte', 'LocatarioController@showProposte')
+        ->name('propostelocatario')->middleware('can:isLocatario');
 
 //Rotte per l'autenticazione
 Route::get('login', 'Auth\LoginController@showLoginForm')

@@ -8,6 +8,7 @@ use App\Models\Resources\Messaggio;
 use App\Http\Requests\NuovaPropostaRequest;
 use App\Models\Resources\Richiesta;
 use App\models\Catalogo;
+use App\Models\Locatario;
 
 
 class LocatarioController extends Controller {
@@ -16,13 +17,16 @@ class LocatarioController extends Controller {
 
     public function __construct() {
         $this->middleware('can:isLocatario');
-        $this->_catalogoModel = new Catalogo();
+        $this->_locatarioModel = new Locatario();        
+        $this->_catalogoModel = new Catalogo();        
     }
 
     public function index() {
         $user = auth()->user();
+        $proposte = $this->_locatarioModel->getProposte($user->username);
         return view('accountlocatario')
-                   ->with('user', $user);
+                   ->with('user', $user)
+                   ->with('proposte', $proposte);
     }
     
     public function showFilterCatalogo(FiltriCatalogoRequest $request)
@@ -79,6 +83,16 @@ class LocatarioController extends Controller {
         
         return redirect()->action('LocatarioController@index');
         
+    }
+    
+    public function showProposte()
+    {
+        $user = auth()->user();
+        $proposte = $this->_locatarioModel->getProposte($user->username);
+                           
+        return view('proposte')
+                   ->with('user', $user)        
+                   ->with('proposte', $proposte);
     }
    
 }

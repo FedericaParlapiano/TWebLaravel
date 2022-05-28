@@ -6,7 +6,8 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
         <title>HomeforStudents | @yield('title', 'Homepage')</title>
         <script src="https://kit.fontawesome.com/ea82011960.js" crossorigin="anonymous"></script>
-        
+        <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+
         <style>
             body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
         </style>

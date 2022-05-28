@@ -85,8 +85,59 @@
     </div>
       
    </div> 
-  
+        
+    <div id="proposte-inviate">
+        <div><span class="xlarge"> <b> Le mie proposte</b></span><a id="bottone-vedi-tutte-proposte" href="{{ route('propostelocatario') }}" title="Visualizza tutte le proposte"> Vedi tutte </a></div>         
+        <hr>
+        <p> 1-6 di  @php echo sizeof($proposte); @endphp proposte inviate </p>
+        
+        @isset($proposte)
+        <div id="elenco-proposte">
+        @php
+        $counter=0;
+        @endphp
+        @foreach ($proposte as $proposta)
+        @php
+        if($counter >= 6){
+            break;
+        }
+        @endphp
+        
+           <div class="card-proposta-inviata">
+               <div class="container-proposta-inviata">
+                 <h4><b> Proposta </b></h4> 
+                 <p>Ti sei proposto per l'annuncio <b> {{ $proposta->titoloannuncio }} </b> ({{ $proposta->tipologiaannuncio }}) di <b> {{ $proposta->nomelocatore }}  {{ $proposta->cognomelocatore }}</b></p>
+                 <p>
+                     Periodo di affitto: da {{ $proposta->inizioAffitto }} a {{ $proposta->fineAffitto }}
+                     <br>
+                     @isset($proposta->messaggio)
+                     Messaggio:  "{{ $proposta->messaggio }}"
+                     @else
+                     Nessun messaggio specificato.
+                     @endisset
+                     <br>
+                     @isset($proposta->canoneProposto)
+                     Canone proposto:  <b> {{ $proposta->canoneProposto }} € </b>
+                     @else
+                     Nessuna proposta di canone
+                     @endisset
+                 </p>
+                 <p>
+                     Stato: <i> {{ $proposta->stato }} </i>
+                 </p>
 
+               </div>
+        </div> 
+        
+        @php
+        $counter++;
+        @endphp
+        
+        @endforeach
+        </div>
+        @endisset
+          
+    </div> 
   </div>
   
 
@@ -102,6 +153,7 @@ function w3_close() {
     document.getElementById("myOverlay").style.display = "none";
 }
 </script>
+
 @endisset
 @endsection
 
