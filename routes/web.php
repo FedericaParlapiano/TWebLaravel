@@ -51,6 +51,9 @@ Route::get('/locatore/eliminaannuncio/{idAnnuncio}', 'LocatoreController@deleteA
 Route::get('/admin', 'AdminController@index')
         ->name('admin')->middleware('can:isAdmin');
 
+Route::post('/admin', 'AdminController@filtraStatistiche')
+        ->middleware('can:isAdmin');
+
 Route::get('/admin/nuovafaq', 'AdminController@addFaq')
         ->name('nuovafaq')->middleware('can:isAdmin');
 
@@ -63,6 +66,12 @@ Route::post('/admin/modificafaq/{faqId}', 'AdminController@modificaFaq');
 
 Route::post('/admin/eliminafaq/{faqId}', 'AdminController@eliminaFaq')
         ->name('eliminafaq');
+
+Route::get('/admin/statistiche', 'AdminController@showStatistiche')
+->name('statistiche')->middleware('can:isAdmin');
+
+Route::post('/admin/statistiche', 'AdminController@filtraStatistiche');
+
 
 Route::get('/locatario', 'LocatarioController@index')
         ->name('locatario')->middleware('can:isLocatario');

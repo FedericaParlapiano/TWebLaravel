@@ -80,10 +80,10 @@
   
   <!-- Annunci -->
   <div id="annunci">
-    <div class="xlarge"><b>I miei annunci</b> <button class="button"><i class="fa-solid fa-circle-plus xlarge"></i></button></div>
+    <div class="xlarge"><b>I miei annunci</b> <a class="button" href="{{ route('nuovoannuncio') }}" title="Aggiungi un annuncio"><i class="fa-solid fa-circle-plus xlarge"></i></a></div>
     
     <hr>
-    <div class="section bottombar padding-16">
+    <div class="section bottombar padding-16" style="display:none;">
       <span class="margine-right">Filter:</span> 
       <button class="button black">Tutti</button>
       <button class="button white"><i class="fa-regular fa-calendar-check margine-right"></i>Disponibili</button>
@@ -95,7 +95,7 @@
     <div class="contenitore-annunci">
     <div class="catalogo-annunci">
     @foreach ($annunci as $annuncio)
-    <div class="annuncio white">
+    <div class="annuncio white" style="height:530px;">
         
         <div class="button-div-class">
             <a id="modifica-annuncio-button" href = "{{ route('modificaannuncio', [$annuncio->id]) }}" onclick="" class="button ourblue button-class" title="modifica l'annuncio"><i class="fa-solid fa-pencil"></i></a>
@@ -126,7 +126,7 @@
         
         
         <b>
-            <h3><a href="{{ route('annuncio', [$annuncio->id]) }}" target="_blank">{{ $annuncio->tipologia }}, {{ $annuncio->zonaLocazione }} </a></h3>
+            <h3><a href="{{ route('annuncio', [$annuncio->id]) }}" target="_blank">{{ $annuncio->zonaLocazione }}, {{ $annuncio->titolo }} ({{ $annuncio->tipologia }}) </a></h3>
         </b>
         <p>Canone: {{ $annuncio->canoneAffitto }}€</p>
         <p class="descrizione2">{{ $annuncio->descrizione }}</p>

@@ -273,6 +273,12 @@ da decommentrare per ordinare i contiatti in orizzontale*/
     margin-left:25px;
 }
 
+.grafico-statistiche {
+    width:600px;  
+    height: auto; 
+    align-content: center; 
+    margin: 50px auto 20px auto;
+}
 
 /* Colori */
 .teal{color:#fff!important;background-color:#009688!important}

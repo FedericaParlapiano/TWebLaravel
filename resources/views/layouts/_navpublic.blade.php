@@ -28,5 +28,5 @@
         <a href="{{ route('login') }}" title="Login">Login</a>
     @endguest
      
-    <a href="#contatti" title="Contattaci">Supporto</a>
+    
 </div>

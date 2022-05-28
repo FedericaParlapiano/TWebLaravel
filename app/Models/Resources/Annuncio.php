@@ -21,12 +21,12 @@ class Annuncio extends Model {
     
     public function filtra_data_da($da)
     {
-        return Annuncio::where('inizioPeriodoDisponibilita','>=', $da)->select('id')->pluck('id');
+        return Annuncio::where('inizioPeriodoDisponibilita','<=', $da)->select('id')->pluck('id');
     }
     
     public function filtra_data_a($a)
     {
-        return Annuncio::where('finePeriodoDisponibilita','<=', $a)->select('id')->pluck('id');
+        return Annuncio::where('finePeriodoDisponibilita','>=', $a)->select('id')->pluck('id');
     }
 
     

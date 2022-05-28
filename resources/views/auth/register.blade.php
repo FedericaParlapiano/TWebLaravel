@@ -60,7 +60,7 @@
             
             <div class="form-field">
                 {{ Form::label('sesso', 'Sesso', ['class' => 'register-label']) }}
-                {{ Form::select('sesso', ['F' => 'Donna', 'M' => 'Uomo'],  ['class' => 'form-input', 'id' => 'sesso']) }}
+                {{ Form::select('sesso', ['F' => 'Donna', 'M' => 'Uomo'], 'Donna', ['class' => 'form-input', 'id' => 'sesso']) }}
             </div>
             
             <div class="form-field">

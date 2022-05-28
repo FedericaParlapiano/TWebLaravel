@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Admin;
 use App\Models\Resources\Faq;
 use App\Http\Requests\NuovaFaqRequest;
+use App\Http\Requests\StatisticheRequest;
 
 class AdminController extends Controller {
 
@@ -17,10 +18,13 @@ class AdminController extends Controller {
     public function index() {
         $user = auth()->user();
         $faqs = $this->_adminModel->getFaqs();
+        $stats = $this->_adminModel->getStatistiche();
+        
         
         return view('accountadmin')
                     ->with('user', $user)
-                    ->with('faqs', $faqs);
+                    ->with('faqs', $faqs)
+                    ->with('stats', $stats);
     }
     
     public function addFaq(){
@@ -61,6 +65,25 @@ class AdminController extends Controller {
         $this->_adminModel->getFaqById($faqId)->delete();
         
         return redirect()->action('AdminController@index');
+    }
+    
+    
+    
+    public function filtraStatistiche(StatisticheRequest $request) {
+        
+        return $this->showStatistiche($this->_adminModel->getStatisticheFiltrate($request));
+    }
+    
+    public function showStatistiche($stats) {
+        
+        $user = auth()->user();
+        $faqs = $this->_adminModel->getFaqs();
+        
+        return view('accountadmin')
+                    ->with('user', $user)
+                    ->with('faqs', $faqs)
+                    ->with('stats', $stats);
+        
     }
 
 }

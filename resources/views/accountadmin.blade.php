@@ -2,6 +2,8 @@
 
 <link rel="stylesheet" type="text/css" href="{{ asset('css/accountstyle.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('css/catalogostyle.css') }}">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 @section('title', 'Area riservata')
 
@@ -11,7 +13,7 @@
 
 <!-- !PAGE CONTENT! -->
     
-    <a href="#"><img src="{{ asset('images/users/' . $user->fotoProfilo) }}" alt="immagine di profilo" style="width:65px;" class="circle right margine hide-large hover-opacity"></a>
+    <a href="#"><img src="images/users/admin.jpg" alt="immagine di profilo" style="width:65px;" class="circle right margine hide-large hover-opacity"></a>
     <span class="button hide-large xxlarge hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
     
     <div class="container">
@@ -68,53 +70,82 @@
 
   </div>
     
-    
-    <div>
-        <div class="contenitore-form"> 
-    {{ Form::open(array('route' => 'ricerca', 'id' => 'search', 'files' => false, 'class' => '')) }}
-    <div class = "row">    
-        <div class="left">
-        {{ Form::label('where', 'Zona di locazione', ['class' => 'label']) }} 
-                {{ Form::text('where', '', ['class' => 'input', 'id' => 'where']) }}
-                @if ($errors->first('where'))
-                <ul class="errors">
-                    @foreach ($errors->get('where') as $message)
-                    <li>{{ $message }}</li>
-                    @endforeach
-                </ul>
-                @endif  
-         </div>
-                    
-        <div style="margin-left:2.5em;">  
-            {{ Form::label('from', 'Da', ['class' => 'label']) }}
-                {{ Form::date('from', '', ['class' => 'input', 'id' => 'from']) }}
-                @if ($errors->first('from'))
-                <ul class="errors">
-                    @foreach ($errors->get('from') as $message)
-                    <li>{{ $message }}</li>
-                    @endforeach
-                </ul>
-                @endif 
-        </div>  
-                    
-        <div style="margin-left:2.5em;">
-            {{ Form::label('to', 'A', ['class' => 'label']) }}
-                {{ Form::date('to', '', ['class' => 'input', 'id' => 'to']) }}
-                @if ($errors->first('to'))
-                <ul class="errors">
-                    @foreach ($errors->get('to') as $message)
-                    <li>{{ $message }}</li>
-                    @endforeach
-                </ul>
-                @endif  
-        </div> 
+@isset($stats)    
+<div id="statistiche">
+        <div class="xlarge" style="margin-left: 30px;"><b>Statistiche</b>
+        <hr> </div>
         
-        <div style="margin-left:2.5em; margin-top:1.5em;">                
-        {{ Form::submit('Cerca', ['class' => 'button-form ourblue']) }}
+        
+        <div class="contenitore-form"> 
+            {{ Form::open(array('route' => 'admin', 'id' => 'search', 'files' => false, 'class' => '')) }}
+            <div class = "row">    
+                
+                <div style="margin-left:2.5em;">  
+                    {{ Form::label('from', 'Da', ['class' => 'label']) }}
+                        {{ Form::date('from', '', ['class' => 'input-statistiche', 'id' => 'from']) }}
+                        @if ($errors->first('from'))
+                        <ul class="errors">
+                            @foreach ($errors->get('from') as $message)
+                            <li>{{ $message }}</li>
+                            @endforeach
+                        </ul>
+                        @endif 
+                </div>  
+
+                <div style="margin-left:2.5em;">
+                    {{ Form::label('to', 'A', ['class' => 'label']) }}
+                        {{ Form::date('to', '', ['class' => 'input-statistiche', 'id' => 'to']) }}
+                        @if ($errors->first('to'))
+                        <ul class="errors">
+                            @foreach ($errors->get('to') as $message)
+                            <li>{{ $message }}</li>
+                            @endforeach
+                        </ul>
+                        @endif  
+                </div> 
+                
+                <div style="margin-left: 2.5em;">
+                {{ Form::label('tipologia', 'Tipologia', ['class' => 'label']) }}
+                {{ Form::select('tipologia', [ 'nessuno'=>'','Appartamento' => 'Appartamento', 'PostoLettoSingolo' => 'Posto letto (camera singola)',  'PostoLettoDoppia' => 'Posto letto (camera doppia)'], '',['class' => 'input', 'id' => 'tipologia'], ['onchange' => 'check_tipologia() ']) }}
+            </div>
+
+                <div style="margin-left:2.5em; margin-top:2.3em;">                
+                {{ Form::submit('Calcola', ['class' => 'button-form ourblue']) }}
+                </div>
+            </div>  
         </div>
-    </div>  
-</div>
+    
+    <div style='text-align: center; margin: 10px auto 10px auto;'>
+    
+        
+        <p>I criteri di ricerca indicati hanno dato dato luogo a questi risultati:
+        
+        <ul>
+        <li>numero annunci: {{$stats["annunci"]}},</li>
+        
+
+        <li>numero richieste: {{$stats["richieste"]}},</li>
+
+        <li>numero affitti: {{$stats["affitti"]}}.</li>
+        
+        </ul>
+        </p>
+            
+
+        <div class="grafico-statistiche">
+        <canvas id="graphStats"></canvas>
+        </div>
+        
+        
+        
     </div>
+        
+        
+</div>
+@endisset
+    
+    <br>
+    <br>
     
     <div id="FAQ">
             <div class="xlarge"><b>FAQ</b> 
@@ -146,7 +177,7 @@
             </div>               
     @endisset
     </div>    
-
+    
 <script>
 // Script to open and close sidebar
 function w3_open() {
@@ -159,5 +190,50 @@ function w3_close() {
     document.getElementById("myOverlay").style.display = "none";
 }
 </script>
+
+<script>
+        
+      $(document).ready(function() {
+      var annunci = '<?php echo $stats["annunci"]; ?>';
+      var richieste = '<?php echo $stats["richieste"]; ?>';
+      var affitti = '<?php echo $stats["affitti"]; ?>';
+      
+      var barColors = ["#AAECEB", "#61E8E6", "#4DB8B6"];
+      
+      var chartdata = {
+        labels: ['annunci', 'richieste', 'affitti'],
+        datasets: [{
+          backgroundColor: barColors,
+          borderColor: '#46d5f1',
+          hoverBackgroundColor: '#CCCCCC',
+          hoverBorderColor: '#666666',
+          data: [annunci, richieste, affitti]
+        }]
+      };
+
+      var graphTarget = $("#graphStats");
+
+      var barGraph = new Chart(graphTarget, {
+        type: 'bar',
+        data: chartdata,
+        options: {
+          plugins: {
+         legend: {
+            display: false
+          }
+        },
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
+          }
+        }
+        });
+    });    
+       
+</script>
+
 @endisset
 @endsection
