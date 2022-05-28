@@ -67,11 +67,6 @@ Route::post('/admin/modificafaq/{faqId}', 'AdminController@modificaFaq');
 Route::post('/admin/eliminafaq/{faqId}', 'AdminController@eliminaFaq')
         ->name('eliminafaq');
 
-Route::get('/admin/statistiche', 'AdminController@showStatistiche')
-->name('statistiche')->middleware('can:isAdmin');
-
-Route::post('/admin/statistiche', 'AdminController@filtraStatistiche');
-
 
 Route::get('/locatario', 'LocatarioController@index')
         ->name('locatario')->middleware('can:isLocatario');
