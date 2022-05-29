@@ -23,14 +23,14 @@ class NuovoAnnuncioRequest extends FormRequest {
      */
     public function rules() {
         return [
-            'titolo' => 'required|max:25',
+            'titolo' => 'required|max:25|regex:/^[0-9]{2}[\/][0-9]{2}[\/][0-9]{4}$/',
             'superficie' => 'nullable|numeric|min:0',
             'tipologia' => 'required|string',
             'numCamere'=> 'nullable|numeric|min:0',
             'postiLettoTotali' => 'nullable|numeric|min:0',
             'postiNellaStanza' => 'nullable|numeric|min:0',
-            'inizioPeriodoDisponibilita' => 'required|date|',
-            'finePeriodoDisponibilita' => 'required|date|after:inizioPeriodoDisponibilita',
+            'inizioPeriodoDisponibilita' => 'required|date|regex:/^[0-9]{4}[-][0-9]{2}[-][0-9]{2}$/',
+            'finePeriodoDisponibilita' => 'required|after:inizioPeriodoDisponibilita|regex:/^[0-9]{4}[-][0-9]{2}[-][0-9]{2}$/',
             'canoneAffitto' => 'required|numeric|min:0',
             'descrizione' => 'required|max:3000',
             'zonaLocazione' => 'required|max:25',

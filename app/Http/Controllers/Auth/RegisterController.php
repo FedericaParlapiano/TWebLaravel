@@ -59,7 +59,7 @@ class RegisterController extends Controller
             'role' => ['required', 'string'],
             'fotoProfilo' => ['nullable', 'string'],
             'sesso' => ['required', 'string'],
-            'dataNascita' => ['nullable', 'date', 'before:today'],
+            'dataNascita' => ['nullable', 'date', 'before:today', 'regex:/^[0-9]{4}[-][0-9]{2}[-][0-9]{2}$/'],
             'citta' => ['nullable', 'string', 'max:255'],
             'numTelefono' => ['nullable', 'numeric', 'digits_between:8,15'],
             'universita' => ['nullable', 'string', 'max:255'],
