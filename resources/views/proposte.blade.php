@@ -100,10 +100,11 @@
                 
                 <div style="clear: both; text-align: right;">
                 @if($proposta->stato=='da valutare')                
-                <button class="button-proposta">Accetta</button>
-                <button class="button-proposta" style="margin-left:15px;">Rifiuta</button>                
+                <a href="{{ route('accettaproposta', [$proposta->id]) }}" onclick="return confirm('Sei sicuro di voler accettare la proposta?')" class="button-proposta">Accetta</a>
+                <a href="{{ route('rifiutaproposta', [$proposta->id]) }}" onclick="return confirm('Sei sicuro di voler rifiutatre la proposta?')"  class="button-proposta" style="margin-left:15px;">Rifiuta</a>                
                 @endif
                 </div>
+                
             </div>
         </div> 
         @endforeach
