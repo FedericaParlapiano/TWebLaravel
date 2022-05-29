@@ -38,7 +38,7 @@
             
              <div  class="form-field">
                 {{ Form::label('email', 'Email', ['class' => 'register-label']) }}
-                {{ Form::text('email', $user->email, ['class' => 'form-input','id' => 'email', 'readonly']) }}
+                {{ Form::text('email', $user->email, ['class' => 'form-input','id' => 'email']) }}
                 @if ($errors->first('email'))
                 <ul class="errors">
                     @foreach ($errors->get('email') as $message)

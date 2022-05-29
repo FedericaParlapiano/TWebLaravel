@@ -221,6 +221,16 @@ class LocatoreController extends Controller {
             $matricole->save();
         }
         
+        if($request->get('sesso'))
+        {
+            $sesso = new Vincolo;
+            $sesso->vincolo = $request->get('sesso');
+            $sesso->annuncio = (int) $annuncio->id;
+            $sesso->save();
+        }
+        
+        
+        
         return redirect()->action('LocatoreController@index');
     }
     
@@ -422,12 +432,13 @@ class LocatoreController extends Controller {
             $feste->save();
         }
         
-        if($request->get('matricole'))
+        
+        if($request->get('sesso'))
         {
-            $matricole = new Vincolo;
-            $matricole->vincolo = 'matricole';
-            $matricole->annuncio = (int) $request->get('idAnnuncio');
-            $matricole->save();
+            $sesso = new Vincolo;
+            $sesso->vincolo = $request->get('sesso');
+            $sesso->annuncio = (int) $request->get('idAnnuncio');
+            $sesso->save();
         }
         
         

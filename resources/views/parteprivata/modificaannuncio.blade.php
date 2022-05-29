@@ -470,6 +470,29 @@
               <div>
                 {{ Form::checkbox('feste', 'Feste', $feste, ['id' => 'feste']) }}  Feste  <i class="fa-solid fa-champagne-glasses"></i>
               </div>
+                
+                @php
+                $sesso = '';
+                @endphp
+                @foreach($vincoli as $vincolo)
+                @if($vincolo->vincolo=='uomini')
+                
+                @php
+                $sesso='Solo uomini';
+                @endphp
+                @elseif($vincolo->vincolo=='donne')
+                @php
+                $sesso='Solo donne';
+                @endphp
+                @endif
+                @endforeach 
+                {{$sesso}} cioa
+              <div>
+                {{ Form::label('sesso', 'Sesso', ['class' => 'label']) }}
+                {{ Form::select('sesso', ['Tutti' => '', 'uomini' => 'Solo uomini', 'donne' => 'Solo donne'], $sesso, ['class' => 'input', 'id' => 'sesso']) }}
+              
+              </div>
+                
 
             <div>                
                 {{ Form::submit('Aggiorna annuncio', ['class' => 'button input']) }}
