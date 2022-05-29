@@ -500,10 +500,40 @@ h1-filtri{
   }
 }
 
-
-#button-cerca{
+.submit-filter{
     height: 30px;
-    margin-top: 15px;
+    margin-top: 27px;
+    margin-left:30px;
+    border:none;
+    display:inline-block;
+    padding:8px 16px;
+    vertical-align:middle;
+    overflow:hidden;
+    text-decoration:none;
+    color:inherit;
+    background-color:#94C7EE;
+    text-align:center;
+    cursor:pointer;
+    white-space:nowrap;
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    -khtml-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}   
+
+.submit-filter a {
+  color: white;
+  text-decoration: none;
+  
+}
+
+
+/* Change color on hover */
+.submit-filter:hover {
+  background-color: #B5CAF5;
+  
 }
 
 #filtri-button{
