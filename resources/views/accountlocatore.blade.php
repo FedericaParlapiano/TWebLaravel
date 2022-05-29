@@ -100,7 +100,7 @@
         
         <div class="button-div-class">
             <a id="modifica-annuncio-button" href = "{{ route('modificaannuncio', [$annuncio->id]) }}" onclick="" class="button ourblue button-class" title="modifica l'annuncio"><i class="fa-solid fa-pencil"></i></a>
-            <a id="elimina-annuncio-button" href = "{{ route('eliminaannuncio', [$annuncio->id]) }}" onclick="" class="button ourblue button-class" title="modifica l'annuncio"><i class="fa-solid fa-trash-can"></i></a>
+            <a id="elimina-annuncio-button" href = "{{ route('eliminaannuncio', [$annuncio->id]) }}" onclick="return confirm('Sei sicuro di voler eliminare questo annuncio?')" class="button ourblue button-class" title="elimina l'annuncio"><i class="fa-solid fa-trash-can"></i></a>
         </div>
         
         @php
@@ -175,36 +175,48 @@
                             <br>
                             <i>Cognome: </i> {{ $proposta->cognomelocatario }}
                             <br>
+                            @isset($proposta->datanascitalocatario)
                             <i>Data di nascita: </i> {{ $proposta->datanascitalocatario }}
+                            @else
+                            Non è stata indicata la data di nascita.
+                            @endisset
                             <br>
                             <i>Sesso: </i> {{ $proposta->sessolocatario }}
                             <br>
                             <i>Email: </i> {{ $proposta->emaillocatario }}
                             <br>
+                            @isset($proposta->telefonolocatario)
                             <i>Telefono: </i> {{ $proposta->telefonolocatario }}
+                            @else
+                            Non è stato inserito il numero di telefono.
+                            @endisset
                         </p>
                     </div>
-                  
-                    <div>                   
+                 
+                    <div>                  
                         <p>
                         <i>Periodo: </i> da {{ $proposta->inizioAffitto }} a {{ $proposta->fineAffitto }}
                         <br>
                         @isset($proposta->messaggio)
                         <i>Messaggio: </i> {{ $proposta->messaggio }}
+                        @else
+                        Nessun messaggio specificato.
                         @endisset
                         <br>
                         @isset($proposta->canoneProposto)
                         <i>Canone proposto: </i> {{ $proposta->canoneProposto }} €
-                        @endisset                        
+                        @else
+                        Nessuna proposta di canone.
+                        @endisset                       
                         </p>
-                        <i>Stato: </i> {{ $proposta->stato }}                        
+                        <i>Stato: </i> {{ $proposta->stato }}                       
                     </div>
                 </div>
                 
                 <div style="clear: both; text-align: right;">
                 @if($proposta->stato=='da valutare')                
-                <button class="button-proposta">Accetta</button>
-                <button class="button-proposta" style="margin-left:15px;">Rifiuta</button>                
+                <a href="{{ route('accettaproposta', [$proposta->id]) }}" onclick="return confirm('Sei sicuro di voler accettare la proposta?')" class="button-proposta">Accetta</a>
+                <a href="{{ route('rifiutaproposta', [$proposta->id]) }}" onclick="return confirm('Sei sicuro di voler rifiutatre la proposta?')"  class="button-proposta" style="margin-left:15px;">Rifiuta</a>                
                 @endif
                 </div>
             </div>

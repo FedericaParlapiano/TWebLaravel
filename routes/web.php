@@ -50,6 +50,11 @@ Route::get('/locatore/eliminaannuncio/{idAnnuncio}', 'LocatoreController@deleteA
 Route::get('/locatore/proposte', 'LocatoreController@showProposte')
         ->name('propostelocatore')->middleware('can:isLocatore');
 
+Route::get('/locatore/accettaproposta/{propostaId}', 'LocatoreController@accettaProposta')
+        ->name('accettaproposta')->middleware('can:isLocatore');
+
+Route::get('/locatore/rifiutaproposta/{propostaId}', 'LocatoreController@rifiutaProposta')
+        ->name('rifiutaproposta')->middleware('can:isLocatore');
 
 Route::get('/admin', 'AdminController@index')
         ->name('admin')->middleware('can:isAdmin');

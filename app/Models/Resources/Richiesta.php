@@ -8,6 +8,8 @@ class Richiesta extends Model {
 
     protected $table = 'richieste';
     protected $primaryKey = 'id';
+    protected $guarded = ['id'];
+
     public $timestamps = false;
     
     public function filtra_data_da($da)
