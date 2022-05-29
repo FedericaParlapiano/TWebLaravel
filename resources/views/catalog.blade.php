@@ -24,6 +24,7 @@
         $.post(finalURL, function(data) {
 
           $("#pagination_data").html(data);
+          $("html, body, pagination_data").animate({ scrollTop: 0 }, 200);
 
         });
 
@@ -362,6 +363,7 @@
     @include("catalog-pagination", ["annunci"=>$annunci, "foto"=>$foto, "annunciconfoto"=>$annunciconfoto])
 </div>
 @endcan
+
 @cannot('isLocatario')
 @isset($annunci)
 <div class="contenitore-annunci">
@@ -406,7 +408,8 @@
     </div>
     @endisset
     @endcannot
-
+</div>    
+</div>
 
 
 <script>
