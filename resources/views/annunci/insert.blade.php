@@ -288,8 +288,13 @@
               <div>
                 {{ Form::checkbox('feste', 'Feste', false, ['id' => 'feste']) }}  Feste  <i class="fa-solid fa-champagne-glasses"></i>
               </div>
+              <div>
+                {{ Form::label('sesso', 'Sesso', ['class' => 'label']) }}
+                {{ Form::select('sesso', ['Tutti' => '', 'uomini' => 'Solo uomini', 'donne' => 'Solo donne'], '', ['class' => 'input', 'id' => 'sesso']) }}
+              </div>
 
-            <div>                
+            <div>        
+                
                 {{ Form::submit('Aggiungi annuncio', ['class' => 'button input']) }}
             </div>
             

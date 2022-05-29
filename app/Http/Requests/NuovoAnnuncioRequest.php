@@ -48,6 +48,7 @@ class NuovoAnnuncioRequest extends FormRequest {
             'counting-forno' => 'nullable|numeric|min:0',
             'counting-aria' => 'nullable|numeric|min:0',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'sesso' => 'nullable|string|max:6'
         ];
     }
 }
