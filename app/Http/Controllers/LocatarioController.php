@@ -31,18 +31,17 @@ class LocatarioController extends Controller {
     
     public function showFilterCatalogo(FiltriCatalogoRequest $request)
     {
-        
-        return $this->showCatalogo($this->_catalogoModel->getAnnunciFiltrati($request));
-    }
-    
-    public function showCatalogo($annunci)
-    {
-        
+        $annunci = $this->_catalogoModel->getAnnunciFiltrati($request);
         $foto = $this->_catalogoModel->getFoto();
         $annunciconfoto = $this->_catalogoModel->getAnnunciConFoto();
-       
-       
-                
+        
+        if($request->ajax()){
+            return view('catalog-pagination')
+                    ->with('annunci', $annunci)
+                    ->with('foto', $foto)
+                    ->with('annunciconfoto', $annunciconfoto);
+        }
+        
         return view('catalog')
                     ->with('annunci', $annunci)
                     ->with('foto', $foto)

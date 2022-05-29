@@ -2,15 +2,42 @@
 <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
 <script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
 @section('title', 'Catalogo Annunci')
  
 
 @section('content')
+
+<script>
+    $(function() {
+      $(document).on("click", "#pagination a,#button-cerca", function() {
+
+        //get url and make final url for ajax 
+        var url = $(this).attr("href");
+        var append = url.indexOf("?") === -1 ? "?" : "&";
+        var finalURL = url + append + $("#filtri-form").serialize();
+
+        //set to current url
+        window.history.pushState({}, null, finalURL);
+
+        $.post(finalURL, function(data) {
+
+          $("#pagination_data").html(data);
+
+        });
+
+        return false;
+      });
+
+    });
+  </script>
+
 @can('isLocatario')
 <!-- inizio sezione prodotti -->
 <div class="contenitore-form"> 
-    {{ Form::open(array('route' => 'catalog')) }}
-    @csrf
+    {{ Form::open(array('route' => 'catalog', 'id'=>'filtri-form')) }}
+    {{ Form::token() }}
     <div type="button" id="filtri-button" onclick="openForm()" ><i class="fa-solid fa-ellipsis-vertical"></i></div> 
 
     <div class = "row">    
@@ -50,8 +77,8 @@
             @endif  
         </div> 
                 
-        <div style="margin-left:2.5em; margin-top:10px;">                
-        {{ Form::submit('Cerca', ['class' => 'button-form ourblue', 'id'=> 'button-cerca']) }}
+        <div class='submit-filter'>         
+        <a href='{{url("catalog")}}' id='button-cerca'>Cerca</a>
         </div>
     </div>  
 </div>
@@ -68,7 +95,7 @@
   <div class="modal-content">
       
     
-      <div id="close" onclick="closeForm()"> &times; </div>
+    <div id="close" onclick="closeForm()"> &times; </div>
     <h1 id="h1-filtri"> Filtri </h1>
 
     
@@ -317,8 +344,11 @@
           
           
           <br>
-          <div style="clear: both; text-align: right; padding-top: 30px">
-                  {{ Form::button('Applica Filtri', ['type' => 'submit', 'class' => 'button ourblue button-class', 'id' => 'applica-filtri-button'] )  }}    
+          <div  style="text-align: right;">
+          <div class='submit-filter' style="clear: both; text-align: right;">
+              
+            <a href='{{url("catalog")}}' id='button-cerca' onclick='closeForm();'>Applica</a>
+         </div>
          </div>
           
       {{ Form::close() }}
@@ -327,53 +357,13 @@
 </div>
 @endcan
 
-@isset($annunci)
-<div class="contenitore-annunci">
-<div class="catalogo-annunci">
-    @foreach ($annunci as $annuncio)
-    <div class="annuncio white">
-
-        @php
-        $assente=true;
-        @endphp
-        @foreach($foto as $singolafoto)
-        @if($singolafoto->annuncio!=$annuncio->id)
-            @continue
-        @endif
-        @if($singolafoto->annuncio==$annuncio->id)
-            @php
-            $assente=false
-            @endphp
-            <div class="img-class"><a href="{{ route('annuncio', [$annuncio->id]) }}" target="_blank"><img src="{{ asset('images/annunci/' . $singolafoto->immagine) }}" alt="Immagine Casa" class="resize-img"></a></div>
-            @break
-        @endif
-        @endforeach
-        
-        @if($assente)
-        <div class="img-class"><a href=""><img src="images/annunci/noimage.jpg" alt="Casa" class="resize-img"></a></div>
-        @endif
-        
-        
-        
-        
-        <b>
-            <h3><a href="{{ route('annuncio', [$annuncio->id]) }}" target="_blank">{{ $annuncio->titolo }} ({{ $annuncio->tipologia }}) </a></h3>
-        </b>
-        <p>{{ $annuncio->zonaLocazione }}, Canone: {{ $annuncio->canoneAffitto }}€</p>
-        <p class="descrizione2">{{ $annuncio->descrizione }}</p>
-        
-    </div>
-    @endforeach
-    
-</div>
-    <br>
-    <div class="pagination">
-    <!--Paginate-->
-    @include('pagination.paginator', ['paginator' => $annunci])
-    </div>
+<br>
+<div id="pagination_data" style="text-align: center">
+          @include("catalog-pagination", ["annunci"=>$annunci, "foto"=>$foto, "annunciconfoto"=>$annunciconfoto])
 </div>
 
-@endisset()
+
+
 
 <script>
   $(function() {
