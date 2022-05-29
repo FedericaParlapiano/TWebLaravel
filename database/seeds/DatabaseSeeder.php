@@ -486,6 +486,8 @@ class DatabaseSeeder extends Seeder {
             'stato' => 'da valutare', 'inizioAffitto' => '2023-09-10' , 'fineAffitto' => '2024-02-01'],
             ['locatore' => 'alice_moretti', 'locatario' => 'giovanni_delfino', 'annuncio' => 20, 'canoneProposto' => 500.00,'messaggio' => 'Vorrei affittare il suo appartamento.',
             'stato' => 'da valutare', 'inizioAffitto' => '2023-09-10' , 'fineAffitto' => '2024-02-15'],
+            ['locatore' => 'lorelore', 'locatario' => 'lariolario', 'annuncio' => 1, 'canoneProposto' => 500.00,'messaggio' => 'Vorrei affittare il suo appartamento.',
+            'stato' => 'da valutare', 'inizioAffitto' => '2023-09-10' , 'fineAffitto' => '2024-02-15'],
         ]);
         
         

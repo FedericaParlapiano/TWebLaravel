@@ -47,6 +47,9 @@ Route::post('/locatore/modificannuncio', 'LocatoreController@updateAnnuncio')
 Route::get('/locatore/eliminaannuncio/{idAnnuncio}', 'LocatoreController@deleteAnnuncio')
         ->name('eliminaannuncio');
 
+Route::get('/locatore/proposte', 'LocatoreController@showProposte')
+        ->name('propostelocatore')->middleware('can:isLocatore');
+
 
 Route::get('/admin', 'AdminController@index')
         ->name('admin')->middleware('can:isAdmin');

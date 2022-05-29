@@ -37,7 +37,7 @@
      
         
         <!-- Footer -->
-        <footer>
+        <footer style="clear: both;">
             <div class="social">
             <a href="https://www.facebook.com/"><i class="fa-brands fa-facebook"></i></a>
             <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>

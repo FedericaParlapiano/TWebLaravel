@@ -537,17 +537,3 @@ footer {
     margin-right: auto;
 }
 
-#bottone-vedi-tutte-proposte{ 
-    color:#fff!important;
-    padding: 5px 5px;
-    text-decoration: none;
-    text-align: center;    
-    margin: 2em; 
-    background-color:#A4C6F2;
-
-}
-
-#bottone-vedi-tutte-proposte:hover{
-    color:#000!important;
-    background-color:#C5DCFA;
-}

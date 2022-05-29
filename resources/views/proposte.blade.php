@@ -4,7 +4,8 @@
 @section('title', 'Le tue proposte')
 
 @section('content')
- 
+
+@can('isLocatario')
 @isset($proposte)
 <div id="elenco-proposte">
     @foreach ($proposte as $proposta)        
@@ -38,5 +39,69 @@
         @include('pagination.paginator', ['paginator' => $proposte])
     </div>
 @endisset
+@endcan
+
+@can('isLocatore')
+@isset($proposte)
+        <div id="elenco-proposte-ricevute">
+        
+        @foreach ($proposte as $proposta)      
+        
+        <div class="card-proposta-ricevuta">
+            <div class="container-proposta-ricevuta">
+               
+                <h4><b> Proposta </b></h4>
+                <p>Hai ricevuto una proposta per l'annuncio <b> {{ $proposta->titoloAnnuncio }} </b> ({{ $proposta->tipologiaannuncio }}) di <b> {{ $proposta->nomelocatario }}  {{ $proposta->cognomelocatario }}</b></p>
+              
+                <div class="split2">
+                    <div>
+                        <p>
+                            <i>Nome: </i> {{ $proposta->nomelocatario }}
+                            <br>
+                            <i>Cognome: </i> {{ $proposta->cognomelocatario }}
+                            <br>
+                            <i>Data di nascita: </i> {{ $proposta->datanascitalocatario }}
+                            <br>
+                            <i>Sesso: </i> {{ $proposta->sessolocatario }}
+                            <br>
+                            <i>Email: </i> {{ $proposta->emaillocatario }}
+                            <br>
+                            <i>Telefono: </i> {{ $proposta->telefonolocatario }}
+                        </p>
+                    </div>
+                  
+                    <div>                   
+                        <p>
+                        <i>Periodo: </i> da {{ $proposta->inizioAffitto }} a {{ $proposta->fineAffitto }}
+                        <br>
+                        @isset($proposta->messaggio)
+                        <i>Messaggio: </i> {{ $proposta->messaggio }}
+                        @endisset
+                        <br>
+                        @isset($proposta->canoneProposto)
+                        <i>Canone proposto: </i> {{ $proposta->canoneProposto }} €
+                        @endisset                        
+                        </p>
+                        <i>Stato: </i> {{ $proposta->stato }}                        
+                    </div>
+                </div>
+                
+                <div style="clear: both; text-align: right;">
+                @if($proposta->stato=='da valutare')                
+                <button class="button-proposta">Accetta</button>
+                <button class="button-proposta" style="margin-left:15px;">Rifiuta</button>                
+                @endif
+                </div>
+            </div>
+        </div> 
+        @endforeach
+      </div>
+        <div class="pagination">
+                <!--Paginate-->
+                @include('pagination.paginator', ['paginator' => $proposte])
+        </div>
+        @endisset
+
+@endcan
 
 @endsection

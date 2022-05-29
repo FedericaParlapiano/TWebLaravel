@@ -6,6 +6,7 @@ use App\Models\Resources\Annuncio;
 use App\Models\Resources\Foto;
 use App\Models\Resources\ServizioIncluso;
 use App\Models\Resources\Vincolo;
+use App\Models\Resources\Richiesta;
 
 /* 
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -38,6 +39,15 @@ class Locatore {
         return Vincolo::where('annuncio', $idAnnuncio)->get();
     }
     
-    
-    
+    public function getProposte($locatore) {
+        return Richiesta::where('richieste.locatore', $locatore)
+                ->select('annuncio.titolo as titoloannuncio', 'annuncio.tipologia as tipologiaannuncio', 'users.nome as nomelocatario', 'users.cognome as cognomelocatario',
+                        'users.dataNascita as datanascitalocatario', 'users.sesso as sessolocatario', 'users.email as emaillocatario', 'users.numTelefono as telefonolocatario',
+                        'richieste.inizioAffitto as inizioAffitto', 'richieste.fineAffitto as fineAffitto', 'richieste.messaggio as messaggio',
+                        'richieste.canoneProposto as canoneProposto', 'richieste.stato as stato')
+                ->join('annuncio', 'richieste.annuncio', '=', 'annuncio.id')
+                ->join('users', 'richieste.locatario', '=', 'users.username')
+                ->paginate(10);
+    }    
+       
 }

@@ -7,26 +7,26 @@ use App\Models\Resources\ServizioIncluso;
 use App\Models\Resources\Vincolo;
 use App\Http\Requests\NuovoAnnuncioRequest;
 use App\Models\Locatore;
+use App\Models\Resources\Richiesta;
 
-class LocatoreController extends Controller {
-
-   
+class LocatoreController extends Controller {   
 
     public function __construct() {
-        $this->_locatoreModel = new Locatore();
-        $this->middleware('can:isLocatore');
-        
+        $this->middleware('can:isLocatore');        
+        $this->_locatoreModel = new Locatore();      
     }
 
     public function index() {
         $user = auth()->user();
         $annunci = $this->_locatoreModel->getAnnunciLocatore($user->username);
         $foto = $this->_locatoreModel->getFotoAnnunci();
+        $proposte = $this->_locatoreModel->getProposte($user->username);
         
         return view('accountlocatore')
                     ->with('user', $user)
                     ->with('annunci', $annunci)
-                    ->with('foto', $foto);
+                    ->with('foto', $foto)
+                    ->with('proposte', $proposte);
     }
 
 
@@ -449,6 +449,16 @@ class LocatoreController extends Controller {
         }
         
         return redirect()->action('LocatoreController@index');
+    }
+    
+    public function showProposte()
+    {
+        $user = auth()->user();
+        $proposte = $this->_locatoreModel->getProposte($user->username);
+                           
+        return view('proposte')
+                   ->with('user', $user)        
+                   ->with('proposte', $proposte);
     }
 
 }

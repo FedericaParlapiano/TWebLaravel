@@ -10,7 +10,8 @@
 @isset($user)
 
 <!-- !PAGE CONTENT! -->
-    
+
+
     <a href="#"><img src="{{ asset('images/users/' . $user->fotoProfilo) }}" alt="immagine di profilo" style="width:65px;" class="circle right margine hide-large hover-opacity"></a>
     <span class="button hide-large xxlarge hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
     
@@ -141,12 +142,82 @@
     
     @else
     <b>Non hai ancora pubblicato annunci.</b>
-    @endisset
-    
-    
-  
-  
+    @endisset    
   </div>
+    
+      <div id="proposte-ricevute">
+          <div><span class="xlarge"> <b> Proposte</b></span><a id="bottone-vedi-tutte-proposte" href="{{ route('propostelocatore') }}" title="Visualizza tutte le proposte"> Vedi tutte </a></div> 
+        <hr>
+        <p> 1-6 di  @php echo sizeof($proposte); @endphp proposte ricevute </p>
+        
+        @isset($proposte)
+        <div id="elenco-proposte-ricevute">
+        @php
+        $counter=0;
+        @endphp
+        @foreach ($proposte as $proposta)
+        @php
+        if($counter >= 6){
+            break;
+        }
+        @endphp
+        
+        <div class="card-proposta-ricevuta">
+            <div class="container-proposta-ricevuta">
+               
+                <h4><b> Proposta </b></h4>
+                <p>Hai ricevuto una proposta per l'annuncio <b> {{ $proposta->titoloAnnuncio }} </b> ({{ $proposta->tipologiaannuncio }}) di <b> {{ $proposta->nomelocatario }}  {{ $proposta->cognomelocatario }}</b></p>
+              
+                <div class="split2">
+                    <div>
+                        <p>
+                            <i>Nome: </i> {{ $proposta->nomelocatario }}
+                            <br>
+                            <i>Cognome: </i> {{ $proposta->cognomelocatario }}
+                            <br>
+                            <i>Data di nascita: </i> {{ $proposta->datanascitalocatario }}
+                            <br>
+                            <i>Sesso: </i> {{ $proposta->sessolocatario }}
+                            <br>
+                            <i>Email: </i> {{ $proposta->emaillocatario }}
+                            <br>
+                            <i>Telefono: </i> {{ $proposta->telefonolocatario }}
+                        </p>
+                    </div>
+                  
+                    <div>                   
+                        <p>
+                        <i>Periodo: </i> da {{ $proposta->inizioAffitto }} a {{ $proposta->fineAffitto }}
+                        <br>
+                        @isset($proposta->messaggio)
+                        <i>Messaggio: </i> {{ $proposta->messaggio }}
+                        @endisset
+                        <br>
+                        @isset($proposta->canoneProposto)
+                        <i>Canone proposto: </i> {{ $proposta->canoneProposto }} €
+                        @endisset                        
+                        </p>
+                        <i>Stato: </i> {{ $proposta->stato }}                        
+                    </div>
+                </div>
+                
+                <div style="clear: both; text-align: right;">
+                @if($proposta->stato=='da valutare')                
+                <button class="button-proposta">Accetta</button>
+                <button class="button-proposta" style="margin-left:15px;">Rifiuta</button>                
+                @endif
+                </div>
+            </div>
+        </div> 
+        
+        @php
+        $counter++;
+        @endphp
+        
+        @endforeach
+      </div>
+        @endisset
+      </div>
   
 
 <script>
