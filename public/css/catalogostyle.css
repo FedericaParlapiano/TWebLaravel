@@ -157,33 +157,33 @@ body{
 
  
 
-#pagination {
+#pagination, #pagination-filtri {
     display: inline-block;
 }
 
  
 
-#pagination a {
+#pagination a, #pagination-filtri a {
     color: black;
     float: left;
     padding: 8px 16px;
     text-decoration: none;
   }
-#pagination #currentPage{
+#pagination #currentPage,  #pagination-filtri #currentPage{
     color: black;
     float: left;
     padding: 8px 16px;
     text-decoration: none;
     font-weight: bold;
 }
-#pagination a:hover {
+#pagination a:hover,  #pagination-filtri a:hover{
     background-color: #B5CAF5;
     border-radius: 10px;
   }
 
  
 
-#pagination #precedente:hover, #successivo:hover, #ultimo:hover, #pagination #ultimo:hover, #pagination #primo:hover{
+#pagination #precedente:hover, #successivo:hover, #ultimo:hover, #pagination #ultimo:hover, #pagination-filtri #primo:hover,#pagination-filtri #precedente:hover, #pagination-filtri #ultimo:hover, #pagination-filtri #primo:hover{
     background-color: #B5CAF5;
     border-radius: 10px;
 }

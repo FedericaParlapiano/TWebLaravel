@@ -38,7 +38,7 @@
     
 </div>
     <br>
-    <div id="pagination" >
+    <div id="pagination-filtri" class="pagination">
         @if (!$annunci->onFirstPage())
             <a href="{{ $annunci->url(1) }}">Inizio</a>
         @else

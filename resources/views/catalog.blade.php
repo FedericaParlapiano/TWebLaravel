@@ -11,7 +11,7 @@
 
 <script>
     $(function() {
-      $(document).on("click", "#pagination a,#button-cerca", function() {
+      $(document).on("click", "#pagination-filtri a,#button-cerca", function() {
 
         //get url and make final url for ajax 
         var url = $(this).attr("href");
@@ -355,13 +355,57 @@
     
     </div>
 </div>
-@endcan
+
 
 <br>
 <div id="pagination_data" style="text-align: center">
-          @include("catalog-pagination", ["annunci"=>$annunci, "foto"=>$foto, "annunciconfoto"=>$annunciconfoto])
+    @include("catalog-pagination", ["annunci"=>$annunci, "foto"=>$foto, "annunciconfoto"=>$annunciconfoto])
 </div>
+@endcan
+@cannot('isLocatario')
+@isset($annunci)
+<div class="contenitore-annunci">
+<div class="catalogo-annunci">
+    @foreach ($annunci as $annuncio)
+    <div class="annuncio white">
 
+        @php
+        $assente=true;
+        @endphp
+        @foreach($foto as $singolafoto)
+        @if($singolafoto->annuncio!=$annuncio->id)
+            @continue
+        @endif
+        @if($singolafoto->annuncio==$annuncio->id)
+            @php
+            $assente=false
+            @endphp
+            <div class="img-class"><a href="{{ route('annuncio', [$annuncio->id]) }}" target="_blank"><img src="{{ asset('images/annunci/' . $singolafoto->immagine) }}" alt="Immagine Casa" class="resize-img"></a></div>
+            @break
+        @endif
+        @endforeach
+        
+        @if($assente)
+        <div class="img-class"><a href=""><img src="images/annunci/noimage.jpg" alt="Casa" class="resize-img"></a></div>
+        @endif
+        
+        
+        
+        
+        <b>
+            <h3><a href="{{ route('annuncio', [$annuncio->id]) }}" target="_blank">{{ $annuncio->titolo }} ({{ $annuncio->tipologia }}) </a></h3>
+        </b>
+        <p>{{ $annuncio->zonaLocazione }}, Canone: {{ $annuncio->canoneAffitto }}€</p>
+        <p class="descrizione2">{{ $annuncio->descrizione }}</p>
+        
+    </div>
+    @endforeach
+    <div class="pagination">
+    <!--Paginate-->
+    @include('pagination.paginator', ['paginator' => $annunci])
+    </div>
+    @endisset
+    @endcannot
 
 
 
