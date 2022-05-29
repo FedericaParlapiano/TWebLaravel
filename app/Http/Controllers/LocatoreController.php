@@ -471,5 +471,23 @@ class LocatoreController extends Controller {
                    ->with('user', $user)        
                    ->with('proposte', $proposte);
     }
+    
+    public function accettaProposta($idProposta)
+    {
+        $proposta = $this->_locatoreModel->getPropostaById($idProposta)->update([
+            'stato' => 'accettato',
+                ]);       
+        
+         return redirect()->action('LocatoreController@index');
+    }
+    
+    public function rifiutaProposta($idProposta)
+    {
+        $proposta = $this->_locatoreModel->getPropostaById($idProposta)->update([
+            'stato' => 'rifiutato',
+                ]); 
+        
+         return redirect()->action('LocatoreController@index');
+    }
 
 }
