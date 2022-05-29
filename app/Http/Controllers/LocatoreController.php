@@ -5,9 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Resources\Annuncio;
 use App\Models\Resources\ServizioIncluso;
 use App\Models\Resources\Vincolo;
-use App\Http\Requests\NuovoAnnuncioRequest;
-use App\Models\Locatore;
 use App\Models\Resources\Richiesta;
+use App\Models\Resources\Affitto;
+
+use App\Http\Requests\NuovoAnnuncioRequest;
+
+use App\Models\Locatore;
+
 
 class LocatoreController extends Controller {   
 
@@ -452,9 +456,22 @@ class LocatoreController extends Controller {
         $proposta = $this->_locatoreModel->getPropostaById($idProposta)->update([
             'stato' => 'accettato',
                 ]);       
-        $proposta = $this->_locatoreModel->getPropostaById($idProposta);
-
-        $annuncio = $this->_locatoreModel->getAnnuncioById($proposta->annuncio)->update([            
+        $proposta = $this->_locatoreModel->getDatiAffitto($idProposta);
+        
+        $affitto = new Affitto;
+        $affitto->locatario = $proposta->usernamelocatario;
+        $affitto->annuncio = $proposta->idannuncio;
+        $affitto->dataStipulaContratto = $proposta->inizioAffitto;
+        $affitto->dataFineContratto = $proposta->fineAffitto;
+        if($proposta->canoneProposto){
+           $affitto->canoneConcordato = $proposta->canoneProposto;   
+        }else{
+           $affitto->canoneConcordato = $proposta->canoneAnnuncio;
+        }
+        
+        $affitto->save();
+                
+        $annuncio = $this->_locatoreModel->getAnnuncioById($proposta->idannuncio)->update([            
             'disponibilita' => false,            
         ]);
         

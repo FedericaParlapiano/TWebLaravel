@@ -41,7 +41,7 @@ class Locatore {
     
     public function getProposte($locatore) {
         return Richiesta::where('richieste.locatore', $locatore)
-                ->select('annuncio.titolo as titoloannuncio', 'annuncio.tipologia as tipologiaannuncio', 'users.nome as nomelocatario', 'users.cognome as cognomelocatario',
+                ->select('annuncio.id as idannuncio', 'annuncio.titolo as titoloannuncio', 'annuncio.tipologia as tipologiaannuncio', 'annuncio.canoneAffitto as canoneAnnuncio', 'users.username as usernamelocatario', 'users.nome as nomelocatario', 'users.cognome as cognomelocatario',
                         'users.dataNascita as datanascitalocatario', 'users.sesso as sessolocatario', 'users.email as emaillocatario', 'users.numTelefono as telefonolocatario',
                         'richieste.id as id', 'richieste.inizioAffitto as inizioAffitto', 'richieste.fineAffitto as fineAffitto', 'richieste.messaggio as messaggio',
                         'richieste.canoneProposto as canoneProposto', 'richieste.stato as stato')
@@ -50,8 +50,20 @@ class Locatore {
                 ->paginate(10);
     }    
     
+    public function getDatiAffitto($idProposta) {
+        return Richiesta::where('richieste.id', $idProposta)
+                ->select('annuncio.id as idannuncio', 'annuncio.titolo as titoloannuncio', 'annuncio.tipologia as tipologiaannuncio', 'annuncio.canoneAffitto as canoneAnnuncio', 'users.username as usernamelocatario', 'users.nome as nomelocatario', 'users.cognome as cognomelocatario',
+                        'users.dataNascita as datanascitalocatario', 'users.sesso as sessolocatario', 'users.email as emaillocatario', 'users.numTelefono as telefonolocatario',
+                        'richieste.id as id', 'richieste.inizioAffitto as inizioAffitto', 'richieste.fineAffitto as fineAffitto', 'richieste.messaggio as messaggio',
+                        'richieste.canoneProposto as canoneProposto', 'richieste.stato as stato')
+                ->join('annuncio', 'richieste.annuncio', '=', 'annuncio.id')
+                ->join('users', 'richieste.locatario', '=', 'users.username')
+                ->get()->first();;
+    }  
+    
     public function getPropostaById($idProposta) {
         return Richiesta::where('id', $idProposta)->get()->first();
     }
+    
        
 }
