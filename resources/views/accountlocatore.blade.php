@@ -76,9 +76,7 @@
   
     
     
-  <div style="align-content: center; background-color: #e6e6fa; padding: 40px;">
-    <hr>
-  
+  <div style="align-content: center; padding: 40px;">  
   <!-- Annunci -->
   <div id="annunci">
     <div class="xlarge"><b>I miei annunci</b> <a class="button" href="{{ route('nuovoannuncio') }}" title="Aggiungi un annuncio"><i class="fa-solid fa-circle-plus xlarge"></i></a></div>
@@ -151,7 +149,7 @@
     @endisset    
   </div>
     
-      <div id="proposte-ricevute">
+      <div id="propostericevute">
           <div><span class="xlarge"> <b> Proposte</b></span><a id="bottone-vedi-tutte-proposte" href="{{ route('propostelocatore') }}" title="Visualizza tutte le proposte"> Vedi tutte </a></div> 
         <hr>
         <p> 1-6 di  @php echo sizeof($proposte); @endphp proposte ricevute </p>
@@ -222,7 +220,7 @@
                 <div style="clear: both; text-align: right;">
                 @if($proposta->stato=='da valutare')                
                 <a href="{{ route('accettaproposta', [$proposta->id]) }}" onclick="return confirm('Sei sicuro di voler accettare la proposta?')" class="button-proposta">Accetta</a>
-                <a href="{{ route('rifiutaproposta', [$proposta->id]) }}" onclick="return confirm('Sei sicuro di voler rifiutatre la proposta?')"  class="button-proposta" style="margin-left:15px;">Rifiuta</a>                
+                <a href="{{ route('rifiutaproposta', [$proposta->id]) }}" onclick="return confirm('Sei sicuro di voler rifiutare la proposta?')"  class="button-proposta" style="margin-left:15px;">Rifiuta</a>                
                 @endif
                 </div>
             </div>
@@ -236,6 +234,7 @@
       </div>
         @endisset
       </div>
+    </div>
   
 
 <script>

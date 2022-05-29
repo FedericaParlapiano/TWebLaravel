@@ -31,6 +31,7 @@ class LocatarioController extends Controller {
     
     public function showFilterCatalogo(FiltriCatalogoRequest $request)
     {
+        $request->validated();
         $annunci = $this->_catalogoModel->getAnnunciFiltrati($request);
         $foto = $this->_catalogoModel->getFoto();
         $annunciconfoto = $this->_catalogoModel->getAnnunciConFoto();

@@ -23,7 +23,7 @@ class NuovoAnnuncioRequest extends FormRequest {
      */
     public function rules() {
         return [
-            'titolo' => 'required|max:25|regex:/^[0-9]{2}[\/][0-9]{2}[\/][0-9]{4}$/',
+            'titolo' => 'required|max:25',
             'superficie' => 'nullable|numeric|min:0',
             'tipologia' => 'required|string',
             'numCamere'=> 'nullable|numeric|min:0',

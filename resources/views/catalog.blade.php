@@ -46,11 +46,11 @@
         {{ Form::label('citta', 'Zona di locazione', ['class' => 'label-cerca']) }} 
         {{ Form::text('citta', '', ['class' => 'input', 'id' => 'citta']) }}
         @if ($errors->first('citta'))
-        <ul class="errors">
+        <div class="errors">
             @foreach ($errors->get('citta') as $message)
-            <li>{{ $message }}</li>
+            <p>{{ $message }}</p>
             @endforeach
-        </ul>
+        </div>
         @endif  
          </div>
                     
@@ -58,11 +58,11 @@
             {{ Form::label('da', 'Da', ['class' => 'label-cerca']) }}
             {{ Form::date('da', '', ['class' => 'input', 'id' => 'da']) }}
             @if ($errors->first('da'))
-            <ul class="errors">
+            <div class="errors">
                 @foreach ($errors->get('da') as $message)
-                <li>{{ $message }}</li>
+                <p>{{ $message }}</p>
                 @endforeach
-            </ul>
+            </div>
             @endif 
         </div>  
                     
@@ -70,11 +70,11 @@
             {{ Form::label('a', 'A', ['class' => 'label-cerca']) }}
             {{ Form::date('a', '', ['class' => 'input', 'id' => 'a']) }}
             @if ($errors->first('a'))
-            <ul class="errors">
+            <div class="errors">
                 @foreach ($errors->get('a') as $message)
-                <li>{{ $message }}</li>
+                <p>{{ $message }}</p>
                 @endforeach
-            </ul>
+            </div>
             @endif  
         </div> 
                 

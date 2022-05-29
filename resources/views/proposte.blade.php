@@ -51,7 +51,7 @@
             <div class="container-proposta-ricevuta">
                
                 <h4><b> Proposta </b></h4>
-                <p>Hai ricevuto una proposta per l'annuncio <b> {{ $proposta->titoloAnnuncio }} </b> ({{ $proposta->tipologiaannuncio }}) di <b> {{ $proposta->nomelocatario }}  {{ $proposta->cognomelocatario }}</b></p>
+                <p>Hai ricevuto una proposta per l'annuncio <b> {{ $proposta->titoloannuncio }} </b> ({{ $proposta->tipologiaannuncio }}) di <b> {{ $proposta->nomelocatario }}  {{ $proposta->cognomelocatario }}</b></p>
               
                 <div class="split2">
                     <div>

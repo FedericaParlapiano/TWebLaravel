@@ -18,6 +18,7 @@
     <h4><b>{{$user->nome}} {{$user->cognome}}</b></h4>
     <p class="text-grey">{{$user->role}}</p>
   </div>
+    
   @can('isUser')
   <div class="bar-block">
     <a href="#info" onclick="w3_close()" class="bar-item button padding"> <i class="fa-solid fa-user margine-right"></i> PROFILO</a> 
@@ -25,7 +26,12 @@
     <a href="#annunci" onclick="w3_close()" class="bar-item button padding text-teal"><i class="fa-solid fa-shop margine-right"></i>I MIEI ANNUNCI</a> 
     @endcan
     <a href="#messaggi" onclick="w3_close()" class="bar-item button padding"><i class="fa-solid fa-comments margine-right"></i>MESSAGGI</a>
+    @can('isLocatario')
     <a href="#proposte" onclick="w3_close()" class="bar-item button padding"><i class="fa-regular fa-paper-plane margine-right"></i> PROPOSTE</a>
+    @endcan
+    @can('isLocatore')
+    <a href="#propostericevute" onclick="w3_close()" class="bar-item button padding"><i class="fa-regular fa-paper-plane margine-right"></i> PROPOSTE</a>
+    @endcan
   </div>
   @endcan
   
