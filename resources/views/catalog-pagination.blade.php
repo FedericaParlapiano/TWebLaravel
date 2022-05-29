@@ -2,8 +2,13 @@
 <div class="contenitore-annunci">
 <div class="catalogo-annunci">
     @foreach ($annunci as $annuncio)
-    <div class="annuncio white">
 
+    @if($annuncio->disponibilita == 0)
+        <div class="annuncio" style="opacity: 0.5;">
+    @else
+        <div class="annuncio white">
+    @endif
+    
         @php
         $assente=true;
         @endphp

@@ -358,7 +358,11 @@
         <button type="button" class="button ourblue" onclick="messaggio()">Messaggia</button>
         <br>
         <br>
+        @if($singoloannuncio->disponibilita == 1)
         <button type="button" class="button ourblue" onclick="proposta()">Proponiti !</button> 
+        @else
+        <button type="button" class="button-nondisponibile grey" style="text-decoration: line-through;" onclick="proposta()">Proponiti !</button> 
+        @endif
         </div>
         @endcan
         </div>
@@ -392,8 +396,11 @@
                 
         </div>
 
-       
+       @if($singoloannuncio->disponibilita == 1)
         <div class="chat-popup" id="form-proposta">
+        @else
+        <div style="display: none;">
+        @endif
             <div id="close-div"><i id="close-proposta" class="fa-solid fa-xmark" onclick="closeProposta()"></i></div>
 
             {{ Form::open(array('route' => 'proposta', 'id' => 'proposta','class' => 'form-container')) }}            
@@ -469,7 +476,7 @@
             {{ Form::close() }}
             
         </div>
-        @endcan
+       @endcan
 
 
 <script>

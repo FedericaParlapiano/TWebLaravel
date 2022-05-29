@@ -96,7 +96,13 @@
     <div class="contenitore-annunci">
     <div class="catalogo-annunci">
     @foreach ($annunci as $annuncio)
-    <div class="annuncio white" style="height:530px;">
+    
+    @if($annuncio->disponibilita == 0)
+        <div class="annuncio" style="height:530px; opacity: 0.5;">
+    @else
+        <div class="annuncio white" style="height:530px;">
+    @endif
+    
         
         <div class="button-div-class">
             <a id="modifica-annuncio-button" href = "{{ route('modificaannuncio', [$annuncio->id]) }}" onclick="" class="button ourblue button-class" title="modifica l'annuncio"><i class="fa-solid fa-pencil"></i></a>

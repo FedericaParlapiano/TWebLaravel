@@ -47,17 +47,13 @@ class LocatoreController extends Controller {
         $annuncio->postiNellaStanza = $request->get('postiNellaStanza');
         $annuncio->inizioPeriodoDisponibilita = $request->get('inizioPeriodoDisponibilita');
         $annuncio->finePeriodoDisponibilita = $request->get('finePeriodoDisponibilita');
+        $annuncio->disponibilita = true;
         $annuncio->canoneAffitto = $request->get('canoneAffitto');
         $annuncio->zonaLocazione = $request->get('zonaLocazione');
         $annuncio->indirizzo = $request->get('indirizzo');
 
         $user = auth()->user();
         $annuncio->locatore = $user->username;
-        
-        $annuncio->disponibilita = false;            
-        if($annuncio->finePeriodoDisponibilita > date("Y-m-d") && $annuncio->inizioPeriodoDisponibilita < date("Y-m-d")) {
-                $annuncio->disponibilita = true;
-            }
         
         $annuncio->save();
         
@@ -252,11 +248,6 @@ class LocatoreController extends Controller {
         
         $request->validated();
         
-        $disponibilita = false;
-        if($request->get('finePeriodoDisponibilita') > date("Y-m-d") && $request->get('inizioPeriodoDisponibilita') < date("Y-m-d")) {
-                $disponibilita = true;
-        }
-        
         $annuncio = $this->_locatoreModel->getAnnuncioById($request->get('idAnnuncio'))->update([
             'titolo' => $request->get('titolo'),
             'tipologia' => $request->get('tipologia'),
@@ -266,29 +257,13 @@ class LocatoreController extends Controller {
             'canoneAffitto' => $request->get('canoneAffitto'),
             'inizioPeriodoDisponibilita' => $request->get('inizioPeriodoDisponibilita'),
             'finePeriodoDisponibilita' => $request->get('finePeriodoDisponibilita'),
-            'disponibilita' => $disponibilita,
+            'disponibilita' => true,
             'numCamere' => $request->get('numCamere'),
             'postiLettoTotali' => $request->get('postiLettoTotali'),
             'postiNellaStanza' => $request->get('postiNellaStanza'),
             
         ]);
-        
-        
-        $annuncio = $this->_locatoreModel->getAnnuncioById($request->get('idAnnuncio'))->update([
-            'titolo' => $request->get('titolo'),
-            'tipologia' => $request->get('tipologia'),
-            'descrizione' => $request->get('descrizione'),
-            'zonaLocazione' => $request->get('zonaLocazione'),
-            'indirizzo' => $request->get('indirizzo'),
-            'canoneAffitto' => $request->get('canoneAffitto'),
-            'inizioPeriodoDisponibilita' => $request->get('inizioPeriodoDisponibilita'),
-            'finePeriodoDisponibilita' => $request->get('finePeriodoDisponibilita'),
-            'disponibilita' => $disponibilita,
-            'numCamere' => $request->get('numCamere'),
-            'postiLettoTotali' => $request->get('postiLettoTotali'),
-            'postiNellaStanza' => $request->get('postiNellaStanza'),
-            
-        ]);
+
         
         foreach($this->_locatoreModel->getServiziAnnuncio($request->get('idAnnuncio')) as $servizio) {
            $servizio->delete();
@@ -477,6 +452,11 @@ class LocatoreController extends Controller {
         $proposta = $this->_locatoreModel->getPropostaById($idProposta)->update([
             'stato' => 'accettato',
                 ]);       
+        $proposta = $this->_locatoreModel->getPropostaById($idProposta);
+
+        $annuncio = $this->_locatoreModel->getAnnuncioById($proposta->annuncio)->update([            
+            'disponibilita' => false,            
+        ]);
         
          return redirect()->action('LocatoreController@index');
     }

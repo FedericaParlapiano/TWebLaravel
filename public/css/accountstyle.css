@@ -59,7 +59,8 @@ body{
     }
 }
 
-.button{
+.button,
+.button-nondisponibile{
     border:none;
     display:inline-block;
     padding:8px 16px;
@@ -69,7 +70,6 @@ body{
     color:inherit;
     background-color:inherit;
     text-align:center;
-    cursor:pointer;
     white-space:nowrap;
     -webkit-touch-callout:none;
     -webkit-user-select:none;
@@ -79,6 +79,10 @@ body{
     user-select:none;
 }
 
+.button{
+    cursor:pointer;
+}
+    
 .button:hover{
     color:#000!important;
     background-color:#ccc!important;
@@ -332,11 +336,13 @@ da decommentrare per ordinare i contiatti in orizzontale*/
 
 #bottone-vedi-tutte-proposte:hover{
     color:#000!important;
-    background-color:#C5DCFA;
+    background-color:#8BB2FF;
 }
 
 .button-proposta{
     border:none;
+    text-decoration: none;
+    color: black;
     display:inline-block;
     padding:8px 16px;
     border-radius: 3px;
@@ -347,6 +353,11 @@ da decommentrare per ordinare i contiatti in orizzontale*/
     overflow:hidden;
     text-align:center;
     background-color:#A4C6F2!important;
+}
+
+.button-proposta:hover{
+    color:#000!important;
+    background-color: #8BB2FF!important;
 }
 
 /* Colori */
