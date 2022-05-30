@@ -2,19 +2,15 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
+        @section('link')
         <link rel="stylesheet" type="text/css" href="{{ asset('css/publicstyle.css') }}" >
         <link rel="stylesheet" type="text/css" href="{{ asset('css/catalogostyle.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/accountstyle.css') }}">
-
-
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-        <title>HomeforStudents | @yield('title', 'Homepage')</title>
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/accountstyle.css') }}"> 
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">      
+        @show
+        
+        @section('scripts')
         <script src="https://kit.fontawesome.com/ea82011960.js" crossorigin="anonymous"></script>
-        
-        <style>
-            body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
-        </style>
-        
         <script type="text/javascript">
             
             function displayFAQ(id) {
@@ -47,13 +43,17 @@
                       anno.style.display = "none";
 
                     }
-              }
-              
-            
-            
-            
+              }                               
               
         </script>
+        @show
+
+        <title>HomeforStudents | @yield('title', 'Homepage')</title>
+        
+        <style>
+            body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+        </style>
+        
         
     </head>
              
