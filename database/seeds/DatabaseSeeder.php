@@ -54,8 +54,7 @@ class DatabaseSeeder extends Seeder {
             ['username'=>'nicola_zannini','password'=>Hash::make('Nicola99'),'role' => 'locatario','fotoProfilo'=>null,'nome'=>'Nicola','cognome'=>'Zannini','sesso'=>'M','dataNascita'=>'1994-11-13','citta'=>'San Marcello','numTelefono'=>'324824924','email'=>'niconico@hotmail.it','universita'=>'Unimol','facolta'=>'Biologia','annoImmatricolazione'=>'2019'],
             ['username'=>'ugo_zannini','password'=>Hash::make('Ugougo11'),'role' => 'locatario','fotoProfilo'=>null,'nome'=>'Ugo','cognome'=>'Zannini','sesso'=>'M','dataNascita'=>'2002-12-29','citta'=>'Corinaldo','numTelefono'=>'3543582032','email'=>'ugozanna@gmail.com','universita'=>'Poliba','facolta'=>'Veterinaria','annoImmatricolazione'=>'2018'],
             ['username'=>'mia_palazzetti','password'=>Hash::make('Formaggio1'),'role' => 'locatario','fotoProfilo'=>null,'nome'=>'Ugo','cognome'=>'Palazzetti','sesso'=>'F','dataNascita'=>'2000-12-13','citta'=>'Tolentino','numTelefono'=>'394538234','email'=>'miaformaggio@gmail.com','universita'=>'Unibo','facolta'=>'Scienze dell\'alimentazione','annoImmatricolazione'=>'2018'],
-            ['username'=>'giovanni_delfino','password'=>Hash::make('Giovanni99'),'role' => 'locatario','fotoProfilo'=>null,'nome'=>'Giovanni','cognome'=>'Delfino','sesso'=>'M','dataNascita'=>'1999-06-29','citta'=>'Chiaravalle','numTelefono'=>'3285940','email'=>'giovannigio@gmail.com','universita'=>'Univpm','facolta'=>'Ingegneria Elettronica','annoImmatricolazione'=>'2019'],
-      
+            ['username'=>'giovanni_delfino','password'=>Hash::make('Giovanni99'),'role' => 'locatario','fotoProfilo'=>null,'nome'=>'Giovanni','cognome'=>'Delfino','sesso'=>'M','dataNascita'=>'1999-06-29','citta'=>'Chiaravalle','numTelefono'=>'3285940','email'=>'giovannigio@gmail.com','universita'=>'Univpm','facolta'=>'Ingegneria Elettronica','annoImmatricolazione'=>'2019'],      
             ['username'=>'mario_rossi','password'=>Hash::make('Mariorossi00'),'role' => 'locatore','fotoProfilo'=>'mario.gif','nome'=>'Mario','cognome'=>'Rossi','sesso'=>'M','dataNascita'=>'2000-12-12','citta'=>'Ancona','numTelefono'=>'3218934634','email'=>'mariorossi00@gmail.com','universita'=>null,'facolta'=>null,'annoImmatricolazione'=>null],
             ['username'=>'simone_parini','password'=>Hash::make('Eimone90'),'role' => 'locatore','fotoProfilo'=>'simone.gif','nome'=>'Simone','cognome'=>'Parini','sesso'=>'M','dataNascita'=>'1990-03-12','citta'=>'Ancona','numTelefono'=>'3218934634','email'=>'simoneparini@gmail.com','universita'=>null,'facolta'=>null,'annoImmatricolazione'=>null],
             ['username'=>'aurora_nicolini','password'=>Hash::make('Eurora80'),'role' => 'locatore','fotoProfilo'=>null,'nome'=>'Aurora','cognome'=>'Nicolini','sesso'=>'F','dataNascita'=>'1980-12-10','citta'=>'Milano','numTelefono'=>'346273428','email'=>'aurorabella@gmail.com','universita'=>null,'facolta'=>null,'annoImmatricolazione'=>null],
@@ -359,7 +358,6 @@ class DatabaseSeeder extends Seeder {
             ['vincolo'=>'animali','annuncio'=>11],
             ['vincolo'=>'animali','annuncio'=>12]
            
-            //['vincoli'=>'','alloggi'=>]
         ]);
         
         
@@ -427,24 +425,6 @@ class DatabaseSeeder extends Seeder {
             'Buongiorno, ho visto il tuo annuncio, volevo chiderti alcune informazioni.', 'dataOraInvio' => date("Y-m-d H:i:s")],
         ]);
 
-         /* preferenza(locatario, annuncio)*/
-        DB::table('preferenze')->insert([
-            ['locatario' => 'enzo_ferrante', 'annuncio' => 1],
-            ['locatario' => 'flora_rossini', 'annuncio' => 2],
-            ['locatario' => 'allegra_medici', 'annuncio' => 3],
-            ['locatario' => 'partizio_bianchi', 'annuncio' => 4],
-            ['locatario' => 'partizio_bianchi', 'annuncio' => 5],
-            ['locatario' => 'arturo_casagrande', 'annuncio' => 5],
-            ['locatario' => 'tecla_mondo', 'annuncio' => 6],
-            ['locatario' => 'paolo_chioggia', 'annuncio' => 7],
-            ['locatario' => 'regina_falangi', 'annuncio' => 4],
-            ['locatario' => 'regina_falangi', 'annuncio' => 8],
-            ['locatario' => 'viaola_rossi', 'annuncio' => 2],
-            ['locatario' => 'viaola_rossi', 'annuncio' => 9],
-            ['locatario' => 'silvia_sauro', 'annuncio' => 10],
-            ['locatario' => 'claudio_gori', 'annuncio' => 7],
-
-         ]);
         /* richiesta(locatore, locatario, annuncio, canoneProposto*, messaggio*, stato, inizioAffitto, fineAffitto) */
         DB::table('richieste')->insert([
             ['locatore' => 'mario_rossi', 'locatario' => 'enzo_ferrante', 'annuncio' => 1, 'canoneProposto' => 500.00,'messaggio' => '',
@@ -488,8 +468,7 @@ class DatabaseSeeder extends Seeder {
             'stato' => 'da valutare', 'inizioAffitto' => '2023-09-10' , 'fineAffitto' => '2024-02-15'],
             ['locatore' => 'lorelore', 'locatario' => 'lariolario', 'annuncio' => 1, 'canoneProposto' => 500.00,'messaggio' => 'Vorrei affittare il suo appartamento.',
             'stato' => 'da valutare', 'inizioAffitto' => '2023-09-10' , 'fineAffitto' => '2024-02-15'],
-        ]);
-        
+        ]);        
         
     }
 

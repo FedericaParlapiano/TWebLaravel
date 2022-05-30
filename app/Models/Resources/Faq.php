@@ -8,7 +8,9 @@ class Faq extends Model {
 
     protected $table = 'faq';
     protected $primaryKey = 'id';
-    protected $fillable = ['domanda', 'risposta'];
+    //settando id come guarded si vieta il mass assignment per questo attributo; questa scelta è dettata dal fatto che 
+    //è definito come attributo autoincrementante e non è fillable.
+    protected $guarded = ['id'];
     public $timestamps = false;
     
 }
