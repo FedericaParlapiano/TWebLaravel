@@ -61,7 +61,7 @@ class LocatarioController extends Controller {
         
         $messaggio->save();
         
-        return  response()->json(['redirect' => route('admin')]);
+        return  response()->json(['redirect' => route('locatario')]);
     }
     
     public function sendProposta(NuovaPropostaRequest $request){
@@ -81,7 +81,7 @@ class LocatarioController extends Controller {
               
         $proposta->save();
         
-        return redirect()->action('LocatarioController@index');
+        return response()->json(['redirect' => route('locatario')]);
         
     }
     

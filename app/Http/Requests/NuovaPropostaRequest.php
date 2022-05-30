@@ -5,6 +5,11 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
+// Aggiunti per response JSON
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Contracts\Validation\Validator;
+use Symfony\Component\HttpFoundation\Response;
+
 class NuovaPropostaRequest extends FormRequest {
 
     /**
@@ -30,5 +35,14 @@ class NuovaPropostaRequest extends FormRequest {
             'fineAffitto' => 'required|date|after:inizioAffitto|regex:/^[0-9]{4}[-][0-9]{2}[-][0-9]{2}$/',
         ];
     }
+    
+    /**
+     * Override: response in formato JSON
+    */
+    protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response($validator->errors(), Response::HTTP_UNPROCESSABLE_ENTITY));
+    }
+    
     
 }

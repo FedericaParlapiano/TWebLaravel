@@ -20,6 +20,19 @@ $(function () {
         doFormValidation(actionUrl, formId);
     });
 });
+
+$(function () {
+    var actionUrl = "{{ route('proposta') }}";
+    var formId = 'proposta';
+    $(":input").on('blur', function (event) {
+        var formElementId = $(this).attr('id');
+        doElemValidation(formElementId, actionUrl, formId);
+    });
+    $("#proposta").on('submit', function (event) {
+        event.preventDefault();
+        doFormValidation(actionUrl, formId);
+    });
+});
 </script>
 @endsection
 
@@ -418,70 +431,28 @@ $(function () {
             <div id="close-div"><i id="close-proposta" class="fa-solid fa-xmark" onclick="closeProposta()"></i></div>
 
             {{ Form::open(array('route' => 'proposta', 'id' => 'proposta','class' => 'form-container')) }}            
-            @csrf 
+            {{ Form::token() }} 
+
             
             {{ Form::label('messaggio', 'Invia la tua proposta.', ['class' => 'label']) }}
             {{ Form::textarea('messaggio', '', ['class' => 'input', 'id' => 'messaggio', 'placeholder' => 'Proponiti..']) }}
             
-            @if ($errors->first('messaggio'))
-                <script> document.getElementById("form-proposta").style.display = "block"; </script>
-                <div class="errors" >
-                    @foreach ($errors->get('messaggio') as $message)
-                    <p>{{ $message }}</p>
-                    @endforeach
-                </div>
-            @endif
+            <div style="text-align:center; margin-top: 0.5em;"> Periodo di affitto </div>         
+            <div style="text-align:center; margin-top: 0.5em;">
+                {{ Form::label('inizioAffitto', 'Inizio', ['style' =>'margin-right: 0.5em;']) }}
+                {{ Form::date('inizioAffitto', '', ['id' => 'inizioAffitto', 'class' => 'input'])}}
+            </div>
+            <div style="text-align:center; margin-top: 0.5em;">
+                {{ Form::label('fineAffitto', 'Fine',  ['style' =>'margin-right: 0.5em;']) }}
+                {{ Form::date('fineAffitto', '', ['id' => 'fineAffitto', 'class' => 'input'])}}
+            </div> 
             
-            <div style="text-align:center; margin-top: 0.5em;"> Periodo di affitto </div>
-            <div style="display:flex;">
-                <div>
-                {{ Form::label('inizioAffitto', 'Inizio', ['style' =>'margin-left: 0.5em;']) }}
-                </div>
-                <div style="margin-left:8.5em; float: left;">
-                {{ Form::label('fineAffitto', 'Fine') }}
-                </div> 
-            </div>
-            <div style="display:flex;">
-                <div>
-                {{ Form::date('inizioAffitto', '', ['id' => 'fineAffitto', 'class' => 'input', 'style' =>'margin-left: 0.5em;'])}}
-                
-                @if ($errors->first('inizioAffitto'))
-                    <script> document.getElementById("form-proposta").style.display = "block"; </script>
-                    <div class="errors" >
-                        @foreach ($errors->get('inizioAffitto') as $message)
-                        <p>{{ $message }}</p>
-                        @endforeach
-                    </div>
-                @endif
-                
-                </div>
-                <div style="margin-left:1.5em; float: left;">
-                {{ Form::date('fineAffitto', '', ['id' => 'fineAffitto', 'class' => 'input', 'style' =>'margin-left: 0.5em; '])}}
-                
-                @if ($errors->first('fineAffitto'))
-                    <script> document.getElementById("form-proposta").style.display = "block"; </script>
-                    <div class="errors" >
-                        @foreach ($errors->get('fineAffitto') as $message)
-                        <p>{{ $message }}</p>
-                        @endforeach
-                    </div>
-                @endif
-                
-                </div> 
-            </div>
                         
-            <div style="display: flex; margin-top: 0.5em;">
+            <div style="margin: 0.8em;">
             {{ Form::label('canoneProposto', 'Fai un offerta:', ['class' => 'label']) }}
-            {{ Form::text('canoneProposto', '', ['class' => 'input', 'id' => 'canoneProposto', 'placeholder' => '€']) }}           
+            {{ Form::text('canoneProposto', '', ['class' => 'input', 'id' => 'canoneProposto', 'placeholder' => '€', 'style' =>'margin-right: 1em;']) }}           
             </div>
-            @if ($errors->first('canoneProposto'))
-                <script> document.getElementById("form-proposta").style.display = "block"; </script>
-                <div class="errors" >
-                    @foreach ($errors->get('canoneProposto') as $message)
-                    <p>{{ $message }}</p>
-                    @endforeach
-                </div>
-            @endif
+            
             
             {{ Form::hidden('locatore', $locatore->first()->username, ['id' => 'locatore']) }}
             {{ Form::hidden('annuncio', $singoloannuncio->id, ['id' => 'annuncio']) }}
