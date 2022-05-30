@@ -56,6 +56,10 @@ Route::get('/locatore/accettaproposta/{propostaId}', 'LocatoreController@accetta
 Route::get('/locatore/rifiutaproposta/{propostaId}', 'LocatoreController@rifiutaProposta')
         ->name('rifiutaproposta')->middleware('can:isLocatore');
 
+Route::get('generate-pdf/{idContratto}', 'LocatoreController@generatePDF')
+        ->name('pdf')->middleware('can:isLocatore');
+
+
 Route::get('/admin', 'AdminController@index')
         ->name('admin')->middleware('can:isAdmin');
 

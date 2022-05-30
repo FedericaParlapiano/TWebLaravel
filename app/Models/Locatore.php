@@ -65,5 +65,17 @@ class Locatore {
         return Richiesta::where('id', $idProposta)->get()->first();
     }
     
+    public function getDatiContratto($idContratto) {
+        return Richiesta::where('richieste.id', $idContratto)
+                ->select('annuncio.titolo as titoloannuncio', 'annuncio.tipologia as tipologiaannuncio', 'annuncio.indirizzo as indirizzo', 'annuncio.zonaLocazione as zonalocazione',
+                        'users1.nome as nomelocatario', 'users1.cognome as cognomelocatario', 'users1.dataNascita as datanascitalocatario', 
+                        'users2.nome as nomelocatore', 'users2.cognome as cognomelocatore', 'users2.dataNascita as datanascitalocatore',
+                        'richieste.inizioAffitto as inizioAffitto', 'richieste.fineAffitto as fineAffitto', 'richieste.canoneProposto as canoneProposto')
+                ->join('annuncio', 'richieste.annuncio', '=', 'annuncio.id')
+                ->join('users as users1', 'richieste.locatario', '=', 'users1.username')
+                ->join('users as users2', 'richieste.locatore', '=', 'users2.username')
+                ->first();
+    }
+    
        
 }

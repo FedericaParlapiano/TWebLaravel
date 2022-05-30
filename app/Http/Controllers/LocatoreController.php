@@ -12,6 +12,7 @@ use App\Http\Requests\NuovoAnnuncioRequest;
 
 use App\Models\Locatore;
 
+use PDF;
 
 class LocatoreController extends Controller {   
 
@@ -485,6 +486,31 @@ class LocatoreController extends Controller {
                 ]); 
         
          return redirect()->action('LocatoreController@index');
+    }
+    
+        public function generatePDF($idContratto)
+    {        
+        $contratto = $this->_locatoreModel->getDatiContratto($idContratto);
+        $data = ['title' => 'Contratto di locazione',
+            'date' => date('d/m/Y'),
+            'nomelocatore' => $contratto->nomelocatore,
+            'cognomelocatore' => $contratto->cognomelocatore,
+            'datanascitalocatore' => $contratto->datanascitalocatore,
+            'nomelocatario' => $contratto->nomelocatario,
+            'cognomelocatario' => $contratto->cognomelocatario,
+            'datanascitalocatario' => $contratto->datanascitalocatario,
+            'titoloannuncio' => $contratto->titoloannuncio,
+            'tipologiaannuncio' => $contratto->tipologiaannuncio,
+            'indirizzo' => $contratto->indirizzo,
+            'zonalocazione' => $contratto->zonalocazione,
+            'inizioAffitto' => $contratto->inizioAffitto,
+            'fineAffitto' => $contratto->fineAffitto,
+            'canoneProposto' => $contratto->canoneProposto,
+            'canoneAffitto' => $contratto->canoneAffitto,
+       ];
+        
+        $pdf = PDF::loadView('myPDF', $data);
+       return $pdf->download('contratto.pdf');
     }
 
 }
