@@ -8,7 +8,7 @@
     <body>
         <h1>{{ $title }}</h1>
 
-        <p> In data <i> {{ $date }} </i> il Sig./la Sig.ra <i> {{ $nomelocatore }} {{ $cognomelocatore }} </i>
+        <p> Il Sig./la Sig.ra <i> {{ $nomelocatore }} {{ $cognomelocatore }} </i>
             nato/a il <i> {{ $datanascitalocatore }} </i>, di seguito denominato/a, per brevità, “Locatore” </p>
         <p style='text-align: center;'>E</p>
         <p> il Sig./la Sig.ra <i> {{ $nomelocatario }} {{ $cognomelocatario }} </i>
@@ -23,7 +23,7 @@
             La locazione è regolata dalle seguenti concordate pattuizioni:
             <ol>
                 <li> <h4>DURATA</h4>
-                    La durata della locazione è stabilita in <i> {{ $date }} </i> con decorrenza dal <i> {{ $inizioAffitto }} </i> al <i> {{ $fineAffitto }}. </i> </li>
+                    La durata della locazione è stabilita con decorrenza dal <i> {{ $inizioAffitto }} </i> al <i> {{ $fineAffitto }}. </i> </li>
                 <li> <h4>CANONE</h4>
                     Il canone mensile di locazione, escluse le spese di condominio ordinarie e di riscaldamento, viene consensualmente determinato tra le parti in € 
                     @isset($canoneProposto)
@@ -34,7 +34,7 @@
                 </li>
             </ol>
         </p>
-        <p style='text-align: right;'>
+        <p style='text-align: right; margin-top: 200px;'>
             FIRMA ..........................
         </p> 
     </body>

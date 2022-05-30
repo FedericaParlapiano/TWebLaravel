@@ -360,6 +360,17 @@ da decommentrare per ordinare i contiatti in orizzontale*/
     background-color: #8BB2FF!important;
 }
 
+.contenitore-contratto{
+        margin-left: 300px;
+        margin-right: 300px;
+        margin-top: 30px;
+        padding:50px;
+        align-content: center;
+        justify-content: center;
+        border-radius: 10px;
+        box-shadow: 10px 10px 8px 10px #f2f2f2;
+    }
+
 /* Colori */
 .teal{color:#fff!important;background-color:#009688!important}
 .cadetblue{color:#fff!important;background-color:#5f9ea0}

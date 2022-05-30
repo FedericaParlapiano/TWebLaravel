@@ -512,6 +512,15 @@ class LocatoreController extends Controller {
         $pdf = PDF::loadView('myPDF', $data);
        return $pdf->download('contratto.pdf');
     }
+    
+    public function showContratto($idContratto){
+        $contratto = $this->_locatoreModel->getDatiContratto($idContratto);
+        $data = ['title' => 'Contratto di locazione',
+            ];
+        
+        return view('contratto', $data)
+                ->with('contratto', $contratto);
+    }
 
     
     public function disdettaProposta($idProposta)

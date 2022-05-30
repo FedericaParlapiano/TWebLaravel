@@ -68,6 +68,9 @@ Route::get('/locatore/rifiutaproposta/{propostaId}', 'LocatoreController@rifiuta
 Route::get('generate-pdf/{idContratto}', 'LocatoreController@generatePDF')
         ->name('pdf')->middleware('can:isLocatore');
 
+Route::get('/locatore/showcontratto/{idContratto}', 'LocatoreController@showContratto')
+        ->name('showcontratto')->middleware('can:isLocatore');
+
 Route::get('/locatore/disdettaproposta/{propostaId}', 'LocatoreController@disdettaProposta')
         ->name('disdettaproposta')->middleware('can:isLocatore');
 
