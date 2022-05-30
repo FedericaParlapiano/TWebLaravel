@@ -7,6 +7,8 @@ use App\Models\Resources\Foto;
 use App\Models\Resources\ServizioIncluso;
 use App\Models\Resources\Vincolo;
 use App\Models\Resources\Richiesta;
+use App\Models\Resources\Affitto;
+
 
 /* 
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -50,6 +52,11 @@ class Locatore {
                 ->paginate(10);
     }    
     
+    public function getPropostaById($idProposta) {
+        return Richiesta::where('id', $idProposta)->get()->first();
+    }
+    
+    
     public function getDatiAffitto($idProposta) {
         return Richiesta::where('richieste.id', $idProposta)
                 ->select('annuncio.id as idannuncio', 'annuncio.titolo as titoloannuncio', 'annuncio.tipologia as tipologiaannuncio', 'annuncio.canoneAffitto as canoneAnnuncio', 'users.username as usernamelocatario', 'users.nome as nomelocatario', 'users.cognome as cognomelocatario',
@@ -58,11 +65,14 @@ class Locatore {
                         'richieste.canoneProposto as canoneProposto', 'richieste.stato as stato')
                 ->join('annuncio', 'richieste.annuncio', '=', 'annuncio.id')
                 ->join('users', 'richieste.locatario', '=', 'users.username')
-                ->get()->first();;
+                ->get()->first();
     }  
     
-    public function getPropostaById($idProposta) {
-        return Richiesta::where('id', $idProposta)->get()->first();
+    public function getAffittoByInfo($annuncio, $locatario, $inizioAffitto, $fineAffitto) {
+        return Affitto::where('annuncio', $annuncio)
+                ->where('dataStipulaContratto', $inizioAffitto)
+                ->where('locatario', $locatario)
+                ->where('dataFineContratto', $fineAffitto)->get()->first();
     }
     
     public function getDatiContratto($idContratto) {
@@ -76,6 +86,5 @@ class Locatore {
                 ->join('users as users2', 'richieste.locatore', '=', 'users2.username')
                 ->first();
     }
-    
-       
+      
 }

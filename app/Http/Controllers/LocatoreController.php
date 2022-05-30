@@ -457,22 +457,22 @@ class LocatoreController extends Controller {
         $proposta = $this->_locatoreModel->getPropostaById($idProposta)->update([
             'stato' => 'accettato',
                 ]);       
-        $proposta = $this->_locatoreModel->getDatiAffitto($idProposta);
+        $datiaffitto = $this->_locatoreModel->getDatiAffitto($idProposta);
         
         $affitto = new Affitto;
-        $affitto->locatario = $proposta->usernamelocatario;
-        $affitto->annuncio = $proposta->idannuncio;
-        $affitto->dataStipulaContratto = $proposta->inizioAffitto;
-        $affitto->dataFineContratto = $proposta->fineAffitto;
-        if($proposta->canoneProposto){
-           $affitto->canoneConcordato = $proposta->canoneProposto;   
+        $affitto->locatario = $datiaffitto->usernamelocatario;
+        $affitto->annuncio = $datiaffitto->idannuncio;
+        $affitto->dataStipulaContratto = $datiaffitto->inizioAffitto;
+        $affitto->dataFineContratto = $datiaffitto->fineAffitto;
+        if($datiaffitto->canoneProposto){
+           $affitto->canoneConcordato = $datiaffitto->canoneProposto;   
         }else{
-           $affitto->canoneConcordato = $proposta->canoneAnnuncio;
+           $affitto->canoneConcordato = $datiaffitto->canoneAnnuncio;
         }
         
         $affitto->save();
                 
-        $annuncio = $this->_locatoreModel->getAnnuncioById($proposta->idannuncio)->update([            
+        $annuncio = $this->_locatoreModel->getAnnuncioById($datiaffitto->idannuncio)->update([            
             'disponibilita' => false,            
         ]);
         
@@ -488,7 +488,7 @@ class LocatoreController extends Controller {
          return redirect()->action('LocatoreController@index');
     }
     
-        public function generatePDF($idContratto)
+    public function generatePDF($idContratto)
     {        
         $contratto = $this->_locatoreModel->getDatiContratto($idContratto);
         $data = ['title' => 'Contratto di locazione',
@@ -513,4 +513,36 @@ class LocatoreController extends Controller {
        return $pdf->download('contratto.pdf');
     }
 
+    
+    public function disdettaProposta($idProposta)
+    {
+        $proposta = $this->_locatoreModel->getPropostaById($idProposta);
+        $affitto = $this->_locatoreModel->getAffittoByInfo($proposta->annuncio, $proposta->locatario, $proposta->inizioAffitto, $proposta->fineAffitto);
+        $affitto->delete();
+        $annuncio = $this->_locatoreModel->getAnnuncioById($proposta->annuncio);
+        $annuncio->update([
+            'disponibilita' => true,
+                ]);
+
+        
+        if($proposta->fineAffitto <= date("Y-m-d")){
+            $proposta->delete();
+        }else{
+            $proposta->update([
+            'stato' => 'rifiutato',
+                ]);
+        }
+        
+         return redirect()->action('LocatoreController@index');
+    }
+    
+     public function eliminaProposta($idProposta)
+    {
+        $proposta = $this->_locatoreModel->getPropostaById($idProposta);
+        $proposta->delete();
+
+        return redirect()->action('LocatoreController@index');
+         
+    }
+    
 }

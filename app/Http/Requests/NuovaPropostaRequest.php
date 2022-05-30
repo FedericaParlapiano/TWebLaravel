@@ -26,7 +26,7 @@ class NuovaPropostaRequest extends FormRequest {
         return [
             'messaggio' => 'nullable|string',
             'canoneProposto' => 'nullable|numeric|regex:/^-?[0-9]+(?:\.[0-9]{1,2})?$/',
-            'inizioAffitto' => 'required|date|regex:/^[0-9]{4}[-][0-9]{2}[-][0-9]{2}$/',
+            'inizioAffitto' => 'required|date|after:today|regex:/^[0-9]{4}[-][0-9]{2}[-][0-9]{2}$/',
             'fineAffitto' => 'required|date|after:inizioAffitto|regex:/^[0-9]{4}[-][0-9]{2}[-][0-9]{2}$/',
         ];
     }

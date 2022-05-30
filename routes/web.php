@@ -26,8 +26,18 @@ Route::post('/catalog', 'LocatarioController@showFilterCatalogo')
 Route::get('/catalog/annuncio/{idAnnuncio}', 'PublicController@showAnnuncio')
         ->name('annuncio');
 
+
+
 Route::get('/account', 'UserController@index')
         ->name('account');
+
+Route::get('/modificaaccount', 'UserController@showModificaAccount')
+        ->name('modificaaccount')->middleware('can:isUser');
+
+Route::post('/modificaaccount', 'UserController@modificaAccount')
+        ->name('modificaaccount');
+
+
 
 Route::get('/locatore', 'LocatoreController@index')
         ->name('locatore')->middleware('can:isLocatore');
@@ -37,7 +47,6 @@ Route::get('/locatore/nuovoannuncio', 'LocatoreController@addAnnuncio')
 
 Route::post('/locatore/nuovoannuncio', 'LocatoreController@submitAnnuncio');
         
-
 Route::get('/locatore/modificaannuncio/{idAnnuncio}', 'LocatoreController@showUpdateAnnuncio')
         ->name('modificaannuncio')->middleware('can:isLocatore');
 
@@ -58,6 +67,28 @@ Route::get('/locatore/rifiutaproposta/{propostaId}', 'LocatoreController@rifiuta
 
 Route::get('generate-pdf/{idContratto}', 'LocatoreController@generatePDF')
         ->name('pdf')->middleware('can:isLocatore');
+
+Route::get('/locatore/disdettaproposta/{propostaId}', 'LocatoreController@disdettaProposta')
+        ->name('disdettaproposta')->middleware('can:isLocatore');
+
+Route::get('/locatore/eliminaproposta/{propostaId}', 'LocatoreController@eliminaProposta')
+        ->name('eliminaproposta')->middleware('can:isLocatore');
+
+
+Route::get('/locatario', 'LocatarioController@index')
+        ->name('locatario')->middleware('can:isLocatario');
+
+
+Route::post('/locatario/messaggio', 'LocatarioController@sendMessaggio')
+        ->name('messaggio')->middleware('can:isLocatario');
+
+Route::post('/locatario/proposta', 'LocatarioController@sendProposta')
+        ->name('proposta')->middleware('can:isLocatario');
+
+Route::get('/locatario/proposte', 'LocatarioController@showProposte')
+        ->name('propostelocatario')->middleware('can:isLocatario');
+
+
 
 
 Route::get('/admin', 'AdminController@index')
@@ -80,19 +111,6 @@ Route::post('/admin/eliminafaq/{faqId}', 'AdminController@eliminaFaq')
         ->name('eliminafaq');
 
 
-Route::get('/locatario', 'LocatarioController@index')
-        ->name('locatario')->middleware('can:isLocatario');
-
-
-Route::post('/locatario/messaggio', 'LocatarioController@sendMessaggio')
-        ->name('messaggio')->middleware('can:isLocatario');
-
-Route::post('/locatario/proposta', 'LocatarioController@sendProposta')
-        ->name('proposta')->middleware('can:isLocatario');
-
-Route::get('/locatario/proposte', 'LocatarioController@showProposte')
-        ->name('propostelocatario')->middleware('can:isLocatario');
-
 //Rotte per l'autenticazione
 Route::get('login', 'Auth\LoginController@showLoginForm')
         ->name('login');
@@ -110,11 +128,6 @@ Route::get('register', 'Auth\RegisterController@showRegistrationForm')
 Route::post('register', 'Auth\RegisterController@register');
 
 
-Route::get('/modificaaccount', 'UserController@showModificaAccount')
-        ->name('modificaaccount')->middleware('can:isUser');
-
-Route::post('/modificaaccount', 'UserController@modificaAccount')
-        ->name('modificaaccount');
 
 
 
