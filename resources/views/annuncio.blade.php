@@ -9,19 +9,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
 $(function () {
-    var actionUrl = "{{ route('messaggio') }}";
-    var formId = 'messaggio';
-    $(":input").on('blur', function (event) {
-        var formElementId = $(this).attr('id');
-        doElemValidation(formElementId, actionUrl, formId);
-    });
-    $("#messaggio").on('submit', function (event) {
-        event.preventDefault();
-        doFormValidation(actionUrl, formId);
-    });
-});
-
-$(function () {
     var actionUrl = "{{ route('proposta') }}";
     var formId = 'proposta';
     $(":input").on('blur', function (event) {
@@ -414,7 +401,14 @@ $(function () {
 
                 {{ Form::label('testo', 'Invia il tuo messaggio', ['class' => 'label']) }}
                 {{ Form::textarea('testo', '', ['class' => 'input', 'id' => 'testo', 'placeholder' => 'Scrivi il tuo messaggio..']) }}
-                
+                @if ($errors->first('testo'))
+                    <script> document.getElementById("form-messaggio").style.display = "block"; </script>
+                    <div class="errors" >
+                        @foreach ($errors->get('testo') as $message)
+                        <p>{{ $message }}</p>
+                        @endforeach
+                    </div>
+                @endif
             
                 {{ Form::hidden('destinatario', $locatore->first()->username, ['id' => 'destinatario']) }}
 
