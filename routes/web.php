@@ -37,6 +37,16 @@ Route::get('/modificaaccount', 'UserController@showModificaAccount')
 Route::post('/modificaaccount', 'UserController@modificaAccount')
         ->name('modificaaccount');
 
+Route::get('/messaggistica', 'UserController@showChat')
+        ->name('messaggistica');
+
+Route::post('/messaggisticapost', 'UserController@sendMessaggio')
+        ->name('messaggisticapost')->middleware('can:isUser');
+
+Route::get('/chat/{user}', 'UserController@showUserChat')
+        ->name('chat');
+
+
 
 
 Route::get('/locatore', 'LocatoreController@index')

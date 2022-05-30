@@ -470,6 +470,22 @@ class DatabaseSeeder extends Seeder {
             'stato' => 'da valutare', 'inizioAffitto' => '2023-09-10' , 'fineAffitto' => '2024-02-15'],
         ]);        
         
+        DB::table('chat')->insert([
+            ['user1' => 'enzo_ferrante', 'user2' => 'mario_rossi'],
+            ['user1' => 'flora_rossini', 'user2' => 'simone_parini'],
+            ['user1' => 'allegra_medici', 'user2' => 'aurora_nicolini'],
+            ['user1' => 'partizio_bianchi', 'user2' => 'ennio_tosi'],
+            ['user1' => 'arturo_casagrande', 'user2' => 'camilla_piacentini'],
+            ['user1' => 'claudio_gori', 'user2' => 'eleonora_gritti'],
+            ['user1' => 'silvia_sauro', 'user2' => 'lara_battaglia'],
+            ['user1' => 'enzo_ferrante', 'user2' => 'vanessa_marrone'],
+            ['user1' => 'lariolario', 'user2' => 'lorelore'],
+            ['user1' => 'enzo_ferrante', 'user2' => 'lorelore'],
+            ['user1' => 'flora_rossini', 'user2' => 'lorelore'],
+            ['user1' => 'allegra_medici', 'user2' => 'lorelore'],
+
+        ]);
+        
     }
 
 }

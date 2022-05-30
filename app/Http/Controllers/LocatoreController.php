@@ -5,12 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Resources\Annuncio;
 use App\Models\Resources\ServizioIncluso;
 use App\Models\Resources\Vincolo;
-use App\Models\Resources\Richiesta;
+use App\Models\Resources\Messaggio;
 use App\Models\Resources\Affitto;
-
 use App\Http\Requests\NuovoAnnuncioRequest;
-
+use App\Http\Requests\NuovoMessaggioRequest;
 use App\Models\Locatore;
+
 
 use PDF;
 
@@ -552,6 +552,36 @@ class LocatoreController extends Controller {
 
         return redirect()->action('LocatoreController@index');
          
+    }
+    
+    public function sendMessaggio(NuovoMessaggioRequest $request){
+        $messaggio = new Messaggio;
+        $request->validated();
+        
+        $user = auth()->user();
+        $messaggio->mittente = $user->username;
+        $messaggio->destinatario = $request->get('destinatario');
+        $messaggio->testo = $request->get('testo');       
+        $messaggio->dataOraInvio = date("Y-m-d H:i:s"); 
+        
+        $messaggio->save();
+        
+        $chat = $this->_userModel->getChat(auth()->user()->username);
+        $messaggi = $this->_userModel->getMessaggi($chat);
+        
+        if($request->ajax()) {
+       
+            return view('elenco-messaggi')
+                ->with('authuser', auth()->user()->username)
+                ->with('chat', $chat)
+                ->with('messaggi', $messaggi);
+        }
+        
+        return view('messaggistica')
+                ->with('authuser', auth()->user()->username)
+                ->with('chat', $chat)
+                ->with('messaggi', $messaggi);
+        
     }
     
 }

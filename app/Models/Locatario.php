@@ -3,6 +3,8 @@
 namespace app\Models;
 
 use App\Models\Resources\Richiesta;
+use App\Models\Resources\Chat;
+
 
 /* 
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -20,4 +22,9 @@ class Locatario {
                 ->join('users', 'richieste.locatore', '=', 'users.username')
                 ->paginate(10);
     }    
+    
+    public function getChat($user1, $user2) {
+        return Chat::where('user1', $user1)->where('user2',$user2)->get()->first();
+    }
+  
 }

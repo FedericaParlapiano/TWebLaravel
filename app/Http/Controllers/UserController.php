@@ -4,10 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Catalogo;
 use App\User;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Locatore;
 use Illuminate\Validation\Rule;
+use App\Models\Resources\Messaggio;
+use App\Http\Requests\NuovoMessaggioRequest;
+
 
 class UserController extends Controller {
     
@@ -90,6 +94,50 @@ class UserController extends Controller {
     
     public function addAnnuncio() {
         return view('annunci.insert');
+    }
+    
+    public function showChat() {
+        
+        
+        $chat = $this->_userModel->getChat(auth()->user()->username);
+        $messaggi = $this->_userModel->getMessaggi($chat);
+        
+        return view('messaggistica')
+            ->with('authuser', auth()->user()->username)
+            ->with('chat', $chat)
+            ->with('messaggi', $messaggi);
+    }
+    
+    public function showUserChat($user) {
+        
+        $messaggi = $this->_userModel->getMessaggiUser($user);
+        
+        return view('chat')
+            ->with('authuser', auth()->user()->username)
+            ->with('messaggi', $messaggi)
+            ->with('user', $user);
+    }
+    
+    public function sendMessaggio(NuovoMessaggioRequest $request){
+        $messaggio = new Messaggio;
+        $request->validated();
+        
+        $user = auth()->user();
+        $messaggio->mittente = $user->username;
+        $messaggio->destinatario = $request->get('destinatario');
+        $messaggio->testo = $request->get('testo');       
+        $messaggio->dataOraInvio = date("Y-m-d H:i:s"); 
+        
+        $messaggio->save();
+        
+        $messaggi = $this->_userModel->getMessaggiUser($request->get('destinatario'));
+        
+        
+        return view('chat')
+                ->with('authuser', auth()->user()->username)
+                ->with('user', $request->get('destinatario'))
+                ->with('messaggi', $messaggi);
+        
     }
    
 }

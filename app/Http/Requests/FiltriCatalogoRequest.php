@@ -38,8 +38,8 @@ class FiltriCatalogoRequest extends FormRequest {
             'amount' => 'nullable|string',
             'tipologia'=> 'nullable',
             'citta'=>'nullable|string|max:25',
-            'da' => 'nullable|date|regex:/^[0-9]{4}[\/][0-9]{2}[\/][0-9]{2}$/',
-            'a' => 'nullable|date|after:da|regex:/^[0-9]{4}[\/][0-9]{2}[\/][0-9]{2}$/',
+            'da' => 'nullable|date',
+            'a' => 'nullable|date|after:da',
             
         ];
     }
