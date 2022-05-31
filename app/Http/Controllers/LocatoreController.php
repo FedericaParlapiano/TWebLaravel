@@ -7,6 +7,7 @@ use App\Models\Resources\ServizioIncluso;
 use App\Models\Resources\Vincolo;
 use App\Models\Resources\Messaggio;
 use App\Models\Resources\Affitto;
+use App\Models\Resources\Foto;
 use App\Http\Requests\NuovoAnnuncioRequest;
 use App\Http\Requests\NuovoMessaggioRequest;
 use App\Models\Locatore;
@@ -66,18 +67,17 @@ class LocatoreController extends Controller {
         //immagini annuncio
          if($request->hasfile('image'))
          {
-             $image = $request->file('image');
-             $annuncio->locatore = $image->getClientOriginalName();
-
-            foreach($request->file('image') as $image)
-            {
-                $name = $image->getClientOriginalName();
-                $annuncio->locatore = $image->getClientOriginalName();
-                $destinationPath = public_path() . '/images';
-                $image->move($destinationPath, $name);
-            }
+            $image = $request->file('image');
+            $name = $image->getClientOriginalName();
+            $destinationPath = public_path() . '/images/annunci';
+            $image->move($destinationPath, $name);         
+             
+            $foto = new Foto;
+            $foto->immagine = $name;
+            $foto->annuncio = $annuncio->id;            
+            $foto->save();
          }
-        
+               
         
          // servizi annuncio
         if($request->get('counting-bagno'))
@@ -222,7 +222,7 @@ class LocatoreController extends Controller {
             $matricole->save();
         }
         
-        if($request->get('sesso'))
+        if($request->get('sesso') && $request->get('sesso') != 'Tutti')
         {
             $sesso = new Vincolo;
             $sesso->vincolo = $request->get('sesso');
@@ -251,7 +251,7 @@ class LocatoreController extends Controller {
     
     public function updateAnnuncio(NuovoAnnuncioRequest $request) {
         
-        $request->validated();
+        $request->validated();   
         
         $annuncio = $this->_locatoreModel->getAnnuncioById($request->get('idAnnuncio'))->update([
             'titolo' => $request->get('titolo'),
@@ -268,6 +268,20 @@ class LocatoreController extends Controller {
             'postiNellaStanza' => $request->get('postiNellaStanza'),
             
         ]);
+        
+        //immagini annuncio
+         if($request->hasfile('image'))
+         {
+            $image = $request->file('image');
+            $name = $image->getClientOriginalName();
+            $destinationPath = public_path() . '/images/annunci';
+            $image->move($destinationPath, $name);         
+             
+            $foto = new Foto;
+            $foto->immagine = $name;
+            $foto->annuncio = $request->get('idAnnuncio');            
+            $foto->save();
+         }
 
         
         foreach($this->_locatoreModel->getServiziAnnuncio($request->get('idAnnuncio')) as $servizio) {
@@ -413,7 +427,7 @@ class LocatoreController extends Controller {
         }
         
         
-        if($request->get('sesso'))
+        if($request->get('sesso') && $request->get('sesso') != 'Tutti')
         {
             $sesso = new Vincolo;
             $sesso->vincolo = $request->get('sesso');
