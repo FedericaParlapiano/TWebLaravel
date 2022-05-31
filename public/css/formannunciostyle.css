@@ -53,12 +53,12 @@ justify-content: center;
   text-align: start;
 }
 
-.input,
+.input-annuncio,
 textarea {
   padding: 1em;
 }
 
-.button{
+.button-annuncio{
     background-color: #94C7EE;
 }
 
@@ -69,13 +69,13 @@ textarea {
   }
 }
 
-.input:focus,
+.input-annuncio:focus,
 textarea:focus,
 #tipologia:focus{
   outline: 3px solid lightsteelblue;
 }
 
-.input,
+.input-annuncio,
 textarea, 
 #image{
   width: 100%;

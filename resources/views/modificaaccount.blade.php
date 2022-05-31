@@ -10,8 +10,8 @@
 
 
             {{ Form::open(array('route' => 'modificaaccount', 'class' => 'form login')) }}
+            {{ Form::token}}
             
-            @csrf
             <div  class="form-field">
                 {{ Form::label('nome', 'Nome', ['class' => 'register-label']) }}
                 {{ Form::text('nome', $user->nome, ['class' => 'form-input', 'id' => 'nome']) }}
