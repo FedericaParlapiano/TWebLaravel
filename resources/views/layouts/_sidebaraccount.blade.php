@@ -27,7 +27,7 @@
     @endcan
     <a href="{{ route('messaggistica') }}" onclick="w3_close()" class="bar-item button padding"><i class="fa-solid fa-comments margine-right"></i>MESSAGGI</a>
     @can('isLocatario')
-    <a href="#proposte" onclick="w3_close()" class="bar-item button padding"><i class="fa-regular fa-paper-plane margine-right"></i> PROPOSTE</a>
+    <a href="#proposte-inviate" onclick="w3_close()" class="bar-item button padding"><i class="fa-regular fa-paper-plane margine-right"></i> PROPOSTE</a>
     @endcan
     @can('isLocatore')
     <a href="#propostericevute" onclick="w3_close()" class="bar-item button padding"><i class="fa-regular fa-paper-plane margine-right"></i> PROPOSTE</a>
