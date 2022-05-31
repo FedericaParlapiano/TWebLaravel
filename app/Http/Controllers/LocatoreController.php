@@ -242,7 +242,7 @@ class LocatoreController extends Controller {
         $servizi = $this->_locatoreModel->getServiziAnnuncio($idAnnuncio);
         $vincoli = $this->_locatoreModel->getVincoliAnnuncio($idAnnuncio);
         
-        return view('parteprivata.modificaannuncio')
+        return view('annunci.modificaannuncio')
                     ->with('annuncio', $annuncio)
                     ->with('servizi', $servizi)
                     ->with('vincoli', $vincoli);
