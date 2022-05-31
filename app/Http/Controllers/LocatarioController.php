@@ -116,5 +116,47 @@ class LocatarioController extends Controller {
                    ->with('user', $user)        
                    ->with('proposte', $proposte);
     }
+    
+    public function getAnnunciOrdinati(FiltriCatalogoRequest $request) {
+        
+        $request->validated();
+        $annunci = $this->_catalogoModel->getAnnunciOrdinati($request);
+        $foto = $this->_catalogoModel->getFoto();
+        $annunciconfoto = $this->_catalogoModel->getAnnunciConFoto();
+        
+        if($request->ajax()){
+            return view('catalog-pagination')
+                    ->with('annunci', $annunci)
+                    ->with('foto', $foto)
+                    ->with('annunciconfoto', $annunciconfoto);
+        }
+        
+        return view('catalog')
+                    ->with('annunci', $annunci)
+                    ->with('foto', $foto)
+                    ->with('annunciconfoto', $annunciconfoto);
+        
+        
+        
+    }
+    
+    public function ordinaCatalogo(FiltriCatalogoRequest $request) {
+        
+        $request->validated();
+        $vincolisoddisfatti = $this->_catalogoModel->getVincoliSoddisfatti($request);
+        $annunci = $this->_catalogoModel->getAnnunciOrdinati($vincolisoddisfatti);
+        $foto = $this->_catalogoModel->getFoto();
+        $annunciconfoto = $this->_catalogoModel->getAnnunciConFoto();
+        $numFiltriNonIndicati = $this->_catalogoModel->getNumeroFiltri($request);
+        
+        return view('catalogoordinato')
+            ->with('vincolisoddisfatti', $vincolisoddisfatti)
+            ->with('annunci', $annunci)
+            ->with('foto', $foto)
+            ->with('annunciconfoto', $annunciconfoto)
+            ->with('numFiltri', $numFiltriNonIndicati);
+                
+        
+    }
    
 }
