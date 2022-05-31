@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -57,7 +58,7 @@ class RegisterController extends Controller
             'username' => ['required', 'string', 'min:8', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'role' => ['required', 'string'],
-            'fotoProfilo' => ['nullable', 'string'],
+            'fotoProfilo' => ['nullable', 'image'],
             'sesso' => ['required', 'string'],
             'dataNascita' => ['nullable', 'date', 'before:today', 'regex:/^[0-9]{4}[-][0-9]{2}[-][0-9]{2}$/'],
             'citta' => ['nullable', 'string', 'max:255'],
@@ -75,16 +76,14 @@ class RegisterController extends Controller
      * @return \App\User
      */
     protected function create(array $data)
-    {
-        
-        return User::create([
+    {   
+        $user = User::create([
             'nome' => $data['nome'],
             'cognome' => $data['cognome'],
             'email' => $data['email'],
             'username' => $data['username'],
             'password' => Hash::make($data['password']),
             'role' => $data['role'],
-            'fotoProfilo' => $data['fotoProfilo'],
             'sesso' => $data['sesso'],
             'dataNascita' => $data['dataNascita'],
             'citta' => $data['citta'],
@@ -93,5 +92,20 @@ class RegisterController extends Controller
             'facolta' => $data['facolta'],
             'annoImmatricolazione' => $data['annoImmatricolazione'],
         ]);
+        
+        if(request()->hasfile('fotoProfilo')){
+            $image = request()->file('fotoProfilo');
+            $destinationPath = public_path() . '/images/users';
+            $filename = $image->getClientOriginalName();
+            $image->move($destinationPath, $filename);
+            $user->update(['fotoProfilo' => $filename]);
+        }
+        else
+        {
+            $user->update(['fotoProfilo' => 'user.png']);
+
+        }
+       
+        return $user;
     }
 }

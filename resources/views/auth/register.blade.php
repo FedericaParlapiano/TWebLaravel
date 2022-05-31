@@ -8,7 +8,7 @@
     <p class="login-paragraph"> Inserisci i tuoi dati per registrarti al nostro sito</p>
 
 
-            {{ Form::open(array('route' => 'register', 'class' => 'form login')) }}
+            {{ Form::open(array('route' => 'register', 'files' => true, 'class' => 'form login')) }}
             {{ Form::token() }}
             
             <div  class="form-field">
