@@ -53,11 +53,15 @@ class LocatarioController extends Controller {
     
     public function sendMessaggio(NuovoMessaggioRequest $request){
         $messaggio = new Messaggio;
-        $request->validated();
+        $request->validated();           
         
+        $user = auth()->user();                
+        $messaggio->mittente = $user->username;
+        $messaggio->destinatario = $request->get('destinatario');
+        $messaggio->testo = $request->get('testo');       
+        $messaggio->dataOraInvio = date("Y-m-d H:i:s"); 
         
-        
-        $user = auth()->user();
+        $messaggio->save();
         
         $chat = $this->_locatarioModel->getChat($user->username, $request->get('destinatario'));
         
@@ -68,13 +72,6 @@ class LocatarioController extends Controller {
             
             $chat->save();
         }
-        
-        $messaggio->mittente = $user->username;
-        $messaggio->destinatario = $request->get('destinatario');
-        $messaggio->testo = $request->get('testo');       
-        $messaggio->dataOraInvio = date("Y-m-d H:i:s"); 
-        
-        $messaggio->save();
         
         return redirect()->action('LocatarioController@index');
     }
@@ -95,6 +92,16 @@ class LocatarioController extends Controller {
         $proposta->fineAffitto = $request->get('fineAffitto');
               
         $proposta->save();
+        
+        $chat = $this->_locatarioModel->getChat($user->username, $request->get('locatore'));
+        
+        if(!$chat) {
+            $chat = new Chat();
+            $chat->user1 = $user->username;
+            $chat->user2 = $request->get('locatore');
+            
+            $chat->save();
+        }
         
         return response()->json(['redirect' => route('locatario')]);
         
