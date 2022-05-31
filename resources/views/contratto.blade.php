@@ -34,7 +34,7 @@
             </ol>
         </p>
         <p style='text-align: right; margin-top: 200px;'>
-            FIRMA ..........................
+            FIRMA ......................................
         </p>     
 </div>
 

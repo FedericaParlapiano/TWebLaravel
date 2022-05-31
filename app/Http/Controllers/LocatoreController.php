@@ -509,7 +509,7 @@ class LocatoreController extends Controller {
             'canoneAffitto' => $contratto->canoneAffitto,
        ];
         
-        $pdf = PDF::loadView('myPDF', $data);
+        $pdf = PDF::loadView('contrattoPDF', $data);
        return $pdf->download('contratto.pdf');
     }
     

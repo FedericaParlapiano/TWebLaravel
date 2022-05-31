@@ -229,7 +229,7 @@
                 @endif
                  
                 @if($proposta->stato=='rifiutato') 
-                <a href="{{ route('eliminaproposta', [$proposta->id]) }}" onclick="return confirm('Sei sicuro di voler reliminare la proposta? ')" class="button-proposta">Elimina</a>                
+                <a href="{{ route('eliminaproposta', [$proposta->id]) }}" onclick="return confirm('Sei sicuro di voler eliminare la proposta? ')" class="button-proposta">Elimina</a>                
                 @endif
                 </div>
             </div>

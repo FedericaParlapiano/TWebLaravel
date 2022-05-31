@@ -105,7 +105,7 @@
                 @endif
                 
                 @if($proposta->stato=='accettato')
-                <a href="{{ route('pdf', [$proposta->id]) }}" onclick="return confirm('Vuoi scaricare il contratto?')"  class="button-proposta" style="margin-left:15px;">Contratto</a>                
+                <a href="{{ route('showcontratto', [$proposta->id]) }}" class="button-proposta" style="margin-left:15px;">Contratto</a>                
                 <a href="{{ route('disdettaproposta', [$proposta->id]) }}" onclick="return confirm('Sei sicuro di voler rendere nuovamente disponibile il tuo alloggio? Se la data di fine affitto è futura questa scelta implica la disdetta anticipata del contratto di locazione.')" class="button-proposta">Rendi disponibile</a>                
                  @endif
                  
