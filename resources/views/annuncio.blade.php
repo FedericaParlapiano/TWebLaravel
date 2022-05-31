@@ -339,6 +339,10 @@ $(function () {
             <p> <i class="fa-solid fa-champagne-glasses" style="margin-right:16px"></i> Party </p>
             @elseif($vincoloAnnuncio->vincolo=='matricole')
             <p> <i class="fa-solid fa-baby" style="margin-right:16px"></i> Matricole </p>
+            @elseif($vincoloAnnuncio->vincolo=='uomini')
+            <p> <i class="fa-solid fa-venus" style="margin-right:16px"></i> Donne </p>
+            @elseif($vincoloAnnuncio->vincolo=='donne')
+            <p> <i class="fa-solid fa-mars" style="margin-right:16px"></i> Uomini </p>
             @endif
             @endforeach
         </div>
