@@ -1,38 +1,21 @@
 @extends('layouts.public')
-<link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+
 <script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+@section('link')
+@parent
+    <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+@endsection
+
+@section('scripts')
+@parent
+@endsection
+
 @section('title', 'Catalogo Annunci')
  
 
 @section('content')
-
-<script>
-    $(function() {
-      $(document).on("click", "#pagination-filtri a,#button-cerca", function() {
-
-        //get url and make final url for ajax 
-        var url = $(this).attr("href");
-        var append = url.indexOf("?") === -1 ? "?" : "&";
-        var finalURL = url + append + $("#filtri-form").serialize();
-
-        //set to current url
-        window.history.pushState({}, null, finalURL);
-
-        $.post(finalURL, function(data) {
-
-          $("#pagination_data").html(data);
-          $("html, body, pagination_data").animate({ scrollTop: 0 }, 200);
-
-        });
-
-        return false;
-      });
-
-    });
-  </script>
 
 @can('isLocatario')
 
@@ -420,74 +403,6 @@
     @endcannot
 </div>    
 </div>
-
-
-<script>
-  $(function() {
-    $( "#slider-range" ).slider({
-      range: true,
-      min: 0,
-      max: 1000,
-      values: [ 0, 1000 ],
-      slide: function( event, ui ) {
-        $( "#amount" ).val( "€" + ui.values[ 0 ] + " - €" + ui.values[ 1 ] );
-      }
-    });
-    $( "#amount" ).val( "€" + $( "#slider-range" ).slider( "values", 0 ) +
-      " - €" + $( "#slider-range" ).slider( "values", 1 ) );
-  });
-  </script>
-  
-  <script>
-    $(document).ready(function() {
-        
-    $('#show-hidden-menu').click(function() {
-        var element = $(this);
-        
-        $('#show-hidden-menu-appartamento').removeClass('card-modificata-filtri');
-        $('#show-hidden-menu-posto-letto').removeClass('card-modificata-filtri');
-        element.addClass('card-modificata-filtri');
-        
-        $('.hidden-menu-posto-letto').hide();
-        $('.hidden-menu-appartamento').hide();
-        $('.hidden-menu').slideToggle("slow");
-        $('#tutti').prop('checked', true);
-
-        
-    });
-    
-    $('#show-hidden-menu-appartamento').click(function() {
-        
-        var element = $(this);
-        
-        $('#show-hidden-menu').removeClass('card-modificata-filtri');
-        $('#show-hidden-menu-posto-letto').removeClass('card-modificata-filtri');
-        element.addClass('card-modificata-filtri');
-        
-        $('.hidden-menu').hide();
-        $('.hidden-menu-posto-letto').hide();
-        $('.hidden-menu-appartamento').slideToggle("slow");
-        $('#Appartamento').prop('checked', true);
-        
-    });
-    
-    $('#show-hidden-menu-posto-letto').click(function() {
-         
-         var element = $(this);
-        
-        $('#show-hidden-menu').removeClass('card-modificata-filtri');
-        $('#show-hidden-menu-appartamento').removeClass('card-modificata-filtri');
-        element.addClass('card-modificata-filtri');
-        
-        $('.hidden-menu').hide();
-        $('.hidden-menu-appartamento').hide();
-        $('.hidden-menu-posto-letto').slideToggle("slow");
-        $('#PostoLetto').prop('checked', true);
-
-    });
-
-    });
-    </script>
 
 @endsection()
 
