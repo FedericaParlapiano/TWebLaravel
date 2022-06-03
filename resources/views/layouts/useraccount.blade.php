@@ -2,11 +2,19 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
+        @section('link')
         <link rel="stylesheet" type="text/css" href="{{ asset('css/publicstyle.css') }}" >
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-        <title>HomeforStudents | @yield('title', 'Homepage')</title>
+        @show
+        
+        @section('scripts')
         <script src="https://kit.fontawesome.com/ea82011960.js" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+        <script src="{{asset('js/scripts.js')}}"></script>
+        @show
+     
+        <title>HomeforStudents | @yield('title', 'Homepage')</title>
+        
 
         <style>
             body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}

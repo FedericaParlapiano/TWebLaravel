@@ -2,8 +2,11 @@
 
 @section('title', 'Annuncio')
 
-@section('scripts')
+@section('link')
+@parent
+@endsection
 
+@section('scripts')
 @parent
 <script src="{{ asset('js/incrementalvalidation.js') }}" ></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -489,11 +492,11 @@ $(function () {
       slides[slideIndex-1].style.display = "block";
       dots[slideIndex-1].className += " active";
     }
-</script>
-
-<script>
+    
+    
+    //Carousel
     var myIndex = 0;
-    carousel();
+        carousel();
 
     function carousel() {
         var i;
@@ -506,29 +509,28 @@ $(function () {
         x[myIndex-1].style.display = "block";
         setTimeout(carousel, 3500); // Change image every 5 seconds
     }
+
+
+    function messaggio() {
+        document.getElementById("form-messaggio").style.display = "block";
+        document.getElementById("form-proposta").style.display = "none";          
+    }
+
+    function closeMessaggio() {
+    document.getElementById("form-messaggio").style.display = "none";
+    }
+
+    function proposta() {
+    document.getElementById("form-proposta").style.display = "block";
+    document.getElementById("form-messaggio").style.display = "none";
+
+    }
+
+    function closeProposta() {
+    document.getElementById("form-proposta").style.display = "none";
+    }
+    
 </script>
-
-<script>
-        function messaggio() {
-          document.getElementById("form-messaggio").style.display = "block";
-          document.getElementById("form-proposta").style.display = "none";          
-        }
-
-        function closeMessaggio() {
-          document.getElementById("form-messaggio").style.display = "none";
-        }
-        
-        function proposta() {
-          document.getElementById("form-proposta").style.display = "block";
-          document.getElementById("form-messaggio").style.display = "none";
-
-        }
-
-        function closeProposta() {
-          document.getElementById("form-proposta").style.display = "none";
-        }
-    </script>
-
 @endisset
 @endsection
 

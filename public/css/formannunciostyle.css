@@ -42,9 +42,23 @@ justify-content: center;
   line-height: inherit;
 }
 
-.form {
-  background: #E8EBFF;
+
+.form-annuncio {
+    display: grid;
+    gap: var(--formGap);
+    background: #E8EBFF;
+  }
+
+.form-annuncio input[type="password"],
+.form-annuncio input[type="text"],
+.form-annuncio input[type="submit"],
+.login input[type="select"],
+.login input[type="file"],
+.login input[type="date"]{
+  inline-size: 100%;
 }
+
+
 
 .label {
   display: block;
@@ -53,9 +67,18 @@ justify-content: center;
   text-align: start;
 }
 
+.input-annuncio,
+textarea {
+  padding: 1em;
+}
+
 .input,
 textarea {
   padding: 1em;
+}
+
+.button-annuncio{
+    background-color: #94C7EE;
 }
 
 .button{
@@ -67,6 +90,19 @@ textarea {
   .contain {
     padding: 0;
   }
+}
+
+.input-annuncio:focus,
+textarea:focus,
+#tipologia:focus{
+  outline: 3px solid lightsteelblue;
+}
+
+.input-annuncio,
+textarea, 
+#image{
+  width: 100%;
+  border: 1px solid #000;
 }
 
 .input:focus,

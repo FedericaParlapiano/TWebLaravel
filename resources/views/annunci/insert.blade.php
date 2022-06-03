@@ -1,4 +1,4 @@
-@extends('layouts.user')
+@extends('layouts.public')
 
 @section('title', 'Inserimento di un annuncio')
 
@@ -10,11 +10,11 @@
         <p>Utilizza questa form per inserire un nuovo annuncio che sarà reso immediatamente visibile sul sito.</p>
 
         
-        {{ Form::open(array('route' => 'nuovoannuncio', 'id' => 'inserisciannuncio', 'files' => true, 'class' => 'form')) }}            
-        @csrf    
+        {{ Form::open(array('route' => 'nuovoannuncio', 'id' => 'inserisciannuncio', 'files' => true, 'class' => 'form-annuncio')) }}            
+        {{ Form::token() }}  
             <div>
                 {{ Form::label('titolo', 'Titolo', ['class' => 'label']) }}
-                {{ Form::text('titolo', '', ['class' => 'input', 'id' => 'titolo']) }}
+                {{ Form::text('titolo', '', ['class' => 'input-annuncio', 'id' => 'titolo']) }}
                 @if ($errors->first('titolo'))
                 <div class="errors" >
                     @foreach ($errors->get('titolo') as $message)
@@ -26,13 +26,13 @@
             
             <div>
                 {{ Form::label('tipologia', 'Tipologia', ['class' => 'label']) }}
-                {{ Form::select('tipologia', ['Appartamento' => 'Appartamento', 'PostoLettoSingolo' => 'Posto letto (camera singola)',  'PostoLettoDoppia' => 'Posto letto (camera doppia)'], ['class' => 'input', 'id' => 'tipologia'], ['onchange' => 'check_tipologia() ']) }}
+                {{ Form::select('tipologia', ['Appartamento' => 'Appartamento', 'PostoLettoSingolo' => 'Posto letto (camera singola)',  'PostoLettoDoppia' => 'Posto letto (camera doppia)'], ['class' => 'input-annuncio', 'id' => 'tipologia'], ['onchange' => 'check_tipologia() ']) }}
             </div>
             
             <div  id="appartamento" class="row">
                 <div class="left">
                 {{ Form::label('numCamere', 'Camere totali', ['style' =>'margin-top: 0;']) }}
-                {{ Form::text('numCamere', '', ['class' => 'input', 'style' =>'width: 80px;','id' => 'numCamere'])}}
+                {{ Form::text('numCamere', '', ['class' => 'input-annuncio', 'style' =>'width: 80px;','id' => 'numCamere'])}}
                  @if ($errors->first('numCamere'))
                 <div class="errors" >
                     @foreach ($errors->get('numCamere') as $message)
@@ -43,7 +43,7 @@
                 </div>
                 <div style="margin-left:2em;">
                 {{ Form::label('postiLettoTotali', 'Letti totali', ['style' =>'margin-top: 0;']) }}
-                {{ Form::text('postiLettoTotali', '', ['class' => 'input', 'style' =>'width: 80px;' ,'id' => 'postiLettoTotali'])}}
+                {{ Form::text('postiLettoTotali', '', ['class' => 'input-annuncio', 'style' =>'width: 80px;' ,'id' => 'postiLettoTotali'])}}
                @if ($errors->first('postiLettoTotali'))
                 <div class="errors" >
                     @foreach ($errors->get('postiLettoTotali') as $message)
@@ -57,7 +57,7 @@
             <div id="postoletto" class="row" style="display: none">
                 <div class="left">
                 {{ Form::label('postiNellaStanza', 'Letti nella stanza', ['style' =>'margin-top: 0;']) }}
-                {{ Form::text('postiNellaStanza', '', ['class' => 'input', 'style' =>'width: 80px;','id' => 'postiNellaStanza'])}}
+                {{ Form::text('postiNellaStanza', '', ['class' => 'input-annuncio', 'style' =>'width: 80px;','id' => 'postiNellaStanza'])}}
                 @if ($errors->first('postiNellaStanza'))
                 <div class="errors" >
                     @foreach ($errors->get('postiNellaStanza') as $message)
@@ -69,7 +69,7 @@
                
                 <div style="margin-left:2em;">
                 {{ Form::label('postiLettoTotali', 'Letti totali', ['style' =>'margin-top: 0;']) }}
-                {{ Form::text('postiLettoTotali', '', ['class' => 'input', 'style' =>'width: 80px;' ,'id' => 'postiLettoTotali'])}}
+                {{ Form::text('postiLettoTotali', '', ['class' => 'input-annuncio', 'style' =>'width: 80px;' ,'id' => 'postiLettoTotali'])}}
                @if ($errors->first('postiLettoTotali'))
                 <div class="errors" >
                     @foreach ($errors->get('postiLettoTotali') as $message)
@@ -82,7 +82,7 @@
 
             <div>
                 {{ Form::label('superficie', 'Superficie', ['class' => 'label']) }}
-                {{ Form::text('superficie', '', ['class' => 'input', 'id' => 'superficie']) }}
+                {{ Form::text('superficie', '', ['class' => 'input-annuncio', 'id' => 'superficie']) }}
                 @if ($errors->first('superficie'))
                 <div class="errors" >
                     @foreach ($errors->get('superficie') as $message)
@@ -109,7 +109,7 @@
             <div class="row">
                 <div class="left">
                 {{ Form::label('inizioPeriodoDisponibilita', 'Inizio', ['style' =>'margin-top: 0;']) }}
-                {{ Form::date('inizioPeriodoDisponibilita', '', ['class' => 'input', 'style' =>'width: 200px;'])}}
+                {{ Form::date('inizioPeriodoDisponibilita', '', ['class' => 'input-annuncio', 'style' =>'width: 200px;'])}}
                 
                 @if ($errors->first('inizioPeriodoDisponibilita'))
                 <div class="errors" >
@@ -121,7 +121,7 @@
                 </div>
                 <div style="margin-left:2.5em;">
                 {{ Form::label('finePeriodoDisponibilita', 'Fine', ['style' =>'margin-top: 0;']) }}
-                {{ Form::date('finePeriodoDisponibilita', '', ['class' => 'input', 'style' =>'width: 200px;'])}}
+                {{ Form::date('finePeriodoDisponibilita', '', ['class' => 'input-annuncio', 'style' =>'width: 200px;'])}}
                 
                 @if ($errors->first('finePeriodoDisponibilita'))
                 <div class="errors" >
@@ -136,7 +136,7 @@
             
             <div>
                 {{ Form::label('descrizione', 'Descrizione', ['class' => 'label']) }}
-                {{ Form::textarea('descrizione', '', ['class' => 'input', 'id' => 'descrizione', 'rows' => 4]) }}
+                {{ Form::textarea('descrizione', '', ['class' => 'input-annuncio', 'id' => 'descrizione', 'rows' => 4]) }}
                 @if ($errors->first('descrizione'))
                 <div class="errors" >
                     @foreach ($errors->get('descrizione') as $message)
@@ -148,7 +148,7 @@
 
             <div>
                 {{ Form::label('canoneAffitto', 'Canone Affitto', ['class' => 'label']) }}
-                {{ Form::text('canoneAffitto', '', ['class' => 'input', 'id' => 'canoneAffitto']) }}
+                {{ Form::text('canoneAffitto', '', ['class' => 'input-annuncio', 'id' => 'canoneAffitto']) }}
                 @if ($errors->first('canoneAffitto'))
                 <div class="errors" >
                     @foreach ($errors->get('canoneAffitto') as $message)
@@ -161,7 +161,7 @@
             <div class="row">
                 <div class="left">
                 {{ Form::label('zonaLocazione', 'Zona di locazione', ['class' => 'label']) }}
-                {{ Form::text('zonaLocazione', '', ['class' => 'input', 'id' => 'zonaLocazione', 'style' =>'width: 250px;']) }}
+                {{ Form::text('zonaLocazione', '', ['class' => 'input-annuncio', 'id' => 'zonaLocazione', 'style' =>'width: 250px;']) }}
                 @if ($errors->first('zonaLocazione'))
                 <div class="errors" >
                     @foreach ($errors->get('zonaLocazione') as $message)
@@ -173,7 +173,7 @@
                 
                 <div style="margin-left:2em;">
                 {{ Form::label('indirizzo', 'Indirizzo', ['class' => 'label']) }}
-                {{ Form::text('indirizzo', '', ['class' => 'input', 'id' => 'indirizzo', 'style' =>'width: 250px;']) }}
+                {{ Form::text('indirizzo', '', ['class' => 'input-annuncio', 'id' => 'indirizzo', 'style' =>'width: 250px;']) }}
                @if ($errors->first('indirizzo'))
                 <div class="errors" >
                     @foreach ($errors->get('indirizzo') as $message)
@@ -290,59 +290,16 @@
               </div>
               <div>
                 {{ Form::label('sesso', 'Sesso', ['class' => 'label']) }}
-                {{ Form::select('sesso', ['Tutti' => '', 'uomini' => 'Solo uomini', 'donne' => 'Solo donne'], '', ['class' => 'input', 'id' => 'sesso']) }}
+                {{ Form::select('sesso', ['Tutti' => '', 'uomini' => 'Solo uomini', 'donne' => 'Solo donne'], '', ['class' => 'input-annuncio', 'id' => 'sesso']) }}
               </div>
 
             <div>        
                 
-                {{ Form::submit('Aggiungi annuncio', ['class' => 'button input']) }}
+                {{ Form::submit('Aggiungi annuncio', ['class' => 'button-annuncio input-annuncio']) }}
             </div>
             
             {{ Form::close() }}
         </div>
     
 </div>
-
-
-<script>
-    // check tipologia function to display field into the form
-    function check_tipologia()
-    {
-        var tipologia = document.getElementById("tipologia");
-        var selectedValue = tipologia.options[tipologia.selectedIndex].value;
-        var appartamento = document.getElementById("appartamento");
-        var postoletto = document.getElementById("postoletto");
-
-          if (selectedValue == "Appartamento")
-          {
-               appartamento.style.display = "flex";
-               postoletto.style.display = "none";
-
-          }
-          if (selectedValue == "PostoLettoSingolo" || selectedValue == "PostoLettoDoppia")
-          {
-               postoletto.style.display = "flex";
-               appartamento.style.display = "none";
-          }
-          
-       }
-
- 
-        // increment function
-        function increment(id) {
-        document.getElementById(id).value = String(Number(document.getElementById(id).value)+1);
-        }
-        // decrement function
-        function decrement(id) {
-            if(Number(document.getElementById(id).value)>0){
-                document.getElementById(id).value = String(Number(document.getElementById(id).value)-1);
-
-            }
-            
-        }
-        
-</script>
-
-
-
 @endsection

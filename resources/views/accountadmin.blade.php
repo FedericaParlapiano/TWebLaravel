@@ -1,9 +1,17 @@
 @extends('layouts.useraccount', ['user'=>$user])
 
+
+@section('link')
+@parent
 <link rel="stylesheet" type="text/css" href="{{ asset('css/accountstyle.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('css/catalogostyle.css') }}">
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+@endsection
+
+@section('scripts')
+@parent
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+@endsection
 
 @section('title', 'Area riservata')
 
@@ -120,7 +128,7 @@
         
         <p>I criteri di ricerca indicati hanno dato dato luogo a questi risultati:
         
-        <ul>
+        <ul style="list-style-position: inside;">
         <li>numero annunci: {{$stats["annunci"]}},</li>
         
 
@@ -176,24 +184,13 @@
             @endforeach 
             </div>               
     @endisset
-    </div>    
-    
-<script>
-// Script to open and close sidebar
-function w3_open() {
-    document.getElementById("mySidebar").style.display = "block";
-    document.getElementById("myOverlay").style.display = "block";
-}
- 
-function w3_close() {
-    document.getElementById("mySidebar").style.display = "none";
-    document.getElementById("myOverlay").style.display = "none";
-}
-</script>
+    </div>
 
-<script>
-        
-      $(document).ready(function() {
+@endisset
+
+
+<script> 
+    $(document).ready(function() {
       var annunci = '<?php echo $stats["annunci"]; ?>';
       var richieste = '<?php echo $stats["richieste"]; ?>';
       var affitti = '<?php echo $stats["affitti"]; ?>';
@@ -231,9 +228,8 @@ function w3_close() {
           }
         }
         });
-    });    
-       
+    });
 </script>
 
-@endisset
+
 @endsection

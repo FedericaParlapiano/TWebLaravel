@@ -2,11 +2,22 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/publicstyle.css') }}" >        
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/formannunciostyle.css') }}" >        
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-        <title>HomeforStudents | @yield('title', 'Catalogo')</title>
+        
+        
+       @section('link')
+       
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/publicstyle.css') }}" > 
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/formannunciostyle.css') }}" >   
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">     
+        @show
+        
+        @section('scripts')
         <script src="https://kit.fontawesome.com/ea82011960.js" crossorigin="anonymous"></script>
+        <script src="{{asset('js/scripts.js')}}"></script>
+        @show 
+        
+        
+        <title>HomeforStudents | @yield('title', 'Catalogo')</title>
     </head>
     
     <style>
