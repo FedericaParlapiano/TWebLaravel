@@ -10,6 +10,8 @@ use App\Models\Resources\ServizioIncluso;
 use App\Models\Resources\Vincolo;
 use App\User;
 
+use Illuminate\Support\Collection;
+
 class Catalogo {
     
     public function getFaqs() {
@@ -18,6 +20,10 @@ class Catalogo {
     
     public function getAnnunci() {
         return Annuncio::select('*')->paginate(9);
+    }
+    
+    public function getAllAnnunci() {
+        return Annuncio::all();
     }
     
     public function getFoto() {
@@ -126,4 +132,129 @@ class Catalogo {
         
         return Annuncio::whereIn('id', $annunci->pluck('id'))->paginate(9);
     }
+    
+    
+    public function getVincoliSoddisfatti(FiltriCatalogoRequest $request) {
+        $annunci = new Annuncio;
+        $annunciFiltrati = new Annuncio;
+        $annunciFiltrati->fill($request->validated());
+
+        $allannunci = $this->getAllAnnunci();
+        
+        
+        
+        $citta = $annunciFiltrati->filtra_citta($request->citta);
+        $da =  $annunciFiltrati->filtra_data_da($request->da);
+        $a = $annunciFiltrati->filtra_data_a($request->a);
+        $superficieA = $annunciFiltrati->filtra_superficie($request->superficieA);
+        $superficieP = $annunciFiltrati->filtra_superficie($request->superficieP);
+        $postiLettoTotaliT = $annunciFiltrati->filtra_postiLettoTot($request->postiLettoTotaliT);
+        $postiLettoTotaliA = $annunciFiltrati->filtra_postiLettoTot($request->postiLettoTotaliA);
+        $postiLettoTotaliP = $annunciFiltrati->filtra_postiLettoTot($request->postiLettoTotaliP);
+        $numCamereT = $annunciFiltrati->filtra_numCamere($request->numCamereT);
+        $postiNellaStanzaT = $annunciFiltrati->filtra_postiNellaStanza($request->postiNellaStanzaT);
+        $numCamere = $annunciFiltrati->filtra_numCamere($request->numCamere);
+        $postiNellaStanza = $annunciFiltrati->filtra_postiNellaStanza($request->postiNellaStanza);
+        $amount = $annunciFiltrati->filtra_prezzo($request->amount);
+        $tipologia = new Collection();
+        
+        
+        if ($request->tipologia && $request->tipologia != "tutti") {
+            if($request->tipologia == "PostoLetto"){
+                $tipologia = $annunciFiltrati->filtra_tipologia_postoLetto();
+            }
+            else{
+                 $tipologia = $annunciFiltrati->filtra_tipologia($request->tipologia);
+               
+            }
+        }
+        
+        //$uff = $citta->merge($da, $a, $da, $superficieA, $superficieP, $postiLettoTotaliT, $postiLettoTotaliA, $postiLettoTotaliP, $numCamereT, $postiNellaStanzaT, $numCamere, $postiNellaStanza, $amount, $tipologia);
+        $semicollection = $citta->merge($amount);
+        $semicollection = $semicollection->merge($tipologia);
+        $semicollection = $semicollection->merge($da);
+        $semicollection = $semicollection->merge($a);
+        $semicollection = $semicollection->merge($superficieA);
+        $semicollection = $semicollection->merge($superficieP);
+        $semicollection = $semicollection->merge($postiLettoTotaliT);
+        $semicollection = $semicollection->merge($postiLettoTotaliA);
+        $semicollection = $semicollection->merge($postiLettoTotaliP);
+        $semicollection = $semicollection->merge($numCamereT);
+        $semicollection = $semicollection->merge($postiNellaStanzaT);
+        $semicollection = $semicollection->merge($numCamere);
+        $semicollection = $semicollection->merge($postiNellaStanza);
+        
+        $collection = $semicollection->toArray();
+        
+        
+        $duplicatenumber = array_count_values($collection);
+        
+        arsort($duplicatenumber);
+        
+        return $duplicatenumber;
+        
+        
+    }
+    
+    public function getAnnunciOrdinati($duplicatenumber) {
+        
+        $annunciordinatiiii = new Collection();
+        
+        foreach($duplicatenumber as $key=>$value) {
+            $annunciordinatiiii->push(Annuncio::where('id', $key)->get()->first());
+        }
+        
+        return $annunciordinatiiii;
+    }
+    
+    public function getNumeroFiltri(FiltriCatalogoRequest $request) {
+        
+        $numFiltri = 14;
+        
+        if($request->citta) {
+            $numFiltri--;
+        }
+        if($request->da) {
+            $numFiltri--;
+        }
+        if($request->a) {
+            $numFiltri--;
+        }
+        if($request->superficieA) {
+            $numFiltri--;
+        }
+        if($request->superficieP) {
+            $numFiltri--;
+        }
+        if($request->postiLettoTotaliT) {
+            $numFiltri--;
+        }
+        if($request->postiLettoTotaliA) {
+            $numFiltri--;
+        }
+        if($request->postiLettoTotaliP) {
+            $numFiltri--;
+        }
+        if($request->numCamereT) {
+            $numFiltri--;
+        }
+        if($request->postiNellaStanzaT) {
+            $numFiltri--;
+        }
+        if($request->numCamere) {
+            $numFiltri--;
+        }
+        if($request->postiNellaStanza) {
+            $numFiltri--;
+        }
+        if($request->amount) {
+            $numFiltri--;
+        }
+        if($request->tipologia) {
+            $numFiltri--;
+        }
+        
+        return $numFiltri;
+    }
+    
 }

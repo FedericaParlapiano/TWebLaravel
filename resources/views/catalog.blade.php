@@ -35,9 +35,10 @@
   </script>
 
 @can('isLocatario')
+
 <!-- inizio sezione prodotti -->
 <div class="contenitore-form"> 
-    {{ Form::open(array('route' => 'catalog', 'id'=>'filtri-form')) }}
+    {{ Form::open(array('route' => 'catalogoordinato', 'id'=>'filtri-form', 'target'=>'_blank')) }}
     {{ Form::token() }}
     <div type="button" id="filtri-button" onclick="openForm()" ><i class="fa-solid fa-ellipsis-vertical"></i></div> 
 
@@ -81,6 +82,9 @@
         <div class='submit-filter'>         
         <a href='{{url("catalog")}}' id='button-cerca'>Cerca</a>
         </div>
+        
+        {{ Form::submit('Ordina per rilevanza', array('title' => 'mostra anche quelli che non soddisfano tutti i requisiti' ,'name' => 'submitbutton', 'id' => 'ordinarilevanza')) }}
+        
     </div>  
 </div>
 
@@ -359,6 +363,7 @@
 
 
 <br>
+
 <div id="pagination_data" style="text-align: center">
     @include("catalog-pagination", ["annunci"=>$annunci, "foto"=>$foto, "annunciconfoto"=>$annunciconfoto])
 </div>
@@ -393,7 +398,7 @@
         @endforeach
         
         @if($assente)
-        <div class="img-class"><a href=""><img src="images/annunci/noimage.jpg" alt="Casa" class="resize-img"></a></div>
+        <div class="img-class"><a href="{{ route('annuncio', [$annuncio->id]) }}" target="_blank"><img src="images/annunci/noimage.jpg" alt="Casa" class="resize-img"></a></div>
         @endif
         
         

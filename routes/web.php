@@ -141,6 +141,8 @@ Route::get('register', 'Auth\RegisterController@showRegistrationForm')
 Route::post('register', 'Auth\RegisterController@register');
 
 
+Route::post('catalogoordinato', 'LocatarioController@ordinaCatalogo')
+        ->name('catalogoordinato');
 
 
 

@@ -26,7 +26,7 @@
         @endforeach
         
         @if($assente)
-        <div class="img-class"><a href=""><img src="images/annunci/noimage.jpg" alt="Casa" class="resize-img"></a></div>
+        <div class="img-class"><a href="{{ route('annuncio', [$annuncio->id]) }}" target="_blank"><img src="images/annunci/noimage.jpg" alt="Casa" class="resize-img"></a></div>
         @endif
         
         
