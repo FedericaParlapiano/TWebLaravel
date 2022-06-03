@@ -3,21 +3,45 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/publicstyle.css') }}" >
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/formannunciostyle.css') }}" >
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
         <title>HomeforStudents | @yield('title', 'Homepage')</title>
         <script src="https://kit.fontawesome.com/ea82011960.js" crossorigin="anonymous"></script>
-        <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
-
+        
         <style>
             body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
         </style>
         
+        <script type="text/javascript">
+                function displayFAQ(id) {
+                    var x = document.getElementById(id);
+                    if (x.className.indexOf("show-FAQ") == -1) {
+                      x.className += " show-FAQ";
+                    }
+                    else { 
+                      x.className = x.className.replace(" show-FAQ", "");
+                    }
+                }
+                
+                
+                function check(){
+                    var checkBox = document.getElementById("bagno");
+                    var text = document.getElementById("quantitabagni");
+
+                      if (checkBox.checked) {
+                         alert("checked");
+                         text.style.display = "block";
+
+                  } else {
+                      alert("unchecked");
+                      text.style.display = "none";
+                  }
+              }
+        </script>    
+        
     </head>
              
-    @include('layouts/_sidebaraccount', ['user'=>$user])
-    
     <body>
-        <div class="main" style="margin-left:300px">
         <!-- Header -->
         <div class="header">
           <h1>Home for Students</h1>
@@ -37,7 +61,7 @@
      
         
         <!-- Footer -->
-        <footer style="clear: both;">
+        <footer>
             <div class="social">
             <a href="https://www.facebook.com/"><i class="fa-brands fa-facebook"></i></a>
             <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>
@@ -47,6 +71,6 @@
             </div>
         </footer>
         
-        </div>
+        
     </body>
 </html>

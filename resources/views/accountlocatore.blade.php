@@ -1,15 +1,7 @@
 @extends('layouts.useraccount', ['user'=>$user])
 
-
-@section('link')
 <link rel="stylesheet" type="text/css" href="{{ asset('css/accountstyle.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('css/catalogostyle.css') }}">
-@parent
-@endsection
-
-@section('scripts')
-@parent
-@endsection
 
 @section('title', 'Area riservata')
 
@@ -23,10 +15,10 @@
     <a href="#"><img src="{{ asset('images/users/' . $user->fotoProfilo) }}" alt="immagine di profilo" style="width:65px;" class="circle right margine hide-large hover-opacity"></a>
     <span class="button hide-large xxlarge hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
     
-    <div class="container-account">
+    <div class="container">
     
    <div class="row-info">
-   <div id="info" class="container-account about-class" >
+   <div id="info" class="container about-class" >
     <h2>{{$user->nome}} {{$user->cognome}}</h2>
     <div>
     <p>{{$user->role}}</p>
@@ -50,7 +42,7 @@
     </div>
     
     <!-- Contact Section -->
-    <div class="container-account contact-class">
+    <div class="container contact-class">
     <h4 id="contact"><b>Contattami</b></h4>
     <div class="row-padding center padding-16">
       <div class="third mediumturquoise">
@@ -252,6 +244,20 @@
         @endisset
       </div>
     </div>
+  
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+}
+</script>
 @endisset
 @endsection
 

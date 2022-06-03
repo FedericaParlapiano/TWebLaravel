@@ -11,7 +11,6 @@
         <p>Utilizza questa form per inserire una nuova FAQ che sarà resa immediatamente visibile sul sito.</p>
 
             {{ Form::open(array('route' => 'nuovafaq', 'id' => 'inseriscifaq', 'files' => false, 'class' => 'form')) }}
-            {{ FOrm::token }}
             <div  class="wrap-input  rs1-wrap-input">
                 {{ Form::label('domanda', 'Domanda', ['class' => 'label']) }}
                 {{ Form::textarea('domanda', '', ['class' => 'input', 'id' => 'domanda', 'rows' => 2]) }}

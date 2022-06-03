@@ -19,7 +19,6 @@
 
 @section('title', 'Messaggi')
 
-
 @section('content')
 <div class="container-chat">
 <h1 class=" text-center">Le tue conversazioni</h1>
@@ -63,11 +62,7 @@
         </div>
 </div>
 </div>    
-</div>
- 
-
-
-
+</div>   
 
 @endsection
 

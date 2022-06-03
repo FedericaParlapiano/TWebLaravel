@@ -11,8 +11,8 @@
 
 
             {{ Form::open(array('route' => ['modificafaq', 'faqId'=>$faqId], 'class' => 'form')) }}
-            {{ Form::token }}
             
+            @csrf
             <div  class="wrap-input  rs1-wrap-input">
                 {{ Form::label('domanda', 'Domanda', ['class' => 'label']) }}
                 {{ Form::textarea('domanda', $faqs->domanda, ['class' => 'input', 'id' => 'domanda', 'rows' => 2]) }}
