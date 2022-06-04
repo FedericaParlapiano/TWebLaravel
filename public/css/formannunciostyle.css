@@ -43,15 +43,15 @@ justify-content: center;
 }
 
 
-.form-annuncio {
+.form-inserisci {
     display: grid;
     gap: var(--formGap);
     background: #E8EBFF;
   }
 
-.form-annuncio input[type="password"],
-.form-annuncio input[type="text"],
-.form-annuncio input[type="submit"],
+.form-inserisci input[type="password"],
+.form-inserisci input[type="text"],
+.form-inserisci input[type="submit"],
 .login input[type="select"],
 .login input[type="file"],
 .login input[type="date"]{

@@ -10,7 +10,7 @@
         <p>Utilizza questa form per modificare l'annuncio. Rircorda che le modifiche non sono reversibili.</p>
 
         @csrf
-            {{ Form::open(array('route' => 'modificannuncio', 'id' => 'modificannuncio', 'files' => true, 'class' => 'form-annuncio')) }}
+            {{ Form::open(array('route' => 'modificannuncio', 'id' => 'modificannuncio', 'files' => true, 'class' => 'form-inserisci')) }}
             {{ Form::token() }}
             <div>
                 {{ Form::hidden('idAnnuncio', $annuncio->first()->id, ['id' => 'idAnnuncio']) }}

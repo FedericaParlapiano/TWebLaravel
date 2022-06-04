@@ -10,7 +10,7 @@
         <p>Utilizza questa form per modificare una FAQ. Attenzione! Le modifiche non sono reversibili.</p>
 
 
-            {{ Form::open(array('route' => ['modificafaq', 'faqId'=>$faqId], 'class' => 'form')) }}
+            {{ Form::open(array('route' => ['modificafaq', 'faqId'=>$faqId], 'class' => 'form-inserisci')) }}
             {{ Form::token () }}
             
             <div  class="wrap-input  rs1-wrap-input">

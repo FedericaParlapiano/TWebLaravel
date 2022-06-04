@@ -52,7 +52,11 @@
         
         @foreach($vincolisoddisfatti as $key=>$value)
         @if($key == $annuncio->id)
+        @if($value - $numFiltri < 0)
+        <p><mark style="background-color: violet;"><i> Criteri soddisfatti: 0  </i> </mark></p>
+        @else
         <p><mark style="background-color: violet;"><i> Criteri soddisfatti: {{ $value - $numFiltri }} </i> </mark></p>
+        @endif
         @endif
         @endforeach
     </div>

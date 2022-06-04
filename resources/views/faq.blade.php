@@ -18,7 +18,7 @@
       <h3>Aggiungi una nuova FAQ</h3>
         <p>Utilizza questa form per inserire una nuova FAQ che sarà resa immediatamente visibile sul sito.</p>
 
-            {{ Form::open(array('route' => 'nuovafaq', 'id' => 'inseriscifaq', 'files' => false, 'class' => 'form')) }}
+            {{ Form::open(array('route' => 'nuovafaq', 'id' => 'inseriscifaq', 'files' => false, 'class' => 'form-inserisci')) }}
             {{ FOrm::token() }}
             <div  class="wrap-input  rs1-wrap-input">
                 {{ Form::label('domanda', 'Domanda', ['class' => 'label']) }}

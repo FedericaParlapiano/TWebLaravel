@@ -10,7 +10,7 @@
         <p>Utilizza questa form per inserire un nuovo annuncio che sarà reso immediatamente visibile sul sito.</p>
 
         
-        {{ Form::open(array('route' => 'nuovoannuncio', 'id' => 'inserisciannuncio', 'files' => true, 'class' => 'form-annuncio')) }}            
+        {{ Form::open(array('route' => 'nuovoannuncio', 'id' => 'inserisciannuncio', 'files' => true, 'class' => 'form-inserisci')) }}            
         {{ Form::token() }}  
             <div>
                 {{ Form::label('titolo', 'Titolo', ['class' => 'label']) }}
