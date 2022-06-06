@@ -28,7 +28,7 @@
     <div class = "row">    
         <div class="left" style="margin-left:2em;">
         {{ Form::label('citta', 'Zona di locazione', ['class' => 'label-cerca']) }} 
-        {{ Form::text('citta', '', ['class' => 'input', 'id' => 'citta']) }}
+        {{ Form::text('citta', '', ['class' => 'input', 'style' => 'height: 2.8em;', 'id' => 'citta']) }}
         @if ($errors->first('citta'))
         <div class="errors">
             @foreach ($errors->get('citta') as $message)
@@ -40,7 +40,7 @@
                     
         <div style="margin-left:2.5em;">  
             {{ Form::label('da', 'Da', ['class' => 'label-cerca']) }}
-            {{ Form::date('da', '', ['class' => 'input', 'id' => 'da']) }}
+            {{ Form::date('da', '', ['class' => 'input', 'style' => 'width: 11em; height: 2.8em;', 'id' => 'da']) }}
             @if ($errors->first('da'))
             <div class="errors">
                 @foreach ($errors->get('da') as $message)
@@ -52,7 +52,7 @@
                     
         <div style="margin-left:2.5em;">
             {{ Form::label('a', 'A', ['class' => 'label-cerca']) }}
-            {{ Form::date('a', '', ['class' => 'input', 'id' => 'a']) }}
+            {{ Form::date('a', '', ['class' => 'input', 'style' => 'width: 11em; height: 2.8em;', 'id' => 'a']) }}
             @if ($errors->first('a'))
             <div class="errors">
                 @foreach ($errors->get('a') as $message)
@@ -66,7 +66,7 @@
         <a href='{{url("catalog")}}' id='button-cerca'>Cerca</a>
         </div>
         
-        {{ Form::submit('Ordina per rilevanza', array('title' => 'mostra anche quelli che non soddisfano tutti i requisiti' ,'name' => 'submitbutton', 'id' => 'ordinarilevanza')) }}
+        {{ Form::submit('Ordina per rilevanza', array('title' => 'mostra anche quelli che non soddisfano tutti i requisiti' ,'name' => 'submitbutton', 'id' => 'ordinarilevanza', 'class' => 'button ourblue')) }}
         
     </div>  
 </div>

@@ -13,6 +13,7 @@ use App\Models\Resources\Messaggio;
 use App\Http\Requests\NuovoMessaggioRequest;
 
 
+
 class UserController extends Controller {
     
     
@@ -49,15 +50,15 @@ class UserController extends Controller {
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users', 'email')->ignore($user->email, 'email')],
             'username' => ['nullable', 'string', Rule::unique('users', 'username')->ignore($user->username, 'username')],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'fotoProfilo' => ['nullable', 'string'],
+            'fotoProfilo' => ['nullable', 'image'],
             'sesso' => ['required', 'string'],
-            'dataNascita' => ['nullable', 'date', 'before:today'],
+            'dataNascita' => ['nullable', 'date', 'before:today', 'regex:/^[0-9]{4}[-][0-9]{2}[-][0-9]{2}$/'],
             'citta' => ['nullable', 'string', 'max:255'],
             'numTelefono' => ['nullable', 'numeric', 'digits_between:8,15'],
             'universita' => ['nullable', 'string', 'max:255'],
             'facolta' => ['nullable', 'string', 'max:255'],
             'annoImmatricolazione' => ['nullable', 'string', 'max:4', 'before:'.now()->format('Y')]
-                
+                    
         ]));
         
         $utente = $this->_userModel->getUser()->update([
@@ -66,13 +67,23 @@ class UserController extends Controller {
             'email' => $data['email'],
             'username' => $data['username'],
             'password' => Hash::make($data['password']),
-            'fotoProfilo' => $data['fotoProfilo'],
             'sesso' => $data['sesso'],
             'dataNascita' => $data['dataNascita'],
             'citta' => $data['citta'],
             'numTelefono' => $data['numTelefono'],
         ]);
         
+        if($request->hasfile('fotoProfilo')){
+            $image = $request->file('fotoProfilo');
+            $destinationPath = public_path() . '/images/users';
+            $filename = $image->getClientOriginalName();
+            $image->move($destinationPath, $filename);
+            $user->update(['fotoProfilo' => $filename]);
+        }
+        else
+        {
+            $user->update(['fotoProfilo' => 'user.png']);
+        }
         
         
         if(auth()->user()->role=='locatario') {

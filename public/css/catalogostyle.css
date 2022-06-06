@@ -6,7 +6,7 @@ body{
     overflow: hidden;
     border-radius: 30px;
     background-color: #f2f2f2;
-    width: 760px;
+    width: 900px;
     height: auto;
     margin-left: auto;
     margin-right: auto;
@@ -501,14 +501,14 @@ h1-filtri{
 }
 
 .submit-filter{
-    height: 30px;
-    margin-top: 27px;
-    margin-left:30px;
+    height: 2.8em;
+    margin-top: 1.6em;
+    margin-left: 2em;
     border:none;
     display:inline-block;
-    padding:8px 16px;
     vertical-align:middle;
     overflow:hidden;
+    padding-top: 0.6em;
     text-decoration:none;
     color:inherit;
     background-color:#94C7EE;
@@ -526,7 +526,8 @@ h1-filtri{
 .submit-filter a {
   color: white;
   text-decoration: none;
-  
+  padding: 0.8em;
+  font-size: 1.2em;
 }
 
 
@@ -542,8 +543,7 @@ h1-filtri{
      margin-right: 10px;
 }
 
-#filtri-button:hover{
-    
+#filtri-button:hover{  
     cursor: pointer;
 }
 
@@ -552,6 +552,8 @@ h1-filtri{
 }
 
 #ordinarilevanza {
-    margin-top: 20px;
-    margin-left: 535px;
+    margin-top: 1.5em;
+    margin-left: 40em;
+    height: 2.8em;
 }
+

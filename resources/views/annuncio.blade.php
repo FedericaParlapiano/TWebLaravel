@@ -441,11 +441,11 @@ $(function () {
             <div style="text-align:center; margin-top: 0.5em;"> Periodo di affitto </div>         
             <div style="text-align:center; margin-top: 0.5em;">
                 {{ Form::label('inizioAffitto', 'Inizio', ['style' =>'margin-right: 0.5em;']) }}
-                {{ Form::date('inizioAffitto', '', ['id' => 'inizioAffitto', 'class' => 'input'])}}
+                {{ Form::date('inizioAffitto', '', ['id' => 'inizioAffitto', 'class' => 'input','style' => 'width: 11em; height: 2.8em;'])}}
             </div>
             <div style="text-align:center; margin-top: 0.5em;">
                 {{ Form::label('fineAffitto', 'Fine',  ['style' =>'margin-right: 0.5em;']) }}
-                {{ Form::date('fineAffitto', '', ['id' => 'fineAffitto', 'class' => 'input'])}}
+                {{ Form::date('fineAffitto', '', ['id' => 'fineAffitto', 'class' => 'input','style' => 'width: 11em; height: 2.8em;'])}}
             </div> 
             
                         
