@@ -72,10 +72,9 @@ body {
 /* Create two unequal columns that sits next to each other */
 /* Sidebar/left column */
 .about {
-  border-radius: 15px 50px;
+  border-radius:  50px;
   background-image: linear-gradient(to right, #94C7EE, #E8EBFF);
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 2em;
   margin-right: 5%;
   float: left;
   width: 35%;
@@ -89,20 +88,21 @@ div.about>div {
 }
 
 
-.chiavi {
+#noi {
   display: flex;
   margin-left: auto;
   margin-right: auto;
-  width: 70%;
+  width: 75%;
   justify-content: center;
+  border-radius:  50px;
+
 }
 
 /* Main column */
 .mission {
-  border-radius: 15px 50px;
+  border-radius: 50px;
   background-image: linear-gradient(to left, #94C7EE, #E8EBFF);
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 2em;
   margin-left: 5%;
   width: 35%;
   text-align: center;
@@ -144,13 +144,15 @@ div.about>div {
     cursor:pointer;
     white-space:nowrap;
     text-align:left;
-    background-color: #AE92FF;
-    margin: 0.2em;
-    font-size: 16px;
+    background-color: #82A6D5;
+    margin: 0.4em;
+    font-size: 17px;
+    border-radius:  5px;
+
 }
 
 .section-FAQ:hover{
-    box-shadow:0 8px 16px 0 rgb(203,168,240),0 6px 20px 0 rgb(203,168,240);
+    box-shadow:0 8px 16px 0 #C9DBFF,0 6px 20px 0 #C9DBFF;
 }
 
 .hide-FAQ{
@@ -161,7 +163,7 @@ div.about>div {
 .show-FAQ{
     display: block;
     margin: 0em;
-    background-color: #EACEF2;
+    background-color: #B2D3FF;
     width: 85%;
     margin: 0 auto;
     text-align: left;

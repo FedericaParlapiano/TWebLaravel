@@ -96,7 +96,6 @@
     <div id="proposte-inviate">
         <div><span class="xlarge"> <b> Le mie proposte</b></span><a id="bottone-vedi-tutte-proposte" href="{{ route('propostelocatario') }}" title="Visualizza tutte le proposte"> Vedi tutte </a></div>         
         <hr>
-        <p> 1-6 di  @php echo sizeof($proposte); @endphp proposte inviate </p>
         
         @isset($proposte)
         <div id="elenco-proposte">

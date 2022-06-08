@@ -83,42 +83,41 @@
         <div class="xlarge" style="margin-left: 30px;"><b>Statistiche</b>
         <hr> </div>
         
-        
-        <div class="contenitore-form"> 
+        <div class="contenitore-form" > 
             {{ Form::open(array('route' => 'admin', 'id' => 'search', 'files' => false, 'class' => '')) }}
             <div class = "row">    
                 
-                <div style="margin-left:2.5em;">  
+                <div style="margin-left:2em; margin-bottom: 1em">  
                     {{ Form::label('from', 'Da', ['class' => 'label']) }}
-                        {{ Form::date('from', '', ['class' => 'input-statistiche', 'id' => 'from']) }}
+                        {{ Form::date('from', '', ['class' => 'input', 'id' => 'from']) }}
                         @if ($errors->first('from'))
-                        <ul class="errors">
+                        <div class="errors">
                             @foreach ($errors->get('from') as $message)
-                            <li>{{ $message }}</li>
+                            <p>{{ $message }}</p>
                             @endforeach
-                        </ul>
+                        </div>
                         @endif 
                 </div>  
 
-                <div style="margin-left:2.5em;">
+                <div style="margin-left:3em; margin-bottom: 1em">
                     {{ Form::label('to', 'A', ['class' => 'label']) }}
-                        {{ Form::date('to', '', ['class' => 'input-statistiche', 'id' => 'to']) }}
+                    {{ Form::date('to', '', ['class' => 'input', 'id' => 'to']) }}
                         @if ($errors->first('to'))
-                        <ul class="errors">
+                        <div class="errors">
                             @foreach ($errors->get('to') as $message)
-                            <li>{{ $message }}</li>
+                            <p>{{ $message }}</p>
                             @endforeach
-                        </ul>
+                        </div>
                         @endif  
                 </div> 
                 
-                <div style="margin-left: 2.5em;">
+                <div style="margin-left: 3em; margin-bottom: 1em">
                 {{ Form::label('tipologia', 'Tipologia', ['class' => 'label']) }}
                 {{ Form::select('tipologia', [ 'nessuno'=>'','Appartamento' => 'Appartamento', 'PostoLettoSingolo' => 'Posto letto (camera singola)',  'PostoLettoDoppia' => 'Posto letto (camera doppia)'], '',['class' => 'input', 'id' => 'tipologia'], ['onchange' => 'check_tipologia() ']) }}
             </div>
 
-                <div style="margin-left:2.5em; margin-top:2.3em;">                
-                {{ Form::submit('Calcola', ['class' => 'button-form ourblue']) }}
+                <div style="margin-left:6em; margin-top:2.5em;">                
+                {{ Form::submit('Calcola', ['class' => 'button ourblue']) }}
                 </div>
             </div>  
         </div>
@@ -130,7 +129,6 @@
         
         <ul style="list-style-position: inside;">
         <li>numero annunci: {{$stats["annunci"]}},</li>
-        
 
         <li>numero richieste: {{$stats["richieste"]}},</li>
 
@@ -229,6 +227,7 @@
         }
         });
     });
+    
 </script>
 
 

@@ -30,7 +30,7 @@
     <a href="#proposte-inviate" onclick="w3_close()" class="bar-item button padding"><i class="fa-regular fa-paper-plane margine-right"></i> PROPOSTE</a>
     @endcan
     @can('isLocatore')
-    <a href="#propostericevute" onclick="w3_close()" class="bar-item button padding"><i class="fa-regular fa-paper-plane margine-right"></i> PROPOSTE</a>
+    <a href="{{ route('propostelocatore') }}" onclick="w3_close()" class="bar-item button padding"><i class="fa-regular fa-paper-plane margine-right"></i> PROPOSTE</a>
     @endcan
   </div>
   @endcan

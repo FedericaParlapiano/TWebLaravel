@@ -24,11 +24,9 @@ class StatisticheRequest extends FormRequest {
     
     public function rules() {
         return [
-            'where' => 'nullable|string|max:500',
-            'from' => 'nullable|date',
-            'to' => 'nullable|date|after:from',
-            'tipologia' => 'nullable|string'
-        ];
+            'from' => 'nullable|date|date_format:Y-m-d',
+            'to' => 'nullable|date|after:from|date_format:Y-m-d'
+            ];
     }
     
 }

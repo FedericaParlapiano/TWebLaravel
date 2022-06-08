@@ -21,7 +21,7 @@ class Annuncio extends Model {
     public function filtra_data_da($da)
     {
         if($da) {
-            return Annuncio::where('inizioPeriodoDisponibilita','<=', $da)->select('id')->pluck('id');
+            return Annuncio::where('inizioPeriodoDisponibilita','<=', $da)->where('finePeriodoDisponibilita','>=', $da)->select('id')->pluck('id');
         }
         else {
             return Annuncio::select('id')->pluck('id');
@@ -32,7 +32,7 @@ class Annuncio extends Model {
     public function filtra_data_a($a)
     {
         if($a) {
-            return Annuncio::where('finePeriodoDisponibilita','>=', $a)->select('id')->pluck('id');
+            return Annuncio::where('inizioPeriodoDisponibilita','<=', $a)->where('finePeriodoDisponibilita','>=', $a)->select('id')->pluck('id');
         }
         else {
             return Annuncio::select('id')->pluck('id');

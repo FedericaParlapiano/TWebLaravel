@@ -10,6 +10,152 @@
 
 @section('scripts')
 @parent
+<script type="text/javascript">
+$(function () {    
+
+    /*validazione lato client dei campi per la ricerca*/
+    $(':input').on('blur', function (event) {
+        var element = $(this);
+        element.removeClass('errore-campo-ricerca');
+        element.removeClass('errore-campo-filtri-tutti');
+        element.removeClass('errore-campo-filtri-postoletto');
+        element.removeClass('errore-campo-filtri-appartamento');
+        switch (element.attr('id')) {
+            case 'citta':
+                var pattern = /^([A-Za-z ])+$/;
+                if ((!pattern.test(element.val())) && element.val()) {
+                    element.addClass('errore-campo-ricerca');
+                }
+                if (element.val().length > 25) {
+                    element.addClass('errore-campo-ricerca');
+                }
+                break;
+            case 'da':
+                var pattern =/^[0-9]{4}[-][0-9]{2}[-][0-9]{2}$/;
+                if ((!pattern.test(element.val().toString())) && element.val()) {
+                    element.addClass('errore-campo-ricerca');
+                }
+                break;
+            case 'a':
+                var pattern =/^[0-9]{4}[-][0-9]{2}[-][0-9]{2}$/;
+                if ((!pattern.test(element.val().toString())) && element.val()) {
+                    element.addClass('errore-campo-ricerca');
+                }
+                break;
+            case 'superficieT':
+                var pattern =/^[0-9]{0,4}$/;
+                if (!pattern.test(element.val())) {
+                    element.addClass('errore-campo-filtri-tutti');
+                }
+                break;
+            case 'superficieA':
+                var pattern =/^[0-9]{0,4}$/;
+                if (!pattern.test(element.val())) {
+                    element.addClass('errore-campo-filtri-appartamento');
+                }
+                break;
+            case 'superficieP':
+                var pattern =/^[0-9]{0,4}$/;
+                if (!pattern.test(element.val())) {
+                    element.addClass('errore-campo-filtri-postoletto');
+                }
+                break;
+            case 'postiLettoTotaliT':
+                var pattern =/^[0-9]{0,2}$/;
+                if (!pattern.test(element.val())) {
+                    element.addClass('errore-campo-filtri-tutti');
+                }
+                break;
+             case 'postiNellaStanzaT':
+                var pattern =/^[0-9]{0,2}$/;
+                if (!pattern.test(element.val())) {
+                    element.addClass('errore-campo-filtri-tutti');
+                }
+                break;
+            case 'postiLettoTotaliA':
+                var pattern =/^[0-9]{0,2}$/;
+                if (!pattern.test(element.val().toString())) {
+                    element.addClass('errore-campo-filtri-appartamento');
+                }
+                break;
+            case 'postiLettoTotaliP':
+                var pattern =/^[0-9]{0,2}$/;
+                if (!pattern.test(element.val().toString())) {
+                    element.addClass('errore-campo-filtri-postoletto');
+                }
+                break;
+            case 'numCamereT':
+                var pattern =/^[0-9]{0,2}$/;
+                if (!pattern.test(element.val())) {
+                    element.addClass('errore-campo-filtri-tutti');
+                }
+                break;
+            case 'numCamere':
+                var pattern =/^[0-9]{0,2}$/;
+                if (!pattern.test(element.val())) {
+                    element.addClass('errore-campo-filtri-appartamento');
+                }
+                break;
+            case 'postiNellaStanza':
+                var pattern =/^[0-9]{0,2}$/;
+                if (!pattern.test(element.val())) {
+                    element.addClass('errore-campo-filtri-postoletto');
+                }
+                break;
+        };
+    });
+
+    $('.avvia-ricerca').on('click', function (event) {
+        $(':input').trigger('change');
+        
+        if ($(':input').filter('[class*=errore-campo-ricerca]').length != 0) {
+            $('#button-cerca').attr('href', null);
+            window.confirm("Uno o più campi specificati per la ricerca contengono errori");
+        }else{
+             $('#button-cerca').attr('href', '{{url("catalog")}}');
+        }
+        
+        if($(':input').filter('[class*=errore-campo-filtri-tutti]').length != 0) {
+            $('#modal-filter').css('display','block');
+            $('#tutti-menu').css('display','block');
+            $('#postoletto-menu').css('display','none');
+            $('#appartamento-menu').css('display','none');
+            $('#show-hidden-menu').addClass('card-modificata-filtri');
+            $('#show-hidden-menu-appartamento').removeClass('card-modificata-filtri');
+            $('#show-hidden-menu-posto-letto').removeClass('card-modificata-filtri');
+
+        }
+        
+        if($(':input').filter('[class*=errore-campo-filtri-appartamento]').length != 0) {   
+                $('#modal-filter').css('display','block');
+                $('#appartamento-menu').css('display','block');
+                $('#postoletto-menu').css('display','none');
+                $('#tutti-menu').css('display','none');
+                $('#show-hidden-menu-appartamento').addClass('card-modificata-filtri');
+                $('#show-hidden-menu').removeClass('card-modificata-filtri');
+                $('#show-hidden-menu-posto-letto').removeClass('card-modificata-filtri');
+        }
+        
+        if($(':input').filter('[class*=errore-campo-filtri-postoletto]').length != 0) {
+            $('#modal-filter').css('display','block');
+            $('#postoletto-menu').css('display','block');
+            $('#tutti-menu').css('display','none');
+            $('#appartamento-menu').css('display','none');        
+            $('#show-hidden-menu-posto-letto').addClass('card-modificata-filtri');
+            $('#show-hidden-menu-appartamento').removeClass('card-modificata-filtri');
+            $('#show-hidden-menu').removeClass('card-modificata-filtri');
+        }
+        
+    });
+
+    $('form').on('submit', function (event) {
+        $(':input').trigger('change');
+        if ($(':input').filter('[class*=errore-campo-ricerca]').length != 0) {
+            return false;
+        };
+    });
+});
+</script>
 @endsection
 
 @section('title', 'Catalogo Annunci')
@@ -23,47 +169,26 @@
 <div class="contenitore-form"> 
     {{ Form::open(array('route' => 'catalogoordinato', 'id'=>'filtri-form', 'target'=>'_blank')) }}
     {{ Form::token() }}
-    <div type="button" id="filtri-button" onclick="openForm()" ><i class="fa-solid fa-ellipsis-vertical"></i></div> 
+    <div type="button" id="filtri-button" onclick="openForm()" ><i class="fa-solid fa-ellipsis-vertical xlarge"></i></div> 
 
     <div class = "row">    
         <div class="left" style="margin-left:2em;">
         {{ Form::label('citta', 'Zona di locazione', ['class' => 'label-cerca']) }} 
         {{ Form::text('citta', '', ['class' => 'input', 'style' => 'height: 2.8em;', 'id' => 'citta']) }}
-        @if ($errors->first('citta'))
-        <div class="errors">
-            @foreach ($errors->get('citta') as $message)
-            <p>{{ $message }}</p>
-            @endforeach
-        </div>
-        @endif  
          </div>
                     
         <div style="margin-left:2.5em;">  
             {{ Form::label('da', 'Da', ['class' => 'label-cerca']) }}
             {{ Form::date('da', '', ['class' => 'input', 'style' => 'width: 11em; height: 2.8em;', 'id' => 'da']) }}
-            @if ($errors->first('da'))
-            <div class="errors">
-                @foreach ($errors->get('da') as $message)
-                <p>{{ $message }}</p>
-                @endforeach
-            </div>
-            @endif 
         </div>  
                     
         <div style="margin-left:2.5em;">
             {{ Form::label('a', 'A', ['class' => 'label-cerca']) }}
-            {{ Form::date('a', '', ['class' => 'input', 'style' => 'width: 11em; height: 2.8em;', 'id' => 'a']) }}
-            @if ($errors->first('a'))
-            <div class="errors">
-                @foreach ($errors->get('a') as $message)
-                <p>{{ $message }}</p>
-                @endforeach
-            </div>
-            @endif  
+            {{ Form::date('a', '', ['class' => 'input', 'style' => 'width: 11em; height: 2.8em;', 'id' => 'a']) }} 
         </div> 
                 
         <div class='submit-filter'>         
-        <a href='{{url("catalog")}}' id='button-cerca'>Cerca</a>
+        <a href='{{url("catalog")}}' id='button-cerca' class="avvia-ricerca">Cerca</a>
         </div>
         
         {{ Form::submit('Ordina per rilevanza', array('title' => 'mostra anche quelli che non soddisfano tutti i requisiti' ,'name' => 'submitbutton', 'id' => 'ordinarilevanza', 'class' => 'button ourblue')) }}
@@ -74,8 +199,6 @@
 
            
 
-
-
 <!-- The Modal -->
 <div id="modal-filter" class="modal">
 
@@ -83,7 +206,7 @@
   <div class="modal-content">
       
     
-    <div id="close" onclick="closeForm()"> &times; </div>
+    <div id="close" onclick="closeForm()" class="xxlarge"> &times; </div>
     <h1 id="h1-filtri"> Filtri </h1>
 
     
@@ -131,37 +254,11 @@
             
             {{ Form::label('superficieT', 'Superfcie (in mq)') }}
             {{ Form::text('superficieT', '', ['class' => 'input','id' => 'superficieT', 'style' => 'width: 30%']) }}
-            @if ($errors->first('superficieT'))
-              <script> 
-                
-                document.getElementById("modal-filter").style.display = "block"; 
-                document.getElementById("tutti-menu").style.display = "block";
-                
-              </script>
-              <ul class="errors">
-                @foreach ($errors->get('superficieT') as $message)
-                <li>{{ $message }}</li>
-                @endforeach
-              </ul>
-            @endif
             
             <br>
             <br>
             {{ Form::label('postiLettoTotaliT', 'Numero posti letto totali') }}
             {{ Form::text('postiLettoTotaliT', '', ['class' => 'input','id' => 'postiLettoTotaliT', 'style' => 'width: 30%']) }}
-            @if ($errors->first('postiLettoTotaliT'))
-              <script> 
-                
-                document.getElementById("modal-filter").style.display = "block"; 
-                document.getElementById("tutti-menu").style.display = "block";
-                
-              </script>
-              <ul class="errors">
-                @foreach ($errors->get('postiLettoTotaliT') as $message)
-                <li>{{ $message }}</li>
-                @endforeach
-              </ul>
-            @endif
             
             <br>
           
@@ -171,21 +268,8 @@
 
             {{ Form::label('numCamereT', 'Numero di camere') }}
             {{ Form::text('numCamereT', '', ['class' => 'input','id' => 'numCamereT', 'style' => 'width: 30%']) }}
-            @if ($errors->first('numCamereT'))
-              <script> 
-                
-                document.getElementById("modal-filter").style.display = "block"; 
-                document.getElementById("tutti-menu").style.display = "block";
-                
-              </script>
-              <ul class="errors">
-                  @foreach ($errors->get('numCamereT') as $message)
-                  <li>{{ $message }}</li>
-                  @endforeach
-              </ul>
-            @endif
-              
-              <br>
+             
+            <br>
               
             <h5>
                 Filtri specifici per un posto letto
@@ -193,20 +277,6 @@
               
             {{ Form::label('postiNellaStanzaT', 'Numero posti letto nella stanza') }}
             {{ Form::text('postiNellaStanzaT', '', ['class' => 'input','id' => 'postiNellaStanzaT', 'style' => 'width: 30%']) }}
-            @if ($errors->first('postiNellaStanzaT'))
-              <script> 
-                
-                document.getElementById("modal-filter").style.display = "block"; 
-                document.getElementById("tutti-menu").style.display = "block";
-                
-              </script>
-              <ul class="errors">
-                @foreach ($errors->get('postiNellaStanzaT') as $message)
-                <li>{{ $message }}</li>
-                @endforeach
-              </ul>
-            @endif
-          
             </div>
           
           
@@ -215,57 +285,19 @@
             
             {{ Form::label('superficieA', 'Superfcie (in mq)') }}
             {{ Form::text('superficieA', '', ['class' => 'input','id' => 'superficieA', 'style' => 'width: 30%']) }}
-            @if ($errors->first('superficieA'))
-              <script> 
-                
-                document.getElementById("modal-filter").style.display = "block"; 
-                document.getElementById("appartamento-menu").style.display = "block";
-                
-              </script>
-              <ul class="errors">
-                  @foreach ($errors->get('superficieA') as $message)
-                  <li>{{ $message }}</li>
-                  @endforeach
-              </ul>
-            @endif
+            
           <br>
           <br>
           {{ Form::label('postiLettoTotaliA', 'Numero posti letto totali') }}
           {{ Form::text('postiLettoTotaliA', '', ['class' => 'input','id' => 'postiLettoTotaliA', 'style' => 'width: 30%']) }}
-           @if ($errors->first('postiLettoTotaliA'))
-            <script> 
-                
-                document.getElementById("modal-filter").style.display = "block"; 
-                document.getElementById("appartamento-menu").style.display = "block";
-                
-            </script>
-              <ul class="errors">
-                @foreach ($errors->get('postiLettoTotaliA') as $message)
-                <li>{{ $message }}</li>
-                @endforeach
-              </ul>
-           @endif
-            
+           
           <br>
           <br>
           {{ Form::radio('tipologia', 'Appartamento', false, ['id' => 'Appartamento', 'style'=> 'display: none']) }}
 
           {{ Form::label('numCamere', 'Numero di camere') }}
           {{ Form::text('numCamere', '', ['class' => 'input','id' => 'numCamere', 'style' => 'width: 30%']) }}
-          @if ($errors->first('numCamere'))
-            <script> 
-                
-                document.getElementById("modal-filter").style.display = "block"; 
-                document.getElementById("appartamento-menu").style.display = "block";
-                
-            </script>
-            <ul class="errors">
-              @foreach ($errors->get('numCamere') as $message)
-              <li>{{ $message }}</li>
-              @endforeach
-            </ul>
-          @endif
-            
+          
           </div>
           
           <div class="hidden-menu-posto-letto" id="postoletto-menu" style="display: none;">
@@ -280,54 +312,15 @@
           <br>
           <br>
           {{ Form::label('superficieP', 'Superfcie (in mq)') }}
-          {{ Form::text('superficieP', '', ['class' => 'input','id' => 'superficieP', 'style' => 'width: 30%']) }}
-          @if ($errors->first('superficieP'))
-            <script> 
-                
-                document.getElementById("modal-filter").style.display = "block"; 
-                document.getElementById("postoletto-menu").style.display = "block";
-                
-            </script>
-            <ul class="errors">
-                @foreach ($errors->get('superficieP') as $message)
-                <li>{{ $message }}</li>
-                @endforeach
-            </ul>
-          @endif
+          {{ Form::text('superficieP', '', ['class' => 'input','id' => 'superficieP', 'style' => 'width: 30%']) }}         
           <br>
           <br>
           {{ Form::label('postiLettoTotalP', 'Numero posti letto totali') }}
           {{ Form::text('postiLettoTotaliP', '', ['class' => 'input','id' => 'postiLettoTotaliP', 'style' => 'width: 30%']) }}
-          @if ($errors->first('postiLettoTotaliP'))
-            <script> 
-                
-                document.getElementById("modal-filter").style.display = "block"; 
-                document.getElementById("postoletto-menu").style.display = "block";
-                
-            </script>
-              <ul class="errors">
-                @foreach ($errors->get('postiLettoTotaliP') as $message)
-                <li>{{ $message }}</li>
-                @endforeach
-              </ul>
-           @endif
           <br>
           <br>
           {{ Form::label('postiNellaStanza', 'Numero posti letto nella stanza') }}
           {{ Form::text('postiNellaStanza', '', ['class' => 'input','id' => 'postiNellaStanza', 'style' => 'width: 30%']) }}
-          @if ($errors->first('postiNellaStanza'))
-            <script> 
-                
-                document.getElementById("modal-filter").style.display = "block"; 
-                document.getElementById("postoletto-menu").style.display = "block";
-                
-            </script>
-          <ul class="errors">
-            @foreach ($errors->get('postiNellaStanza') as $message)
-            <li>{{ $message }}</li>
-            @endforeach
-          </ul>
-        @endif
           </div>
           
           
@@ -335,7 +328,7 @@
           <div  style="text-align: right;">
           <div class='submit-filter' style="clear: both; text-align: right;">
               
-            <a href='{{url("catalog")}}' id='button-cerca' onclick='closeForm();'>Applica</a>
+            <a href='{{url("catalog")}}' id='button-cerca' onclick='closeForm();' class="avvia-ricerca">Applica</a>
          </div>
          </div>
           

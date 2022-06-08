@@ -13,7 +13,7 @@
             Benvenuti sul nostro sito. 
             <br>
             Siamo un gruppo di studentesse universitarie e abbiamo creato questo sito per tutti gli studenti come noi alla ricerca dell'alloggio perfetto per gli studi.<br>
-            <br><img src="images/chiavi.jpg" alt="Consegna delle chiavi" class="chiavi">
+            <br><img src="images/noi.jpeg" alt="Il nostro team." id="noi">
           </div>
           <div class="mission">
             <h1>La nostra missione</h1>

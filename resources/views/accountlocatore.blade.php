@@ -77,12 +77,7 @@
     </div>
       
    </div> 
-  
-
-  </div>
-  
-  
-    
+  </div>   
     
   <div style="align-content: center; padding: 40px;">  
   <!-- Annunci -->
@@ -156,102 +151,7 @@
     <b>Non hai ancora pubblicato annunci.</b>
     @endisset    
   </div>
-    
-      <div id="propostericevute">
-          <div><span class="xlarge"> <b> Proposte</b></span><a id="bottone-vedi-tutte-proposte" href="{{ route('propostelocatore') }}" title="Visualizza tutte le proposte"> Vedi tutte </a></div> 
-        <hr>
-        <p> 1-6 di  @php echo sizeof($proposte); @endphp proposte ricevute </p>
-        
-        @isset($proposte)
-        <div id="elenco-proposte-ricevute">
-        @php
-        $counter=0;
-        @endphp
-        @foreach ($proposte as $proposta)
-        @php
-        if($counter >= 6){
-            break;
-        }
-        @endphp
-        
-        <div class="card-proposta-ricevuta">
-            <div class="container-proposta-ricevuta">
-               
-                <h4><b> Proposta </b></h4>
-                <p>Hai ricevuto una proposta per l'annuncio <b> {{ $proposta->titoloannuncio }} </b> ({{ $proposta->tipologiaannuncio }}) di <b> {{ $proposta->nomelocatario }}  {{ $proposta->cognomelocatario }}</b></p>
-              
-                <div class="split2">
-                    <div>
-                        <p>
-                            <i>Nome: </i> {{ $proposta->nomelocatario }}
-                            <br>
-                            <i>Cognome: </i> {{ $proposta->cognomelocatario }}
-                            <br>
-                            @isset($proposta->datanascitalocatario)
-                            <i>Data di nascita: </i> {{ $proposta->datanascitalocatario }}
-                            @else
-                            Non è stata indicata la data di nascita.
-                            @endisset
-                            <br>
-                            <i>Sesso: </i> {{ $proposta->sessolocatario }}
-                            <br>
-                            <i>Email: </i> {{ $proposta->emaillocatario }}
-                            <br>
-                            @isset($proposta->telefonolocatario)
-                            <i>Telefono: </i> {{ $proposta->telefonolocatario }}
-                            @else
-                            Non è stato inserito il numero di telefono.
-                            @endisset
-                        </p>
-                    </div>
-                 
-                    <div>                  
-                        <p>
-                        <i>Periodo: </i> da {{ $proposta->inizioAffitto }} a {{ $proposta->fineAffitto }}
-                        <br>
-                        @isset($proposta->messaggio)
-                        <i>Messaggio: </i> {{ $proposta->messaggio }}
-                        @else
-                        Nessun messaggio specificato.
-                        @endisset
-                        <br>
-                        @isset($proposta->canoneProposto)
-                        <i>Canone proposto: </i> {{ $proposta->canoneProposto }} €
-                        @else
-                        Nessuna proposta di canone.
-                        @endisset                       
-                        </p>
-                        <i>Stato: </i> {{ $proposta->stato }}                       
-                    </div>
-                </div>
-                
-                <div style="clear: both; text-align: right;">
-                @if($proposta->stato=='da valutare')                
-                <a href="{{ route('accettaproposta', [$proposta->id]) }}" onclick="return confirm('Sei sicuro di voler accettare la proposta?')" class="button-proposta">Accetta</a>
-                <a href="{{ route('rifiutaproposta', [$proposta->id]) }}" onclick="return confirm('Sei sicuro di voler rifiutare la proposta?')"  class="button-proposta" style="margin-left:15px;">Rifiuta</a>                
-                @endif
-                
-                @if($proposta->stato=='accettato')
-                <a href="{{ route('showcontratto', [$proposta->id]) }}" class="button-proposta" style="margin-left:15px;">Contratto</a>
-                <a href="{{ route('disdettaproposta', [$proposta->id]) }}" onclick="return confirm('Sei sicuro di voler rendere nuovamente disponibile il tuo alloggio? Se la data di fine affitto è futura questa scelta implica la disdetta anticipata del contratto di locazione.')" class="button-proposta">Rendi disponibile</a>                
-                @endif
-                 
-                @if($proposta->stato=='rifiutato') 
-                <a href="{{ route('eliminaproposta', [$proposta->id]) }}" onclick="return confirm('Sei sicuro di voler eliminare la proposta? ')" class="button-proposta">Elimina</a>                
-                @endif
-                </div>
-            </div>
-        </div> 
-        
-        @php
-        $counter++;
-        @endphp
-        
-        @endforeach
-      </div>
-        @endisset
-      </div>
-    </div>
+</div>
 @endisset
 @endsection
 

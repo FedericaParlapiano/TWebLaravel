@@ -139,10 +139,23 @@ textarea,
     margin-right: 15px;
 }
 
+#filtri-button{
+    width: 2em;
+    height: 2em;
+    margin-left: 52em;
+}
 .errors {
-	color: #f93d00;
-        font-size: 12px;
-        margin-top: 5px;
-        margin-left: auto;
-        margin-right: auto;
+    color: #f93d00;
+    font-size: 12px;
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.errore-campo-ricerca,
+.errore-campo-filtri-tutti,
+.errore-campo-filtri-postoletto,
+.errore-campo-filtri-appartamento {
+    background-color: #f3e4e4;
+    border: 1px solid red!important;
 }

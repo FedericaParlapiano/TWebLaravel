@@ -74,10 +74,7 @@ class User extends Authenticatable {
         $authuser = auth()->user()->username;
         
         return Messaggio::where('mittente', $authuser)->where('destinatario', $user)
-                ->orWhere('destinatario', $authuser)->where('mittente', $user)->get();
-        
-        
-        
+                ->orWhere('destinatario', $authuser)->where('mittente', $user)->get();  
         
     }
     

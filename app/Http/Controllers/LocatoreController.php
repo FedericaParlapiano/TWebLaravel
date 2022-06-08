@@ -490,7 +490,7 @@ class LocatoreController extends Controller {
             'disponibilita' => false,            
         ]);
         
-         return redirect()->action('LocatoreController@index');
+         return redirect()->action('LocatoreController@showProposte');
     }
     
     public function rifiutaProposta($idProposta)
@@ -499,7 +499,7 @@ class LocatoreController extends Controller {
             'stato' => 'rifiutato',
                 ]); 
         
-         return redirect()->action('LocatoreController@index');
+         return redirect()->action('LocatoreController@showProposte');
     }
     
     public function generatePDF($idContratto)
@@ -541,22 +541,26 @@ class LocatoreController extends Controller {
     {
         $proposta = $this->_locatoreModel->getPropostaById($idProposta);
         $affitto = $this->_locatoreModel->getAffittoByInfo($proposta->annuncio, $proposta->locatario, $proposta->inizioAffitto, $proposta->fineAffitto);
-        $affitto->delete();
+        
         $annuncio = $this->_locatoreModel->getAnnuncioById($proposta->annuncio);
         $annuncio->update([
             'disponibilita' => true,
                 ]);
-
         
-        if($proposta->fineAffitto <= date("Y-m-d")){
-            $proposta->delete();
-        }else{
+        if($proposta->fineAffitto > date("Y-m-d")){
+            $affitto->update([
+            'dataFineContratto' => date("Y-m-d"),
+                ]);
             $proposta->update([
             'stato' => 'rifiutato',
                 ]);
         }
         
-         return redirect()->action('LocatoreController@index');
+        if($proposta->inizioAffitto > date("Y-m-d")){
+            $affitto->delete();
+        }
+        
+         return redirect()->action('LocatoreController@showProposte');
     }
     
      public function eliminaProposta($idProposta)
@@ -564,7 +568,7 @@ class LocatoreController extends Controller {
         $proposta = $this->_locatoreModel->getPropostaById($idProposta);
         $proposta->delete();
 
-        return redirect()->action('LocatoreController@index');
+         return redirect()->action('LocatoreController@showProposte');
          
     }
     

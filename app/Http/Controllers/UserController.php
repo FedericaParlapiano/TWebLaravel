@@ -108,8 +108,7 @@ class UserController extends Controller {
     }
     
     public function showChat() {
-        
-        
+ 
         $chat = $this->_userModel->getChat(auth()->user()->username);
         $messaggi = $this->_userModel->getMessaggi($chat);
         

@@ -33,7 +33,7 @@ return [
     'confirmed'            => "':attribute' non corrisponde.",
     'date'                 => "':attribute' non è una data valida.",
     'date_equals'          => "':attribute' deve essere uguale a :date.",
-    'date_format'          => "':attribute' non corrisponde al formato :format.",
+    'date_format'          => "':attribute' non corrisponde al formato corretto.",
     'different'            => "':attribute' e :other devono essere diversi.",
     'digits'               => "':attribute' deve essere lungo :digits caratteri.",
     'digits_between'       => "':attribute' deve essere compreso tra :min e :max caratteri.",

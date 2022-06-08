@@ -16,8 +16,8 @@ class DatabaseSeeder extends Seeder {
             ['domanda' => 'Come posso fare una ricerca sul sito?', 'risposta' => 'Attenzione: per poter filtrare i risultati è necessario essere registrati come locatori. Se sei un locatore e sei registrato, per poter fare una ricerca, basta cliccare sulla sezione ricerca. Comparirà una form in cui inserire i criteri di ricerca.
                 Ti consigliamo di indicare almeno la città di interesse. Inoltre puoi indicare il tipo di camera che cerchi o se cerchi un intero appartamento.
                 Puoi anche indicare molti altri filtri.'],
-            ['domanda' => 'Come posso contattare un host?', 'risposta' => 'Puoi contattare l\'host direttamente all\'interno del sito tramite la chat interna, a cui puoi accedere solo dopo aver effettuato il login.
-                Altrimenti, sul profilo dell\'host puoi trovare informazioni su come contattarlo.'],
+            ['domanda' => 'Come posso contattare un locatore?', 'risposta' => 'Puoi contattare l\'host direttamente all\'interno del sito tramite la chat interna, a cui puoi accedere solo dopo aver effettuato il login.
+                Aprendo un annuncio tra quelli mostrati sul catalogo, trovarai infondo alla pagina due bottoni uno per inviare un semplice messaggio al locatore che ha pubblicato tale annuncio e uno per inviare una richiesta di affitto allo stesso. Altrimenti, nella sessa sezione, puoi trovare i suoi contatti.'],
             ['domanda' => 'Posso contattare un locatore senza essere registrato?', 'risposta' => 'Non puoi contattare altri utenti usando la chat interna al sito se non sei registrato.'
                 . 'Tuttavia, puoi contattarli esternamente tramite la loro email o il loro numero di telefono, se li hanno forniti in fase di registrazione.'],
             ['domanda' => 'I miei dati sono tutelati?', 'risposta' => 'Teniamo alla privacy dei nostri utenti. Tutto ciò che fornisci in fase di iscrizione sarà usato solo ai fini del corretto funzionamento del sito.'],
@@ -57,7 +57,7 @@ class DatabaseSeeder extends Seeder {
             ['username'=>'alessandro_zampa','password'=>Hash::make('Alezampa99'),'role' => 'locatario','fotoProfilo'=>'user.png','nome'=>'Alessandro','cognome'=>'Zampa','sesso'=>'M','dataNascita'=>'1999-08-26','citta'=>'Toletino','numTelefono'=>'32843056','email'=>'alezampa@gmail.com','universita'=>'Polito','facolta'=>'Ingegneria Chimica','annoImmatricolazione'=>'2022'],
             ['username'=>'nicola_zannini','password'=>Hash::make('Nicola99'),'role' => 'locatario','fotoProfilo'=>'user.png','nome'=>'Nicola','cognome'=>'Zannini','sesso'=>'M','dataNascita'=>'1994-11-13','citta'=>'San Marcello','numTelefono'=>'324824924','email'=>'niconico@hotmail.it','universita'=>'Unimol','facolta'=>'Biologia','annoImmatricolazione'=>'2019'],
             ['username'=>'ugo_zannini','password'=>Hash::make('Ugougo11'),'role' => 'locatario','fotoProfilo'=>'user.png','nome'=>'Ugo','cognome'=>'Zannini','sesso'=>'M','dataNascita'=>'2002-12-29','citta'=>'Corinaldo','numTelefono'=>'3543582032','email'=>'ugozanna@gmail.com','universita'=>'Poliba','facolta'=>'Veterinaria','annoImmatricolazione'=>'2018'],
-            ['username'=>'mia_palazzetti','password'=>Hash::make('Formaggio1'),'role' => 'locatario','fotoProfilo'=>'user.png','nome'=>'Ugo','cognome'=>'Palazzetti','sesso'=>'F','dataNascita'=>'2000-12-13','citta'=>'Tolentino','numTelefono'=>'394538234','email'=>'miaformaggio@gmail.com','universita'=>'Unibo','facolta'=>'Scienze dell\'alimentazione','annoImmatricolazione'=>'2018'],
+            ['username'=>'mia_palazzetti','password'=>Hash::make('Formaggio1'),'role' => 'locatario','fotoProfilo'=>'user.png','nome'=>'Mia','cognome'=>'Palazzetti','sesso'=>'F','dataNascita'=>'2000-12-13','citta'=>'Tolentino','numTelefono'=>'394538234','email'=>'miaformaggio@gmail.com','universita'=>'Unibo','facolta'=>'Scienze dell\'alimentazione','annoImmatricolazione'=>'2018'],
             ['username'=>'giovanni_delfino','password'=>Hash::make('Giovanni99'),'role' => 'locatario','fotoProfilo'=>'user.png','nome'=>'Giovanni','cognome'=>'Delfino','sesso'=>'M','dataNascita'=>'1999-06-29','citta'=>'Chiaravalle','numTelefono'=>'3285940','email'=>'giovannigio@gmail.com','universita'=>'Univpm','facolta'=>'Ingegneria Elettronica','annoImmatricolazione'=>'2019'],      
             ['username'=>'mario_rossi','password'=>Hash::make('Mariorossi00'),'role' => 'locatore','fotoProfilo'=>'user.png','nome'=>'Mario','cognome'=>'Rossi','sesso'=>'M','dataNascita'=>'2000-12-12','citta'=>'Ancona','numTelefono'=>'3218934634','email'=>'mariorossi00@gmail.com','universita'=>null,'facolta'=>null,'annoImmatricolazione'=>null],
             ['username'=>'simone_parini','password'=>Hash::make('Eimone90'),'role' => 'locatore','fotoProfilo'=>'user.png','nome'=>'Simone','cognome'=>'Parini','sesso'=>'M','dataNascita'=>'1990-03-12','citta'=>'Ancona','numTelefono'=>'3218934634','email'=>'simoneparini@gmail.com','universita'=>null,'facolta'=>null,'annoImmatricolazione'=>null],
@@ -553,20 +553,19 @@ class DatabaseSeeder extends Seeder {
             ['vincolo'=>'fumatori','annuncio'=>29],
             ['vincolo'=>'fumatori','annuncio'=>30],
             ['vincolo'=>'animali','annuncio'=>31],
-            ['vincolo'=>'animali','annuncio'=>32]
-           
+            ['vincolo'=>'animali','annuncio'=>32]         
          
         ]);
         
         
         /* affitto(locatario, annuncio, dataStipulaContratto, dataFineContratto, canoneConcordato)*/
         DB::table('affitti') -> insert ([
-            ['locatario' => 'enzo_ferante', 'annuncio'=> '7', 'dataStipulaContratto'=> '2022-09-20','dataFineContratto'=> '2023-06-20', 'canoneConcordato'=> 500.00 ],
-            ['locatario' => 'flora_rossini', 'annuncio'=> '8', 'dataStipulaContratto'=> '2022-04-15','dataFineContratto'=> '2022-09-15', 'canoneConcordato'=> 470.00 ],
+            ['locatario' => 'enzo_ferrante', 'annuncio'=> '7', 'dataStipulaContratto'=> '2022-09-20','dataFineContratto'=> '2023-06-20', 'canoneConcordato'=> 500.00 ],
+            ['locatario' => 'flora_rossini', 'annuncio'=> '8', 'dataStipulaContratto'=> '2022-01-15','dataFineContratto'=> '2022-10-15', 'canoneConcordato'=> 470.00 ],
             ['locatario' => 'lariolario', 'annuncio'=> '10', 'dataStipulaContratto'=> '2022-06-20','dataFineContratto'=> '2023-06-20', 'canoneConcordato'=> 200.00 ],
             ['locatario' => 'ugo_zannini', 'annuncio'=> '11', 'dataStipulaContratto'=> '2022-07-10','dataFineContratto'=> '2023-07-10', 'canoneConcordato'=> 200.00 ],
-            ['locatario' => 'nicola_zannini', 'annuncio'=> '12', 'dataStipulaContratto'=> '2022-06-01','dataFineContratto'=> '2022-12-31', 'canoneConcordato'=> 225.00 ],
-            ['locatario' => 'arturo_casagrande', 'annuncio'=> '13', 'dataStipulaContratto'=> '2022-09-01','dataFineContratto'=> '2023-07-01', 'canoneConcordato'=> 250.00 ],
+            ['locatario' => 'nicola_zannini', 'annuncio'=> '12', 'dataStipulaContratto'=> '2022-06-01','dataFineContratto'=> '2023-12-31', 'canoneConcordato'=> 225.00 ],
+            ['locatario' => 'salvatore_parenti', 'annuncio'=> '13', 'dataStipulaContratto'=> '2022-09-01','dataFineContratto'=> '2023-07-01', 'canoneConcordato'=> 250.00 ],
             ['locatario' => 'tecla_mondo', 'annuncio'=> '24', 'dataStipulaContratto'=> '2022-01-20','dataFineContratto'=> '2022-09-01', 'canoneConcordato'=> 400.00 ],
             ['locatario' => 'paolo_chioggia', 'annuncio'=> '25', 'dataStipulaContratto'=> '2022-09-10','dataFineContratto'=> '2023-06-10', 'canoneConcordato'=> 300.00],
             ['locatario' => 'regina_falangi', 'annuncio'=> '26', 'dataStipulaContratto'=> '2022-01-01','dataFineContratto'=> '2022-09-01', 'canoneConcordato'=> 280.00],
@@ -576,30 +575,30 @@ class DatabaseSeeder extends Seeder {
         
         /* richiesta(locatore, locatario, annuncio, canoneProposto*, messaggio*, stato, inizioAffitto, fineAffitto) */
         DB::table('richieste')->insert([
-            ['locatore' => 'lorelore', 'locatario' => 'enzo_ferrante', 'annuncio' => 7, 'canoneProposto' => 500.00,'messaggio' => '',
+            ['locatore' => 'lorelore', 'locatario' => 'enzo_ferrante', 'annuncio' => 7, 'canoneProposto' => 500.00,'messaggio' => null,
             'stato' => 'accettato', 'inizioAffitto' => '2022-09-20' , 'fineAffitto' => '2023-06-20'],
-            ['locatore' => 'lorelore', 'locatario' => 'flora_rossini', 'annuncio' => 8, 'canoneProposto' => 470.00,'messaggio' => '',
-            'stato' => 'accettato', 'inizioAffitto' => '2022-04-15' , 'fineAffitto' => '2022-09-15'],
-            ['locatore' => 'arianna_ronci', 'locatario' => 'ugo_zannini', 'annuncio' => 11, 'canoneProposto' => 200.00,'messaggio' => '',
+            ['locatore' => 'lorelore', 'locatario' => 'flora_rossini', 'annuncio' => 8, 'canoneProposto' => 470.00,'messaggio' => null,
+            'stato' => 'accettato', 'inizioAffitto' => '2022-01-15' , 'fineAffitto' => '2022-10-15'],
+            ['locatore' => 'arianna_ronci', 'locatario' => 'ugo_zannini', 'annuncio' => 11, 'canoneProposto' => 200.00,'messaggio' => null,
             'stato' => 'accettato', 'inizioAffitto' => '2022-07-10' , 'fineAffitto' => '2023-07-10'],         
-            ['locatore' => 'arianna_ronci', 'locatario' => 'nicola_zannini', 'annuncio' => 12, 'canoneProposto' => 225.00,'messaggio' => '',
+            ['locatore' => 'arianna_ronci', 'locatario' => 'nicola_zannini', 'annuncio' => 12, 'canoneProposto' => 225.00,'messaggio' => 'Mi propongo',
             'stato' => 'accettato', 'inizioAffitto' => '2022-06-01' , 'fineAffitto' => '2023-12-31'],
-            ['locatore' => 'federica_parlapiano', 'locatario' => 'salvatore_parenti', 'annuncio' => 13, 'canoneProposto' => 250.00,'messaggio' => 'Posso',
+            ['locatore' => 'federica_parlapiano', 'locatario' => 'salvatore_parenti', 'annuncio' => 13, 'canoneProposto' => 250.00,'messaggio' => 'Spero possa accettare la richiesta',
             'stato' => 'accettato', 'inizioAffitto' => '2022-09-01' , 'fineAffitto' => '2023-07-01'],
-            ['locatore' => 'federica_parlapiano', 'locatario' => 'tecla_mondo', 'annuncio' => 24, 'canoneProposto' => 400.00,'messaggio' => 'Posso',
+            ['locatore' => 'federica_parlapiano', 'locatario' => 'tecla_mondo', 'annuncio' => 24, 'canoneProposto' => 400.00,'messaggio' => 'Mi propongo',
             'stato' => 'accettato', 'inizioAffitto' => '2022-01-20' , 'fineAffitto' => '2022-09-01'],
             ['locatore' => 'federica_parlapiano', 'locatario' => 'paolo_chioggia', 'annuncio' => 25, 'canoneProposto' => 300.00,'messaggio' => 'Posso',
             'stato' => 'accettato', 'inizioAffitto' => '2022-09-10' , 'fineAffitto' => '2023-06-10'],
-            ['locatore' => 'francesca_palazzetti', 'locatario' => 'regina_falangi', 'annuncio' => 26, 'canoneProposto' => 280.00,'messaggio' => '',
+            ['locatore' => 'francesca_palazzetti', 'locatario' => 'regina_falangi', 'annuncio' => 26, 'canoneProposto' => 280.00,'messaggio' => null,
             'stato' => 'accettato', 'inizioAffitto' => '2022-01-01' , 'fineAffitto' => '2022-09-01'],          
-            ['locatore' => 'francesca_palazzetti', 'locatario' => 'viola_rossi', 'annuncio' => 38, 'canoneProposto' => 200.00,'messaggio' => '',
+            ['locatore' => 'francesca_palazzetti', 'locatario' => 'viola_rossi', 'annuncio' => 38, 'canoneProposto' => 200.00,'messaggio' => null,
             'stato' => 'accettato', 'inizioAffitto' => '2022-03-10' , 'fineAffitto' => '2022-07-10'],          
-            ['locatore' => 'alice_moretti', 'locatario' => 'giovanni_delfino', 'annuncio' => 39, 'canoneProposto' => 200.00,'messaggio' => '',
+            ['locatore' => 'alice_moretti', 'locatario' => 'giovanni_delfino', 'annuncio' => 39, 'canoneProposto' => 200.00,'messaggio' => null,
             'stato' => 'accettato', 'inizioAffitto' => '2022-03-10' , 'fineAffitto' => '2022-12-10'],
             ['locatore' => 'arianna_ronci', 'locatario' => 'lariolario', 'annuncio' => 10, 'canoneProposto' => 300.00,'messaggio' => null,
             'stato' => 'accettato', 'inizioAffitto' => '2022-06-20' , 'fineAffitto' => '2023-06-20'],
             
-            ['locatore' => 'arianna_ronci', 'locatario' => 'nicola_zannini', 'annuncio' => 11, 'canoneProposto' => 500.00,'messaggio' => 'Posso proporre il canone ', 
+            ['locatore' => 'arianna_ronci', 'locatario' => 'viola_rossi', 'annuncio' => 11, 'canoneProposto' => 500.00,'messaggio' => 'Posso proporre il canone ', 
             'stato' => 'da valutare', 'inizioAffitto' => '2022-02-10' , 'fineAffitto' => '2022-09-15'],
             ['locatore' => 'arianna_ronci', 'locatario' => 'ugo_zannini', 'annuncio' => 12, 'canoneProposto' => 520.00,'messaggio' => null,
             'stato' => 'rifiutato', 'inizioAffitto' => '2022-10-15' , 'fineAffitto' => '2022-12-15'],
@@ -613,15 +612,15 @@ class DatabaseSeeder extends Seeder {
             'stato' => 'da valutare', 'inizioAffitto' => '2023-09-01' , 'fineAffitto' => '2024-03-01'],
             ['locatore' => 'francesca_palazzetti', 'locatario' => 'lariolario', 'annuncio' => 17, 'canoneProposto' => 250.00,'messaggio' => null,
             'stato' => 'rifiutato', 'inizioAffitto' => '2023-09-10' , 'fineAffitto' => '2024-01-15'],
-            ['locatore' => 'alice_moretti', 'locatario' => 'lariolario', 'annuncio' => 39, 'canoneProposto' => null,'messaggio' => 'Non posso pagare un canone mensile più alto di quello indicato.',
+            ['locatore' => 'alice_moretti', 'locatario' => 'lariolario', 'annuncio' => 39, 'canoneProposto' => null,'messaggio' => 'Non posso pagare un canone mensile così alto.',
             'stato' => 'da valutare', 'inizioAffitto' => '2023-09-10' , 'fineAffitto' => '2024-02-01'],
             ['locatore' => 'alice_moretti', 'locatario' => 'giovanni_delfino', 'annuncio' => 20, 'canoneProposto' => 500.00,'messaggio' => 'Vorrei affittare il suo appartamento.',
             'stato' => 'da valutare', 'inizioAffitto' => '2023-09-10' , 'fineAffitto' => '2024-02-15'],
             ['locatore' => 'lorelore', 'locatario' => 'lariolario', 'annuncio' => 1, 'canoneProposto' => 500.00,'messaggio' => 'Vorrei affittare il suo appartamento.',
             'stato' => 'da valutare', 'inizioAffitto' => '2023-09-10' , 'fineAffitto' => '2024-02-15'],
-            ['locatore' => 'lorelore', 'locatario' => 'enzo_ferrante', 'annuncio' => 2, 'canoneProposto' => 400.00,'messaggio' => 'Vorrei affittare il suo alloggio.',
+            ['locatore' => 'lorelore', 'locatario' => 'mia_palazzetti', 'annuncio' => 2, 'canoneProposto' => 400.00,'messaggio' => 'Vorrei affittare il suo alloggio.',
             'stato' => 'rifiutato', 'inizioAffitto' => '2022-12-10' , 'fineAffitto' => '2023-12-15'],
-            ['locatore' => 'lorelore', 'locatario' => 'flora_rossini', 'annuncio' => 2, 'canoneProposto' => null,'messaggio' => null,
+            ['locatore' => 'lorelore', 'locatario' => 'arturo_casagrande', 'annuncio' => 2, 'canoneProposto' => null,'messaggio' => null,
             'stato' => 'da valutare', 'inizioAffitto' => '2023-09-01' , 'fineAffitto' => '2023-12-05'],
             ['locatore' => 'lorelore', 'locatario' => 'allegra_medici', 'annuncio' => 2, 'canoneProposto' => 100.00,'messaggio' => 'Vorrei propormi per il suo annuncio, peò il canone proposto da lei per me è troppo altro.',
             'stato' => 'da valutare', 'inizioAffitto' => '2022-09-01' , 'fineAffitto' => '2023-12-05'],
@@ -632,6 +631,10 @@ class DatabaseSeeder extends Seeder {
         DB::table('messaggi')->insert([
             ['destinatario' => 'lorelore', 'mittente' => 'enzo_ferrante', 'testo' =>
             'Buongiorno, ho visto il tuo annuncio, volevo chiderti alcune informazioni.', 'dataOraInvio' => date("Y-m-d H:i:s")],
+            ['destinatario' => 'lorelore', 'mittente' => 'mia_palazzetti', 'testo' =>
+            'Buongiorno, le ho inviato una proposta poco fa spero possa accettarla.', 'dataOraInvio' => date("Y-m-d H:i:s")],
+            ['destinatario' => 'lorelore', 'mittente' => 'arturo_casagrande', 'testo' =>
+            'Buonasera mi sono proposto per il suo alloggio. Qualora accettasse la mia offerta quando posso venire a ritirare le chiavi?', 'dataOraInvio' => date("Y-m-d H:i:s")],
             ['destinatario' => 'enzo_ferrante', 'mittente' => 'lorelore', 'testo' =>
             'Certo Enzo chiedimi pure.', 'dataOraInvio' => date("Y-m-d H:i:s")],
             ['destinatario' => 'lorelore', 'mittente' => 'enzo_ferrante', 'testo' =>
@@ -686,12 +689,15 @@ class DatabaseSeeder extends Seeder {
             ['user1' => 'flora_rossini', 'user2' => 'lorelore'],
             ['user1' => 'allegra_medici', 'user2' => 'lorelore'],
             ['user1' => 'lariolario', 'user2' => 'lorelore'],
+            ['user1' => 'arturo_casagrande', 'user2' => 'lorelore'],
+            ['user1' => 'mia_palazzetti', 'user2' => 'lorelore'],   
             ['user1' => 'lariolario', 'user2' => 'arianna_ronci'],
             ['user1' => 'salvatore_parenti', 'user2' => 'federica_parlapiano'],
             ['user1' => 'paolo_chioggia', 'user2' => 'federica_parlapiano'],
             ['user1' => 'tecla_mondo', 'user2' => 'federica_parlapiano'],
             ['user1' => 'nicola_zannini', 'user2' => 'federica_parlapiano'],
             ['user1' => 'nicola_zannini', 'user2' => 'arianna_ronci'],
+            ['user1' => 'viola_rossi', 'user2' => 'arianna_ronci'],
             ['user1' => 'ugo_zannini', 'user2' => 'arianna_ronci'],
             ['user1' => 'lariolario', 'user2' => 'federica_parlapiano'],
             ['user1' => 'lariolario', 'user2' => 'alice_moretti'],
@@ -700,8 +706,6 @@ class DatabaseSeeder extends Seeder {
             ['user1' => 'regina_falangi', 'user2' => 'francesca_palazzetti'],
             ['user1' => 'giovanni_delfino', 'user2' => 'alice_moretti'],
 
-
-            
         ]);
         
     }

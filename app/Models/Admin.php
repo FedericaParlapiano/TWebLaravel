@@ -34,6 +34,7 @@ class Admin{
     }
     
     public function getStatisticheFiltrate(StatisticheRequest $request) {
+        
         $annunci = new Annuncio;
         $richieste = new Richiesta;
         $affitti = new Affitto; 
@@ -59,7 +60,7 @@ class Admin{
             $countAffitti = $affitti->get()->count();
         }
         
-        if($request->da) {
+        if($request->to) {
             $annunci = $annunci->whereIn('id', $annunciFiltrati->filtra_data_a($request->to));
             $richieste = $richieste->whereIn('id', $richiesteFiltrate->filtra_data_a($request->to));
             $affitti = $affitti->whereIn('id', $affittiFiltrati->filtra_data_a($request->to));
