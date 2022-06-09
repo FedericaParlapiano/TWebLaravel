@@ -25,6 +25,10 @@ class Locatore {
         return Foto::all();
     }
     
+    public function getFotoAnnuncio($idAnnuncio) {
+        return Foto::where('annuncio', $idAnnuncio)->get();
+    }
+    
     public function getAnnuncio($idAnnuncio) {
         return Annuncio::where('id', $idAnnuncio)->get();
     }

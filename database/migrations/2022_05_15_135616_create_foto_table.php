@@ -14,6 +14,7 @@ class CreateFotoTable extends Migration
     public function up()
     {
         Schema::create('foto', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->text('immagine');
             $table->integer('annuncio');
             $table->timestamps();

@@ -52,8 +52,8 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'nome' => ['required', 'string', 'max:255'],
-            'cognome' => ['required', 'string', 'max:255'],
+            'nome' => ['required', 'string', 'max:255','regex:/^[a-zA-Z ]{1,255}$/'],
+            'cognome' => ['required', 'string', 'max:255','regex:/^[a-zA-Z ]{1,255}$/'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'username' => ['required', 'string', 'min:8', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
@@ -61,11 +61,11 @@ class RegisterController extends Controller
             'fotoProfilo' => ['nullable', 'image'],
             'sesso' => ['required', 'string'],
             'dataNascita' => ['nullable', 'date', 'before:today', 'regex:/^[0-9]{4}[-][0-9]{2}[-][0-9]{2}$/'],
-            'citta' => ['nullable', 'string', 'max:255'],
+            'citta' => ['nullable', 'string', 'max:255','regex:/^[a-zA-Z ]{0,255}$/'],
             'numTelefono' => ['nullable', 'numeric', 'digits_between:8,15'],
             'universita' => ['nullable', 'string', 'max:255'],
             'facolta' => ['nullable', 'string', 'max:255'],
-            'annoImmatricolazione' => ['nullable', 'string', 'max:4', 'before:'.now()->format('Y')]
+            'annoImmatricolazione' => ['nullable', 'numeric', 'min:1950', 'regex:/^[1-2]{0,1}+[0-9]{0,3}$/','before:'.now()->format('Y')]
         ]);
     }
 

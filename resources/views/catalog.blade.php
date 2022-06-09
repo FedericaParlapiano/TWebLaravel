@@ -41,6 +41,9 @@ $(function () {
                 if ((!pattern.test(element.val().toString())) && element.val()) {
                     element.addClass('errore-campo-ricerca');
                 }
+                if(element.val() < $('#da').val()){
+                    element.addClass('errore-campo-ricerca');                   
+                }
                 break;
             case 'superficieT':
                 var pattern =/^[0-9]{0,4}$/;

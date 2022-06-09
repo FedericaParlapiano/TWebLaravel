@@ -141,20 +141,19 @@ class LocatarioController extends Controller {
     }
     
     public function ordinaCatalogo(FiltriCatalogoRequest $request) {
-        
         $request->validated();
         $vincolisoddisfatti = $this->_catalogoModel->getVincoliSoddisfatti($request);
         $annunci = $this->_catalogoModel->getAnnunciOrdinati($vincolisoddisfatti);
         $foto = $this->_catalogoModel->getFoto();
         $annunciconfoto = $this->_catalogoModel->getAnnunciConFoto();
         $numFiltriNonIndicati = $this->_catalogoModel->getNumeroFiltri($request);
+        $vincoli = $this->_catalogoModel->getAnnunciConNumVincoliSoddisfatti($numFiltriNonIndicati, $vincolisoddisfatti);
         
-        return view('catalogoordinato')
-            ->with('vincolisoddisfatti', $vincolisoddisfatti)
+        return view('catalogoOrdinato')
+            ->with('vincolisoddisfatti', $vincoli)
             ->with('annunci', $annunci)
             ->with('foto', $foto)
-            ->with('annunciconfoto', $annunciconfoto)
-            ->with('numFiltri', $numFiltriNonIndicati);
+            ->with('annunciconfoto', $annunciconfoto);
                 
         
     }

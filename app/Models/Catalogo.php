@@ -296,4 +296,16 @@ class Catalogo {
         return $numFiltri;
     }
     
+    public function getAnnunciConNumVincoliSoddisfatti($numVincoliNonIndicati, $annunci) {
+        $array = array();
+
+        foreach($annunci as $key=>$value) {
+            $valore = $value - $numVincoliNonIndicati;
+            $value = $valore;
+            $array[$key] = $valore;
+        }
+
+        return $array;
+    }
+    
 }

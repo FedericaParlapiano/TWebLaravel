@@ -51,10 +51,8 @@
         <p class="descrizione2">{{ $annuncio->descrizione }}</p>
         
         @foreach($vincolisoddisfatti as $key=>$value)
-        @if($key == $annuncio->id)
-        
-        <p><mark style="background-color: violet;"><i> Criteri soddisfatti: {{ $value - $numFiltri }} </i> </mark></p>
-        
+        @if($key == $annuncio->id)      
+        <p><mark style="background-color: violet;"><i> Criteri soddisfatti: {{ $value }} </i> </mark></p>      
         @endif
         @endforeach
     </div>

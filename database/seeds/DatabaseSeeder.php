@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder {
     public function run() {
 
         DB::table('faq')->insert([
-            ['domanda' => 'Come posso fare una ricerca sul sito?', 'risposta' => 'Attenzione: per poter filtrare i risultati è necessario essere registrati come locatori. Se sei un locatore e sei registrato, per poter fare una ricerca, basta cliccare sulla sezione ricerca. Comparirà una form in cui inserire i criteri di ricerca.
+            ['domanda' => 'Come posso fare una ricerca sul sito?', 'risposta' => 'Attenzione: per poter filtrare i risultati è necessario essere registrati come locatari. Se sei un locatore e sei registrato, per poter fare una ricerca, basta cliccare sulla sezione ricerca. Comparirà una form in cui inserire i criteri di ricerca.
                 Ti consigliamo di indicare almeno la città di interesse. Inoltre puoi indicare il tipo di camera che cerchi o se cerchi un intero appartamento.
                 Puoi anche indicare molti altri filtri.'],
             ['domanda' => 'Come posso contattare un locatore?', 'risposta' => 'Puoi contattare l\'host direttamente all\'interno del sito tramite la chat interna, a cui puoi accedere solo dopo aver effettuato il login.
@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder {
             ['domanda' => 'Dopo quanto tempo mi risponde l\'assistenza?', 'risposta' => 'Cerchiamo di essere più veloci possibile nelle risposte. Generalmente, consultiamo quotidianamente le richieste di supporto. Ti ricordiamo che puoi contattarci per email o per telefono.'],
             ['domanda' => 'Dopo quanto tempo viene stipulato il contratto?', 'risposta' => 'Questo fattore non dipende da noi, ma dal singolo locatore, che, a seconda delle sue esigenze, provvede più o meno velocemente a stipulare il contratto.'],
             ['domanda' => 'Come posso filtrare gli annunci?', 'risposta' => 'Per poter filtrare gli annunci e personalizzare la ricerca, è necessario iscriversi al sito. Il catalogo può essere visualizzato anche da non registrati, ma in questo caso non è possibile accedere alle funzionalità di filtro'],
-            ['domanda' => 'Posso inserire un annuncio se sono uno stutente?', 'risposta' => 'No: solo un utente con profilo locatore può inserire l\'annuncio di un alloggio. Se sei uno locatario, ma vuoi anche essere locatore, devi necessariamente creare un altro profilo.']
+            ['domanda' => 'Posso inserire un annuncio se sono uno studente?', 'risposta' => 'No: solo un utente con profilo locatore può inserire l\'annuncio di un alloggio. Se sei uno locatario, ma vuoi anche essere locatore, devi necessariamente creare un altro profilo.']
             
             ]);
 

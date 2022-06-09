@@ -270,7 +270,11 @@ class LocatoreController extends Controller {
         ]);
         
         //immagini annuncio
-         if($request->hasfile('image'))
+        foreach($this->_locatoreModel->getFotoAnnuncio($request->get('idAnnuncio')) as $foto) {
+           $foto->delete();
+        }
+
+        if($request->hasfile('image'))
          {
             $image = $request->file('image');
             $name = $image->getClientOriginalName();
