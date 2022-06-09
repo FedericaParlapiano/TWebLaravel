@@ -14,7 +14,7 @@
         {{ Form::token() }}  
             <div>
                 {{ Form::label('titolo', 'Titolo', ['class' => 'label']) }}
-                {{ Form::text('titolo', '', ['class' => 'input-annuncio', 'id' => 'titolo']) }}
+                {{ Form::text('titolo', '', ['class' => 'input-annuncio', 'id' => 'titolo', 'autofocus']) }}
                 @if ($errors->first('titolo'))
                 <div class="errors" >
                     @foreach ($errors->get('titolo') as $message)

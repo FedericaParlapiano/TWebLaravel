@@ -12,7 +12,7 @@
           
              <div title= "username" class="form-field">
                 {!! Form::label('username', '<i class="fa-solid fa-user"></i>', [], false) !!}
-                {{ Form::text('username', '', ['class' => 'form-input','id' => 'login__username', 'placeholder' => 'username' ]) }} 
+                {{ Form::text('username', '', ['class' => 'form-input','id' => 'login__username', 'placeholder' => 'username', 'autofocus']) }} 
             </div>
             
             

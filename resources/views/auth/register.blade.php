@@ -13,7 +13,7 @@
             
             <div  class="form-field">
                 {{ Form::label('nome', 'Nome', ['class' => 'register-label']) }}
-                {{ Form::text('nome', '', ['class' => 'form-input', 'id' => 'nome']) }}                
+                {{ Form::text('nome', '', ['class' => 'form-input', 'id' => 'nome','autofocus']) }}                
             </div>
             @if ($errors->first('nome'))
                 <div class="errors">

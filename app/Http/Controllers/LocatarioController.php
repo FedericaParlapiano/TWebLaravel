@@ -9,7 +9,7 @@ use App\Models\Resources\Messaggio;
 use App\Models\Resources\Chat;
 use App\Http\Requests\NuovaPropostaRequest;
 use App\Models\Resources\Richiesta;
-use App\models\Catalogo;
+use App\Models\Catalogo;
 use App\Models\Locatario;
 
 

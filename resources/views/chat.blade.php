@@ -3,6 +3,21 @@
 
     <script src="https://kit.fontawesome.com/ea82011960.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/accountstyle.css') }}">
+    <script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+
+    <script type="text/javascript">
+    $(document).ready(function () {         
+             $("#send-message").attr("disabled", true); 
+             $("#testo").on("keyup", function(){
+                if($(this).val().trim()){
+                        $("#send-message").attr("disabled", false);
+                }
+                else{
+                    $("#send-message").attr("disabled", true);                     
+                }
+             });
+     });
+    </script>
    
 </head>
 
