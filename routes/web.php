@@ -11,17 +11,12 @@
   |
  */
 
-//progetto
-
+//Rotte sezione pubblica
 Route::get('/', 'PublicController@homepage')
         ->name('homepage');
 
-
 Route::get('/catalog', 'PublicController@showCatalog')
         ->name('catalog');
-
-Route::post('/catalog', 'LocatarioController@showFilterCatalogo')
-        ->middleware('can:isLocatario');
 
 Route::get('/catalog/annuncio/{idAnnuncio}', 'PublicController@showAnnuncio')
         ->name('annuncio');
@@ -48,7 +43,7 @@ Route::get('/chat/{user}', 'UserController@showUserChat')
 
 
 
-
+//Rotte sezione locatore
 Route::get('/locatore', 'LocatoreController@index')
         ->name('locatore')->middleware('can:isLocatore');
 
@@ -75,22 +70,26 @@ Route::get('/locatore/accettaproposta/{propostaId}', 'LocatoreController@accetta
 Route::get('/locatore/rifiutaproposta/{propostaId}', 'LocatoreController@rifiutaProposta')
         ->name('rifiutaproposta')->middleware('can:isLocatore');
 
-Route::get('generate-pdf/{idContratto}', 'LocatoreController@generatePDF')
-        ->name('pdf')->middleware('can:isLocatore');
-
-Route::get('/locatore/showcontratto/{idContratto}', 'LocatoreController@showContratto')
-        ->name('showcontratto')->middleware('can:isLocatore');
-
 Route::get('/locatore/disdettaproposta/{propostaId}', 'LocatoreController@disdettaProposta')
         ->name('disdettaproposta')->middleware('can:isLocatore');
 
 Route::get('/locatore/eliminaproposta/{propostaId}', 'LocatoreController@eliminaProposta')
         ->name('eliminaproposta')->middleware('can:isLocatore');
 
+Route::get('generate-pdf/{idContratto}', 'LocatoreController@generatePDF')
+        ->name('pdf')->middleware('can:isLocatore');
 
+Route::get('/locatore/showcontratto/{idContratto}', 'LocatoreController@showContratto')
+        ->name('showcontratto')->middleware('can:isLocatore');
+
+
+
+//Rotte sezione locatario
 Route::get('/locatario', 'LocatarioController@index')
         ->name('locatario')->middleware('can:isLocatario');
 
+Route::post('/catalog', 'LocatarioController@showFilterCatalogo')
+        ->middleware('can:isLocatario');
 
 Route::post('/locatario/messaggio', 'LocatarioController@sendMessaggio')
         ->name('messaggio')->middleware('can:isLocatario');
@@ -101,9 +100,12 @@ Route::post('/locatario/proposta', 'LocatarioController@sendProposta')
 Route::get('/locatario/proposte', 'LocatarioController@showProposte')
         ->name('propostelocatario')->middleware('can:isLocatario');
 
+Route::post('catalogoordinato', 'LocatarioController@ordinaCatalogo')
+        ->name('catalogoordinato');
 
 
 
+//Rotte sezione admin
 Route::get('/admin', 'AdminController@index')
         ->name('admin')->middleware('can:isAdmin');
 
@@ -124,6 +126,7 @@ Route::post('/admin/eliminafaq/{faqId}', 'AdminController@eliminaFaq')
         ->name('eliminafaq');
 
 
+
 //Rotte per l'autenticazione
 Route::get('login', 'Auth\LoginController@showLoginForm')
         ->name('login');
@@ -139,10 +142,6 @@ Route::get('register', 'Auth\RegisterController@showRegistrationForm')
         ->name('register');
 
 Route::post('register', 'Auth\RegisterController@register');
-
-
-Route::post('catalogoordinato', 'LocatarioController@ordinaCatalogo')
-        ->name('catalogoordinato');
 
 
 

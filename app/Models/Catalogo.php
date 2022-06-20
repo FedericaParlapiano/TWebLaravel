@@ -151,11 +151,8 @@ class Catalogo {
     
     
     public function getVincoliSoddisfatti(FiltriCatalogoRequest $request) {
-        $annunci = new Annuncio;
         $annunciFiltrati = new Annuncio;
         $annunciFiltrati->fill($request->validated());
-
-        $allannunci = $this->getAllAnnunci();
         
         $citta = $annunciFiltrati->filtra_citta($request->citta);
         $da =  $annunciFiltrati->filtra_data_da($request->da);
@@ -175,12 +172,14 @@ class Catalogo {
         
         
         if ($request->tipologia ) {
-            if($request->tipologia == "PostoLetto"){
-                $tipologia = $annunciFiltrati->filtra_tipologia_postoLetto();
-            }
+            
             if($request->tipologia == "tutti"){
                 $tipologia = Annuncio::select('id')->pluck('id');
             }
+            if($request->tipologia == "PostoLetto"){
+                $tipologia = $annunciFiltrati->filtra_tipologia_postoLetto();
+            }
+            
             if($request->tipologia == "Appartamento" || $request->tipologia == "PostoLettoSingolo" || $request->tipologia == "PostoLettoDoppia"){
 
                  $tipologia = $annunciFiltrati->filtra_tipologia($request->tipologia);
@@ -188,7 +187,6 @@ class Catalogo {
         }
         
         
-        //$uff = $citta->merge($da, $a, $da, $superficieA, $superficieP, $postiLettoTotaliT, $postiLettoTotaliA, $postiLettoTotaliP, $numCamereT, $postiNellaStanzaT, $numCamere, $postiNellaStanza, $amount, $tipologia);
         $semicollection = $citta->merge($amount);
         $semicollection = $semicollection->merge($tipologia);
         $semicollection = $semicollection->merge($da);
@@ -204,10 +202,9 @@ class Catalogo {
         $semicollection = $semicollection->merge($numCamere);
         $semicollection = $semicollection->merge($postiNellaStanza);
         
-        $collection = $semicollection->toArray();
+        $array = $semicollection->toArray();
         
-        
-        $duplicatenumber = array_count_values($collection);
+        $duplicatenumber = array_count_values($array);
         
         arsort($duplicatenumber);
         
@@ -218,13 +215,13 @@ class Catalogo {
     
     public function getAnnunciOrdinati($duplicatenumber) {
         
-        $annunciordinatiiii = new Collection();
+        $annunciordinati = new Collection();
         
         foreach($duplicatenumber as $key=>$value) {
-            $annunciordinatiiii->push(Annuncio::where('id', $key)->get()->first());
+            $annunciordinati->push(Annuncio::where('id', $key)->get()->first());
         }
         
-        return $annunciordinatiiii;
+        return $annunciordinati;
     }
     
     public function getNumeroFiltri(FiltriCatalogoRequest $request) {

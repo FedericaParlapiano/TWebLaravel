@@ -28,7 +28,7 @@ $(function () {
 
 
 @section('content')
-<!-- inizio sezione prodotti -->
+
 @isset($annuncio)
 @foreach($annuncio as $singoloannuncio)
 <div class="annuncio-singolo">
@@ -77,8 +77,7 @@ $(function () {
       </div>
      
       
-      <div class="flex-annuncio
-           " style="text-align: center">
+      <div class="flex-annuncio" style="text-align: center">
           <div id="prezzo">
               <h3> Canone </h3> 
               {{$singoloannuncio->canoneAffitto}}&#8364
@@ -358,7 +357,6 @@ $(function () {
     <div class="container-annuncio">
         <div class="gmap_canvas">
             <iframe width="600" height="500" id="gmap_canvas" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDKrpbaW7f4DAhXkdkXw3T_f62wW2zFwtg&q={{ $annuncio->first()->indirizzo }} {{ $annuncio->first()->zonaLocazione }}"frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-
             <a href="https://www.whatismyip-address.com"></a>
             <br>
             <a href="https://www.embedgooglemap.net">inserting google maps</a>

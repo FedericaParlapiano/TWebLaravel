@@ -8,7 +8,6 @@
 @section('scripts')
 @parent
 <script>
-   
     var ifrm = document.getElementById('chatframe');
     ifrm = ifrm.contentWindow || ifrm.contentDocument.document || ifrm.contentDocument;
     ifrm.document.open();

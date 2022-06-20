@@ -533,10 +533,8 @@ class LocatoreController extends Controller {
     
     public function showContratto($idContratto){
         $contratto = $this->_locatoreModel->getDatiContratto($idContratto);
-        $data = ['title' => 'Contratto di locazione',
-            ];
         
-        return view('contratto', $data)
+        return view('contratto')
                 ->with('contratto', $contratto);
     }
 

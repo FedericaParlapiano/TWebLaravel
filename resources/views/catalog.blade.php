@@ -353,7 +353,6 @@ $(function () {
 <div class="contenitore-annunci">
 <div class="catalogo-annunci">
     @foreach ($annunci as $annuncio)
-    
     @if($annuncio->disponibilita == 0)
         <div class="annuncio" style="opacity: 0.5;">
     @else

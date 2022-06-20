@@ -5,7 +5,7 @@
 @section('content')
 
 <div class='contenitore-contratto'>
-    <h1 style='text-align: center;'>{{ $title }}</h1>
+    <h1 style='text-align: center;'> Contratto di locazione </h1>
 
         <p> Il Sig./la Sig.ra <i> {{ $contratto->nomelocatore }} {{ $contratto->cognomelocatore }} </i>
             nato/a il <i> {{ $contratto->datanascitalocatore }} </i>, di seguito denominato/a, per brevità, “Locatore” </p>

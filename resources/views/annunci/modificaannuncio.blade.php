@@ -486,7 +486,7 @@
                 @endphp
                 @endif
                 @endforeach 
-                {{$sesso}} cioa
+                {{$sesso}} 
               <div>
                 {{ Form::label('sesso', 'Sesso', ['class' => 'label']) }}
                 {{ Form::select('sesso', ['Tutti' => '', 'uomini' => 'Solo uomini', 'donne' => 'Solo donne'], $sesso, ['class' => 'input-annuncio', 'id' => 'sesso']) }}

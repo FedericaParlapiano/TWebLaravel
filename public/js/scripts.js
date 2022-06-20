@@ -1,4 +1,4 @@
-
+// script per mostrare le FAQ
 function displayFAQ(id) {
     var x = document.getElementById(id);
     if (x.className.indexOf("show-FAQ") == -1) {
@@ -10,7 +10,7 @@ function displayFAQ(id) {
 }
 
 
-// Prendo il riferimento al modal
+// script per il modal che contiene i filtri della ricerca
 var modal = document.getElementById("modal-filter");
 function openForm() {
     modal.style.display = "block";
@@ -25,7 +25,7 @@ function closeForm() {
     modal.style.display = "none";
 }
             
-            
+// check ruolo function to display field into the form       
 function checkRole(){
     var locatore = document.getElementById("locatore");
     var locatario = document.getElementById("locatario");
@@ -45,6 +45,7 @@ function checkRole(){
       anno.style.display = "none";
     }
 }
+
   
 // check tipologia function to display field into the form
 function check_tipologia() {
@@ -86,7 +87,7 @@ function w3_close() {
     document.getElementById("myOverlay").style.display = "none";
 }
 
-
+// script che gestisce lo slider per il filtraggio su base prezzo
 $(function() {
   $( "#slider-range" ).slider({
     range: true,
@@ -97,11 +98,12 @@ $(function() {
       $( "#amount" ).val( "€" + ui.values[ 0 ] + " - €" + ui.values[ 1 ] );
     }
   });
+  
   $( "#amount" ).val( "€" + $( "#slider-range" ).slider( "values", 0 ) +
     " - €" + $( "#slider-range" ).slider( "values", 1 ) );
 });
   
-  
+ // script che gestisce la visualizzazioni dei campi specifici per ciasuna tipologia di appartamento sulla base dei quali si può filtrare la ricerca
  $(document).ready(function() {
         
     $('#show-hidden-menu').click(function() {
@@ -143,7 +145,8 @@ $(function() {
         $('#PostoLetto').prop('checked', true);
     });
 });
-    
+   
+// script per l'interazione ajax per la ricerca filtrata
 $(function() {
     $(document).on("click", "#pagination-filtri a,#button-cerca", function() {
 
